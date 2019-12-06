@@ -3,7 +3,7 @@
   <entry>
     <title>kubernetes 社群分享 QA 汇总</title>
     <url>/archives/kubernetes-QA.html</url>
-    <content><![CDATA[<h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>内容主要来自在社群里有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于这些问题无法被搜索引擎检索到，所以就把这些提问的问题汇总到一起，方便大家自查。</p>
+    <content><![CDATA[<h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>内容主要来自在社群里有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于提问链接在石墨文档上协作编辑，而石墨文档里的内容是无法被搜索引擎检索到的。这些问题不整理起来就永远地躺尸在石墨文档了，所以就把这些提问的问题汇总到一起，方便大家自查。</p>
 <h2 id="Kubernetes-在信也科技的落地实战"><a href="#Kubernetes-在信也科技的落地实战" class="headerlink" title="Kubernetes 在信也科技的落地实战"></a>Kubernetes 在信也科技的落地实战</h2><p><a href="https://shimo.im/docs/3RkcgcPq3JjVtxwr" target="_blank" rel="noopener">提问链接</a></p>
 <blockquote>
 <p>Q：dns记录是如何维护的，还有maclvlan的记录的维护？谢谢老师回答</p>
