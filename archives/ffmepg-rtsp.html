@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="背景由于自己住的是价格及其便宜的民宿，四人间的合租房间。房东家住的大概有二十号人吧，人多眼杂，上月舍友丢失了一台笔记本。自己的台式机幸免遇难未被盗走。所以决定装个 IP 摄像头，防患于未然😂 选购摄像头在闲鱼和某宝上挑了很久很久，一直没有找到合适的。有那种 WiFi 摄像头，比如小米、海康威视、大华，还有其他的。价格也相对来讲便宜些，一般都在 100 元左右。不过这种摄像头坑爹的是，远程存储需要">
+<meta name="keywords" content="ffmpeg,rtsp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 FFmpeg 远程读取 rtsp 监控视频流">
+<meta property="og:url" content="https://blog.502.li/archives/ffmepg-rtsp.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="背景由于自己住的是价格及其便宜的民宿，四人间的合租房间。房东家住的大概有二十号人吧，人多眼杂，上月舍友丢失了一台笔记本。自己的台式机幸免遇难未被盗走。所以决定装个 IP 摄像头，防患于未然😂 选购摄像头在闲鱼和某宝上挑了很久很久，一直没有找到合适的。有那种 WiFi 摄像头，比如小米、海康威视、大华，还有其他的。价格也相对来讲便宜些，一般都在 100 元左右。不过这种摄像头坑爹的是，远程存储需要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.502.li/img/1561802376885.jpg">
+<meta property="og:image" content="https://blog.502.li/img/1561802376888.jpg">
+<meta property="og:image" content="https://blog.502.li/img/1561802376886.jpg.jpg">
+<meta property="og:image" content="https://blog.502.li/img/1570702505815.png">
+<meta property="og:image" content="https://blog.502.li/img/1570702514509.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704495847.png">
+<meta property="og:image" content="https://blog.502.li/img/1570702447664.png">
+<meta property="og:image" content="https://blog.502.li/img/1570702472108.png">
+<meta property="og:image" content="https://blog.502.li/img/1570702482302.png">
+<meta property="og:image" content="https://blog.502.li/img/1570702739896.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704765775.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704813188.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704875787.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704956430.png">
+<meta property="og:image" content="https://blog.502.li/img/1570704990621.png">
+<meta property="og:image" content="https://blog.502.li/img/1570705020709.png">
+<meta property="og:image" content="https://blog.502.li/img/1570705646007.png">
+<meta property="og:image" content="https://blog.502.li/img/1570705720287.png">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 FFmpeg 远程读取 rtsp 监控视频流">
+<meta name="twitter:description" content="背景由于自己住的是价格及其便宜的民宿，四人间的合租房间。房东家住的大概有二十号人吧，人多眼杂，上月舍友丢失了一台笔记本。自己的台式机幸免遇难未被盗走。所以决定装个 IP 摄像头，防患于未然😂 选购摄像头在闲鱼和某宝上挑了很久很久，一直没有找到合适的。有那种 WiFi 摄像头，比如小米、海康威视、大华，还有其他的。价格也相对来讲便宜些，一般都在 100 元左右。不过这种摄像头坑爹的是，远程存储需要">
+<meta name="twitter:image" content="https://blog.502.li/img/1561802376885.jpg">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/ffmepg-rtsp">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>使用 FFmpeg 远程读取 rtsp 监控视频流 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/ffmepg-rtsp.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">使用 FFmpeg 远程读取 rtsp 监控视频流
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-09-10 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-10T00:00:00-04:00">2019-09-10</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/ffmepg-rtsp.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/ffmepg-rtsp.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于自己住的是价格及其便宜的民宿，四人间的合租房间。房东家住的大概有二十号人吧，人多眼杂，上月舍友丢失了一台笔记本。自己的台式机幸免遇难未被盗走。所以决定装个 IP 摄像头，防患于未然😂</p>
+<h2 id="选购摄像头"><a href="#选购摄像头" class="headerlink" title="选购摄像头"></a>选购摄像头</h2><p>在闲鱼和某宝上挑了很久很久，一直没有找到合适的。有那种 WiFi 摄像头，比如小米、海康威视、大华，还有其他的。价格也相对来讲便宜些，一般都在 100 元左右。不过这种摄像头坑爹的是，远程存储需要购买他们的云服务，最便宜的也要 60元/30G/年，真他奶奶的割韭菜。而且还不能单独使用 NAS 之类的存储。因为我需要的是将监控视频远程保存到服务器上，保存到自己的服务器上，我不喜欢把数据交给国内的毒瘤厂商。</p>
+<p>摄像头根据传输介质大概分为模拟传输、网络传输。模拟传输就是采用的模拟信号，把监控视频流采集到专门的录像机上，一般录像机的价格要比一个摄像头的价格贵很多。另外还要给监控录像机供电也是一笔开销，遂不考虑使用模拟摄像头。</p>
+<p><img src="https://blog.502.li/img/1561802376885.jpg" alt="小米摄像头"></p>
+<p>网络摄像头分为 WiFi 无线网络摄像头和网线摄像头。 WiFi 摄像头就是和小米那样的，另外房东家也是用的 WiFi 摄像头。网线摄像头分为独立供电、POE 供电两种。独立供电需要单独的 12V DC 给摄像头供电，而 POE 供电是将网线和电源绑在一起，通过 POE 交换机供电。这种 POE 供电的摄像头价格也比较贵，还需要单独购买 POE 交换机。遂也不决定购买 POE 供电的摄像头。</p>
+<p><img src="https://blog.502.li/img/1561802376888.jpg" alt="POE供电摄像头"></p>
+<p><img src="https://blog.502.li/img/1561802376886.jpg.jpg" alt="POE供电图解"></p>
+<p>找了半天最终还是找到了一个摄像头，价格也比较便宜😂。特意问了卖家能不能通过浏览器访问、能不能不需要专用的摄像机来访问摄像头。卖家说是可以的。</p>
+<p><img src="https://blog.502.li/img/1570702505815.png" alt="1570702505815"></p>
+<p><img src="https://blog.502.li/img/1570702514509.png" alt="1570702514509"></p>
+<h2 id="安装摄像头"><a href="#安装摄像头" class="headerlink" title="安装摄像头"></a>安装摄像头</h2><p>把路由器的电源适配器输出接口给剪了，又接了一个 DC 2.5mm 的插头，这样一个电源适配器同时供路由器和摄像头使用了😂。不用担心功率，一个摄像头和路由器总功耗还不到 8W。</p>
+<p><img src="https://blog.502.li/img/1570704495847.png" alt="推荐这个12V直流电源，某宝搜关键字😂"></p>
+<p><img src="https://blog.502.li/img/1570702447664.png" alt="将摄像头底座固定在一个塑料板上，再用螺丝刀插入空调海绵胶里固定住😂"></p>
+<p><img src="https://blog.502.li/img/1570702472108.png" alt="路由器放在了空调上面，互不干扰"></p>
+<p>穹妹哦😂，骨科？</p>
+<p><img src="https://blog.502.li/img/1570702482302.png" alt="1570702482302"></p>
+<p><img src="https://blog.502.li/img/1570702739896.png" alt="一个RJ45的网线接口和一个12V的DC供电接口"></p>
+<h2 id="配置摄像头"><a href="#配置摄像头" class="headerlink" title="配置摄像头"></a>配置摄像头</h2><p>询问卖家怎么配置摄像头，卖家说搜索雄迈，然后下载相应的工具。<a href="https://www.xiongmaitech.com/service/down_detail1/83/176" target="_blank" rel="noopener">配套软件下载 </a> 下载安装就行。</p>
+<p><img src="https://blog.502.li/img/1570704765775.png" alt="配套软件"></p>
+<p><img src="https://blog.502.li/img/1570704813188.png" alt="在设备管理里添加摄像头"></p>
+<p><img src="https://blog.502.li/img/1570704875787.png" alt="默认是没有密码的，设置密码了酒店及铅笔✏图标哪里设置密码"></p>
+<p><img src="https://blog.502.li/img/1570704956430.png" alt="配置摄像头界面"></p>
+<p><img src="https://blog.502.li/img/1570704990621.png" alt="网络设置-TCP/IP"></p>
+<p><img src="https://blog.502.li/img/1570705020709.png" alt="RTSP 设置，这个后面要用到"></p>
+<h2 id="路由器-FRP-穿透"><a href="#路由器-FRP-穿透" class="headerlink" title="路由器 FRP 穿透"></a>路由器 FRP 穿透</h2><p>接下来就开始配置 frp ，将摄像头 rtsp 协议的端口 554 内网穿透到服务器上</p>
+<p>local_ip 设置为摄像头的 IP ，端口号就是 rtsp 协议监听的端口号，这样就能从服务器断读取 rtsp 的视频流了。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@OpenWrt:~# cat /etc/frpc.ini</span><br><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> =  </span><br><span class="line"><span class="attr">server_port</span> =  </span><br><span class="line"><span class="attr">token</span> =  </span><br><span class="line"></span><br><span class="line"><span class="section">[monweb]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">192.168</span>.<span class="number">0.241</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">2418</span></span><br><span class="line"></span><br><span class="line"><span class="section">[monrtsp]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">192.168</span>.<span class="number">0.241</span></span><br><span class="line"><span class="attr">local_port</span> = <span class="number">554</span></span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">554</span></span><br></pre></td></tr></table></figure>
+<h2 id="RTSP-视频流"><a href="#RTSP-视频流" class="headerlink" title="RTSP 视频流"></a>RTSP 视频流</h2><p>访问 RTSP 视频流，可以使用 PotPlayer 或 VLC 等播放器，使用 FFmpeg 也是可以读取视频流。服务器端使用 FFmpeg 读取视频流，命令行操作比较方便，设置定时任务读取分割摄像头的 RTSP 视频流即可</p>
+<p>如何访问摄像头的 RTSP 视频流？，一般摄像头的固件供应商那里会有帮助手册，总算在官方网站找到了。</p>
+<blockquote>
+<p><strong>使用VLC按RTSP协议连接我司的设备网络串流的格式</strong></p>
+<p>——使用第3方的播放器通过RTSP连接我司设备的URL格式如下：</p>
+<p><code>rtsp://$(IP):$(PORT)/user=$(USER)&amp;password=$(PWD)&amp;channel=$(Channel)&amp;stream=$(Stream).sdp?real_stream</code></p>
+<p>——类似 <code>rtsp://10.6.10.25:554/user=admin&amp;password=&amp;channel=1&amp;stream=0.sdp?real_stream</code>如果是通过公网需要将RTSP端口开放（ 默认是554），这个端口在网络服务-&gt;RTSP中可以设置</p>
+</blockquote>
+<p>按照官方规定的 URL ，我的摄像头 RTSP 视频流访问 URL 就是如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtsp=<span class="string">"rtsp://192.168.0.241:554/user=user&amp;password=password&amp;channel=Channel&amp;stream=Stream.sdp?real_stream"</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.502.li/img/1570705646007.png" alt="PotPlayer 里在打开那里选择打开连接"></p>
+<p><img src="https://blog.502.li/img/1570705720287.png" alt="输入上述 URL "></p>
+<p>然后服务器端安装好 FFmpeg ，使用 FFmpeg读取 rtsp 视频流即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt install FFmpeg -y</span><br><span class="line"></span><br><span class="line">RTSP=<span class="string">"rtsp://127.0.0.1:554/user=user&amp;password=password&amp;channel=Channel&amp;stream=Stream.sdp?real_stream"</span></span><br><span class="line"></span><br><span class="line">ffmpeg  -rtsp_transport tcp  -i <span class="variable">$RTSP</span> -vcodec  copy -r 1 -t 60  -y $(TZ=UTC-8 date +\%m\%d\%H\%M).mp4</span><br></pre></td></tr></table></figure>
+<p>其中 -r 参数是指定帧率，-t 参数是指定时间。关于 FFmpeg 的详细使用参数可以去参考一下官方手册，在此就不赘述了😂</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">╭─root@sg-02 ~/<span class="built_in">log</span></span><br><span class="line">╰─<span class="comment"># ffmpeg  -rtsp_transport tcp  -i $RTSP -vcodec  copy -r 1 -t 60  -y $(TZ=UTC-8 date +\%m\%d\%H\%M).mp4     130 ↵</span></span><br><span class="line">FFmpeg version 3.4.6-0ubuntu0.18.04.1 Copyright (c) 2000-2019 the FFmpeg developers</span><br><span class="line">  built with gcc 7 (Ubuntu 7.3.0-16ubuntu3)</span><br><span class="line">  configuration: --prefix=/usr --extra-version=0ubuntu0.18.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --<span class="built_in">enable</span>-gpl --<span class="built_in">disable</span>-stripping --<span class="built_in">enable</span>-avresample --<span class="built_in">enable</span>-avisynth --<span class="built_in">enable</span>-gnutls --<span class="built_in">enable</span>-ladspa --<span class="built_in">enable</span>-libass --<span class="built_in">enable</span>-libbluray --<span class="built_in">enable</span>-libbs2b --<span class="built_in">enable</span>-libcaca --<span class="built_in">enable</span>-libcdio --<span class="built_in">enable</span>-libflite --<span class="built_in">enable</span>-libfontconfig --<span class="built_in">enable</span>-libfreetype --<span class="built_in">enable</span>-libfribidi --<span class="built_in">enable</span>-libgme --<span class="built_in">enable</span>-libgsm --<span class="built_in">enable</span>-libmp3lame --<span class="built_in">enable</span>-libmysofa --<span class="built_in">enable</span>-libopenjpeg --<span class="built_in">enable</span>-libopenmpt --<span class="built_in">enable</span>-libopus --<span class="built_in">enable</span>-libpulse --<span class="built_in">enable</span>-librubberband --<span class="built_in">enable</span>-librsvg --<span class="built_in">enable</span>-libshine --<span class="built_in">enable</span>-libsnappy --<span class="built_in">enable</span>-libsoxr --<span class="built_in">enable</span>-libspeex --<span class="built_in">enable</span>-libssh --<span class="built_in">enable</span>-libtheora --<span class="built_in">enable</span>-libtwolame --<span class="built_in">enable</span>-libvorbis --<span class="built_in">enable</span>-libvpx --<span class="built_in">enable</span>-libwavpack --<span class="built_in">enable</span>-libwebp --<span class="built_in">enable</span>-libx265 --<span class="built_in">enable</span>-libxml2 --<span class="built_in">enable</span>-libxvid --<span class="built_in">enable</span>-libzmq --<span class="built_in">enable</span>-libzvbi --<span class="built_in">enable</span>-omx --<span class="built_in">enable</span>-openal --<span class="built_in">enable</span>-opengl --<span class="built_in">enable</span>-sdl2 --<span class="built_in">enable</span>-libdc1394 --<span class="built_in">enable</span>-libdrm --<span class="built_in">enable</span>-libiec61883 --<span class="built_in">enable</span>-chromaprint --<span class="built_in">enable</span>-frei0r --<span class="built_in">enable</span>-libopencv --<span class="built_in">enable</span>-libx264 --<span class="built_in">enable</span>-shared</span><br><span class="line">  libavutil      55. 78.100 / 55. 78.100</span><br><span class="line">  libavcodec     57.107.100 / 57.107.100</span><br><span class="line">  libavformat    57. 83.100 / 57. 83.100</span><br><span class="line">  libavdevice    57. 10.100 / 57. 10.100</span><br><span class="line">  libavfilter     6.107.100 /  6.107.100</span><br><span class="line">  libavresample   3.  7.  0 /  3.  7.  0</span><br><span class="line">  libswscale      4.  8.100 /  4.  8.100</span><br><span class="line">  libswresample   2.  9.100 /  2.  9.100</span><br><span class="line">  libpostproc    54.  7.100 / 54.  7.100</span><br><span class="line">Input <span class="comment">#0, rtsp, from 'rtsp://127.0.0.1:554/user=user&amp;password=password&amp;channel=Channel&amp;stream=Stream.sdp?real_stream':</span></span><br><span class="line">  Metadata:</span><br><span class="line">    title           : RTSP Session</span><br><span class="line">  Duration: N/A, start: 0.600000, bitrate: N/A</span><br><span class="line">    Stream <span class="comment">#0:0: Video: h264 (Main), yuvj420p(pc, bt709, progressive), 1280x720, 10 fps, 10 tbr, 90k tbn, 20 tbc</span></span><br><span class="line">Output <span class="comment">#0, mp4, to '10101946.mp4':</span></span><br><span class="line">  Metadata:</span><br><span class="line">    title           : RTSP Session</span><br><span class="line">    encoder         : Lavf57.83.100</span><br><span class="line">    Stream <span class="comment">#0:0: Video: h264 (Main) (avc1 / 0x31637661), yuvj420p(pc, bt709, progressive), 1280x720, q=2-31, 10 fps, 10 tbr, 16384 tbn, 1 tbc</span></span><br><span class="line">Stream mapping:</span><br><span class="line">  Stream <span class="comment">#0:0 -&gt; #0:0 (copy)</span></span><br><span class="line">Press [q] to stop, [?] <span class="keyword">for</span> <span class="built_in">help</span></span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 0, current: -8192; changing to 1. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 1, current: -6554; changing to 2. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 2, current: -4915; changing to 3. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 3, current: -3277; changing to 4. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 4, current: -1638; changing to 5. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">[mp4 @ 0x563c634747a0] Non-monotonous DTS <span class="keyword">in</span> output stream 0:0; previous: 5, current: 0; changing to 6. This may result <span class="keyword">in</span> incorrect timestamps <span class="keyword">in</span> the output file.</span><br><span class="line">frame=  387 fps= 11 q=-1.0 size=    4352kB time=00:00:38.00 bitrate= 938.2kbits/s speed=1.06x</span><br><span class="line">video:6838kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.106432%</span><br></pre></td></tr></table></figure>
+<h2 id="设置定时录制任务"><a href="#设置定时录制任务" class="headerlink" title="设置定时录制任务"></a>设置定时录制任务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * /root/shell/monitor.sh</span><br></pre></td></tr></table></figure>
+<p>选择每一分钟录制一分钟的是视频，没有找到其他合适的录制方法，每次录制录制都要重新建立 RTSP 链接，后面可能会写一个简单的 C 服务端直接建立 RTSP 的视频流，然后再切割视频文件。</p>
+<p>不得不说 FFmpeg 真是强大的，偶尔了解了 FFmpeg 作者，巨牛逼的天才啊。</p>
+<blockquote>
+<ul>
+<li>1997年他发现了最快速的计算圆周率的算法，是Bailey-Borwein-Plouffe 公式的变体。</li>
+<li>2000年他化名Gérard Lantau，创建了 FFmpeg 项目。2004年他编写了一个只有138KB的启动加载程序TCCBOOT，可以在15秒内从源代码编译并启动Linux系统。</li>
+<li>2003年开发了Emacs克隆QEmacs。2005年用普通PC和VGA卡设计了一个数字电视系统。</li>
+<li>2009年12月31日，他声称打破了圆周率计算的世界纪录，算出小数点后2.7万亿位，仅用一台普通PC机。</li>
+<li>2011年，他单用JavaScript写了一个PC虚拟机Jslinux 。这个虚拟机仿真了一个32位的x86兼容处理器，一个8259可编程中断控制器，一个8254可编程中断计时器，和一个16450 UART。</li>
+<li>Fabrice Bellard，法国著名程序员，QEMU、TinyCC、FFmpeg等作者。</li>
+</ul>
+</blockquote>
+<p>不得不再提一嘴 FFmpeg 这个项目 <a href="http://history.programmer.com.cn/3877/" target="_blank" rel="noopener">从FFmpeg耻辱榜看开源软件的“潜规则”</a></p>
+<blockquote>
+<p>FFmpeg是一个开源免费跨平台的视频和音频流方案，属于自由软件，采用LGPL或GPL许可证。2009年，韩国名软KMPlayer被FFmpeg开源项目发现使用了它们的代码和二进制文件，但没有按照规定/惯例开放相应说明/源码。被人举报后，KMPlayer进入了FFmpeg官网上的耻辱黑名单。最近，国内也有同样的产品被列入黑名单比如暴风影音、QQ影音等。<br><a href="http://ffmpeg.org/index.html" target="_blank" rel="noopener">FFmpeg</a>是一个跨平台的视频和音频流方案，属于自由软件，采用LGPL或GPL许可证（依据你选择的组件）。<em>今年2月韩国播放软件KMPlayer被加入到FFmpeg耻辱名单中，随后网友yegle向FFmpeg举报，指出暴风影音使用了大量开源代码，侵犯了FFmpeg的许可证。5月10日，另一位用户cehoyos下载了暴风软件，用7z解压之后发现其安装程序内包含了大量的开源和私有解码器的dll：avcodec，avformat，avutil，x264，xvid，bass，wmvdmod等等。杀毒软件AntiVir报告lib_VoiceEngine_dll.dll是木马程序“TR\Spy.Legmir.SS.2”。之后暴风影音被正式加入到FFmpeg耻辱名单之列。</em></p>
+</blockquote>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/ffmepg-rtsp.html" title="使用 FFmpeg 远程读取 rtsp 监控视频流">https://blog.502.li/archives/ffmepg-rtsp.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/ffmpeg/" rel="tag"><i class="fa fa-tag"></i> ffmpeg</a>
+            <a href="/tags/rtsp/" rel="tag"><i class="fa fa-tag"></i> rtsp</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选购摄像头"><span class="nav-number">2.</span> <span class="nav-text">选购摄像头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装摄像头"><span class="nav-number">3.</span> <span class="nav-text">安装摄像头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置摄像头"><span class="nav-number">4.</span> <span class="nav-text">配置摄像头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由器-FRP-穿透"><span class="nav-number">5.</span> <span class="nav-text">路由器 FRP 穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RTSP-视频流"><span class="nav-number">6.</span> <span class="nav-text">RTSP 视频流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置定时录制任务"><span class="nav-number">7.</span> <span class="nav-text">设置定时录制任务</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/ffmepg-rtsp.html";
+    this.page.identifier = "archives/ffmepg-rtsp.html";
+    this.page.title = '使用 FFmpeg 远程读取 rtsp 监控视频流';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="今年年初的时候，在栋叔（软件那些事儿电台博主、绿帽子大学校长、钢管舞演员、滴滴车司机）群里见到他推荐的这本书《独裁者手册》。最近一个月才抽空花了10个小时读完了它，在此记录一下（大部分内容照抄自原文）： PS：栋叔是个很有趣的中年油腻老男人，这是他博客栋哥的博客，在微信公众号叫 软件那些事儿，还有他的绿帽子大学 个人评价这本书最主要的还是从统治的三个维度来分析专制国家和民主国家的区别，以及一些企业">
+<meta name="keywords" content="阅读,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="独裁者手册读书笔记">
+<meta property="og:url" content="https://blog.502.li/archives/The-Dictator’s-Handbook.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="今年年初的时候，在栋叔（软件那些事儿电台博主、绿帽子大学校长、钢管舞演员、滴滴车司机）群里见到他推荐的这本书《独裁者手册》。最近一个月才抽空花了10个小时读完了它，在此记录一下（大部分内容照抄自原文）： PS：栋叔是个很有趣的中年油腻老男人，这是他博客栋哥的博客，在微信公众号叫 软件那些事儿，还有他的绿帽子大学 个人评价这本书最主要的还是从统治的三个维度来分析专制国家和民主国家的区别，以及一些企业">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="独裁者手册读书笔记">
+<meta name="twitter:description" content="今年年初的时候，在栋叔（软件那些事儿电台博主、绿帽子大学校长、钢管舞演员、滴滴车司机）群里见到他推荐的这本书《独裁者手册》。最近一个月才抽空花了10个小时读完了它，在此记录一下（大部分内容照抄自原文）： PS：栋叔是个很有趣的中年油腻老男人，这是他博客栋哥的博客，在微信公众号叫 软件那些事儿，还有他的绿帽子大学 个人评价这本书最主要的还是从统治的三个维度来分析专制国家和民主国家的区别，以及一些企业">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/The-Dictator’s-Handbook">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>独裁者手册读书笔记 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/The-Dictator’s-Handbook.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">独裁者手册读书笔记
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-09-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-18T00:00:00-04:00">2019-09-18</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/The-Dictator’s-Handbook.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/The-Dictator’s-Handbook.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <p>今年年初的时候，在栋叔（软件那些事儿电台博主、绿帽子大学校长、钢管舞演员、滴滴车司机）群里见到他推荐的这本书《独裁者手册》。最近一个月才抽空花了10个小时读完了它，在此记录一下（大部分内容照抄自原文）：</p>
+<p>PS：栋叔是个很有趣的中年油腻老男人，这是他博客<a href="https://liuyandong.com/" target="_blank" rel="noopener">栋哥的博客</a>，在微信公众号叫 <code>软件那些事儿</code>，还有他的<a href="https://lmzdx.com/" target="_blank" rel="noopener">绿帽子大学</a></p>
+<h2 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h2><p>这本书最主要的还是从统治的三个维度来分析专制国家和民主国家的区别，以及一些企业上对管理层权力斗争的原则。介绍一个理解政治的三维视角，即名义选择人、实际选择人、致胜联盟。而我们这帮屁民属于哪个维度？对不起，你没有选举权、你没有选票，你不属于其中的任何一个维度，你只是颗韭菜。</p>
+<h2 id="内容简介"><a href="#内容简介" class="headerlink" title="内容简介"></a>内容简介</h2><p>下面直接剽窃一段豆瓣上的<a href="https://book.douban.com/subject/25881102/" target="_blank" rel="noopener">简介</a></p>
+<blockquote>
+<p>为什么同样一个人可以在一个国家推行善政却在另一个国家施行最残暴的独裁？在这里，与其说制度是答案还不如说是问题本身。为什么比利时的制度越来越民主，而同一时期，同一领导人的刚果，却越来越独裁？难道是因为利奥波德二世只爱本国人或者有种族歧视？但后来刚果自己“选”出来的领导人并没有做得更好，仍然是一个糟糕的独裁者。</p>
+<p>在《独裁者手册》这本书里，梅斯奎塔和史密斯研究多年，得出了一个能够相当完美地解释这一政治现象的理论，即：不管是国家、公司还是国际组织，其政治格局不能简单地以“民主”和“独裁”来划分，而必须用民意选民、实际选民、胜利联盟的数字多少来描写。如果胜利联盟的人数很多，那么这个国家就是我们通常所说的民主国家。反过来，如果胜利联盟的人数非常少，那么不管这个国家有没有选举，都是事实上的非民主国家。据此，很容易明白：在刚果，利奥波德二世只需要让少数人高兴就足以维持自己的统治；而在比利时，他必须让很多人满意才行。</p>
+<p>不得不提，对任何想理解政治的真正运作方式的人来说，《独裁者手册》都是一本必读的书，无论是政治领域的政治还是商业界的政治，无论是在独裁国家还是在民主国家。</p>
+</blockquote>
+<h2 id="作者简介"><a href="#作者简介" class="headerlink" title="作者简介"></a>作者简介</h2><blockquote>
+<p>布鲁斯·布鲁诺·德·梅斯奎塔，纽约大学政治学系Julius Silver讲座教授、亚历山大•汉密尔顿政治经济学研究中心主任和斯坦福大学胡佛研究所高级研究员。他通过设立于纽约的咨询公司长期担任美国政府国家安全事务方面的顾问，也为众多公司提供谈判指导与结果预测方面的咨询服务。梅斯奎塔1971年从密歇根大学获得政治科学博士学位。2001—2002年他担任国际研究学会主席。他是美国艺术与科学院院士、美国对外关系理事会会员以及古根海姆基金会学者。梅斯奎塔迄今出版了16本书，超过120篇论文，并在《纽约时报》、《洛杉矶时报》、《芝加哥论坛报》、《国际先驱论坛报》等报刊上发表过大量文章。</p>
+<p>阿拉斯泰尔·史密斯，纽约大学政治学教授。他此前在圣路易斯华盛顿大学和耶鲁大学任教。他从美国罗彻斯特大学获得政治科学博士学位，从牛津大学获得化学学士学位。他从美国国家科学基金会获得过三项研究津贴，2005年他获得卡尔•多伊奇奖（Karl Deutsch Award），该奖每两年一次颁发给40岁以下最出色的国际关系研究学者。1997—1998年他被斯坦福大学胡佛研究所选为国家研究员。</p>
+</blockquote>
+<p>作者水平还是相当不错的，比起国内那些唱赞歌的教授不知道高到哪里去了😂</p>
+<h2 id="纽约时报中文网书评"><a href="#纽约时报中文网书评" class="headerlink" title="纽约时报中文网书评"></a>纽约时报中文网书评</h2><p><a href="https://cn.nytimes.com/books/20140630/tc30liuyu/" target="_blank" rel="noopener">原文连接</a></p>
+<blockquote>
+<p>《独裁者手册》(The Dictator’s Handbook)可真是一部典型的“标题党”作品。根据这个书名，这本书将手把手教会我们如何成为一个呼风唤雨的独裁者。真有这样的秘笈？原以为征服世界需要千军万马，现在看来只需要42元。</p>
+<p>可是，掏钱买书之后，打开一读，我们就会发现自己“上当”了。这本书真正的标题似乎应该是《如何理解政治：一个三维的视角》。但是鉴于多数人一读到“三维”这个字眼就睡着了，所以，还是用个吸引眼球的书名、让人们先掏钱再说吧。</p>
+</blockquote>
+<h2 id="政治的三个维度"><a href="#政治的三个维度" class="headerlink" title="政治的三个维度"></a>政治的三个维度</h2><h3 id="名义选择人集团"><a href="#名义选择人集团" class="headerlink" title="名义选择人集团"></a>名义选择人集团</h3><p><code>名义选择人集团</code>、<code>可相互替代者</code>、<code>领导人的潜在支持者</code> 、<code>合格选民</code></p>
+<p>包含了所有在选择领导人时至少具有某些法定发言权的人。说白了就是有选票的合格选民。从根本上来讲名义选择人就是领导人的潜在支持者。</p>
+<h3 id="实际选择人集团"><a href="#实际选择人集团" class="headerlink" title="实际选择人集团"></a>实际选择人集团</h3><p><code>实际选择人集团</code>、<code>有影响者</code> 、<code>真正选出总统的选举人团成员</code></p>
+<p>实际选择人则指那些其对领导人的支持确实有重要影响的人</p>
+<blockquote>
+<p>在美国，名义选择人和实际选择人相当紧密地结合在一起。这就是为什么尽管你只是与他人可相互替代的无数选民中的一员，却仍感觉你的那一票很有影响—它有价值，也算数。</p>
+</blockquote>
+<p>在国内，一般是指官二代和红二代。但除了官二代红二代之外的普通人几乎不可能到达这个维度。</p>
+<h3 id="致胜联盟"><a href="#致胜联盟" class="headerlink" title="致胜联盟"></a>致胜联盟</h3><p><code>致胜联盟</code>、<code>不可或缺者</code> 、<code>核心领导层</code></p>
+<p>实际选择人集团的一个子集，构成了一个致胜联盟。他们的支持对于一个领导人的政治生存至关重要。</p>
+<p>在国内就是那几个常委，这里面的斗争特别激烈，翻看一下历任的常委的遭遇你就会明白</p>
+<h3 id="补充一个维度"><a href="#补充一个维度" class="headerlink" title="补充一个维度"></a>补充一个维度</h3><p>你仔细思考这三个维度后，你会发现，在有些国家比如朝鲜，他们的老百姓属于哪一类人？不好意思，他们不属于上面三个维度的任何一个。我更喜欢重新划分一个维度 <code>被剥夺选举权的人</code> ，也就是<code>屁民</code>、<code>韭菜</code>、<code>穷苦的老百姓</code>、<code>低端人口</code> 、<code>五毛</code>、<code>粉红</code> 等等，因为他们根本就没有实际的选举权。这也是香港返送中五大诉求里要求实现真普选的要求，即从这些被剥夺选举权的群体中选出自己的领导人，而不是<strong>钦定</strong>。</p>
+<h3 id="三维政治的特点"><a href="#三维政治的特点" class="headerlink" title="三维政治的特点"></a>三维政治的特点</h3><blockquote>
+<p><strong>独裁制：</strong>这个术语在我们这里的真正意思是，政府建立在极少数不可或缺者的基础上，而他们是从数量非常庞大的可相互替代者以及通常相对较少的一群有影响者当中产生出来的。</p>
+<p><strong>民主制：</strong>政府建立在数量庞大的不可或缺者和可相互替代者的基础上；同时，有影响者的数量几乎与可相互替代者一样多。</p>
+<p><strong>君主制或军事独裁制：</strong>可相互替代者、有影响者、不可或缺者的数量都很少。</p>
+</blockquote>
+<ul>
+<li><strong>独裁制</strong></li>
+</ul>
+<p>政府建立在极少数 致胜联盟、不可或缺者 的基础上，致胜联盟、不可或缺者 从从数量非常庞大的名义选择人集团、可相互替代者、领导人的潜在支持者 以及较少的实际选择人集团、有影响者 、真正选出总统的选举人团成员 当中产生出来的。</p>
+<ul>
+<li><strong>民主制</strong></li>
+</ul>
+<p>政府建立在数量<strong>庞大</strong>的<code>致胜联盟</code>、<code>不可或缺者</code>和<code>名义选择人集团</code>、<code>可相互替代者</code>、<code>领导人的潜在支持者</code>的基础上，同时<code>实际选择人集团</code>、<code>有影响者</code> 、<code>真正选出总统的选举人团成员</code> 与 <code>名义选择人集团</code>、<code>可相互替代者</code>、<code>领导人的潜在支持者</code> 一样多，这也反映了下面这段：</p>
+<blockquote>
+<p>在美国，名义选择人和实际选择人相当紧密地结合在一起。这就是为什么尽管你只是与他人可相互替代的无数选民中的一员，却仍感觉你的那一票很有影响—它有价值，也算数。</p>
+</blockquote>
+<ul>
+<li><strong>君主制或军事独裁制</strong></li>
+</ul>
+<p>可相互替代者、有影响者、不可或缺者的数量都很少，皇帝一人说了算，明朝和清朝就属于这</p>
+<ul>
+<li><strong>注意，在此一定要认真思考极少数、庞大两个词语，因为这从本质上决定了两种制度，民主与独裁</strong></li>
+</ul>
+<blockquote>
+<p>以不可或缺者、有影响者和可相互替代者这样的概念来看待各类组织的优点是，这些范畴使我们能克制自己，避免在各种政府形式之间武断地划线，宣称这个国家是“民主国家”，那个国家是“专制国家”，或这个国家是大共和国，那个国家是小共和国，也避免了一些历史上主要政治哲学家们持有的一维政治观。政府之间和组织之间更具重要意义和可观察到的行为差异取决于可相互替代者、有影响者和不可或缺者这三个集团的绝对和相对规模。</p>
+</blockquote>
+<h2 id="本书章节"><a href="#本书章节" class="headerlink" title="本书章节"></a>本书章节</h2><h3 id="一-、政治的法则"><a href="#一-、政治的法则" class="headerlink" title="一 、政治的法则"></a>一 、政治的法则</h3><blockquote>
+<p>任何一个有能力的领导人都希望掌握尽可能多的权力，并尽可能长久地掌握权力。设法利用可相互替代者、有影响者和不可或缺者来达到自己的目的，这就是统治的行为、艺术和科学。<br>民主国家或任何一个致胜联盟很庞大的体系内，通过私人回报的方式来收买忠诚代价太大。钱会被极大摊薄。所以，依赖大型致胜联盟的、较民主的政府趋向于着重把钱花在能增进普遍福利的有效公共政策上，这很接近詹姆斯·麦迪逊倡导的理念。<br>与此形成对照的是，独裁者、君主、军政府领导人以及大部分企业首席执行官只依赖一小撮不可或缺者。正如马基雅维利所言，他们通过大慷公家之慨、以私人回报的方式收买致胜联盟的忠诚，这种统治方式更有成效，尽管这意味着要牺牲广大纳税人或千百万小股民的利益。因此，小型致胜联盟助长了稳定、腐败、以私人物品为导向的体制。</p>
+</blockquote>
+<h4 id="政治统治的五大基本法则"><a href="#政治统治的五大基本法则" class="headerlink" title="政治统治的五大基本法则"></a>政治统治的五大基本法则</h4><p>也就是想要成为一名合格的独裁者，哪些原则不可避免</p>
+<p>下面的内容直接剽窃原文</p>
+<h5 id="法则1：让你的致胜联盟越小越好"><a href="#法则1：让你的致胜联盟越小越好" class="headerlink" title="法则1：让你的致胜联盟越小越好"></a>法则1：让你的致胜联盟越小越好</h5><blockquote>
+<p>一个小规模的致胜联盟使领导人只需依赖极少数人就能保持权位。越少的不可或缺者相当于领导人拥有更多控制权，对支出的自由裁量权也越大。</p>
+</blockquote>
+<p>在国内，这个规模就是几大常委和那些政治老人，规模极少数</p>
+<p>在美国，就是众多选民们，而且规模巨大</p>
+<h5 id="法则2：让你的名义选择人集团越大越好"><a href="#法则2：让你的名义选择人集团越大越好" class="headerlink" title="法则2：让你的名义选择人集团越大越好"></a>法则2：让你的名义选择人集团越大越好</h5><blockquote>
+<p>保持一个很大的选择人集团你就能很容易地替换掉致胜联盟里的捣蛋分子，无论是有影响者还是不可或缺者。毕竟，一个很大的选择人集团提供了充足的替代支持者，让不可或缺者时刻谨记必须保持忠诚、规规矩矩，不然就会被别人取代。</p>
+</blockquote>
+<p>在国内应该是官二代红二代以及九千万中少数</p>
+<h5 id="法则3：掌控收入的分配"><a href="#法则3：掌控收入的分配" class="headerlink" title="法则3：掌控收入的分配"></a>法则3：掌控收入的分配</h5><blockquote>
+<p>对一个统治者来说，与其拥有一张让人民可以喂饱自己的更大的饼，永远不如他能够决定谁吃这张饼。对领导人来说，最有效的资金分配方式是让很多人受穷，通过重新分配让挑选出来的支持者发财。<br>让我们为巴基斯坦总统阿西夫·阿里·扎尔达里喝彩，他的财富估计高达40亿美元，尽管他统治着一个人均国民收入几乎全球垫底的国家。</p>
+</blockquote>
+<h5 id="法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱"><a href="#法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱" class="headerlink" title="法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱"></a>法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱</h5><blockquote>
+<p>记住，你的支持者宁愿成为你而不是仰赖你。你的巨大优势在于你知道钱在哪里而他们不知道。给你的联盟足够的钱，以免他们到处寻找取代你的人，但一分钱都不要多给。<br>让我们为津巴布韦的罗伯特·穆加贝喝彩，他无论何时面临军事政变的威胁，最终总能用钱摆平，在重重困难下始终保持军队忠诚。</p>
+</blockquote>
+<h5 id="法则5：不要从你的支持者的口袋里挪钱去改善人民的生活"><a href="#法则5：不要从你的支持者的口袋里挪钱去改善人民的生活" class="headerlink" title="法则5：不要从你的支持者的口袋里挪钱去改善人民的生活"></a>法则5：不要从你的支持者的口袋里挪钱去改善人民的生活</h5><blockquote>
+<p>法则4的反面就是不要对你的支持者太抠门。如果你以损害致胜联盟的利益为代价而善待人民，很快你的“朋友们”就会伺机找你的麻烦。有利于普通老百姓的政策不仅未必能让核心支持者产生忠诚，而且太贵。饥饿的人民不可能有精力推翻你，大可不必担心他们。相反地，失望的致胜联盟成员则会变节，让你深陷麻烦。<br>让我们为缅甸的丹瑞将军喝彩，在2008年的纳尔吉斯飓风之后他控制了外界提供的粮食援助，让他的军队支持者拿到黑市上去倒卖，而不是援助灾民——至少13.8万人死于那场风灾，有的报告甚至认为死亡人数高达50万人</p>
+</blockquote>
+<h4 id="在民主国家呢？"><a href="#在民主国家呢？" class="headerlink" title="在民主国家呢？"></a>在民主国家呢？</h4><p>假如在民主国家的领导人，比如川普使用上面五种法则呢？</p>
+<p><code>如果一位民选领导人遵循上述独裁统治的规则，他肯定马上下台</code></p>
+<h5 id="第一条"><a href="#第一条" class="headerlink" title="第一条"></a>第一条</h5><p>假如川普想要掠夺国家财产的同时维持总统的位置确实比较困难，何况川普人家不缺钱😂。他受到该国法律的约束太多，就是因为<code>官员财产必须公布</code>。因为美国的选举制度，在法律上通过选举程序决定了他上台所需致胜联盟的规模必须相对较大。所以在民主国家的领导人并不具备规模尽可能少的致胜联盟，而是规模巨大的选民们。</p>
+<p><code>但这并不意味着他不会尽力去遵循这一法则（以及其他法则）</code> ，任何一个国家的领导人都希望极可能长期手握权力不放，同时加大自己的权力。<strong>老话仍然是真的——所有政客都一个样。</strong>比如：</p>
+<ul>
+<li>为什么国会为了选举利益而改划选区？恰恰是因为<strong>法则1</strong>：让你的致胜联盟越小越好。</li>
+<li>为什么某些政党赞成移民？<strong>法则2</strong>：扩大可相互替代者的规模。</li>
+<li>为什么在税收法规上有这么多争斗？<strong>法则3</strong>：控制政府收入来源。</li>
+<li>为什么民主党人花掉那么多税收在公共福利和社会工程上？或，究竟为什么会有指定用途的资金？<strong>法则4</strong>：不计代价地回报你的核心支持者。</li>
+<li>为什么共和党人希望降低最高税率并对全国性医保体系的想法百般反对？<strong>法则5</strong>：不要打劫自己的支持者以利对手。</li>
+</ul>
+<p>PS: 在独裁专制集权暴政的国家，官员财产是绝对不能公布的，这是铁定的法则。因为各自的政治派系都要依靠金钱贿赂来收买各自的<code>致胜联盟</code> ，而这个致胜联盟规模及其地小，从而进一步加深看腐败。假如贫苦的老百信手里有真正的选票，那么选举出来的官员必须要为他们负责，他们的规模是及其巨大的，想要收买他们必须听从他们的声音，给与他们自由。</p>
+<h3 id="二、上台"><a href="#二、上台" class="headerlink" title="二、上台"></a>二、上台</h3><p>这个章节开头讲解了，约翰·多伊从一名士官一跃成为利比里亚国家的最高领导人。感觉故事就像电影一样，伊出生于利比里亚偏远的内陆部族，相当于朝鲜的老百姓？他走出了西非的丛林到外面讨生活。来到了首都蒙罗维亚后参军，因为没有发工资，就和16名士一起翻过总统官邸的围墙向总统讨工资，本来是希望面见总统，质询为什么没有发工资。在总统威廉·托尔伯特的卧室里，多伊就发现了这么一个机会。多伊用刺刀捅死总统，将他的内脏丢去喂狗，然后宣布自己是利比里亚的新总统。</p>
+<p>是不是很奇幻？😂</p>
+<p>上台后的第一件事儿就是找钱捞钱，收买致胜联盟，铲除竞争对手。去他妈的什么善治理念，别把人民关心的事置于你和你的支持者之上：这是给那些想要成为独裁者的人的金玉良言。不用考虑穷苦老百姓的死活，他们威胁不了你的统治，在这时你就应该花钱收买致胜联盟。在独裁专制国家，造福人民的好的理念几乎不可能助你掌权。</p>
+<h4 id="夺取权力三步走？"><a href="#夺取权力三步走？" class="headerlink" title="夺取权力三步走？"></a>夺取权力三步走？</h4><ul>
+<li>第一，他必须除掉在位者</li>
+<li>第二，他必须控制政府机关</li>
+<li>第三，他需要成立一个由支持者组成的、足以确保他成为新在位者的联盟。</li>
+</ul>
+<p>这三步走我不怎么赞同，确切地说人人皆知啊，是个正常的人都会这名做吧，和古代的那些谋朝篡位的相比差远了。革命的一般经验法则是，当现存制度的守卫者们对报偿十分不满、有意寻找新的领导人来关照他们时，革命就会发生。</p>
+<h3 id="三、掌权"><a href="#三、掌权" class="headerlink" title="三、掌权"></a>三、掌权</h3><p>总结一句话，收买致胜联盟，让他们忠诚于你</p>
+<h3 id="四、窃贫济富"><a href="#四、窃贫济富" class="headerlink" title="四、窃贫济富"></a>四、窃贫济富</h3><p>领导人从屁民那里征税面临的三个限制</p>
+<ul>
+<li>征税会削弱人们工作的热、情阻碍辛勤工作、创业精神和投资</li>
+<li>一些税收方面的负担不可避免地会落到领导人的关键支持者身上。</li>
+<li>收税需要专业知识和资源。收税的成本限制了领导人能够榨取什么并影响到征税方法的制定。</li>
+</ul>
+<h3 id="五、获取与花费"><a href="#五、获取与花费" class="headerlink" title="五、获取与花费"></a>五、获取与花费</h3><p><code>那些依赖小联盟的国家领导人们有一种普遍的说辞是，能够促进政府改善人民福利的那些自由权利太奢侈——比如言论自由、新闻自由，特别是集会自由——只可能在获得经济繁荣之后才能让民众享有，而不是之前</code></p>
+<h3 id="六、腐败"><a href="#六、腐败" class="headerlink" title="六、腐败"></a>六、腐败</h3><p>绝对的权力将会导致绝对的腐败，比如《巴拿马文件》里面的那些官员，那些最成功的领导人，特别在现代，也拥有获得巨额收入的可靠手段，比如矿产财富，比如独占某些企业，比如投资离岸公司等。只要他们保持身体健康，这样的领导人是无懈可击的。也就是说，他们无限接近于成为一名绝对领袖。</p>
+<blockquote>
+<p>根据透明国际2010年的腐败指数，25个世界上最腐败的国家没有一个是成熟的民主国家。</p>
+</blockquote>
+<h3 id="七、对外援助"><a href="#七、对外援助" class="headerlink" title="七、对外援助"></a>七、对外援助</h3><p>略</p>
+<h3 id="八、-反叛中的人民"><a href="#八、-反叛中的人民" class="headerlink" title="八、 反叛中的人民"></a>八、 反叛中的人民</h3><blockquote>
+<p>一名成功的领导人总是把核心支持者的需要置于人民的需要之上。[1]没有他的致胜联盟的支持，一名领导人什么都不是，很快就会被对手横扫出局。但如果领导人的统治权只依赖于少数人，让联盟满意是得花钱的。通常来说，联盟成员获得的酬劳以牺牲社会其他部分的利益为代价。没错，是有一些独裁者让人民生活过得更好而成了名人堂成员。大多数独裁者不这么做。那些不这么做的独裁者将坐在办公室里为了自己和联盟的利益将国家的经济搞得一蹶不振。最终形势发展到足够恶化的地步，导致一些人民开始厌倦身上的重负。他们也会对领导人的生存产生威胁。</p>
+</blockquote>
+<h4 id="贸易战"><a href="#贸易战" class="headerlink" title="贸易战"></a>贸易战</h4><p>关于贸易战的本质问题，可以去读一下这篇文章 <a href="https://terminus2049.github.io/archive/2019/05/23/China-America-trade-war.html" target="_blank" rel="noopener">贸易战的本质问题是什么</a></p>
+<blockquote>
+<p>美国的诉求是 “三零二停一允许”。“三零” 是零关税、零非关税壁垒、零补贴，“二停” 是停止盗窃知识产权、停止强行技术转让，“一允许” 是允许美国人到中国独立开设公司。</p>
+<p>需要指出的是，这 “三零二停一允许” 不是单方的，而是双方的。你对我 “三零两停一允许”，我也对你 “三零两停一允许”。这个政策也是美国给到全体盟友的，美国对于中国，除了部分关税以外 (仍比中国低很多)，已经大部分实现 “三零二停一允许” 了，中国人去美国开设公司的政策上早已执行很久了。</p>
+</blockquote>
+<p>美国的诉求，几乎每一条都影响到了掌权者统治的根基，就拿最后一条来讲，<code>允许美国人到中国独立开设公司</code> ，假如谷歌推特脸书来到中国开公司，他们会配合当权者进行言论审查和打击抗议人士吗？蜻蜓计划的破产早就决定了不会发生这种事情，即便谷歌他要做审查版的搜索引擎供大陆使用，但，美国国会也绝对不会允许谷歌的这种行为。</p>
+<blockquote>
+<p>大多数革命者一旦上台——只要他们能侥幸成功——就倾向于成为卑鄙的独裁者。毕竟，民主制度除了催生人民想要的政策之外，也会让领导人的政治生存变得更难。领导人不会顺从人民的意愿，除非人民有能力迫使他们。</p>
+</blockquote>
+<p><code>除非人民有能力迫使他们</code> ，而人民没有军队和武器，人民唯一的能力就是两个字–自由</p>
+<p>人民的力量只会来自自由、即言论自由、集会自由、出版自由、新闻自由。而越是独裁的国家，越会限制人民反抗的力量，从而去限制各种自由。更甚至会使用科技手段强加限制，比如当今早已经侵犯人权的征信系统，人脸识别等。甚至我语言，未来独裁者会使用所谓的人工智能来分析我们的思想。这一点，技术上没有任何限制，根据你的聊天记录，社交账号上的好友关系，进行大数据分析，就能很准确地分析出我们的大脑中的想法，分析出我们对老大哥的忠诚度😂</p>
+<blockquote>
+<p>在一个民主国家，抗议相对便宜和简单。人民有集会的自由，事实上这是权利。他们也有很方便的协调组织手段。我们已从先前几章了解到，依赖大型联盟的政府创造了大量公共物品，包括统称为自由的一揽子特殊公共物品，包括新闻自由、言论自由和集会自由。这些自由权利使数量巨大的人民交换对于政府的看法、表达对任何不喜欢政策的反对意见变得容易得多<br>独裁者有两种截然相反的方法应对革命的威胁。他可以提升民主，大大改善人民的待遇，使他们不再想着反叛。他也可以加强专制独裁，让人民的境遇变得更加悲惨，同时一举扼杀人民造反成功的机会。</p>
+</blockquote>
+<p>通过香港返送中运动，我们很快就能明白，当权者显然加强了专制独裁</p>
+<h3 id="九、战争，和平与世界秩序"><a href="#九、战争，和平与世界秩序" class="headerlink" title="九、战争，和平与世界秩序"></a>九、战争，和平与世界秩序</h3><h3 id="十、怎么办？"><a href="#十、怎么办？" class="headerlink" title="十、怎么办？"></a>十、怎么办？</h3>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/The-Dictator’s-Handbook.html" title="独裁者手册读书笔记">https://blog.502.li/archives/The-Dictator’s-Handbook.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/阅读/" rel="tag"><i class="fa fa-tag"></i> 阅读</a>
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#个人评价"><span class="nav-number">1.</span> <span class="nav-text">个人评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容简介"><span class="nav-number">2.</span> <span class="nav-text">内容简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作者简介"><span class="nav-number">3.</span> <span class="nav-text">作者简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#纽约时报中文网书评"><span class="nav-number">4.</span> <span class="nav-text">纽约时报中文网书评</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#政治的三个维度"><span class="nav-number">5.</span> <span class="nav-text">政治的三个维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#名义选择人集团"><span class="nav-number">5.1.</span> <span class="nav-text">名义选择人集团</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际选择人集团"><span class="nav-number">5.2.</span> <span class="nav-text">实际选择人集团</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#致胜联盟"><span class="nav-number">5.3.</span> <span class="nav-text">致胜联盟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充一个维度"><span class="nav-number">5.4.</span> <span class="nav-text">补充一个维度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维政治的特点"><span class="nav-number">5.5.</span> <span class="nav-text">三维政治的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本书章节"><span class="nav-number">6.</span> <span class="nav-text">本书章节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-、政治的法则"><span class="nav-number">6.1.</span> <span class="nav-text">一 、政治的法则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#政治统治的五大基本法则"><span class="nav-number">6.1.1.</span> <span class="nav-text">政治统治的五大基本法则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#法则1：让你的致胜联盟越小越好"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">法则1：让你的致胜联盟越小越好</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#法则2：让你的名义选择人集团越大越好"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">法则2：让你的名义选择人集团越大越好</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#法则3：掌控收入的分配"><span class="nav-number">6.1.1.3.</span> <span class="nav-text">法则3：掌控收入的分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱"><span class="nav-number">6.1.1.4.</span> <span class="nav-text">法则4：支付给你的核心支持者刚好足够确保他们忠诚的钱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#法则5：不要从你的支持者的口袋里挪钱去改善人民的生活"><span class="nav-number">6.1.1.5.</span> <span class="nav-text">法则5：不要从你的支持者的口袋里挪钱去改善人民的生活</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在民主国家呢？"><span class="nav-number">6.1.2.</span> <span class="nav-text">在民主国家呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一条"><span class="nav-number">6.1.2.1.</span> <span class="nav-text">第一条</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、上台"><span class="nav-number">6.2.</span> <span class="nav-text">二、上台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#夺取权力三步走？"><span class="nav-number">6.2.1.</span> <span class="nav-text">夺取权力三步走？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、掌权"><span class="nav-number">6.3.</span> <span class="nav-text">三、掌权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、窃贫济富"><span class="nav-number">6.4.</span> <span class="nav-text">四、窃贫济富</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、获取与花费"><span class="nav-number">6.5.</span> <span class="nav-text">五、获取与花费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、腐败"><span class="nav-number">6.6.</span> <span class="nav-text">六、腐败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、对外援助"><span class="nav-number">6.7.</span> <span class="nav-text">七、对外援助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、-反叛中的人民"><span class="nav-number">6.8.</span> <span class="nav-text">八、 反叛中的人民</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贸易战"><span class="nav-number">6.8.1.</span> <span class="nav-text">贸易战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、战争，和平与世界秩序"><span class="nav-number">6.9.</span> <span class="nav-text">九、战争，和平与世界秩序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、怎么办？"><span class="nav-number">6.10.</span> <span class="nav-text">十、怎么办？</span></a></li></ol></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/The-Dictator’s-Handbook.html";
+    this.page.identifier = "archives/The-Dictator’s-Handbook.html";
+    this.page.title = '独裁者手册读书笔记';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

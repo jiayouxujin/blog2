@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="0.说在前面：百度李彦宏曾说过：“中国人对隐私问题的态度更加开放，相对来说也没那么敏感。如果他们可以用隐私换取便利和效率，在很多情况下他们就愿意这么做”。如果你不在乎个人隐私，愿意用个人隐私换取方便，那么这篇文章对你没有价值，浪费你的时间，请关闭退出就可以。  原则：尽量使用国外或开源的软件。让美帝公司掌握了隐私数据要比让老大哥掌握了风险低，在国内让baidu这些毒瘤公司拿数据去卖假药什么的会造成">
+<meta name="keywords" content="隐私保护,privacy project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈保护隐私的几种方法">
+<meta property="og:url" content="https://blog.502.li/archives/privacy-protections.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="0.说在前面：百度李彦宏曾说过：“中国人对隐私问题的态度更加开放，相对来说也没那么敏感。如果他们可以用隐私换取便利和效率，在很多情况下他们就愿意这么做”。如果你不在乎个人隐私，愿意用个人隐私换取方便，那么这篇文章对你没有价值，浪费你的时间，请关闭退出就可以。  原则：尽量使用国外或开源的软件。让美帝公司掌握了隐私数据要比让老大哥掌握了风险低，在国内让baidu这些毒瘤公司拿数据去卖假药什么的会造成">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈保护隐私的几种方法">
+<meta name="twitter:description" content="0.说在前面：百度李彦宏曾说过：“中国人对隐私问题的态度更加开放，相对来说也没那么敏感。如果他们可以用隐私换取便利和效率，在很多情况下他们就愿意这么做”。如果你不在乎个人隐私，愿意用个人隐私换取方便，那么这篇文章对你没有价值，浪费你的时间，请关闭退出就可以。  原则：尽量使用国外或开源的软件。让美帝公司掌握了隐私数据要比让老大哥掌握了风险低，在国内让baidu这些毒瘤公司拿数据去卖假药什么的会造成">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/privacy-protections">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>浅谈保护隐私的几种方法 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/privacy-protections.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">浅谈保护隐私的几种方法
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-04-14T00:00:00-04:00">2019-04-14</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/privacy-protections.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/privacy-protections.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <p>0.说在前面：百度李彦宏曾说过：“中国人对隐私问题的态度更加开放，相对来说也没那么敏感。如果他们可以用隐私换取便利和效率，在很多情况下他们就愿意这么做”。如果你不在乎个人隐私，愿意用个人隐私换取方便，那么这篇文章对你没有价值，浪费你的时间，请关闭退出就可以。</p>
+<hr>
+<p>原则：尽量使用国外或开源的软件。<br>让美帝公司掌握了隐私数据要比让老大哥掌握了风险低，在国内让baidu这些毒瘤公司拿数据去卖假药什么的会造成伤害，还有可能被查水表，喝茶什么的。<br>而让Google掌握了吧，身在中国，Google拿你的数据在美国干些坏事也影响不到你。<br>同理，美国人用中国的手机和软件比用美国的风险低<br>如果你想最大化保护你的个人隐私，那么我建议你：</p>
+<hr>
+<h2 id="1-浏览器"><a href="#1-浏览器" class="headerlink" title="1.浏览器"></a>1.浏览器</h2><p>无论在移动端还是PC端，坚决不要使用任何国产浏览器，推荐使用开源软件Firefox或Chromium，Firefox是Mozilla非营利性组织维护的开源浏览器，能够在某种程度上保护你的隐私数据，它是非营利性组织，不以盈利为目的，不会向第三方或政府披露你的数据。作为上网浏览新闻，博客，网站的主力工具，每个浏览器都会记录着每个你访问的网站。国产浏览器会夹带着一些其他的私货，比如屏蔽掉一些政府敏感的网站，进行言论审查和互联网封锁。不仅如此，为了盈利商业公司的浏览器会向第三方共享你的隐私数据，而且还会根据法律法规向政府披露你的数据。在用户客户端进行这种行为真的是卑鄙无耻。尤其是那些参与屏蔽996.icu的浏览器<a href="https://blog.502.li/privacy-protections#reference">1</a>，你可以完全放弃他们了。</p>
+<hr>
+<h2 id="2-杀毒软件"><a href="#2-杀毒软件" class="headerlink" title="2.杀毒软件"></a>2.杀毒软件</h2><p>坚决不要使用国产杀毒软件，他们会监控你的上网纪录<a href="https://blog.502.li/privacy-protections#reference">2</a>(火绒除外，微点有待观察)。<br>国产杀毒软件会以根据法律法规和危险警告识别监控上网站url,360杀毒软件曾拦截屏蔽过美国驻华大使馆某些特定网址。近期也拦截过996.icu以及github上996.icu的repo，并且做了个假的404网页，真他妈搞笑。杀毒软件有扫描磁盘全部内容的风险，如果你硬盘上有敏感隐私信息，不要使用这些国产杀毒软件。如果你在使用Windows10的话，那么自带的Windows Defence完全可以满足日常使用，有能力的也可以选择“裸奔”。如今免费盛行的国产杀毒软件早已沦为强制捆绑，广告推广，隐私收集的流氓软件。</p>
+<hr>
+<h2 id="3-安卓手机"><a href="#3-安卓手机" class="headerlink" title="3.安卓手机"></a>3.安卓手机</h2><p>解锁Bootloader进行root(但也面临着手机丢失后数据安全问题)。<br>拒绝使用和购买那些不提供解锁Bootloader的手机，比如华为，魅族，锤子，VIVO，OPPO等。如果你不想折腾的话，苹果无疑是最好的选择，而且要将苹果账号选择在美国，而非云上贵州。<br>因为解锁Bootloader进行root是摆脱手机厂商监控的第一步。因为安卓手机厂商为了盈利收集的隐私信息，并向第三方共享你的隐私信息以获取广告推广盈利。只有进行root才能卸载掉那些监控手机的预装app。随着大多数国产手机逐渐关闭解锁Bootloader和加大Root的难度，用户想要摆脱手机厂商的监控也越来越难。厂商希望没人Root，因为不解锁Bootloader和root，厂商就可以为所欲为了。国产手机都会自带某种“云服务”，选择和使用这些服务被手机厂商收集到的个人隐私信息也将更多。<br>对于解锁bootloader和root后的风险。使用Android手机和使用Linux并无多大区别。拥有root权限的风险只是将root权限授权给未知应用而已。只要你够细心这一点是可以避免的。<br>手机丢失后别人也可以使用你用的刷机办法解锁你的手机，窃取你手机里的隐私信息。那就祝愿你手机不会丢失吧 但也可以使用tasker解决，在手机丢失后执行一些操作，删除手机上的内容。比如设定sim卡ID以及，只要更换Sim卡就触发报警操作，发送短信触发GPS定位，返回GPS信息，摄像头拍照等等都可以通过tasker实现。</p>
+<hr>
+<h2 id="4-输入法"><a href="#4-输入法" class="headerlink" title="4.输入法"></a>4.输入法</h2><p>杜绝使用国产输入法，在此推荐使用Google输入法。<br>输入法作为文本信息输入的直接工具，就好比嘴一样与互联网说话沟通，如果输入法的记录被某些公司记录下来，就好比被人安装了窃听器一样。之前有报道过讯飞输入法拒绝翻译敏感词，早已证明这些党性十足的国产输入法会监控你的所有输入记录<a href="https://blog.502.li/privacy-protections#reference">4</a>，甚至监听你的麦克风<a href="https://blog.502.li/privacy-protections#reference">百度输入法监听麦克风</a>。使用google输入法的好处在于，因为墙的缘故，你的输入记录无法上传到Google服务器😂。</p>
+<hr>
+<h2 id="5-苹果用户"><a href="#5-苹果用户" class="headerlink" title="5.苹果用户"></a>5.苹果用户</h2><p>建议你将Apple账户进行转区到国外，国内的账户数据会存储在云上贵州那里，以供审查。Apple在隐私保护方面做的还是不错的。毕竟苹果是为了保护用户隐私敢直接和FBI硬杠的公司<a href="https://blog.502.li/privacy-protections#reference">5</a>。如果很在乎隐私保护而且不想折腾，那么苹果手机无疑是最好的选择。即便苹果收集到你的隐私数据，这些隐私数据也不会落到政府那里，前提是你的苹果账号在国外。</p>
+<hr>
+<h2 id="6-安卓杀毒软件"><a href="#6-安卓杀毒软件" class="headerlink" title="6.安卓杀毒软件"></a>6.安卓杀毒软件</h2><p>你可以放心大胆地卸载掉所有xx安全管家，xx安全中心，xx安全，xx大师。基于Linux内核的安卓手机不需要任何杀毒软件的。想要安全，Root才是最彻底的方法，再次重申不要相信国内所谓“Root了很危险”这样的谣言，只要你有足够多的耐心和细心去研究，你就能够使用root权限把你的Android手机打造的固若金汤。那些所谓的安全管家，只不过是监控你手机，收集你隐私数据的工具而已。</p>
+<hr>
+<h2 id="7-安卓手机ROM"><a href="#7-安卓手机ROM" class="headerlink" title="7.安卓手机ROM"></a>7.安卓手机ROM</h2><p>选择更换开源ROM，LineageOS，AOSP,Resurrection Remix OS等开源的ROM。<br>国产Android手机系统ROM，对原生安卓做了极大的修改以及夹带一些社会主义特色，<a href="https://blog.502.li/privacy-protections#reference">7</a>。建议刷上XDA社区的第三方开源的ROM，能力强的可以自己拿来源码来编译ROM，精简掉你不想要的app，事实证明，一个安卓7.1的AOSP ROM，仅仅需要50个系统app就可以完全满足日常使用。而国产手机ROM中系统app的数量往往在170-250个之间,其中包括大量无法卸载的垃圾流氓服务用来监控你，收集你的个人隐私。这也是为什么你的手机会越用越卡的原因。<br>开源社区的ROM不以盈利为目的，可以很少地收集你的信息，并不会向小米那样用于广告推广来盈利。当然第三方ROM质量上良莠不齐，要精心选择适合自己的ROM。</p>
+<hr>
+<h2 id="8-安卓权限管理"><a href="#8-安卓权限管理" class="headerlink" title="8.安卓权限管理"></a>8.安卓权限管理</h2><p>Root后使用Google原生安卓系统自带的IFW意图防火墙和App Ops（Application Operations）来对应用进行更加精细的权限管理，专治那些不给权限就不让运行的流氓app（比如支付宝，微信，QQ等）。也可以使用 MyAndroidTools，绿色守护，冰箱等 Android 神器来压制国内毒瘤 App。也可以使用开源软件<a href="https://github.com/Tornaco/X-APM" target="_blank" rel="noopener">应用管理</a>伪造一些敏感信息，比如Android ID， IMIE ,手机号码。</p>
+<hr>
+<h2 id="9-隐私政策"><a href="#9-隐私政策" class="headerlink" title="9.隐私政策"></a>9.隐私政策</h2><p>在注册和使用互联网服务时，一定要仔细阅读隐私政策/条款，是否有注销服务。如果临时使用可以考虑临时邮箱<a href="https://temp-mail.org" target="_blank" rel="noopener">#12</a>/短信接号网站<a href="https://www.pdflibr.com/" target="_blank" rel="noopener">#13</a>注册。</p>
+<hr>
+<h2 id="10-其他"><a href="#10-其他" class="headerlink" title="10.其他"></a>10.其他</h2><p>远离那些在用户手机上建墙进行言论审查、自我阉割、网络封锁、敏感词屏蔽的杀毒软件、输入法、浏览器、手机、国产ROM等。</p>
+<hr>
+<p>记住，个人隐私保护，保护的不是你自己，而是与你相关的人，你的家人和朋友。<br>不要以为大数据时代无隐私可言，隐私保护不当与不保护是两种完全不同的风险程度，你用隐私换取的那点便利最后也会面临隐私泄露的风险。</p>
+<hr>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p>0.<a href="https://program-think.blogspot.com/2019/01/Security-Guide-for-Political-Activists.html" target="_blank" rel="noopener">安全经验汇总</a><br>1.<a href="https://www.solidot.org/story?sid=60108" target="_blank" rel="noopener">多家国产浏览器限制访问 996.ICU</a><br>2.<a href="https://www.infoq.cn/article/3ADVAG9_uwomgr82lGet" target="_blank" rel="noopener">多款国产浏览器封锁 996.ICU，中国程序员惹谁了？</a><br>3.<a href="https://www.zhihu.com/question/313636694/answer/609135042" target="_blank" rel="noopener">如何评价新版MIUI浏览器拦截Github等网站？</a><br>4.<a href="https://www.solidot.org/story?sid=58791" target="_blank" rel="noopener">科大讯飞的应用被发现拒绝翻译敏感词</a><br>5.<a href="https://wallstreetcn.com/articles/3508008" target="_blank" rel="noopener">苹果发布了一支新广告，想告诉你手机中的“小秘密”同样需要重视</a><br>6.<a href="https://bbs.letitfly.me/d/395" target="_blank" rel="noopener">IFW介绍</a><br>7.<a href="https://t.me/notepad_by_kotomei/77" target="_blank" rel="noopener">墙已经砌造国产ROM(MIUI)中，深入人心、无处不在</a><br>8.<a href="https://www.solidot.org/story?sid=56914" target="_blank" rel="noopener">中国流行手机应用难以注销账号</a><br>9.<a href="https://sspai.com/post/42779" target="_blank" rel="noopener">不怕大厂「耍流氓」，想保护隐私的你可以这样管理 Android 权限</a><br>10.<a href="http://www.dcci.com.cn/dynamic/view/cid/2/id/1324.html" target="_blank" rel="noopener">2017年中国Android手机隐私安全报告</a><br>11.<a href="https://bbs.letitfly.me/" target="_blank" rel="noopener">letitfly</a><br>12.<a href="https://temp-mail.org" target="_blank" rel="noopener">临时邮箱</a><br>13.<a href="https://www.pdflibr.com/" target="_blank" rel="noopener">云短信-在线接收短信</a><br>14.<a href="https://bbs.letitfly.me/d/256" target="_blank" rel="noopener">MAT介绍</a><br>15.<a href="https://typeblog.net/nobody-can-protect-your-privacy-except-yourself/" target="_blank" rel="noopener">除了自己，没有人能保护你的隐私</a><br>16.<a href="https://typeblog.net/why-do-i-root-my-phone/#References" target="_blank" rel="noopener">从 root 手机说起</a></p>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/privacy-protections.html" title="浅谈保护隐私的几种方法">https://blog.502.li/archives/privacy-protections.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/隐私保护/" rel="tag"><i class="fa fa-tag"></i> 隐私保护</a>
+            <a href="/tags/privacy-project/" rel="tag"><i class="fa fa-tag"></i> privacy project</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-浏览器"><span class="nav-number">1.</span> <span class="nav-text">1.浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-杀毒软件"><span class="nav-number">2.</span> <span class="nav-text">2.杀毒软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安卓手机"><span class="nav-number">3.</span> <span class="nav-text">3.安卓手机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-输入法"><span class="nav-number">4.</span> <span class="nav-text">4.输入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-苹果用户"><span class="nav-number">5.</span> <span class="nav-text">5.苹果用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-安卓杀毒软件"><span class="nav-number">6.</span> <span class="nav-text">6.安卓杀毒软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-安卓手机ROM"><span class="nav-number">7.</span> <span class="nav-text">7.安卓手机ROM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-安卓权限管理"><span class="nav-number">8.</span> <span class="nav-text">8.安卓权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-隐私政策"><span class="nav-number">9.</span> <span class="nav-text">9.隐私政策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-其他"><span class="nav-number">10.</span> <span class="nav-text">10.其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">11.</span> <span class="nav-text">reference</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/privacy-protections.html";
+    this.page.identifier = "archives/privacy-protections.html";
+    this.page.title = '浅谈保护隐私的几种方法';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

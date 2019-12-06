@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="2019-10-14 初稿 2019-10-30 发布 2019-11-01 修正漏译的那一句，见评论区 2019-11-08 修正几处明显的翻译错误，见评论区  题记本篇文章翻译自 eff.org 官网上的 A History of Protecting Freedom Where Law and Technology Collide  由于是第一次独立翻译整篇文章，肯请读者们能够指出翻译不当">
+<meta name="keywords" content="翻译,电子前哨基金会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一段在法律与技术冲突的地方捍卫自由的历史">
+<meta property="og:url" content="https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="2019-10-14 初稿 2019-10-30 发布 2019-11-01 修正漏译的那一句，见评论区 2019-11-08 修正几处明显的翻译错误，见评论区  题记本篇文章翻译自 eff.org 官网上的 A History of Protecting Freedom Where Law and Technology Collide  由于是第一次独立翻译整篇文章，肯请读者们能够指出翻译不当">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.502.li/img/eff-logo-stack-rgb.png">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一段在法律与技术冲突的地方捍卫自由的历史">
+<meta name="twitter:description" content="2019-10-14 初稿 2019-10-30 发布 2019-11-01 修正漏译的那一句，见评论区 2019-11-08 修正几处明显的翻译错误，见评论区  题记本篇文章翻译自 eff.org 官网上的 A History of Protecting Freedom Where Law and Technology Collide  由于是第一次独立翻译整篇文章，肯请读者们能够指出翻译不当">
+<meta name="twitter:image" content="https://blog.502.li/img/eff-logo-stack-rgb.png">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>一段在法律与技术冲突的地方捍卫自由的历史 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">一段在法律与技术冲突的地方捍卫自由的历史
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:00-04:00">2019-10-14</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <ul>
+<li>2019-10-14 初稿</li>
+<li>2019-10-30 发布</li>
+<li>2019-11-01 修正漏译的那一句，见评论区</li>
+<li>2019-11-08 修正几处明显的翻译错误，见评论区</li>
+</ul>
+<h2 id="题记"><a href="#题记" class="headerlink" title="题记"></a>题记</h2><p>本篇文章翻译自 <a href="https://eff.org" target="_blank" rel="noopener">eff.org</a> 官网上的 <a href="https://www.eff.org/about/history" target="_blank" rel="noopener">A History of Protecting Freedom Where Law and Technology Collide</a> </p>
+<p>由于是第一次独立翻译整篇文章，肯请读者们能够指出翻译不当的部分，让这篇翻译文章更加完善</p>
+<hr>
+<blockquote>
+<h1 id="A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide"><a href="#A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide" class="headerlink" title="A History of Protecting Freedom Where Law and Technology Collide"></a>A History of Protecting Freedom Where Law and Technology Collide</h1></blockquote>
+<blockquote>
+<h1 id="一段在法律与技术冲突的地方捍卫自由的历史"><a href="#一段在法律与技术冲突的地方捍卫自由的历史" class="headerlink" title="一段在法律与技术冲突的地方捍卫自由的历史"></a>一段在法律与技术冲突的地方捍卫自由的历史</h1></blockquote>
+<blockquote>
+<p>The Electronic Frontier Foundation was founded in July of 1990 in response to a basic threat to speech.</p>
+<p>电子前哨基金会成立于 1990 年 7 月，皆在应对基本的言论威胁。</p>
+<p>The United States Secret Service conducted a series of raids tracking the distribution of a document illegally copied from a BellSouth computer that described how the emergency 911 system worked, referred to as the E911 document.</p>
+<p>美国特勤局进行了一系列的突击搜查，追踪一份来自南方贝尔公司电脑非法复制文档的分发情况。这份文档描述了紧急 911系统的工作原理，称之为E911文档。</p>
+<p>The Secret Service believed that if “hackers” knew how to use the telephone lines set aside for receiving emergency phone calls, the lines would become overloaded and people facing true emergencies would be unable to get through.</p>
+<p>特勤局认为，如果“黑客”知道如何使用空闲的通信线路来接听紧急电话，则通信线路将变得超负荷，面对真正紧急情况的人将因此无法打通电话。</p>
+</blockquote>
+<blockquote>
+<p>One of the alleged recipients of the E911 document was the systems operator at a small games book publisher out of Austin, Texas, named Steve Jackson Games.</p>
+<p>E911 文档的嫌疑接收者之一，是德克萨斯州奥斯汀市史蒂夫·杰克逊游戏的小型游戏图书发行商的系统操作员。</p>
+<p>The Secret Service executed a warrant against the innocent Jackson and took all electronic equipment and copies of an upcoming game book from Steve Jackson Games’ premises.</p>
+<p>特勤局对无辜的杰克逊执行了逮捕令，并从史蒂夫·杰克逊游戏公司取走了所有电子设备和一本即将发行的游戏书籍的副本。</p>
+<p>Steve Jackson panicked as he watched the deadline come and go for his latest release and still hadn’t received his computers back.</p>
+<p>史蒂夫·杰克逊为发行游戏书籍最后期限的来临惊慌失措，因为他要发布他的最新的版本，但他的电脑仍未归还。</p>
+<p>He was forced to lay off nearly half of his staff. </p>
+<p>他被迫解雇了将近一半的员工。</p>
+<p>In the end, the Secret Service returned all of Steve Jackson’s computers and decided not to press charges against the company, since they were unable to find any copies of the E911 document on any of the computers.</p>
+<p>最后，特勤局归还了史蒂夫·杰克逊所有的计算机，因为他们无法在任何计算机上找到 E911 文档的任何副本，所以就决定不对这家公司提起诉讼。</p>
+</blockquote>
+<blockquote>
+<p><img src="https://blog.502.li/img/eff-logo-stack-rgb.png" alt="&quot;EFF&#39;s original logo, in use from 1990-2018"></p>
+</blockquote>
+<blockquote>
+<p>EFF’s original logo, in use from 1990-2018</p>
+</blockquote>
+<blockquote>
+<p>In the meantime, Steve Jackson’s business was nearly ruined.</p>
+<p>与此同时，史蒂夫·杰克逊的游戏生意几乎破产。</p>
+<p>And when he and his employees had the opportunity to investigate the returned computers, they noticed that all of the electronic mail that had been stored on the company’s electronic bulletin board computer, where non-employee users had dialed in and sent personal messages to one another, had been individually accessed and deleted.</p>
+<p>当他和他的员工们事后调查归还的计算机时，他们注意到特勤局访问并删除了所有存储在公司 BBS 上的电子邮件，而这些电子邮件是用户用来相互通信用的。</p>
+<p>Steve Jackson was furious, as he believed his rights as a publisher had been violated and the free speech and privacy rights of his users had been violated.</p>
+<p>史蒂夫·杰克逊感到作为出版商的权利受到侵犯以及用户的言论自由和隐私权也遭到侵犯而愤怒。</p>
+<p>Steve Jackson tried desperately to find a civil liberties group to help him, to no avail.</p>
+<p>史蒂夫·杰克逊竭尽所能找一个公民自由组织来帮助他，但无济于事。</p>
+<p>Unfortunately, none of the existing groups understood the technology well enough to understand the importance of the issues.</p>
+<p>不幸的是，现有的组织中没有一个充分了解有关技术以意识到这些问题的重要性。</p>
+</blockquote>
+<blockquote>
+<p>In an electronic community called the Whole Earth ‘Lectronic Link (now WELL.com) several informed technologists understood exactly what civil liberties issues were involved.</p>
+<p>在一个名为“全球电子链接”的电子社区（现为WELL.com）中，几位见多识广的技术专家确切地知晓涉及的公民自由问题。</p>
+<p>Mitch Kapor, former president of Lotus Development Corporation, John Perry Barlow, Wyoming cattle rancher and lyricist for the Grateful Dead, and John Gilmore, an early employee of Sun Microsystems, decided to do something about it.</p>
+<p>米奇·卡普尔，莲花开发公司前总裁，约翰·佩里·巴洛，怀俄明州养牛主，《感恩之死》的抒情作家，以及太阳微系统公司的早期雇员约翰·吉尔莫尔，决定对此采取一些行动。</p>
+<p>They formed an organization to work on civil liberties issues raised by new technologies.</p>
+<p>他们成立了一个组织，致力于解决新技术带来的公民自由问题。</p>
+<p>On the day they formally unveiled the new organization, they announced that they were representing Steve Jackson Games and several of the company’s bulletin board users in a lawsuit they were bringing against the United States Secret Service.</p>
+<p>在电子前哨基金会宣布正式成立的当天，他们宣布他们代表史蒂夫·杰克逊游戏公司和几位公司的 BBS 用户，对美国特勤局提起了诉讼。</p>
+<p>The Electronic Frontier Foundation was born!</p>
+<p>由此电子前哨基金会诞生了！</p>
+</blockquote>
+<blockquote>
+<p>The Steve Jackson Games case turned out to be an extremely important one in the development of a proper legal framework for cyberspace.</p>
+<p>事实证明，史蒂夫•杰克逊游戏案对网络空间法律框架的制定极为重要。</p>
+<p>For the first time, a court held that electronic mail deserves at least as much protection as telephone calls.</p>
+<p>法院首次裁定，电子邮件至少应该得到与电话一样多的保护。</p>
+<p>We take for granted today that law enforcement must have a warrant that particularly describes all electronic mail messages before seizing and reading them.</p>
+<p>今天我们理所当然地认为，执法部门在扣押和阅读所有电子邮件之前，必须持有特别描述这些电子邮件的搜查令。</p>
+<p>The Steve Jackson Games case established that principle.</p>
+<p>而正是史蒂夫·杰克逊游戏案确立了这一 判例。</p>
+</blockquote>
+<blockquote>
+<p>The Electronic Frontier Foundation continues to take on cases that set important precedents for the treatment of rights in cyberspace.</p>
+<p>电子前哨基金会继续受理为网络空间权利处理树立重要先例的案件。</p>
+<p>In our second big case, <em>Bernstein v. U.S. Dept. of Justice</em>, the United States government prohibited a University of California mathematics Ph.D. student from publishing on the Internet an encryption computer program he had created.</p>
+<p>在我们的第二个重大案件，即伯恩斯坦诉美国司法部案中，美国政府禁止加州大学的一名数学博士生在互联网上分发他创建的一个加密软件。</p>
+<p>Encryption is a method for scrambling messages so they can only be understood by their intended recipients.</p>
+<p>加密技术是一种加扰信息的方法，这样信息只能被它们的目标接收者理解。</p>
+<p>Years before, the government had placed encryption on the United States Munitions List, alongside bombs and flamethrowers, as a weapon to be regulated for national security purposes.</p>
+<p>数年前，政府已经将加密技术与炸弹、火焰喷射器一同置于军需品清单，作为国家安全目的的管制武器。</p>
+</blockquote>
+<blockquote>
+<p>Companies and individuals exporting items on the munitions list, including software with encryption capabilities, had to obtain prior State Department approval.</p>
+<p>公司或个人出口军需品清单上的物品，具有加密功能的软件，必须事先获得(美国)国务院的批准。</p>
+</blockquote>
+<blockquote>
+<p>Encryption export restrictions crippled American businesses and damaged the free speech rights of individuals.</p>
+<p>加密技术出口限制削弱了美国企业，并侵犯了个人的言论自由。</p>
+<p>Critical for ecommerce, companies use encryption to safeguard sensitive information, such as credit card numbers, which they send or receive over electronic networks.</p>
+<p>企业使用加密技术来保护信用卡号码等敏感信息并通过网络发送或接收，因此加密技术对电子商务至关重要。</p>
+<p> Companies also secure access to software programs and provide system security using encryption.</p>
+<p>使用加密技术，公司还可以保护对软件程序的访问，并确保系统的安全。</p>
+<p>By limiting the export of encryption, technologies, and methods, the U.S. government drove development of security software overseas, where American companies were unable to compete.</p>
+<p>通过限制加密、技术和方法的出口，美国政府将安全软件的开发逼到了海外，使得美国公司无法与国外公司竞争 。</p>
+</blockquote>
+<blockquote>
+<p>The State Department was unsympathetic to Bernstein’s situation and told Bernstein he would need a license to be an arms dealer before he could simply post the text of his encryption program on the Internet.</p>
+<p>（美国）国务院并同情伯恩斯坦，并告诉伯恩斯坦，他需要获得军火商的许可证才能将他的加密软件的代码发布到互联网上。</p>
+<p>They also told him that they would deny him an export license if he actually applied for one, because his technology was too secure.</p>
+<p>（美国）国务院还告诉伯恩斯坦，如果他真的申请出口许可证，那么他们将会拒绝，因为他的技术太安全了。</p>
+</blockquote>
+<blockquote>
+<p>The Electronic Frontier Foundation pulled together a top-notch legal team and sued the United States government on behalf of Dan Bernstein.</p>
+<p>电子前哨基金会召集了一个顶尖的法律团队，代表伯恩斯坦起诉美国政府。</p>
+<p> The court ruled, for the first time ever, that written software code is speech protected by the First Amendment.</p>
+<p>法院有史以来第一次裁定，编写的软件代码是受宪法第一修正案保护的言论。</p>
+<p> The court further ruled that the export control laws on encryption violated Bernstein’s First Amendment rights by prohibiting his constitutionally protected speech.</p>
+<p>法院进一步裁定，有关加密技术出口管制的法律 禁止伯恩斯坦发表受宪法保护的言论，因此侵犯了伯恩斯坦的第一修正案权利。</p>
+<p>As a result, the government changed its export regulations.</p>
+<p>因此，美国政府改变了他的出口条例。</p>
+<p>Now everyone has the right to “export” encryption software – by publishing it on the Internet – without prior permission from the U.S. government.</p>
+<p>现在，每个人都有权利通过在互联网上发布加密软件而无需事先获得美国政府的许可。</p>
+<p>Once again, the Electronic Frontier Foundation led the charge to establish important cyberspace rights.</p>
+<p>电子前哨基金会再次领导确立了重要的网络空间权利</p>
+</blockquote>
+<blockquote>
+<h2 id="Today’s-Issues"><a href="#Today’s-Issues" class="headerlink" title="Today’s Issues"></a>Today’s Issues</h2></blockquote>
+<blockquote>
+<p>While many early battles over the right to communicate freely and privately stemmed from government censorship, today EFF is fighting for users on many other fronts as well.</p>
+<p>虽然早期许多关于自由和私密通讯权利的斗争源于政府的审查制度，但今天 EFF 也在许多其他领域为用户而战。</p>
+</blockquote>
+<blockquote>
+<p>Today, certain powerful corporations are attempting to shut down online speech, prevent new innovation from reaching consumers, and facilitating government surveillance.</p>
+<p>今天，某些互联网巨头正试图封杀网络言论，阻止新创新惠及消费者，并为政府监控提供便利。</p>
+<p>We challenge corporate overreach just as we challenge government abuses of power.</p>
+<p>我们挑战公司的越权，就像我们挑战政府的权力滥用一样。</p>
+</blockquote>
+<blockquote>
+<p>We also develop technologies that can help individuals protect their privacy and security online, which our technologists build and release freely to the public for anyone to use.</p>
+<p>我们技术人员还开发了保护个人隐私和网络安全的技术，这些技术免费向公众开放以供所有人使用。</p>
+</blockquote>
+<blockquote>
+<p>In addition, EFF is engaged in major legislative fights, beating back digital censorship bills disguised as intellectual property proposals, opposing attempts to force companies to spy on users, championing reform bills that rein in government surveillance, and much more.</p>
+<p>此外，EFF 还参与了重大的立法斗争，阻止伪装成知识产权法案的网络审查法案通过，反击强迫公司监视用户的企图， 力推改革限制政府监视的法案，等等。</p>
+</blockquote>
+<blockquote>
+<p>We are working with advocates worldwide to create a global digital environment that upholds both human rights and Constitutional rights, and we continue to take on cutting-edge legal cases to win victories for user rights.</p>
+<p>我们正在与世界各地的倡议者们合作，去创造一个既维护人权又维护宪法权利的数字世界，我们继续受理前沿的法律案件，为用户权利赢得胜利。</p>
+</blockquote>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" title="一段在法律与技术冲突的地方捍卫自由的历史">https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/翻译/" rel="tag"><i class="fa fa-tag"></i> 翻译</a>
+            <a href="/tags/电子前哨基金会/" rel="tag"><i class="fa fa-tag"></i> 电子前哨基金会</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题记"><span class="nav-number">1.</span> <span class="nav-text">题记</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide"><span class="nav-number"></span> <span class="nav-text">A History of Protecting Freedom Where Law and Technology Collide</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一段在法律与技术冲突的地方捍卫自由的历史"><span class="nav-number"></span> <span class="nav-text">一段在法律与技术冲突的地方捍卫自由的历史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Today’s-Issues"><span class="nav-number">1.</span> <span class="nav-text">Today’s Issues</span></a></li></ol></li></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html";
+    this.page.identifier = "archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html";
+    this.page.title = '一段在法律与技术冲突的地方捍卫自由的历史';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<title>muzi</title>
+	<style> 
+		html{background:#494f5c;line-height:1.6;letter-spacing:.06em;scroll-behavior:smooth}
+		h1 {font-size:2.0em}
+		body,button,input,select,textarea{color:#e8eef2;font-family:trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif}
+		a{color:#e8eef2;text-decoration:none;border:none;transition-property:color;transition-duration:.4s;transition-timing-function:ease-out}
+		hr{opacity:.2;border-width:0 0 5px;border-style:dashed;background:0 0;width:50%;margin:1.8em auto}
+		.section-inner{margin:0 auto;max-width:75pc;width:93%}
+		.thin{max-width:45pc;margin:auto}
+		.feather{display:inline-block;vertical-align:-.125em;width:1em;height:1em}
+		#menu-btn{display:none;margin-left:.6em;cursor:pointer}
+		#spotlight{display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;max-width:93%;margin:auto;font-size:1.5rem}
+		#home-center{display:flex;flex-grow:1;flex-direction:column;justify-content:center}
+		#home-title{margin:0;text-align:center}
+		#home-social{font-size:1.6em;text-align:center;opacity:.8}
+		#home-social a{margin:0 .2em}
+		#home-nav{opacity:.8}
+		#home-nav a{display:block;text-align:center;margin-top:.5em;font-size:1.0em}
+        .bg-img{width:100vw;height:100vh;opacity:0.3;z-index:-1;position:fixed;top:0;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;background-position:50%;transition:opacity .5s}
+    @media only screen and (min-width: 768px) {
+      .bg-img{
+            background-image: url('https://i.loli.net/2019/11/13/OYxeIJUQdmoNywi.png');
+          }
+      }
+      @media only screen and (max-width: 768px) {
+      .bg-img{
+            background-image: url('https://i.loli.net/2019/11/13/LJnShDYORNQsdCM.png');
+          }
+      }
+  </style>
+</head>
+<body id="page">
+	<div class="bg-img"></div>
+	<div id="spotlight">
+		<div id="home-center">
+			<h1 id="home-title">木子</h1>
+			<div id="home-social">
+				<a href="https://twitter.com/muzi_ii" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="mailto:blog@502.li" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://t.me/muzi_ii" target="_blank" rel="noopener me" title="Telegram"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.654 1.472.509 1.793.997 3.592 1.48 5.388.16.36.506.494.864.498l-.002.018s.281.028.555-.038a2.1 2.1 0 0 0 .933-.517c.345-.324 1.28-1.244 1.811-1.764l3.999 2.952.032.018s.442.311 1.09.355c.324.022.75-.04 1.116-.308.37-.27.613-.702.728-1.196.342-1.492 2.61-12.285 2.997-14.072l-.01.042c.27-1.006.17-1.928-.455-2.474a1.654 1.654 0 0 0-1.034-.407z"/></svg></a><a href="https://github.com/muzi502" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+			</div>
+			<nav id="home-nav" class="site-nav">
+				<a href="https://blog.502.li">博客</a>
+				<a href="https://blog.502.li/about.html">关于</a>
+				<a href="https://blog.502.li/booklist.html">书单</a>
+				<a href="https://t.me/s/rss_kubernetes">频道</a>
+			</nav>
+		</div>
+	</div>
+	<script type="application/javascript">
+	var doNotTrack = false;
+	if (!doNotTrack) {
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-138307074-2', 'auto');
+		ga('send', 'pageview');
+	}
+	</script>
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

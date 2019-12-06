@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="切记：先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡。重要事情说三遍。 Debian 透明代理网关？之前写过一篇，用了一段时间后，感觉太难用了。其中最大的问题还是DNS ，不知道是怎么配置的问题， DNS 查询特别慢，往往需要将近一分钟才能查询到域名。速度上还算可以，能跑满我的 VPS 带宽。 下载安装 x86 OpenWRT下载地址在 OpenWRT 官网，固">
+<meta name="keywords" content="科学上网,OpenWRT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenWRT 软路由">
+<meta property="og:url" content="https://blog.502.li/archives/esxi-openwrt.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="切记：先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡。重要事情说三遍。 Debian 透明代理网关？之前写过一篇，用了一段时间后，感觉太难用了。其中最大的问题还是DNS ，不知道是怎么配置的问题， DNS 查询特别慢，往往需要将近一分钟才能查询到域名。速度上还算可以，能跑满我的 VPS 带宽。 下载安装 x86 OpenWRT下载地址在 OpenWRT 官网，固">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.502.li/img/1568876856613.png">
+<meta property="og:image" content="https://blog.502.li/img/1568876894451.png">
+<meta property="og:image" content="https://blog.502.li/img/1568876920080.png">
+<meta property="og:image" content="https://blog.502.li/img/1568876940778.png">
+<meta property="og:image" content="https://blog.502.li/img/1568860424585.png">
+<meta property="og:image" content="https://blog.502.li/img/1568860493961.png">
+<meta property="og:image" content="https://blog.502.li/img/1568877917688.png">
+<meta property="og:image" content="https://blog.502.li/img/1568878441039.png">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenWRT 软路由">
+<meta name="twitter:description" content="切记：先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡。重要事情说三遍。 Debian 透明代理网关？之前写过一篇，用了一段时间后，感觉太难用了。其中最大的问题还是DNS ，不知道是怎么配置的问题， DNS 查询特别慢，往往需要将近一分钟才能查询到域名。速度上还算可以，能跑满我的 VPS 带宽。 下载安装 x86 OpenWRT下载地址在 OpenWRT 官网，固">
+<meta name="twitter:image" content="https://blog.502.li/img/1568876856613.png">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/esxi-openwrt">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>OpenWRT 软路由 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/esxi-openwrt.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">OpenWRT 软路由
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-09-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-21T00:00:00-04:00">2019-09-21</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/esxi-openwrt.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/esxi-openwrt.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>切记：先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡、先关闭 DHCP 再连网卡。重要事情说三遍。</strong></p>
+<h2 id="Debian-透明代理网关？"><a href="#Debian-透明代理网关？" class="headerlink" title="Debian 透明代理网关？"></a>Debian 透明代理网关？</h2><p>之前写过一篇，用了一段时间后，感觉太难用了。其中最大的问题还是DNS ，不知道是怎么配置的问题， DNS 查询特别慢，往往需要将近一分钟才能查询到域名。速度上还算可以，能跑满我的 VPS 带宽。</p>
+<h2 id="下载安装-x86-OpenWRT"><a href="#下载安装-x86-OpenWRT" class="headerlink" title="下载安装 x86 OpenWRT"></a>下载安装 x86 OpenWRT</h2><p>下载地址在 OpenWRT <a href="https://downloads.openwrt.org/releases/18.06.4/targets/x86/generic/" target="_blank" rel="noopener">官网</a>，固件选择<a href="https://downloads.openwrt.org/releases/18.06.4/targets/x86/legacy/openwrt-18.06.4-x86-legacy-combined-ext4.img.gz" target="_blank" rel="noopener">openwrt-18.06.4-x86-legacy-combined-ext4.img.gz</a> 就可以，他们之间的<a href="https://antkillerfarm.github.io/linux/2015/02/01/Openwrt.html" target="_blank" rel="noopener">区别在与</a></p>
+<blockquote>
+<p>这里解释一下该文件夹下各个文件的区别：</p>
+<p>openwrt-x86-generic-combined-ext4.img.gz</p>
+<p>rootfs工作区存储格式为ext4</p>
+<p>openwrt-x86-generic-combined-jffs2-128k.img</p>
+<p>jffs2可以修改，也就是可以自行更换（删除）rootfs的配置文件，而不需要重新刷固件。</p>
+<p>openwrt-x86-generic-combined-squashfs.img</p>
+<p>squashfs是个只读的文件系统，相当于win的ghost，使用中配置错误，可直接恢复默认。</p>
+<p>openwrt-x86-generic-rootfs-ext4.img.gz</p>
+<p>rootfs的镜像，不带引导，可自行定义用grub或者syslinux来引导，存储区为ext4。</p>
+</blockquote>
+<p>下载好 <code>openwrt-18.06.4-x86-legacy-combined-ext4.img.gz</code> 文件后解压后得到 <code>openwrt-18.06.4-x86-legacy-combined-ext4.img</code> 是 img 格式的文件，不过这个并不能直接供 ESXi 使用，需要使用镜像转换的工具转换成 vmdk 磁盘格式的才可以。</p>
+<p>Windows 下可以使用 <a href="https://www.starwindsoftware.com/starwind-v2v-converter" target="_blank" rel="noopener">StarWind V2V Converter</a> 工具来进行转换，下载安装后按照下面的来就行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Local File --&gt; Source image --&gt; Local File --&gt; VMDK --&gt; ESXi server image</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.502.li/img/1568876856613.png" alt="1568876856613"></p>
+<p><img src="https://blog.502.li/img/1568876894451.png" alt="1568876894451"></p>
+<p><img src="https://blog.502.li/img/1568876920080.png" alt="1568876920080"></p>
+<p><img src="https://blog.502.li/img/1568876940778.png" alt="1568876940778"></p>
+<p>转换完成后会有两个文件 <code>openwrt-18.06.4-x86-legacy-combined-ext4.vmdk</code> 和 <code>openwrt-18.06.4-x86-legacy-combined-ext4-flat.vmdk</code> ，这两个文件一并上传到 ESXi 服务器的数据存储里就行，上传完两个文件和，ESXi 会自动合并这两个文件为 <code>VMDK/openwrt-18.06.4-x86-legacy-combined-ext4.vmdk</code>。其实看这两个文件的大小我们就会明白，<code>openwrt-18.06.4-x86-legacy-combined-ext4.vmdk</code> 是个 vmdk 文件描述符文件，里面记录着 vmdk 的元数据信息。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">273M  openwrt-18.06.4-x86-legacy-combined-ext4-flat.img</span><br><span class="line">417B  openwrt-18.06.4-x86-legacy-combined-ext4.vmdk</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Disk DescriptorFile</span></span><br><span class="line"><span class="attr">version</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">encoding</span>=<span class="string">"UTF-8"</span></span><br><span class="line"><span class="attr">CID</span>=<span class="number">3</span>b677c54</span><br><span class="line"><span class="attr">parentCID</span>=ffffffff</span><br><span class="line"><span class="attr">createType</span>=<span class="string">"vmfs"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extent description</span></span><br><span class="line">RW 558080 VMFS "openwrt-18.06.4-x86-legacy-combined-ext4-flat.vmdk" 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># The Disk Data Base</span></span><br><span class="line"><span class="comment">#DDB</span></span><br><span class="line"></span><br><span class="line"><span class="attr">ddb.adapterType</span> = <span class="string">"lsilogic"</span></span><br><span class="line"><span class="attr">ddb.geometry.cylinders</span> = <span class="string">"35"</span></span><br><span class="line"><span class="attr">ddb.geometry.heads</span> = <span class="string">"255"</span></span><br><span class="line"><span class="attr">ddb.geometry.sectors</span> = <span class="string">"63"</span></span><br><span class="line"><span class="attr">ddb.uuid</span> = <span class="string">"73 5a 46 7e 46 7e a5 f2-98 88 0e 71 f3 88 92 42"</span></span><br><span class="line"><span class="attr">ddb.virtualHWVersion</span> = <span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+<p>接下来就是安装啦</p>
+<p>在 ESXi 控制台页面使用刚才上传的那个 VMDK 磁盘文件搓一个虚拟机就行。</p>
+<p><code>创建/注册虚拟机</code> –&gt; <code>创建新虚拟机</code> –&gt; <code>设置选择名称和客户机操作系统</code> –-&gt; <code>选择存储</code> –&gt; <code>自定义设置</code></p>
+<p><img src="https://blog.502.li/img/1568860424585.png" alt="1568860424585"></p>
+<p><strong>自定义设置</strong> 这一块一定要注意</p>
+<p><img src="https://blog.502.li/img/1568860493961.png" alt="1568860493961"></p>
+<p>选择添加硬盘为我们刚才新上传的哪个 VMDK 磁盘即可，然后网络适配器添加一个足够使用，如果你的 ESXi 主机有多块网卡的话可以考虑选择添加两个适配器，在此只把 OpenWRT 虚拟机当作一个旁路网关，一个网口足够了。把网络适配器 <code>连接</code> 那里<strong>关掉</strong>、把网络适配器 <code>连接</code> 那里<strong>关掉</strong>、把网络适配器 <code>连接</code> 那里<strong>关掉</strong>。不然你启动的时候这台 OpenWRT 软路由会在 LAN 口开启 DHCP 服务，如果你的网络环境是办公网络的话，这台开启 DHCP 的软路由可能会把整个办公网络弄瘫痪的。开启虚拟机后把 LAN 口的 DHCP 禁用掉，同时配置一个静态 IP 就可以。一个局域网里开两台 DHCP 服务器，当然会出问题的，惨痛的教训啊。</p>
+<p>安装开机之后先上 <code>passwd</code> 命令设置一下 root 用户的密码。</p>
+<p>接着修改一下网卡配置信息，在 lan 那个网口下配置一个静态 IP 和网关，然后</p>
+<p><img src="https://blog.502.li/img/1568877917688.png" alt="1568877917688"></p>
+<p>然后使用命令 <code>service dnsmasq disable</code> 、<code>service odhcp disable</code>  禁用掉 dhcp 服务即可。然后再编辑虚拟机的设置，把网卡连接上，再重启一下虚拟机即可。通过浏览器访问我们刚才配置的那个静态 IP。</p>
+<p>也可以参照 OpenWRT 的<a href="https://openwrt.org/docs/guide-user/base-system/dhcp" target="_blank" rel="noopener">官方说明</a>，使用 uci 命令禁用掉 DHCP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uci del dhcp.cfg01411c.authoritative</span><br><span class="line">uci del dhcp.cfg01411c.boguspriv</span><br><span class="line">uci del dhcp.cfg01411c.filterwin2k</span><br><span class="line">uci del dhcp.cfg01411c.nonegcache</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.502.li/img/1568878441039.png" alt="1568878441039"></p>
+<h2 id="初始化安装系统"><a href="#初始化安装系统" class="headerlink" title="初始化安装系统"></a>初始化安装系统</h2>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/esxi-openwrt.html" title="OpenWRT 软路由">https://blog.502.li/archives/esxi-openwrt.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/科学上网/" rel="tag"><i class="fa fa-tag"></i> 科学上网</a>
+            <a href="/tags/OpenWRT/" rel="tag"><i class="fa fa-tag"></i> OpenWRT</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian-透明代理网关？"><span class="nav-number">1.</span> <span class="nav-text">Debian 透明代理网关？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装-x86-OpenWRT"><span class="nav-number">2.</span> <span class="nav-text">下载安装 x86 OpenWRT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化安装系统"><span class="nav-number">3.</span> <span class="nav-text">初始化安装系统</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/esxi-openwrt.html";
+    this.page.identifier = "archives/esxi-openwrt.html";
+    this.page.title = 'OpenWRT 软路由';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

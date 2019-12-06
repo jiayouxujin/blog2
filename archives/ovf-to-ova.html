@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="在 ESXi 上导出虚拟机的时候，vSphere Web 端只能导出 ovf 格式的虚拟机，无法导出 OVA 格式的，使用 vSphere client 能导出这两种格式。看来一哈官方文档和标准手册，才明白。其实 OVA 是 ovf 的打包文件，导入 ova 格式的时候会自动解包出虚拟机的元数据信息。 OVF The OVF descriptor contains the metadata abo">
+<meta name="keywords" content="虚拟机,VMware">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OVF 与 OVA 区别与转换">
+<meta property="og:url" content="https://blog.502.li/archives/ovf-to-ova.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="在 ESXi 上导出虚拟机的时候，vSphere Web 端只能导出 ovf 格式的虚拟机，无法导出 OVA 格式的，使用 vSphere client 能导出这两种格式。看来一哈官方文档和标准手册，才明白。其实 OVA 是 ovf 的打包文件，导入 ova 格式的时候会自动解包出虚拟机的元数据信息。 OVF The OVF descriptor contains the metadata abo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OVF 与 OVA 区别与转换">
+<meta name="twitter:description" content="在 ESXi 上导出虚拟机的时候，vSphere Web 端只能导出 ovf 格式的虚拟机，无法导出 OVA 格式的，使用 vSphere client 能导出这两种格式。看来一哈官方文档和标准手册，才明白。其实 OVA 是 ovf 的打包文件，导入 ova 格式的时候会自动解包出虚拟机的元数据信息。 OVF The OVF descriptor contains the metadata abo">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/ovf-to-ova">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>OVF 与 OVA 区别与转换 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/ovf-to-ova.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">OVF 与 OVA 区别与转换
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-09-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-09-22T00:00:00-04:00">2019-09-22</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/ovf-to-ova.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/ovf-to-ova.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <p>在 ESXi 上导出虚拟机的时候，vSphere Web 端只能导出 ovf 格式的虚拟机，无法导出 OVA 格式的，使用 vSphere client 能导出这两种格式。看来一哈官方文档和标准手册，才明白。其实 OVA 是 ovf 的打包文件，导入 ova 格式的时候会自动解包出虚拟机的元数据信息。</p>
+<h2 id="OVF"><a href="#OVF" class="headerlink" title="OVF"></a>OVF</h2><blockquote>
+<p>The OVF descriptor contains the metadata about the OVF package. This is an extensible XML document  for encoding information, such as product details, virtual hardware requirements, and licensing.</p>
+</blockquote>
+<p>根据 <code>Open Virtualization Format</code> 的标准手册 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0243_2.1.1.pdf" target="_blank" rel="noopener">Open Virtualization Format Specification</a> 的描述，OVF 包含以下文件。确切地来讲 OVF 不是单个文件，而是一个未打包成一个文件的包？ 虽然这样讲不太严格😂。打包成一个文件就时 OVA 而已。</p>
+<ul>
+<li>one OVF descriptor with extension .ovf</li>
+</ul>
+<blockquote>
+<p>描述符用于指定服务对虚拟硬件的要求，并且还包括其他信息，例如虚拟磁盘的说明、服务本身、来宾操作系统、许可协议 (EULA)、在设备中启动和停止 VM 的说明以及服务安装说明。描述符文件的扩展名为 .ovf 。</p>
+</blockquote>
+<ul>
+<li>zero or one OVF manifest with extension .mf</li>
+</ul>
+<p>清单文件是软件包中每个文件的 SHA-1 摘要，可以用来检测任何损坏，以验证软件包的内容。清单文件的扩展名为 .mf 。</p>
+<ul>
+<li>zero or one OVF certificate with extension .cert</li>
+</ul>
+<blockquote>
+<p>签名是用软件包所含 X.509 证书中的公钥进行签名的清单文件摘要，用于对软件包作者进行验证。签名文件的扩展名为 .cert 。</p>
+</blockquote>
+<ul>
+<li>zero or more disk image files</li>
+</ul>
+<blockquote>
+<p>OVF 不指定磁盘映像格式。OVF 包中包含组成虚拟磁盘的文件（格式由导出虚拟磁盘所用的虚拟化产品定义）。XenServer 生成的 OVF 包具有动态 VHD 格式的磁盘映像；VMware 产品和 Virtual Box 生成的 OVF 包具有流技术优化 VMDK 格式的虚拟磁盘。</p>
+</blockquote>
+<ul>
+<li>zero or more additional resource files, such as ISO images</li>
+</ul>
+<h3 id="mf"><a href="#mf" class="headerlink" title=".mf"></a>.mf</h3><blockquote>
+<p> An OVF package may have a manifest file containing the SHA digests of individual files in the package.OVF packages authored according to this version of the specification shall use SHA256 digests. The manifest file shall have an extension .mf and the same base name as the .ovf file and be a sibling of the .ovf file. If the manifest file is present, a consumer of the OVF package should verify the digests in the manifest file in the OVF package by computing the actual SHA digests and comparing them with the digests listed in the manifest file. The manifest file shall contain SHA digests for all distinct files referenced in the References element of the OVF descriptor and for no other files.</p>
+</blockquote>
+<p>翻译一哈</p>
+<blockquote>
+<p>一个 OVF 包可能会有一个</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>usage</th>
+<th style="text-align:center">need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>one OVF descriptor with extension .ovf</td>
+<td>虚拟机配置信息</td>
+<td style="text-align:center">必须</td>
+</tr>
+<tr>
+<td>zero or one OVF manifest with extension .mf</td>
+<td>SHA256</td>
+<td style="text-align:center">非必须</td>
+</tr>
+<tr>
+<td>zero or one OVF certificate with extension .cert</td>
+<td>验证证书</td>
+<td style="text-align:center">非必须</td>
+</tr>
+<tr>
+<td>zero or more disk image files</td>
+<td>虚拟机磁盘</td>
+<td style="text-align:center">非必须</td>
+</tr>
+<tr>
+<td>zero or more additional resource files, such as ISO images</td>
+<td>其他资源</td>
+<td style="text-align:center">非必须</td>
+</tr>
+</tbody>
+</table>
+<p>下面看一个 ovf 文件的示例 ，可以看出 ovf 是 xml 格式的，描述了虚拟机的配置信息、元数据信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8'?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Envelope</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.dmtf.org/ovf/envelope/1"</span> <span class="attr">xmlns:ovf</span>=<span class="string">"http://schemas.dmtf.org/ovf/envelope/1"</span> <span class="attr">xmlns:vmw</span>=<span class="string">"http://www.vmware.com/schema/ovf"</span> <span class="attr">xmlns:rasd</span>=<span class="string">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData"</span> <span class="attr">xmlns:vssd</span>=<span class="string">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">References</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">File</span> <span class="attr">ovf:id</span>=<span class="string">"file1"</span> <span class="attr">ovf:href</span>=<span class="string">"Alpine-240-1.vmdk"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">References</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">DiskSection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Info</span>&gt;</span>List of the virtual disks<span class="tag">&lt;/<span class="name">Info</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Disk</span> <span class="attr">ovf:capacityAllocationUnits</span>=<span class="string">"byte"</span> <span class="attr">ovf:format</span>=<span class="string">"http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized"</span> <span class="attr">ovf:diskId</span>=<span class="string">"vmdisk1"</span> <span class="attr">ovf:capacity</span>=<span class="string">"2147483648"</span> <span class="attr">ovf:fileRef</span>=<span class="string">"file1"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">DiskSection</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">NetworkSection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Info</span>&gt;</span>The list of logical networks<span class="tag">&lt;/<span class="name">Info</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Network</span> <span class="attr">ovf:name</span>=<span class="string">"VM Network"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Description</span>&gt;</span>The VM Network network<span class="tag">&lt;/<span class="name">Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Network</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">NetworkSection</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">VirtualSystem</span> <span class="attr">ovf:id</span>=<span class="string">"Alpine-240"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Info</span>&gt;</span>A Virtual system<span class="tag">&lt;/<span class="name">Info</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Name</span>&gt;</span>Alpine-240<span class="tag">&lt;/<span class="name">Name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OperatingSystemSection</span> <span class="attr">ovf:id</span>=<span class="string">"101"</span> <span class="attr">vmw:osType</span>=<span class="string">"otherLinux64Guest"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Info</span>&gt;</span>The operating system installed<span class="tag">&lt;/<span class="name">Info</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Description</span>&gt;</span>其他 Linux (64 位)<span class="tag">&lt;/<span class="name">Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">OperatingSystemSection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">VirtualHardwareSection</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Info</span>&gt;</span>Virtual hardware requirements<span class="tag">&lt;/<span class="name">Info</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">System</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vssd:ElementName</span>&gt;</span>Virtual Hardware Family<span class="tag">&lt;/<span class="name">vssd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vssd:InstanceID</span>&gt;</span>0<span class="tag">&lt;/<span class="name">vssd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vssd:VirtualSystemType</span>&gt;</span>vmx-11<span class="tag">&lt;/<span class="name">vssd:VirtualSystemType</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">System</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:AllocationUnits</span>&gt;</span>hertz * 10^6<span class="tag">&lt;/<span class="name">rasd:AllocationUnits</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Description</span>&gt;</span>Number of Virtual CPUs<span class="tag">&lt;/<span class="name">rasd:Description</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>2 virtual CPU(s)<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>1<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>3<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:VirtualQuantity</span>&gt;</span>2<span class="tag">&lt;/<span class="name">rasd:VirtualQuantity</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:CoresPerSocket</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">vmw:CoresPerSocket</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:AllocationUnits</span>&gt;</span>byte * 2^20<span class="tag">&lt;/<span class="name">rasd:AllocationUnits</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Description</span>&gt;</span>Memory Size<span class="tag">&lt;/<span class="name">rasd:Description</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>2048MB of memory<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>2<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>4<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:VirtualQuantity</span>&gt;</span>2048<span class="tag">&lt;/<span class="name">rasd:VirtualQuantity</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Address</span>&gt;</span>0<span class="tag">&lt;/<span class="name">rasd:Address</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Description</span>&gt;</span>SCSI Controller<span class="tag">&lt;/<span class="name">rasd:Description</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>SCSI Controller 1<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>3<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceSubType</span>&gt;</span>lsilogic<span class="tag">&lt;/<span class="name">rasd:ResourceSubType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>6<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"slotInfo.pciSlotNumber"</span> <span class="attr">vmw:value</span>=<span class="string">"16"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:AddressOnParent</span>&gt;</span>0<span class="tag">&lt;/<span class="name">rasd:AddressOnParent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>Hard Disk 1<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:HostResource</span>&gt;</span>ovf:/disk/vmdisk1<span class="tag">&lt;/<span class="name">rasd:HostResource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>4<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Parent</span>&gt;</span>3<span class="tag">&lt;/<span class="name">rasd:Parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>17<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:AddressOnParent</span>&gt;</span>0<span class="tag">&lt;/<span class="name">rasd:AddressOnParent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:AutomaticAllocation</span>&gt;</span>true<span class="tag">&lt;/<span class="name">rasd:AutomaticAllocation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:Connection</span>&gt;</span>VM Network<span class="tag">&lt;/<span class="name">rasd:Connection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>Network adapter 1<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>5<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceSubType</span>&gt;</span>E1000<span class="tag">&lt;/<span class="name">rasd:ResourceSubType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>10<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"connectable.allowGuestControl"</span> <span class="attr">vmw:value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"slotInfo.pciSlotNumber"</span> <span class="attr">vmw:value</span>=<span class="string">"32"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"wakeOnLanEnabled"</span> <span class="attr">vmw:value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Item</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ElementName</span>&gt;</span>Video card<span class="tag">&lt;/<span class="name">rasd:ElementName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:InstanceID</span>&gt;</span>6<span class="tag">&lt;/<span class="name">rasd:InstanceID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rasd:ResourceType</span>&gt;</span>24<span class="tag">&lt;/<span class="name">rasd:ResourceType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"videoRamSizeInKB"</span> <span class="attr">vmw:value</span>=<span class="string">"4096"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"useAutoDetect"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"graphicsMemorySizeInKB"</span> <span class="attr">vmw:value</span>=<span class="string">"262144"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"numDisplays"</span> <span class="attr">vmw:value</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"enable3DSupport"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"use3dRenderer"</span> <span class="attr">vmw:value</span>=<span class="string">"automatic"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"cpuHotAddEnabled"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"nestedHVEnabled"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"virtualSMCPresent"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"cpuHotRemoveEnabled"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"memoryHotAddEnabled"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"firmware"</span> <span class="attr">vmw:value</span>=<span class="string">"bios"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:Config</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"virtualICH7MPresent"</span> <span class="attr">vmw:value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:ExtraConfig</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"nvram"</span> <span class="attr">vmw:value</span>=<span class="string">"Alpine-240.nvram"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">vmw:ExtraConfig</span> <span class="attr">ovf:required</span>=<span class="string">"false"</span> <span class="attr">vmw:key</span>=<span class="string">"virtualHW.productCompatibility"</span> <span class="attr">vmw:value</span>=<span class="string">"hosted"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">VirtualHardwareSection</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">VirtualSystem</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Envelope</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>下面是 mf 文件信息</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHA256(Alpine-240.ovf)= 3d5b06e6741da7919e33775fb2c1b3e77968b4d7b020f4055a8a401f1127be29</span><br><span class="line">SHA256(Alpine-240-1.vmdk)= b41596be4a846877cf82c4fd221763ba1cb4384f178454dc064f60f2ccdfd50e</span><br></pre></td></tr></table></figure>
+<p>在导入 ovf 格式的虚拟机文件时，会解析这个ovf 文件，通过这个文件里描述的设备信息自动创建新的虚拟机。</p>
+<h2 id="OVA"><a href="#OVA" class="headerlink" title="OVA"></a>OVA</h2><p>根据官方的描述</p>
+<blockquote>
+<p>An OVF package can be stored as either a single compressed file (.ova) or a set of files</p>
+<p>An OVF package may be stored as a compressed OVF package or as a set of files in a directory structure. A compressed OVF package is stored as single file. The file extension is .ova (open virtual appliance or application).</p>
+<p>In addition, the entries shall be in one of the following orders inside the OVF package:</p>
+<ul>
+<li>1) OVF descriptor</li>
+<li>2) The remaining files shall be in the same order as listed in the References section</li>
+</ul>
+<p>or</p>
+<ul>
+<li>1) OVF descriptor</li>
+<li>2) OVF manifest</li>
+<li>3) OVF certificate</li>
+</ul>
+<p>or</p>
+<ul>
+<li>1) OVF descriptor</li>
+<li>2) The intermediate files shall be in the same order as listed in the References section</li>
+<li>3) OVF manifest</li>
+<li>4) OVF certificate</li>
+</ul>
+</blockquote>
+<p>需要注意的是，OVA 单个文件里打包了 OVF 所有的文件，文件是有顺序的，第一个一定要是 OVF 描述文件，即导出虚拟机时的那个 .ovf 后缀的文件</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>OVF 包包含一系列未压缩的文件，对于需要访问文件中各个磁盘映像的用户而言较为方便，而 OVA 包只是一个大型文件。尽管您可以压缩此文件，但它不像一系列文件（如 OVF）那样灵活。</p>
+<p>OVA 更适用于适合只使用一个文件的特定应用场合（例如创建用于 Web 下载的软件包），这种情况下软件包更易于处理。与 OVF 相比，导出和导入 OVA 包所需的时间更长。</p>
+<h2 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h2><h3 id="OVA-转-OVF-很简单，使用-tar-解包就行"><a href="#OVA-转-OVF-很简单，使用-tar-解包就行" class="headerlink" title="OVA 转 OVF 很简单，使用 tar 解包就行"></a>OVA 转 OVF 很简单，使用 tar 解包就行</h3><p>比如任意解包一个 OVA 文件后会出来 <code>ovf  vmdk mf</code> 这三个文件，而且解包出来的顺序也是和 OVA 标准定义的那样，第一个必须未 .ovf 文件。这里我讲的是解包而不是解压，是因为 OVA 和 OVF 里包含的文件，最大的就是磁盘文件，而磁盘文件在导出的时候虚拟机已经进行了压缩，你可以使用 df 命令看看磁盘占用的空间，以及导出的磁盘占用的空间，你就会发现导出的磁盘文件大小远小于系统占用的空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Ubuntu1804.ova</span><br><span class="line">Ubuntu1804.ovf</span><br><span class="line">Ubuntu1804-disk1.vmdk</span><br><span class="line">Ubuntu1804.mf</span><br></pre></td></tr></table></figure>
+<h3 id="OVF-转-OVA"><a href="#OVF-转-OVA" class="headerlink" title="OVF 转 OVA"></a>OVF 转 OVA</h3><p>按照 OVA 标准的格式，按顺序打包 OVF 包里的文件就行，注意 .ovf 文件一定要在第一个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cf OP.ova Ubuntu1804.ovf Ubuntu1804-disk1.vmdk Ubuntu1804.mf</span><br></pre></td></tr></table></figure>
+<h3 id="OVA-tar-OVF-？"><a href="#OVA-tar-OVF-？" class="headerlink" title="OVA = tar OVF ？"></a>OVA = tar OVF ？</h3><p>我们把 OVA 解包出来，再打包回去，两者文件是否一样呢？</p>
+<p>看一下两者的 sha256sum 信息就可以了，结果证明是不一样的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e6b0f08dc80ef6509cd547b87d8fe9373069d6758b86f3cbb43e804a3c9b7e7d  Ubuntu1804.ova</span><br><span class="line">d56d3fa5f3a57f7210726303ef32fd96d98cc7522af4f4fdbac2be7f23a5cadb  OP.ova</span><br></pre></td></tr></table></figure>
+<p>两者导入虚拟机后没有任何差别，都可以导进去，都能开机和使用，但新生成的 OVA 文件元数据信息是不一样的。</p>
+<p>使用 less 命令看一下两者的文件头</p>
+<p>原来的 OVA 文件头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu1804.ovf^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@0000644^@0000100^@0000100^@00000017732^@13531417642^@0012505^@0^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@ustar^@ ^@VMware^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@VMware^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br></pre></td></tr></table></figure>
+<p>新生成的 OVA 文件头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu1804.ovf^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@0000777^@0001750^@0001750^@00000017732^@13531417642^@012152^@ 0^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@ustar  ^@muzi^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@muzi^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</span><br><span class="line">^@^@&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br></pre></td></tr></table></figure>
+<p>第一眼看到 <code>644 755 777</code> 就发现，这一定是文件的权限，其中还有文件所属用户，原来的是 VMware 用户，而新生成的是我本地的用户。</p>
+<p>刨根到底，去看一哈 tar 包的定义<a href="https://www.gnu.org/software/tar/manual/html_node/Standard.html#SEC188" target="_blank" rel="noopener">Basic Tar Format</a>  tar 包就是由一个个文件顺序排列而成，每个文件由两部分组成：文件头和文件内容。就像下面这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|文件头|文件内容|--|文件头|文件内容|--|文件头|文件内容|--|文件头|文件内容|</span><br></pre></td></tr></table></figure>
+<p>我们从 OVA 解包出来后，文件头的内容就会更改为我们本机的内容，而不再是原有的文件所主。</p>
+<p>文件头的定义在</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* tar Header Block, from POSIX 1003.1-1990.  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* POSIX header.  */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">posix_header</span></span></span><br><span class="line"><span class="class">&#123;</span>                       <span class="comment">/* byte offset */</span></span><br><span class="line">  <span class="keyword">char</span> name[<span class="number">100</span>];       <span class="comment">/*   0 */</span>   文件名</span><br><span class="line">  <span class="keyword">char</span> mode[<span class="number">8</span>];         <span class="comment">/* 100 */</span>   用户权限</span><br><span class="line">  <span class="keyword">char</span> uid[<span class="number">8</span>];          <span class="comment">/* 108 */</span>   user id</span><br><span class="line">  <span class="keyword">char</span> gid[<span class="number">8</span>];          <span class="comment">/* 116 */</span>   group id</span><br><span class="line">  <span class="keyword">char</span> size[<span class="number">12</span>];        <span class="comment">/* 124 */</span>   文件大小</span><br><span class="line">  <span class="keyword">char</span> mtime[<span class="number">12</span>];       <span class="comment">/* 136 */</span>   修改时间</span><br><span class="line">  <span class="keyword">char</span> chksum[<span class="number">8</span>];       <span class="comment">/* 148 */</span>   校验值</span><br><span class="line">  <span class="keyword">char</span> typeflag;        <span class="comment">/* 156 */</span>   文件类型标志</span><br><span class="line">  <span class="keyword">char</span> linkname[<span class="number">100</span>];   <span class="comment">/* 157 */</span>   符号链接指向</span><br><span class="line">  <span class="keyword">char</span> magic[<span class="number">6</span>];        <span class="comment">/* 257 */</span></span><br><span class="line">  <span class="keyword">char</span> version[<span class="number">2</span>];      <span class="comment">/* 263 */</span></span><br><span class="line">  <span class="keyword">char</span> uname[<span class="number">32</span>];       <span class="comment">/* 265 */</span>   user name</span><br><span class="line">  <span class="keyword">char</span> gname[<span class="number">32</span>];       <span class="comment">/* 297 */</span>   group name</span><br><span class="line">  <span class="keyword">char</span> devmajor[<span class="number">8</span>];     <span class="comment">/* 329 */</span>   设备文件 major</span><br><span class="line">  <span class="keyword">char</span> devminor[<span class="number">8</span>];     <span class="comment">/* 337 */</span>   设备文件 minor</span><br><span class="line">  <span class="keyword">char</span> prefix[<span class="number">155</span>];     <span class="comment">/* 345 */</span></span><br><span class="line">                        <span class="comment">/* 500 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TMAGIC   <span class="meta-string">"ustar"</span>        <span class="comment">/* ustar and a null */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TMAGLEN  6</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TVERSION <span class="meta-string">"00"</span>           <span class="comment">/* 00 and no null */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TVERSLEN 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Values used in typeflag field.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REGTYPE  <span class="meta-string">'0'</span>            <span class="comment">/* regular file */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> AREGTYPE <span class="meta-string">'\0'</span>           <span class="comment">/* regular file */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LNKTYPE  <span class="meta-string">'1'</span>            <span class="comment">/* link */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SYMTYPE  <span class="meta-string">'2'</span>            <span class="comment">/* reserved */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHRTYPE  <span class="meta-string">'3'</span>            <span class="comment">/* character special */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLKTYPE  <span class="meta-string">'4'</span>            <span class="comment">/* block special */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DIRTYPE  <span class="meta-string">'5'</span>            <span class="comment">/* directory */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FIFOTYPE <span class="meta-string">'6'</span>            <span class="comment">/* FIFO special */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CONTTYPE <span class="meta-string">'7'</span>            <span class="comment">/* reserved */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> XHDTYPE  <span class="meta-string">'x'</span>            <span class="comment">/* Extended header referring to the</span></span></span><br><span class="line"><span class="meta"><span class="comment">                                   next file in the archive */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> XGLTYPE  <span class="meta-string">'g'</span>            <span class="comment">/* Global extended header */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Bits used in the mode field, values in octal.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TSUID    04000          <span class="comment">/* set UID on execution */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TSGID    02000          <span class="comment">/* set GID on execution */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TSVTX    01000          <span class="comment">/* reserved */</span></span></span><br><span class="line">                                <span class="comment">/* file permissions */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TUREAD   00400          <span class="comment">/* read by owner */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TUWRITE  00200          <span class="comment">/* write by owner */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TUEXEC   00100          <span class="comment">/* execute/search by owner */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TGREAD   00040          <span class="comment">/* read by group */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TGWRITE  00020          <span class="comment">/* write by group */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TGEXEC   00010          <span class="comment">/* execute/search by group */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOREAD   00004          <span class="comment">/* read by other */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOWRITE  00002          <span class="comment">/* write by other */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOEXEC   00001          <span class="comment">/* execute/search by other */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* tar Header Block, GNU extensions.  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* In GNU tar, SYMTYPE is for to symbolic links, and CONTTYPE is for</span></span><br><span class="line"><span class="comment">   contiguous files, so maybe disobeying the "reserved" comment in POSIX</span></span><br><span class="line"><span class="comment">   header description.  I suspect these were meant to be used this way, and</span></span><br><span class="line"><span class="comment">   should not have really been "reserved" in the published standards.  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* *BEWARE* *BEWARE* *BEWARE* that the following information is still</span></span><br><span class="line"><span class="comment">   boiling, and may change.  Even if the OLDGNU format description should be</span></span><br><span class="line"><span class="comment">   accurate, the so-called GNU format is not yet fully decided.  It is</span></span><br><span class="line"><span class="comment">   surely meant to use only extensions allowed by POSIX, but the sketch</span></span><br><span class="line"><span class="comment">   below repeats some ugliness from the OLDGNU format, which should rather</span></span><br><span class="line"><span class="comment">   go away.  Sparse files should be saved in such a way that they do *not*</span></span><br><span class="line"><span class="comment">   require two passes at archive creation time.  Huge files get some POSIX</span></span><br><span class="line"><span class="comment">   fields to overflow, alternate solutions have to be sought for this.  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Descriptor for a single file hole.  */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sparse</span></span></span><br><span class="line"><span class="class">&#123;</span>                              <span class="comment">/* byte offset */</span></span><br><span class="line">  <span class="keyword">char</span> offset[<span class="number">12</span>];              <span class="comment">/*   0 */</span></span><br><span class="line">  <span class="keyword">char</span> numbytes[<span class="number">12</span>];            <span class="comment">/*  12 */</span></span><br><span class="line">                                <span class="comment">/*  24 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Sparse files are not supported in POSIX ustar format.  For sparse files</span></span><br><span class="line"><span class="comment">   with a POSIX header, a GNU extra header is provided which holds overall</span></span><br><span class="line"><span class="comment">   sparse information and a few sparse descriptors.  When an old GNU header</span></span><br><span class="line"><span class="comment">   replaces both the POSIX header and the GNU extra header, it holds some</span></span><br><span class="line"><span class="comment">   sparse descriptors too.  Whether POSIX or not, if more sparse descriptors</span></span><br><span class="line"><span class="comment">   are still needed, they are put into as many successive sparse headers as</span></span><br><span class="line"><span class="comment">   necessary.  The following constants tell how many sparse descriptors fit</span></span><br><span class="line"><span class="comment">   in each kind of header able to hold them.  */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPARSES_IN_EXTRA_HEADER  16</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPARSES_IN_OLDGNU_HEADER 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPARSES_IN_SPARSE_HEADER 21</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Extension header for sparse files, used immediately after the GNU extra</span></span><br><span class="line"><span class="comment">   header, and used only if all sparse information cannot fit into that</span></span><br><span class="line"><span class="comment">   extra header.  There might even be many such extension headers, one after</span></span><br><span class="line"><span class="comment">   the other, until all sparse information has been recorded.  */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sparse_header</span></span></span><br><span class="line"><span class="class">&#123;</span>                              <span class="comment">/* byte offset */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sparse</span> <span class="title">sp</span>[<span class="title">SPARSES_IN_SPARSE_HEADER</span>];</span></span><br><span class="line">                                <span class="comment">/*   0 */</span></span><br><span class="line">  <span class="keyword">char</span> isextended;              <span class="comment">/* 504 */</span></span><br><span class="line">                                <span class="comment">/* 505 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The old GNU format header conflicts with POSIX format in such a way that</span></span><br><span class="line"><span class="comment">   POSIX archives may fool old GNU tar's, and POSIX tar's might well be</span></span><br><span class="line"><span class="comment">   fooled by old GNU tar archives.  An old GNU format header uses the space</span></span><br><span class="line"><span class="comment">   used by the prefix field in a POSIX header, and cumulates information</span></span><br><span class="line"><span class="comment">   normally found in a GNU extra header.  With an old GNU tar header, we</span></span><br><span class="line"><span class="comment">   never see any POSIX header nor GNU extra header.  Supplementary sparse</span></span><br><span class="line"><span class="comment">   headers are allowed, however.  */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">oldgnu_header</span></span></span><br><span class="line"><span class="class">&#123;</span>                              <span class="comment">/* byte offset */</span></span><br><span class="line">  <span class="keyword">char</span> unused_pad1[<span class="number">345</span>];        <span class="comment">/*   0 */</span></span><br><span class="line">  <span class="keyword">char</span> atime[<span class="number">12</span>];               <span class="comment">/* 345 Incr. archive: atime of the file */</span></span><br><span class="line">  <span class="keyword">char</span> ctime[<span class="number">12</span>];               <span class="comment">/* 357 Incr. archive: ctime of the file */</span></span><br><span class="line">  <span class="keyword">char</span> offset[<span class="number">12</span>];              <span class="comment">/* 369 Multivolume archive: the offset of</span></span><br><span class="line"><span class="comment">                                   the start of this volume */</span></span><br><span class="line">  <span class="keyword">char</span> longnames[<span class="number">4</span>];            <span class="comment">/* 381 Not used */</span></span><br><span class="line">  <span class="keyword">char</span> unused_pad2;             <span class="comment">/* 385 */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sparse</span> <span class="title">sp</span>[<span class="title">SPARSES_IN_OLDGNU_HEADER</span>];</span></span><br><span class="line">                                <span class="comment">/* 386 */</span></span><br><span class="line">  <span class="keyword">char</span> isextended;              <span class="comment">/* 482 Sparse file: Extension sparse header</span></span><br><span class="line"><span class="comment">                                   follows */</span></span><br><span class="line">  <span class="keyword">char</span> realsize[<span class="number">12</span>];            <span class="comment">/* 483 Sparse file: Real size*/</span></span><br><span class="line">                                <span class="comment">/* 495 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* OLDGNU_MAGIC uses both magic and version fields, which are contiguous.</span></span><br><span class="line"><span class="comment">   Found in an archive, it indicates an old GNU header format, which will be</span></span><br><span class="line"><span class="comment">   hopefully become obsolescent.  With OLDGNU_MAGIC, uname and gname are</span></span><br><span class="line"><span class="comment">   valid, though the header is not truly POSIX conforming.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OLDGNU_MAGIC <span class="meta-string">"ustar  "</span>  <span class="comment">/* 7 chars and a null */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* The standards committee allows only capital A through capital Z for</span></span><br><span class="line"><span class="comment">   user-defined expansion.  Other letters in use include:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   'A' Solaris Access Control List</span></span><br><span class="line"><span class="comment">   'E' Solaris Extended Attribute File</span></span><br><span class="line"><span class="comment">   'I' Inode only, as in 'star'</span></span><br><span class="line"><span class="comment">   'N' Obsolete GNU tar, for file names that do not fit into the main header.</span></span><br><span class="line"><span class="comment">   'X' POSIX 1003.1-2001 eXtended (VU version)  */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This is a dir entry that contains the names of files that were in the</span></span><br><span class="line"><span class="comment">   dir at the time the dump was made.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_DUMPDIR <span class="meta-string">'D'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Identifies the *next* file on the tape as having a long linkname.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_LONGLINK <span class="meta-string">'K'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Identifies the *next* file on the tape as having a long name.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_LONGNAME <span class="meta-string">'L'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This is the continuation of a file that began on another volume.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_MULTIVOL <span class="meta-string">'M'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This is for sparse files.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_SPARSE <span class="meta-string">'S'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This file is a tape/volume header.  Ignore it on extraction.  */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GNUTYPE_VOLHDR <span class="meta-string">'V'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Solaris extended header */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SOLARIS_XHDTYPE <span class="meta-string">'X'</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Jörg Schilling star header */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">star_header</span></span></span><br><span class="line"><span class="class">&#123;</span>                              <span class="comment">/* byte offset */</span></span><br><span class="line">  <span class="keyword">char</span> name[<span class="number">100</span>];               <span class="comment">/*   0 */</span></span><br><span class="line">  <span class="keyword">char</span> mode[<span class="number">8</span>];                 <span class="comment">/* 100 */</span></span><br><span class="line">  <span class="keyword">char</span> uid[<span class="number">8</span>];                  <span class="comment">/* 108 */</span></span><br><span class="line">  <span class="keyword">char</span> gid[<span class="number">8</span>];                  <span class="comment">/* 116 */</span></span><br><span class="line">  <span class="keyword">char</span> size[<span class="number">12</span>];                <span class="comment">/* 124 */</span></span><br><span class="line">  <span class="keyword">char</span> mtime[<span class="number">12</span>];               <span class="comment">/* 136 */</span></span><br><span class="line">  <span class="keyword">char</span> chksum[<span class="number">8</span>];               <span class="comment">/* 148 */</span></span><br><span class="line">  <span class="keyword">char</span> typeflag;                <span class="comment">/* 156 */</span></span><br><span class="line">  <span class="keyword">char</span> linkname[<span class="number">100</span>];           <span class="comment">/* 157 */</span></span><br><span class="line">  <span class="keyword">char</span> magic[<span class="number">6</span>];                <span class="comment">/* 257 */</span></span><br><span class="line">  <span class="keyword">char</span> version[<span class="number">2</span>];              <span class="comment">/* 263 */</span></span><br><span class="line">  <span class="keyword">char</span> uname[<span class="number">32</span>];               <span class="comment">/* 265 */</span></span><br><span class="line">  <span class="keyword">char</span> gname[<span class="number">32</span>];               <span class="comment">/* 297 */</span></span><br><span class="line">  <span class="keyword">char</span> devmajor[<span class="number">8</span>];             <span class="comment">/* 329 */</span></span><br><span class="line">  <span class="keyword">char</span> devminor[<span class="number">8</span>];             <span class="comment">/* 337 */</span></span><br><span class="line">  <span class="keyword">char</span> prefix[<span class="number">131</span>];             <span class="comment">/* 345 */</span></span><br><span class="line">  <span class="keyword">char</span> atime[<span class="number">12</span>];               <span class="comment">/* 476 */</span></span><br><span class="line">  <span class="keyword">char</span> ctime[<span class="number">12</span>];               <span class="comment">/* 488 */</span></span><br><span class="line">                                <span class="comment">/* 500 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPARSES_IN_STAR_HEADER      4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPARSES_IN_STAR_EXT_HEADER  21</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">star_in_header</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">char</span> fill[<span class="number">345</span>];       <span class="comment">/*   0  Everything that is before t_prefix */</span></span><br><span class="line">  <span class="keyword">char</span> prefix[<span class="number">1</span>];       <span class="comment">/* 345  t_name prefix */</span></span><br><span class="line">  <span class="keyword">char</span> fill2;           <span class="comment">/* 346  */</span></span><br><span class="line">  <span class="keyword">char</span> fill3[<span class="number">8</span>];        <span class="comment">/* 347  */</span></span><br><span class="line">  <span class="keyword">char</span> isextended;      <span class="comment">/* 355  */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sparse</span> <span class="title">sp</span>[<span class="title">SPARSES_IN_STAR_HEADER</span>];</span> <span class="comment">/* 356  */</span></span><br><span class="line">  <span class="keyword">char</span> realsize[<span class="number">12</span>];    <span class="comment">/* 452  Actual size of the file */</span></span><br><span class="line">  <span class="keyword">char</span> offset[<span class="number">12</span>];      <span class="comment">/* 464  Offset of multivolume contents */</span></span><br><span class="line">  <span class="keyword">char</span> atime[<span class="number">12</span>];       <span class="comment">/* 476  */</span></span><br><span class="line">  <span class="keyword">char</span> ctime[<span class="number">12</span>];       <span class="comment">/* 488  */</span></span><br><span class="line">  <span class="keyword">char</span> mfill[<span class="number">8</span>];        <span class="comment">/* 500  */</span></span><br><span class="line">  <span class="keyword">char</span> xmagic[<span class="number">4</span>];       <span class="comment">/* 508  "tar" */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">star_ext_header</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sparse</span> <span class="title">sp</span>[<span class="title">SPARSES_IN_STAR_EXT_HEADER</span>];</span></span><br><span class="line">  <span class="keyword">char</span> isextended;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><p>通过阅读官方标准手册对 OVF 和 OVA 有两个更深刻的了解，对 tar 包的格式和 Unix 文件头初次了解。这么好的资料准备有空翻译几个关键的章节来水一篇博客😂</p>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/ovf-to-ova.html" title="OVF 与 OVA 区别与转换">https://blog.502.li/archives/ovf-to-ova.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/虚拟机/" rel="tag"><i class="fa fa-tag"></i> 虚拟机</a>
+            <a href="/tags/VMware/" rel="tag"><i class="fa fa-tag"></i> VMware</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OVF"><span class="nav-number">1.</span> <span class="nav-text">OVF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mf"><span class="nav-number">1.1.</span> <span class="nav-text">.mf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OVA"><span class="nav-number">2.</span> <span class="nav-text">OVA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换"><span class="nav-number">4.</span> <span class="nav-text">转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OVA-转-OVF-很简单，使用-tar-解包就行"><span class="nav-number">4.1.</span> <span class="nav-text">OVA 转 OVF 很简单，使用 tar 解包就行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OVF-转-OVA"><span class="nav-number">4.2.</span> <span class="nav-text">OVF 转 OVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OVA-tar-OVF-？"><span class="nav-number">4.3.</span> <span class="nav-text">OVA = tar OVF ？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收获"><span class="nav-number">5.</span> <span class="nav-text">收获</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/ovf-to-ova.html";
+    this.page.identifier = "archives/ovf-to-ova.html";
+    this.page.title = 'OVF 与 OVA 区别与转换';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

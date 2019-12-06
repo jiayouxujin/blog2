@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="ESXi 透明代理虚拟机弃坑了，太鸡儿难用了😡，还是使用了 LEDE软路由 0. 项目背景由于工作的环境是 ESXi ，上面运行着一堆虚拟机，用来做部署方案测试使用。因为要经常访问 GitHub 以及要去 gcr.k8s.io  上拉去镜像；而且在写 Dockerfile build 镜像的时候，也需要去 GitHub 下载 release 包；使用helm初始化时需要的docker 镜像无法p">
+<meta name="keywords" content="Linux,Debian,proxy,科学上网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搓一个 Debian 透明代理&#x2F;旁路网关 虚拟机">
+<meta property="og:url" content="https://blog.502.li/archives/debian-gateway.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="ESXi 透明代理虚拟机弃坑了，太鸡儿难用了😡，还是使用了 LEDE软路由 0. 项目背景由于工作的环境是 ESXi ，上面运行着一堆虚拟机，用来做部署方案测试使用。因为要经常访问 GitHub 以及要去 gcr.k8s.io  上拉去镜像；而且在写 Dockerfile build 镜像的时候，也需要去 GitHub 下载 release 包；使用helm初始化时需要的docker 镜像无法p">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.502.li/img/1566567341680.png">
+<meta property="og:image" content="https://blog.502.li/img/1566566813113.png">
+<meta property="og:image" content="https://blog.502.li/img/1566566775553.png">
+<meta property="og:image" content="https://blog.502.li/img/1566567116544.png">
+<meta property="og:image" content="https://blog.502.li/img/1566565577328.png">
+<meta property="og:image" content="https://blog.502.li/img/1566565631398.png">
+<meta property="og:updated_time" content="2019-12-05T08:45:30.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搓一个 Debian 透明代理&#x2F;旁路网关 虚拟机">
+<meta name="twitter:description" content="ESXi 透明代理虚拟机弃坑了，太鸡儿难用了😡，还是使用了 LEDE软路由 0. 项目背景由于工作的环境是 ESXi ，上面运行着一堆虚拟机，用来做部署方案测试使用。因为要经常访问 GitHub 以及要去 gcr.k8s.io  上拉去镜像；而且在写 Dockerfile build 镜像的时候，也需要去 GitHub 下载 release 包；使用helm初始化时需要的docker 镜像无法p">
+<meta name="twitter:image" content="https://blog.502.li/img/1566567341680.png">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/debian-gateway">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>搓一个 Debian 透明代理/旁路网关 虚拟机 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/debian-gateway.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">搓一个 Debian 透明代理/旁路网关 虚拟机
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-30T00:00:00-04:00">2019-06-30</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-05 03:45:30" itemprop="dateModified" datetime="2019-12-05T03:45:30-05:00">2019-12-05</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/debian-gateway.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/debian-gateway.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="ESXi-透明代理虚拟机"><a href="#ESXi-透明代理虚拟机" class="headerlink" title="ESXi 透明代理虚拟机"></a>ESXi 透明代理虚拟机</h2><p>弃坑了，太鸡儿难用了😡，还是使用了 <a href="https://blog.502.li/esxi-lede">LEDE软路由</a></p>
+<h2 id="0-项目背景"><a href="#0-项目背景" class="headerlink" title="0. 项目背景"></a>0. 项目背景</h2><p>由于工作的环境是 ESXi ，上面运行着一堆虚拟机，用来做部署方案测试使用。因为要经常访问 GitHub 以及要去 gcr.k8s.io  上拉去镜像；而且在写 Dockerfile build 镜像的时候，也需要去 GitHub 下载 release 包；使用helm初始化时需要的docker 镜像无法pull那个速度比百度网盘还慢啊啊啊啊，气死人。我觉着 GFW 的存在严重第影响了我的工作效率，遂决定搓一个虚拟机来当代理网关，或者叫旁路网关。被需要代理的机器仅仅需要修改网关和 DNS 为透明代理服务器 IP 即可。</p>
+<p>题外话：其实用软路由 LEDE/OpenWrt 实现最合适，而且占用资源也极低，但因为使用软路由发生了一次事故，所以就不再用软路由了。那时候刚入职实习，在 ESXi 上装了个 LEDE 软路由，然后办公室的网络就瘫痪了。。</p>
+<h2 id="1-实现功能"><a href="#1-实现功能" class="headerlink" title="1.实现功能"></a>1.实现功能</h2><ol>
+<li>透明代理，客户端仅仅需要修改默认网关为上游透明网关即可，无需安装其他代理软件</li>
+<li>国外/国内域名分开解析，解决运营商DNS域名污染问题</li>
+<li>加快客户端访问GitHub、Google等网站速度，clone速度峰值 15MB/S</li>
+<li>Docker pull 镜像速度 15MB/S，clone <a href="https://github.com/torvalds/linux" target="_blank" rel="noopener">torvalds/linux</a></li>
+<li>需要代理的内网机器仅仅需要修改网关和 DNS 即可实现透明代理</li>
+</ol>
+<h2 id="2-实现效果"><a href="#2-实现效果" class="headerlink" title="2. 实现效果"></a>2. 实现效果</h2><h3 id="1-wget-下载-GitHub-release-上的文件，以-Linux为例"><a href="#1-wget-下载-GitHub-release-上的文件，以-Linux为例" class="headerlink" title="1. wget 下载 GitHub release 上的文件，以 Linux为例"></a>1. wget 下载 GitHub release 上的文件，以 Linux为例</h3><p><code>163M Aug 23 21:35 v5.3-rc5.tar.gz</code> 163M 的文件用时不到 30s</p>
+<p><img src="https://blog.502.li/img/1566567341680.png" alt="1566567341680"></p>
+<h3 id="2-kubeadm-config-image-pull"><a href="#2-kubeadm-config-image-pull" class="headerlink" title="2. kubeadm config image pull"></a>2. kubeadm config image pull</h3><p>使用 kubeadm 命令加上 <code>--kubernetes-version=</code> 参数指定镜像的版本号，速度还是可以的😂</p>
+<p><img src="https://blog.502.li/img/1566566813113.png" alt="1566566813113"></p>
+<h3 id="3-使用-nload-命令查看网关流量情况"><a href="#3-使用-nload-命令查看网关流量情况" class="headerlink" title="3. 使用 nload 命令查看网关流量情况"></a>3. 使用 nload 命令查看网关流量情况</h3><p><img src="https://blog.502.li/img/1566566775553.png" alt="pull gcr.k8s.io 上镜像的速度"></p>
+<h3 id="4-git-clone-GitHub-上的-repo"><a href="#4-git-clone-GitHub-上的-repo" class="headerlink" title="4. git clone GitHub 上的 repo"></a>4. git clone GitHub 上的 repo</h3><p>在此还是以 linux 项目为例，clone 过程速度飘忽不定，但一般都会在 10MiB/S 以上，按照这个速度，还和我物理机器的网卡有关，虽然号称是千兆网卡，但实际测试峰值就达不到 500Mbps，欲哭无泪🤦‍♂️</p>
+<p><img src="https://blog.502.li/img/1566567116544.png" alt="git clone 速度"></p>
+<h3 id="5-要代理的虚拟机"><a href="#5-要代理的虚拟机" class="headerlink" title="5. 要代理的虚拟机"></a>5. 要代理的虚拟机</h3><p><img src="https://blog.502.li/img/1566565577328.png" alt="1566565577328"></p>
+<h3 id="5-网关占用资源"><a href="#5-网关占用资源" class="headerlink" title="5. 网关占用资源"></a>5. 网关占用资源</h3><p><img src="https://blog.502.li/img/1566565631398.png" alt="1566565631398"></p>
+<p>总的来说，这个速度还是可以接受的，比那几十几百 KB/S 的龟速满意得多了，而且对于要代理的机器来说配置起来也及其的方便，仅仅修改默认网关和 DNS 就行。</p>
+<h2 id="3-实现过程"><a href="#3-实现过程" class="headerlink" title="3. 实现过程"></a>3. 实现过程</h2><h3 id="0-project"><a href="#0-project" class="headerlink" title="0. project"></a>0. project</h3><p>主要使用到 <a href="https://github.com/zfl9/ss-tproxy" target="_blank" rel="noopener">ss-tproxy</a> 这个项目，按照项目上的 README 部署部署起来就 ojbk</p>
+<p>大佬的博客<a href="https://www.zfl9.com/ss-redir.html" target="_blank" rel="noopener">ss/ssr/v2ray/socks5 透明代理</a> ,很详细，建议认真读完</p>
+<h3 id="1-OS"><a href="#1-OS" class="headerlink" title="1. OS"></a>1. OS</h3><p>首先虚拟机的系统我是使用的 Debian 10，使用 <a href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.0.0-amd64-netinst.iso" target="_blank" rel="noopener">netinst</a> 镜像安装好的，当然你也可以使用 Ubuntu ，选择 Debian 是因为 Debian 可以再精简一些，安装后的占用不到 700MB 。至于 Alpine 可能要费点功夫，因为编译需要的包比较麻烦。</p>
+<h3 id="2-安装编译环境和依赖"><a href="#2-安装编译环境和依赖" class="headerlink" title="2. 安装编译环境和依赖"></a>2. 安装编译环境和依赖</h3><p>Debian 和 Ubuntu 的话就一把梭子就行哈</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y git</span><br><span class="line">apt install -y --no-install-recommends --no-install-suggests  \</span><br><span class="line">    gettext build-essential autoconf libtool  libsodium-dev libmbedtls-dev \</span><br><span class="line">    libpcre3-dev asciidoc xmlto libev-dev libc-ares-dev automake curl wget \</span><br><span class="line">    dnsmasq iproute2 ipset perl haveged gawk</span><br></pre></td></tr></table></figure>
+<h3 id="3-安装爱国软件"><a href="#3-安装爱国软件" class="headerlink" title="3. 安装爱国软件"></a>3. 安装爱国软件</h3><p>这里根据你的代理软件安装配置好就行，我就剽窃一下 shadowsocks-libev 官方的 wiki</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Installation of libsodium</span></span><br><span class="line"><span class="built_in">export</span> LIBSODIUM_VER=1.0.16</span><br><span class="line">wget https://download.libsodium.org/libsodium/releases/libsodium-<span class="variable">$LIBSODIUM_VER</span>.tar.gz</span><br><span class="line">tar xvf libsodium-<span class="variable">$LIBSODIUM_VER</span>.tar.gz</span><br><span class="line"><span class="built_in">pushd</span> libsodium-<span class="variable">$LIBSODIUM_VER</span></span><br><span class="line">./configure --prefix=/usr &amp;&amp; make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">popd</span></span><br><span class="line">ldconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of MbedTLS</span></span><br><span class="line"><span class="built_in">export</span> MBEDTLS_VER=2.6.0</span><br><span class="line">wget https://tls.mbed.org/download/mbedtls-<span class="variable">$MBEDTLS_VER</span>-gpl.tgz</span><br><span class="line">tar xvf mbedtls-<span class="variable">$MBEDTLS_VER</span>-gpl.tgz</span><br><span class="line"><span class="built_in">pushd</span> mbedtls-<span class="variable">$MBEDTLS_VER</span></span><br><span class="line">make SHARED=1 CFLAGS=<span class="string">"-O2 -fPIC"</span></span><br><span class="line">make DESTDIR=/usr install</span><br><span class="line"><span class="built_in">popd</span></span><br><span class="line">ldconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of shadowsocks-libev</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/shadowsocks/shadowsocks-libev.git --depth=1</span><br><span class="line"><span class="built_in">cd</span> shadowsocks-libev</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h3 id="4-安装-Chinadns"><a href="#4-安装-Chinadns" class="headerlink" title="4. 安装 Chinadns"></a>4. 安装 Chinadns</h3><p>安装 Chinadns 实现域名分流，国内的域名交给国内的 DNS (119.29.29.29 或 223.6.6.6) 来解析，国外的域名交给 国外的 DNS (8.8.8.8 或 1.1.1.1)来解析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Installation of chinadns-ng</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfl9/chinadns-ng --depth=1</span><br><span class="line"><span class="built_in">cd</span> chinadns-ng</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h3 id="5-安装-ss-tproxy"><a href="#5-安装-ss-tproxy" class="headerlink" title="5. 安装 ss-tproxy"></a>5. 安装 ss-tproxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Installation of ss-tproxy</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfl9/ss-tproxy --depth=1</span><br><span class="line"><span class="built_in">cd</span> ss-tproxy</span><br><span class="line">chmod +x ss-tproxy</span><br><span class="line">cp -af ss-tproxy /usr/<span class="built_in">local</span>/bin</span><br><span class="line">mkdir -p /etc/ss-tproxy</span><br><span class="line">cp -af ss-tproxy.conf gfwlist* chnroute* /etc/ss-tproxy</span><br><span class="line">cp -af ss-tproxy.service /etc/systemd/system</span><br></pre></td></tr></table></figure>
+<h3 id="6-配置-ss-redir"><a href="#6-配置-ss-redir" class="headerlink" title="6. 配置 ss-redir"></a>6. 配置 ss-redir</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/ss.json &lt;&lt; EOF</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"mode"</span>:<span class="string">"tcp_and_udp"</span>,</span><br><span class="line">    <span class="string">"server_port"</span>:,</span><br><span class="line">    <span class="string">"local_port"</span>:,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"reuse_port"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"no_delay"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:60,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"chacha20"</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"server":"", 代理服务器的 IP </span><br><span class="line">"mode":"tcp_and_udp", 代理协议</span><br><span class="line">"server_port":, 代理服务器端口</span><br><span class="line">"local_port":, 本地端口，要和</span><br><span class="line">"local_address":"0.0.0.0",一定要填，不然只能本机代理，其他及其用不了,坑我一次</span><br><span class="line">"reuse_port": true,</span><br><span class="line">"no_delay": true,</span><br><span class="line">"password":"", 密码</span><br><span class="line">"timeout":60,</span><br><span class="line">"method":"" 加密协议</span><br></pre></td></tr></table></figure>
+<h3 id="7-配置-ss-tproxy"><a href="#7-配置-ss-tproxy" class="headerlink" title="7. 配置 ss-tproxy"></a>7. 配置 ss-tproxy</h3><p>剽窃一下官方的配置文件 <code>/etc/ss-tproxy/ss-tproxy.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## mode</span></span><br><span class="line"><span class="comment">#mode='gfwlist' # gfwlist 分流 (黑名单)</span></span><br><span class="line"><span class="attr">mode</span>=<span class="string">'chnroute'</span> <span class="comment"># chnroute 分流 (白名单)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## ipv4/6</span></span><br><span class="line"><span class="attr">ipv4</span>=<span class="string">'true'</span>     <span class="comment"># true:启用ipv4透明代理; false:关闭ipv4透明代理</span></span><br><span class="line"><span class="attr">ipv6</span>=<span class="string">'false'</span>    <span class="comment"># true:启用ipv6透明代理; false:关闭ipv6透明代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## tproxy</span></span><br><span class="line"><span class="attr">tproxy</span>=<span class="string">'false'</span>  <span class="comment"># true:TPROXY+TPROXY; false:REDIRECT+TPROXY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## proxy</span></span><br><span class="line"><span class="attr">proxy_svraddr4</span>=()      <span class="comment"># 服务器的 IPv4 地址或域名，允许填写多个服务器地址，空格隔开</span></span><br><span class="line"><span class="attr">proxy_svraddr6</span>=()      <span class="comment"># 服务器的 IPv6 地址或域名，允许填写多个服务器地址，空格隔开</span></span><br><span class="line"><span class="attr">proxy_svrport</span>=<span class="string">'8080'</span>   <span class="comment"># 服务器的外网监听端口，格式同 ipts_proxy_dst_port，不可留空</span></span><br><span class="line"><span class="attr">proxy_tcpport</span>=<span class="string">'1080'</span>   <span class="comment"># ss/ssr/v2ray 等本机进程的 TCP 监听端口，该端口支持透明代理</span></span><br><span class="line"><span class="attr">proxy_udpport</span>=<span class="string">'1080'</span>   <span class="comment"># ss/ssr/v2ray 等本机进程的 UDP 监听端口，该端口支持透明代理</span></span><br><span class="line"><span class="attr">proxy_startcmd</span>=<span class="string">'cmd1'</span>  <span class="comment"># 用于启动本机代理进程的 shell 命令，该命令应该能立即执行完毕</span></span><br><span class="line"><span class="comment"># shadowsocks-libev 的启动命令是 ss-redir -c /etc/ss.json -u &lt;/dev/null &amp;&gt;&gt;/var/log/ss-redir.log  ss.json 是你 shadowsocks 的配置文件</span></span><br><span class="line"><span class="attr">proxy_stopcmd</span>=<span class="string">'cmd2'</span>   <span class="comment"># 用于关闭本机代理进程的 shell 命令，该命令应该能立即执行完毕</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## dnsmasq</span></span><br><span class="line"><span class="attr">dnsmasq_bind_port</span>=<span class="string">'53'</span>                  <span class="comment"># dnsmasq 服务器监听端口，见 README</span></span><br><span class="line"><span class="attr">dnsmasq_cache_size</span>=<span class="string">'4096'</span>               <span class="comment"># DNS 缓存条目，不建议过大，4096 足够</span></span><br><span class="line"><span class="attr">dnsmasq_cache_time</span>=<span class="string">'3600'</span>               <span class="comment"># DNS 缓存时间，单位是秒，最大 3600 秒</span></span><br><span class="line"><span class="attr">dnsmasq_log_enable</span>=<span class="string">'false'</span>              <span class="comment"># 记录详细日志，除非进行调试，否则不建议启用</span></span><br><span class="line"><span class="attr">dnsmasq_log_file</span>=<span class="string">'/var/log/dnsmasq.log'</span> <span class="comment"># 日志文件，如果不想保存日志可以改为 /dev/null</span></span><br><span class="line"><span class="attr">dnsmasq_conf_dir</span>=()                     <span class="comment"># `--conf-dir` 选项的参数，可以填多个，空格隔开</span></span><br><span class="line"><span class="attr">dnsmasq_conf_file</span>=()                    <span class="comment"># `--conf-file` 选项的参数，可以填多个，空格隔开</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## chinadns</span></span><br><span class="line"><span class="attr">chinadns_bind_port</span>=<span class="string">'65353'</span>               <span class="comment"># chinadns-ng 服务器监听端口，通常不用改动</span></span><br><span class="line"><span class="attr">chinadns_verbose</span>=<span class="string">'false'</span>                 <span class="comment"># 记录详细日志，除非进行调试，否则不建议启用</span></span><br><span class="line"><span class="attr">chinadns_logfile</span>=<span class="string">'/var/log/chinadns.log'</span> <span class="comment"># 日志文件，如果不想保存日志可以改为 /dev/null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## dns</span></span><br><span class="line"><span class="attr">dns_direct</span>=<span class="string">'119.29.29.29'</span>          <span class="comment"># 本地 IPv4 DNS，不能指定端口，也可以填组织、公司内部 DNS</span></span><br><span class="line"><span class="attr">dns_direct6</span>=<span class="string">'240C::6666'</span>              <span class="comment"># 本地 IPv6 DNS，不能指定端口，也可以填组织、公司内部 DNS</span></span><br><span class="line"><span class="attr">dns_remote</span>=<span class="string">'8.8.8.8#53'</span>               <span class="comment"># 远程 IPv4 DNS，必须指定端口，提示：访问远程 DNS 会走代理</span></span><br><span class="line"><span class="attr">dns_remote6</span>=<span class="string">'2001:4860:4860::8888#53'</span> <span class="comment"># 远程 IPv6 DNS，必须指定端口，提示：访问远程 DNS 会走代理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## ipts</span></span><br><span class="line"><span class="attr">ipts_rt_tab</span>=<span class="string">'233'</span>               <span class="comment"># iproute2 路由表名或表 ID，除非产生冲突，否则不建议改动该选项</span></span><br><span class="line"><span class="attr">ipts_rt_mark</span>=<span class="string">'0x2333'</span>           <span class="comment"># iproute2 策略路由的防火墙标记，除非产生冲突，否则不建议改动该选项</span></span><br><span class="line"><span class="attr">ipts_set_snat</span>=<span class="string">'false'</span>           <span class="comment"># 设置 iptables 的 MASQUERADE 规则，布尔值，`true/false`，详见 README</span></span><br><span class="line"><span class="attr">ipts_set_snat6</span>=<span class="string">'true'</span>           <span class="comment"># 设置 ip6tables 的 MASQUERADE 规则，布尔值，`true/false`，详见 README</span></span><br><span class="line"><span class="attr">ipts_intranet</span>=(<span class="number">10.20</span>.<span class="number">172.0</span>/<span class="number">24</span>)  <span class="comment"># 要代理的 IPv4 内网网段，可填多个，空格隔开，该选项的具体说明请看 README</span></span><br><span class="line"><span class="attr">ipts_intranet6</span>=(fd00::/<span class="number">8</span>)       <span class="comment"># 要代理的 IPv6 内网网段，可填多个，空格隔开，该选项的具体说明请看 README</span></span><br><span class="line"><span class="attr">ipts_reddns_onstop</span>=<span class="string">'true'</span>       <span class="comment"># ss-tproxy stop 后，是否将其它主机发至本机的 DNS 请求重定向至本地直连 DNS，详见 README</span></span><br><span class="line"><span class="attr">ipts_proxy_dst_port</span>=<span class="string">'1:65535'</span>   <span class="comment"># 目标 IP 的哪些端口走代理，目标 IP 就是黑名单 IP，多个用逗号隔开，冒号为端口范围(含边界)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## opts</span></span><br><span class="line"><span class="attr">opts_ss_netstat</span>=<span class="string">'auto'</span>                  <span class="comment"># auto/ss/netstat，用哪个端口检测命令，见 README</span></span><br><span class="line"><span class="attr">opts_overwrite_resolv</span>=<span class="string">'false'</span>           <span class="comment"># true/false，定义如何修改 resolv.conf，见 README</span></span><br><span class="line"><span class="attr">opts_ip_for_check_net</span>=<span class="string">'114.114.114.114'</span> <span class="comment"># 用来检测外网是否可访问的 IP，该 IP 需要允许 ping</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## file</span></span><br><span class="line"><span class="attr">file_gfwlist_txt</span>=<span class="string">'/etc/ss-tproxy/gfwlist.txt'</span>      <span class="comment"># gfwlist 黑名单文件 (默认规则)</span></span><br><span class="line"><span class="attr">file_gfwlist_ext</span>=<span class="string">'/etc/ss-tproxy/gfwlist.ext'</span>      <span class="comment"># gfwlist 黑名单文件 (扩展规则)</span></span><br><span class="line"><span class="attr">file_chnroute_set</span>=<span class="string">'/etc/ss-tproxy/chnroute.set'</span>    <span class="comment"># chnroute 地址段文件 (iptables)</span></span><br><span class="line"><span class="attr">file_chnroute6_set</span>=<span class="string">'/etc/ss-tproxy/chnroute6.set'</span>  <span class="comment"># chnroute6 地址段文件 (ip6tables)</span></span><br><span class="line"><span class="attr">file_dnsserver_pid</span>=<span class="string">'/etc/ss-tproxy/.dnsserver.pid'</span> <span class="comment"># dnsmasq 和 chinadns-ng 的 pid 文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-启动"><a href="#8-启动" class="headerlink" title="8. 启动"></a>8. 启动</h3><p>启动亲需要先关闭本机的 dnsmasq 进程，不然会提示 53 端口已占用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop dnsmasq</span><br><span class="line">systemctl <span class="built_in">disable</span> dnsmasq</span><br><span class="line">systemctl <span class="built_in">enable</span> haveged <span class="comment"># 启动 haveged 用来产生足够多的熵，供加密算法用</span></span><br><span class="line">ss-tproxy start</span><br></pre></td></tr></table></figure>
+<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>完成以上该能跑起来了，需要注意的是，透明网关要和需要代理的机器在同一网段，不可跨网段，只能在一个 LAN 局域网里。最后祝 GFW 早点倒吧😡</p>
+<p>完整脚本，在 Debian 10 下测试通过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">apt update</span><br><span class="line"><span class="built_in">set</span> -xue</span><br><span class="line">apt install -y git</span><br><span class="line">apt install -y --no-install-recommends --no-install-suggests  \</span><br><span class="line">    gettext build-essential autoconf libtool  libsodium-dev libmbedtls-dev \</span><br><span class="line">    libpcre3-dev asciidoc xmlto libev-dev libc-ares-dev automake curl wget \</span><br><span class="line">    dnsmasq iproute2 ipset perl haveged gawk</span><br><span class="line"></span><br><span class="line">mkdir -p ~/gateway</span><br><span class="line"><span class="built_in">cd</span> ~/gateway</span><br><span class="line"><span class="comment"># Installation of chinadns-ng</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfl9/chinadns-ng --depth=1</span><br><span class="line"><span class="built_in">cd</span> chinadns-ng</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of libsodium</span></span><br><span class="line"><span class="built_in">export</span> LIBSODIUM_VER=1.0.16</span><br><span class="line">wget https://download.libsodium.org/libsodium/releases/libsodium-<span class="variable">$LIBSODIUM_VER</span>.tar.gz</span><br><span class="line">tar xvf libsodium-<span class="variable">$LIBSODIUM_VER</span>.tar.gz</span><br><span class="line"><span class="built_in">pushd</span> libsodium-<span class="variable">$LIBSODIUM_VER</span></span><br><span class="line">./configure --prefix=/usr &amp;&amp; make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">popd</span></span><br><span class="line">ldconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of MbedTLS</span></span><br><span class="line"><span class="built_in">export</span> MBEDTLS_VER=2.6.0</span><br><span class="line">wget https://tls.mbed.org/download/mbedtls-<span class="variable">$MBEDTLS_VER</span>-gpl.tgz</span><br><span class="line">tar xvf mbedtls-<span class="variable">$MBEDTLS_VER</span>-gpl.tgz</span><br><span class="line"><span class="built_in">pushd</span> mbedtls-<span class="variable">$MBEDTLS_VER</span></span><br><span class="line">make SHARED=1 CFLAGS=<span class="string">"-O2 -fPIC"</span></span><br><span class="line">make DESTDIR=/usr install</span><br><span class="line"><span class="built_in">popd</span></span><br><span class="line">ldconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of shadowsocks-libev</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/shadowsocks/shadowsocks-libev.git --depth=1</span><br><span class="line"><span class="built_in">cd</span> shadowsocks-libev</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</span><br><span class="line">make install</span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line"><span class="comment"># Installation of ss-tproxy</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zfl9/ss-tproxy --depth=1</span><br><span class="line"><span class="built_in">cd</span> ss-tproxy</span><br><span class="line">chmod +x ss-tproxy</span><br><span class="line">cp -af ss-tproxy /usr/<span class="built_in">local</span>/bin</span><br><span class="line">mkdir -p /etc/ss-tproxy</span><br><span class="line">cp -af ss-tproxy.conf gfwlist* chnroute* /etc/ss-tproxy</span><br><span class="line">cp -af ss-tproxy.service /etc/systemd/system</span><br><span class="line"></span><br><span class="line">cat &gt;&gt; /etc/ss.json &lt;&lt; EOF</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"mode"</span>:<span class="string">"tcp_and_udp"</span>,</span><br><span class="line">    <span class="string">"server_port"</span>:8080,</span><br><span class="line">    <span class="string">"local_port"</span>:1080,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"reuse_port"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"no_delay"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">""</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:60,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"chacha20"</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> haveged</span><br><span class="line">systemctl start haveged</span><br><span class="line">systemctl <span class="built_in">disable</span> dnsmasq</span><br></pre></td></tr></table></figure>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/debian-gateway.html" title="搓一个 Debian 透明代理/旁路网关 虚拟机">https://blog.502.li/archives/debian-gateway.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/Debian/" rel="tag"><i class="fa fa-tag"></i> Debian</a>
+            <a href="/tags/proxy/" rel="tag"><i class="fa fa-tag"></i> proxy</a>
+            <a href="/tags/科学上网/" rel="tag"><i class="fa fa-tag"></i> 科学上网</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ESXi-透明代理虚拟机"><span class="nav-number">1.</span> <span class="nav-text">ESXi 透明代理虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-项目背景"><span class="nav-number">2.</span> <span class="nav-text">0. 项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现功能"><span class="nav-number">3.</span> <span class="nav-text">1.实现功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实现效果"><span class="nav-number">4.</span> <span class="nav-text">2. 实现效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-wget-下载-GitHub-release-上的文件，以-Linux为例"><span class="nav-number">4.1.</span> <span class="nav-text">1. wget 下载 GitHub release 上的文件，以 Linux为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-kubeadm-config-image-pull"><span class="nav-number">4.2.</span> <span class="nav-text">2. kubeadm config image pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用-nload-命令查看网关流量情况"><span class="nav-number">4.3.</span> <span class="nav-text">3. 使用 nload 命令查看网关流量情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-git-clone-GitHub-上的-repo"><span class="nav-number">4.4.</span> <span class="nav-text">4. git clone GitHub 上的 repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-要代理的虚拟机"><span class="nav-number">4.5.</span> <span class="nav-text">5. 要代理的虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-网关占用资源"><span class="nav-number">4.6.</span> <span class="nav-text">5. 网关占用资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现过程"><span class="nav-number">5.</span> <span class="nav-text">3. 实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-project"><span class="nav-number">5.1.</span> <span class="nav-text">0. project</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-OS"><span class="nav-number">5.2.</span> <span class="nav-text">1. OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装编译环境和依赖"><span class="nav-number">5.3.</span> <span class="nav-text">2. 安装编译环境和依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装爱国软件"><span class="nav-number">5.4.</span> <span class="nav-text">3. 安装爱国软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安装-Chinadns"><span class="nav-number">5.5.</span> <span class="nav-text">4. 安装 Chinadns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-安装-ss-tproxy"><span class="nav-number">5.6.</span> <span class="nav-text">5. 安装 ss-tproxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-配置-ss-redir"><span class="nav-number">5.7.</span> <span class="nav-text">6. 配置 ss-redir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-配置-ss-tproxy"><span class="nav-number">5.8.</span> <span class="nav-text">7. 配置 ss-tproxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-启动"><span class="nav-number">5.9.</span> <span class="nav-text">8. 启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-结语"><span class="nav-number">6.</span> <span class="nav-text">4. 结语</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/debian-gateway.html";
+    this.page.identifier = "archives/debian-gateway.html";
+    this.page.title = '搓一个 Debian 透明代理/旁路网关 虚拟机';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>
