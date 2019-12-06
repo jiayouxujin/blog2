@@ -43,29 +43,29 @@
 <meta property="og:site_name" content="木子">
 <meta property="og:description" content="前言如果你的 FastDFS 文件系统需要高可用，需要部署在多台机器上的话，并且你的这些服务器上只跑 FastDFS 这个服务，那么 FastDFS 可能并不适合用 Docker 来部署，按照官方文档直接部署在机器上就可以，没必要采用容器来部署。其实 FastDFS 并不适合容器化部署，因为 tracker 服务器向 storage 服务器报告自己的 IP， 而这个 IP 是容器内的 IP 。是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.502.li/img/1569728664464.png">
-<meta property="og:image" content="https://blog.502.li/img/1569728744655.png">
-<meta property="og:image" content="https://blog.502.li/img/1569729043301.png">
-<meta property="og:image" content="https://blog.502.li/img/1564128425387.png">
-<meta property="og:image" content="https://blog.502.li/img/1564128874832.png">
-<meta property="og:image" content="https://blog.502.li/img/1564128721547.png">
-<meta property="og:image" content="https://blog.502.li/img/1564364594777.png">
-<meta property="og:image" content="https://blog.502.li/img/1564127683217.png">
-<meta property="og:image" content="https://blog.502.li/img/1564364294952.png">
-<meta property="og:image" content="https://blog.502.li/img/1564365025177.png">
-<meta property="og:image" content="https://blog.502.li/img/1564363829960.png">
-<meta property="og:image" content="https://blog.502.li/img/1564125161155.png">
-<meta property="og:image" content="https://blog.502.li/img/1564130238346.png">
-<meta property="og:image" content="https://blog.502.li/img/1564130789416.png">
-<meta property="og:image" content="https://blog.502.li/img/1564023927851.png">
-<meta property="og:image" content="https://blog.502.li/img/1564384530137.png">
-<meta property="og:image" content="https://blog.502.li/img/1564384711746.png">
-<meta property="og:image" content="https://blog.502.li/img/1564384906456.png">
-<meta property="og:updated_time" content="2019-12-06T01:37:01.711Z">
+<meta property="og:image" content="../img/1569728664464.png">
+<meta property="og:image" content="../img/1569728744655.png">
+<meta property="og:image" content="../img/1569729043301.png">
+<meta property="og:image" content="../img/1564128425387.png">
+<meta property="og:image" content="../img/1564128874832.png">
+<meta property="og:image" content="../img/1564128721547.png">
+<meta property="og:image" content="../img/1564364594777.png">
+<meta property="og:image" content="../img/1564127683217.png">
+<meta property="og:image" content="../img/1564364294952.png">
+<meta property="og:image" content="../img/1564365025177.png">
+<meta property="og:image" content="../img/1564363829960.png">
+<meta property="og:image" content="../img/1564125161155.png">
+<meta property="og:image" content="../img/1564130238346.png">
+<meta property="og:image" content="../img/1564130789416.png">
+<meta property="og:image" content="../img/1564023927851.png">
+<meta property="og:image" content="../img/1564384530137.png">
+<meta property="og:image" content="../img/1564384711746.png">
+<meta property="og:image" content="../img/1564384906456.png">
+<meta property="og:updated_time" content="2019-12-06T02:22:31.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 部署 FastDFS">
 <meta name="twitter:description" content="前言如果你的 FastDFS 文件系统需要高可用，需要部署在多台机器上的话，并且你的这些服务器上只跑 FastDFS 这个服务，那么 FastDFS 可能并不适合用 Docker 来部署，按照官方文档直接部署在机器上就可以，没必要采用容器来部署。其实 FastDFS 并不适合容器化部署，因为 tracker 服务器向 storage 服务器报告自己的 IP， 而这个 IP 是容器内的 IP 。是">
-<meta name="twitter:image" content="https://blog.502.li/img/1569728664464.png">
+<meta name="twitter:image" content="../img/1569728664464.png">
   <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
   <link rel="canonical" href="https://blog.502.li/archives/docker-deploy-fastdfs">
 <script id="page.configurations">
@@ -192,7 +192,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                   <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-05 20:37:01" itemprop="dateModified" datetime="2019-12-05T20:37:01-05:00">2019-12-05</time>
+                <time title="修改时间：2019-12-05 21:22:31" itemprop="dateModified" datetime="2019-12-05T21:22:31-05:00">2019-12-05</time>
           </span>
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
@@ -235,10 +235,10 @@
 <h3 id="构不同基础镜像构建出的大小对比"><a href="#构不同基础镜像构建出的大小对比" class="headerlink" title="构不同基础镜像构建出的大小对比"></a>构不同基础镜像构建出的大小对比</h3><p>哭了，官方构建出来的镜像将近 500MB</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fastdfs             alpine              e855bd197dbe        10 seconds ago      29.3MB</span><br><span class="line">fastdfs             debian              e05ca1616604        20 minutes ago      103MB</span><br><span class="line">fastdfs             centos              c1488537c23c        30 minutes ago      483MB</span><br></pre></td></tr></table></figure>
 <h4 id="使用-dive-分析各个镜像"><a href="#使用-dive-分析各个镜像" class="headerlink" title="使用 dive 分析各个镜像"></a>使用 dive 分析各个镜像</h4><p>官方的</p>
-<p><img src="https://blog.502.li/img/1569728664464.png" alt="1569728664464"></p>
+<p><img src="../img/1569728664464.png" alt="1569728664464"></p>
 <h4 id="alpine"><a href="#alpine" class="headerlink" title="alpine"></a>alpine</h4><p>基于 alpine 的基础镜像构建完成后，只有三层镜像😂</p>
-<p><img src="https://blog.502.li/img/1569728744655.png" alt="1569728744655"></p>
-<h4 id="debian"><a href="#debian" class="headerlink" title="debian"></a>debian</h4><p><img src="https://blog.502.li/img/1569729043301.png" alt="1569729043301"></p>
+<p><img src="../img/1569728744655.png" alt="1569728744655"></p>
+<h4 id="debian"><a href="#debian" class="headerlink" title="debian"></a>debian</h4><p><img src="../img/1569729043301.png" alt="1569729043301"></p>
 <h3 id="musl-libc-带来的问题"><a href="#musl-libc-带来的问题" class="headerlink" title="musl libc 带来的问题"></a><code>musl libc</code> 带来的问题</h3><p>不过需要注意的是，使用 CentOS 和 Alpine 基础镜像分别构建出来的镜像，使用 ldd 查看二者编译出来的 fastdfs ，两者的动态链接库存在很大的差异， Alpine 缺少了很多动态链接库，这是因为 alpine 的 c 库是 <code>musl libc</code> ，而不是正统的 <code>glibc</code> ，另外对于一些依赖 <code>glibc</code> 的大型项目，像 openjdk 、tomcat、rabbitmq 等都不建议使用 alpine 基础镜像，因为  <code>musl libc</code> 会导致 jvm 一些奇怪的问题。这也是为什么 tomcat 官方没有给出基础镜像是 alpine 的 Dockerfile</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">centos<span class="comment"># find /usr/bin/ -name "fdfs*" | xargs ldd</span></span><br><span class="line">        linux-vdso.so.1 =&gt;  (0x00007fffe1d30000)</span><br><span class="line">        libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f86036e6000)</span><br><span class="line">        libfastcommon.so =&gt; /lib/libfastcommon.so (0x00007f86034a5000)</span><br><span class="line">        libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f86030d8000)</span><br><span class="line">        /lib64/ld-linux-x86-64.so.2 (0x00007f8603902000)</span><br><span class="line">        libm.so.6 =&gt; /lib64/libm.so.6 (0x00007f8602dd6000)</span><br><span class="line">        libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f8602bd2000)</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alpine <span class="comment"># find /usr/bin/ -name "fdfs*" | xargs ldd</span></span><br><span class="line">        /lib/ld-musl-x86_64.so.1 (0x7f4f91585000)</span><br><span class="line">        libfastcommon.so =&gt; /usr/lib/libfastcommon.so (0x7f4f91528000)</span><br><span class="line">        libc.musl-x86_64.so.1 =&gt; /lib/ld-musl-x86_64.so.1 (0x7f4f91585000)</span><br></pre></td></tr></table></figure>
@@ -254,31 +254,31 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载测试命令：`time cat url.log  | xargs -n 1 -I &#123;&#125; -P 256 sh -c <span class="string">"wget  &#123;&#125;"</span>`</span><br></pre></td></tr></table></figure>
 <h3 id="文件上传测试"><a href="#文件上传测试" class="headerlink" title="文件上传测试"></a>文件上传测试</h3><p>  测试样本为 10W 张 8KB-100 KB 大小不等的图片</p>
-<p><img src="https://blog.502.li/img/1564128425387.png" alt="1564128425387"></p>
+<p><img src="../img/1564128425387.png" alt="1564128425387"></p>
 <p><strong>测试文件数量和大小</strong></p>
-<p><img src="https://blog.502.li/img/1564128874832.png" alt="1564128874832"></p>
+<p><img src="../img/1564128874832.png" alt="1564128874832"></p>
 <p><strong>使用 xargs 执行 256 个进程并发上传 10w 张照片所用所用时间 为 2 分钟左右（内网）</strong></p>
-<p><img src="https://blog.502.li/img/1564128721547.png" alt="1564128721547"></p>
+<p><img src="../img/1564128721547.png" alt="1564128721547"></p>
 <p><strong>用时 2 分 11 秒</strong></p>
-<p><img src="https://blog.502.li/img/1564364594777.png" alt="1564364594777"></p>
+<p><img src="../img/1564364594777.png" alt="1564364594777"></p>
 <p><strong>客户端负载情况</strong></p>
-<p><img src="https://blog.502.li/img/1564127683217.png" alt="1564127683217"></p>
+<p><img src="../img/1564127683217.png" alt="1564127683217"></p>
 <p><strong>服务端负载情况</strong></p>
-<p><img src="https://blog.502.li/img/1564364294952.png" alt="1564364294952"></p>
+<p><img src="../img/1564364294952.png" alt="1564364294952"></p>
 <p><strong>服务端带宽流量</strong></p>
-<p><img src="https://blog.502.li/img/1564365025177.png" alt="1564365025177"></p>
+<p><img src="../img/1564365025177.png" alt="1564365025177"></p>
 <p><strong>服务端带宽流量</strong></p>
-<p><img src="https://blog.502.li/img/1564363829960.png" alt="服务端带宽流量"></p>
+<p><img src="../img/1564363829960.png" alt="服务端带宽流量"></p>
 <p><strong>服务端上传结果</strong></p>
-<p><img src="https://blog.502.li/img/1564125161155.png" alt="1564125161155"></p>
+<p><img src="../img/1564125161155.png" alt="1564125161155"></p>
 <p><strong>服务端上传日志记录 ，均无错误输出</strong></p>
-<p><img src="https://blog.502.li/img/1564130238346.png" alt="1564130238346"></p>
+<p><img src="../img/1564130238346.png" alt="1564130238346"></p>
 <h3 id="文件下载测试"><a href="#文件下载测试" class="headerlink" title="文件下载测试"></a>文件下载测试</h3><p><strong>从日志中提取文件路径</strong></p>
 <p>从服务端的 <code>storage_access.log</code> 日志里提取出文件的路径，使用 <code>sed</code> 添加 <code>nginx</code> 的访问端口地址得到 10W 个记录 上传文件的 <code>http</code> 访问 <code>url</code> 地址</p>
-<p><img src="https://blog.502.li/img/1564130789416.png" alt="1564130789416"></p>
+<p><img src="../img/1564130789416.png" alt="1564130789416"></p>
 <p><strong>wget 下载</strong></p>
 <p>使用 <code>wget -i</code> 参数指定 <code>url.log</code> 为标准输出来测试下载刚刚上传的 10W 张图片 用时 3 分 23 秒</p>
-<p><img src="https://blog.502.li/img/1564023927851.png" alt="1564023927851"></p>
+<p><img src="../img/1564023927851.png" alt="1564023927851"></p>
 <h3 id="测试结果分析"><a href="#测试结果分析" class="headerlink" title="测试结果分析"></a>测试结果分析</h3><p>使用 FastDFS 自带的上传测试工具和 xargs 并发执行工具，通过 xargs -P 参数指定的并发请求数，测得结果为单机性能在网络环境稳定的情况下可以达到 5000 并发上传请求。10W 张图片上传时间耗时 2 分 11 秒左右。使用定时脚本持续测试，总测试上传 100W 张图片。分析 tracker 服务器和 storage 服务器的日志，无论上传还是下载均未发现错误和异常，性能和稳定性较好。</p>
 <h2 id="优化参数"><a href="#优化参数" class="headerlink" title="优化参数"></a>优化参数</h2><p>根据业务需求和线上环境调整一下参数，可充分发挥 FastDFS 文件系统的性能</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 接收请求的线程数数量</span></span><br><span class="line"><span class="attr">accept_threads</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># work thread count, should &lt;= max_connections</span></span><br><span class="line"><span class="comment"># default value is 4</span></span><br><span class="line"><span class="comment"># since V2.00</span></span><br><span class="line"><span class="comment"># 工作线程数量，应当小于等于最大连接数</span></span><br><span class="line"><span class="attr">work_threads</span>=<span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># min buff size</span></span><br><span class="line"><span class="comment"># default value 8KB</span></span><br><span class="line"><span class="comment"># 最小缓冲大小，默认值为 8KB</span></span><br><span class="line"><span class="attr">min_buff_size</span> = <span class="number">8</span>KB</span><br><span class="line"></span><br><span class="line"><span class="comment"># max buff size</span></span><br><span class="line"><span class="comment"># default value 128KB</span></span><br><span class="line"><span class="comment"># 最大缓冲大小，默认值为 128KB</span></span><br><span class="line"><span class="attr">max_buff_size</span> = <span class="number">128</span>KB</span><br><span class="line"></span><br><span class="line"><span class="comment"># thread stack size, should &gt;= 64KB</span></span><br><span class="line"><span class="comment"># default value is 256KB</span></span><br><span class="line"><span class="comment"># 线程栈的大小，应当大于 64KB，默认为 256KB</span></span><br><span class="line"><span class="attr">thread_stack_size</span> = <span class="number">256</span>KB</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use connection pool</span></span><br><span class="line"><span class="comment"># default value is false</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line"><span class="comment"># 是否使用连接池</span></span><br><span class="line"><span class="attr">use_connection_pool</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># connections whose the idle time exceeds this time will be closed</span></span><br><span class="line"><span class="comment"># unit: second</span></span><br><span class="line"><span class="comment"># default value is 3600</span></span><br><span class="line"><span class="comment"># since V4.05</span></span><br><span class="line"><span class="comment"># 连接池的最大空闲时间</span></span><br><span class="line"><span class="attr">connection_pool_max_idle_time</span> = <span class="number">3600</span></span><br></pre></td></tr></table></figure>
@@ -291,11 +291,11 @@
 <h3 id="安全相关"><a href="#安全相关" class="headerlink" title="安全相关"></a>安全相关</h3><ol>
 <li>tracker.conf 、storage.conf 配置文件默认允许所有 IP 地址访问 ，建议去掉  <code>allow_hosts=*</code> 修改为 FastDFS 客户端所在的内网 IP 地址。</li>
 </ol>
-<p><img src="https://blog.502.li/img/1564384530137.png" alt="1564384530137"></p>
+<p><img src="../img/1564384530137.png" alt="1564384530137"></p>
 <p>2.tracker.conf 、storage.conf  默认配置文件监听的地址为 0.0.0.0 即本机所有的 IP 地址，建议修改为 FastDFS 服务器所在的内网 IP 地址。</p>
-<p><img src="https://blog.502.li/img/1564384711746.png" alt="1564384711746"></p>
+<p><img src="../img/1564384711746.png" alt="1564384711746"></p>
 <p>3.默认运行用户为当前用户和用户组为当前用户，建议指定为权限最小的用户来运行此进程。</p>
-<p><img src="https://blog.502.li/img/1564384906456.png" alt="1564384906456"></p>
+<p><img src="../img/1564384906456.png" alt="1564384906456"></p>
     </div>
       <div>
 <ul class="post-copyright">
