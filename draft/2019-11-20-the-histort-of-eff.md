@@ -1,7 +1,7 @@
 ---
-title: 一段在法律与技术冲突的地方捍卫自由的历史
+title: 美国人民如何捍卫互联网自由
 date: 2019-10-20
-slug: the-histor-of-eff
+slug: How the American people are defending Internet freedom
 tag:
   - 自由
 copyright: true
