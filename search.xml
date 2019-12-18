@@ -213,6 +213,31 @@
     <title>kubernetes 社群分享 QA 汇总</title>
     <url>/archives/kubernetes-QA.html</url>
     <content><![CDATA[<h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>内容主要来自在社群里有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于提问链接在石墨文档上协作编辑，而石墨文档里的内容是无法被搜索引擎检索到的。这些问题不整理起来就永远地躺尸在石墨文档了，所以就把这些提问的问题汇总到一起，方便大家自查。</p>
+<h2 id="20191218-：Open-Policy-Agent在Kubernetes中的应用"><a href="#20191218-：Open-Policy-Agent在Kubernetes中的应用" class="headerlink" title="20191218:：Open Policy Agent在Kubernetes中的应用"></a>20191218:：Open Policy Agent在Kubernetes中的应用</h2><p><a href="https://shimo.im/docs/thXyGRP36CHpjvTk" target="_blank" rel="noopener">提问链接</a></p>
+<blockquote>
+<p>Q：规则是否会对性能有影响，是否有压测的数据</p>
+</blockquote>
+<p>A：决策过程就是一次RPC调用，因为策略的定义是声明式的数据都是静态存储，决策耗时可以忽略不计（在整个请求阶段中），即使是内部代理也会带来网络上的损耗。</p>
+<blockquote>
+<p>Q：  规则是否可以动态修改，即使生效，不需要重启服务</p>
+</blockquote>
+<p>A：不需要重启服务，实时生效，这也是OPA的目的，不会因为策略的变动而改动代码或是重启服务。</p>
+<blockquote>
+<p>Q：是否可以与istio结合，实现微服务权限管理下沉到网格？</p>
+</blockquote>
+<p>A：当然可以，社区有相关的实现，这个得去关注具体的项目，我还没有深入了解。</p>
+<blockquote>
+<p>Q：是否可以与spring cloud结合使用，或是与docker配合使用，因为没有用到k8s</p>
+</blockquote>
+<p>A：当然可以，OPA可以用做第三方库集成到你的代码中，通过API进行调用，一次决策就是一次RPC调用，OPA的核心理念在于把决策这个步骤给解耦出来，而不是和上下文逻辑混在一起。</p>
+<blockquote>
+<p>Q：OPA可以调用数据库吗？它能实现鉴权吗？</p>
+</blockquote>
+<p>A：可以，可以自己实现外部调用的模块，但通用的做法是事先把需要决策的数据查询组装好发送给OPA进行决策。鉴权就是一种特殊的策略，策略需要关联到用户、用户组。可以把OPA和网关进行整合，每次用户请求都进行鉴权（通过OPA进行决策，该次请求是否放行）。</p>
+<blockquote>
+<p>Q：微服务和OPA是不是结合的更紧密？可以把决策提出来？</p>
+</blockquote>
+<p>A：和微服务概念本身关系不大，即使是单体应用，只要你可以把决策过程剥离出来就可以用到OPA，这个很符合微服务的理念，OPA就是一个集中的决策服务。</p>
 <h2 id="20191210：Volcano介绍及其在深度学习场景下的应用"><a href="#20191210：Volcano介绍及其在深度学习场景下的应用" class="headerlink" title="20191210：Volcano介绍及其在深度学习场景下的应用"></a>20191210：Volcano介绍及其在深度学习场景下的应用</h2><p><a href="https://shimo.im/docs/RtV63PGyjPhGKCvk" target="_blank" rel="noopener">提问链接</a></p>
 <blockquote>
 <p>Q1：针对kubeflow这种工作流有没有计划做出针对性优化？#274号PR提出要做拓扑优化，最后也close了，这是为什么？</p>
