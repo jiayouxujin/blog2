@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="README目前国内有关容器和 kubernetes 的社区，DockOne 无疑是最优秀的社群分享平台。每周都会在微信群中直播分享 kubernetes 相关的技术。在此整理和汇总一下每次分享的主题，方便读者们找到感兴趣的内容。 社群分享汇总列表    分享内容     二四二 Open Policy Agent在Kubernetes中的应用   二四一 Volcano介绍及其在深度学习场景下的">
+<meta name="keywords" content="kubernetes,docker,分享,DockOne 微信分享汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DockOne 社群分享汇总">
+<meta property="og:url" content="https://blog.502.li/archives/dockone-post-index-archives.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="README目前国内有关容器和 kubernetes 的社区，DockOne 无疑是最优秀的社群分享平台。每周都会在微信群中直播分享 kubernetes 相关的技术。在此整理和汇总一下每次分享的主题，方便读者们找到感兴趣的内容。 社群分享汇总列表    分享内容     二四二 Open Policy Agent在Kubernetes中的应用   二四一 Volcano介绍及其在深度学习场景下的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-19T12:00:21.727Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DockOne 社群分享汇总">
+<meta name="twitter:description" content="README目前国内有关容器和 kubernetes 的社区，DockOne 无疑是最优秀的社群分享平台。每周都会在微信群中直播分享 kubernetes 相关的技术。在此整理和汇总一下每次分享的主题，方便读者们找到感兴趣的内容。 社群分享汇总列表    分享内容     二四二 Open Policy Agent在Kubernetes中的应用   二四一 Volcano介绍及其在深度学习场景下的">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/dockone-post-index-archives">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>DockOne 社群分享汇总 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/dockone-post-index-archives.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">DockOne 社群分享汇总
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-12-19 00:00:00 / 修改时间：07:00:21" itemprop="dateCreated datePublished" datetime="2019-12-19T00:00:00-05:00">2019-12-19</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/dockone-post-index-archives.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/dockone-post-index-archives.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>目前国内有关容器和 kubernetes 的社区，<a href="http://dockone.io/" target="_blank" rel="noopener">DockOne</a> 无疑是最优秀的社群分享平台。每周都会在微信群中直播分享 kubernetes 相关的技术。在此整理和汇总一下每次分享的主题，方便读者们找到感兴趣的内容。</p>
+<h2 id="社群分享汇总列表"><a href="#社群分享汇总列表" class="headerlink" title="社群分享汇总列表"></a>社群分享汇总列表</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>分享内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二四二</td>
+<td><a href="http://dockone.io/article/9560" target="_blank" rel="noopener">Open Policy Agent在Kubernetes中的应用</a></td>
+</tr>
+<tr>
+<td>二四一</td>
+<td><a href="http://dockone.io/article/9538" target="_blank" rel="noopener">Volcano介绍及其在深度学习场景下的应用</a></td>
+</tr>
+<tr>
+<td>二四〇</td>
+<td><a href="http://dockone.io/article/9526" target="_blank" rel="noopener">Knative Serverless 之道：如何 0运维、低成本实现应用托管？</a></td>
+</tr>
+<tr>
+<td>二三九</td>
+<td><a href="http://dockone.io/article/9517" target="_blank" rel="noopener">Kubernetes在信也科技的落地实战</a></td>
+</tr>
+<tr>
+<td>二三八</td>
+<td><a href="http://dockone.io/article/9432" target="_blank" rel="noopener">基于CDN的边缘计算平台设计和思考</a></td>
+</tr>
+<tr>
+<td>二三七</td>
+<td><a href="http://dockone.io/article/9412" target="_blank" rel="noopener">基于云原生日志分类处理方案与落地实践</a></td>
+</tr>
+<tr>
+<td>二三六</td>
+<td><a href="http://dockone.io/article/9386" target="_blank" rel="noopener">扇贝 Service Mesh发展历程</a></td>
+</tr>
+<tr>
+<td>二三五</td>
+<td><a href="http://dockone.io/article/9384" target="_blank" rel="noopener">k3s在边缘计算中的应用实践</a></td>
+</tr>
+<tr>
+<td>二三四</td>
+<td><a href="http://dockone.io/article/9369" target="_blank" rel="noopener">Kubernetes在宜信的落地实践</a></td>
+</tr>
+<tr>
+<td>二三三</td>
+<td><a href="http://dockone.io/article/9361" target="_blank" rel="noopener">Jenkins X：基于 Kubernetes 的 Serverless Jenkins</a></td>
+</tr>
+<tr>
+<td>二三二</td>
+<td><a href="http://dockone.io/article/9357" target="_blank" rel="noopener">基于 Ceph 的 Kubernetes 数据持久化</a></td>
+</tr>
+<tr>
+<td>二三一</td>
+<td><a href="http://dockone.io/article/9348" target="_blank" rel="noopener">玩转Kubernetes开发测试环境</a></td>
+</tr>
+<tr>
+<td>二三〇</td>
+<td><a href="http://dockone.io/article/9333" target="_blank" rel="noopener">Kubernetes在SHAREit的落地实战</a></td>
+</tr>
+<tr>
+<td>二二九</td>
+<td><a href="http://dockone.io/article/9313" target="_blank" rel="noopener">蔚来汽车的Kubernetes实践</a></td>
+</tr>
+<tr>
+<td>二二八</td>
+<td><a href="http://dockone.io/article/9286" target="_blank" rel="noopener">HC Bridge容器网络模式分享</a></td>
+</tr>
+<tr>
+<td>二二七</td>
+<td><a href="http://dockone.io/article/9270" target="_blank" rel="noopener">云原生可观察性之日志管理</a></td>
+</tr>
+<tr>
+<td>二二六</td>
+<td><a href="http://dockone.io/article/9269" target="_blank" rel="noopener">Prometheus架构与实践分享</a></td>
+</tr>
+<tr>
+<td>二二五</td>
+<td><a href="http://dockone.io/article/9254" target="_blank" rel="noopener">eBay Kubernetes集群的存储实践</a></td>
+</tr>
+<tr>
+<td>二二四</td>
+<td><a href="http://dockone.io/article/9234" target="_blank" rel="noopener">基于Kubernetes的DevOps平台实战</a></td>
+</tr>
+<tr>
+<td>二二三</td>
+<td><a href="http://dockone.io/article/9226" target="_blank" rel="noopener">Porter：面向裸金属环境的 Kubernetes 开源负载均衡器</a></td>
+</tr>
+<tr>
+<td>二二二</td>
+<td><a href="http://dockone.io/article/9207" target="_blank" rel="noopener">小公司如何优雅地推进应用上Kubernetes容器云</a></td>
+</tr>
+<tr>
+<td>二二一</td>
+<td><a href="http://dockone.io/article/9191" target="_blank" rel="noopener">初探云原生应用管理之：聊聊 Tekton 项目</a></td>
+</tr>
+<tr>
+<td>二二〇</td>
+<td><a href="http://dockone.io/article/9189" target="_blank" rel="noopener">PPmoney基于Kubernetes的DevOps实践</a></td>
+</tr>
+<tr>
+<td>二一九</td>
+<td><a href="http://dockone.io/article/9165" target="_blank" rel="noopener">跨境时尚电商SHEIN基于Kubernetes的DevOps实践</a></td>
+</tr>
+<tr>
+<td>二一八</td>
+<td><a href="http://dockone.io/article/9157" target="_blank" rel="noopener">基于OVS自研容器网络插件在金融类企业的落地实践</a></td>
+</tr>
+<tr>
+<td>二一七</td>
+<td><a href="http://dockone.io/article/9123" target="_blank" rel="noopener">TiDB Operator 的设计与实现</a></td>
+</tr>
+<tr>
+<td>二一六</td>
+<td><a href="http://dockone.io/article/9107" target="_blank" rel="noopener">基于Istio的灰度平台实践</a></td>
+</tr>
+<tr>
+<td>二一五</td>
+<td><a href="http://dockone.io/article/9076" target="_blank" rel="noopener">Kube-OVN的设计思路和实现原理</a></td>
+</tr>
+<tr>
+<td>二一四</td>
+<td><a href="http://dockone.io/article/9045" target="_blank" rel="noopener">震坤行的容器云实践</a></td>
+</tr>
+<tr>
+<td>二一三</td>
+<td><a href="http://dockone.io/article/9014" target="_blank" rel="noopener">智能工厂的容器云实践</a></td>
+</tr>
+<tr>
+<td>二一二</td>
+<td><a href="http://dockone.io/article/8994" target="_blank" rel="noopener">基于kubeadm搭建Kubernetes HA集群</a></td>
+</tr>
+<tr>
+<td>二一一</td>
+<td><a href="http://dockone.io/article/8977" target="_blank" rel="noopener">基于Actor模型的CQRS/ES解决方案分享</a></td>
+</tr>
+<tr>
+<td>二一零</td>
+<td><a href="http://dockone.io/article/8929" target="_blank" rel="noopener">平安证券Kubernetes容器集群的DevOps实践</a></td>
+</tr>
+<tr>
+<td>二零九</td>
+<td><a href="http://dockone.io/article/8825" target="_blank" rel="noopener">荔枝运维平台容器化实践</a></td>
+</tr>
+<tr>
+<td>二零八</td>
+<td><a href="http://dockone.io/article/8801" target="_blank" rel="noopener">华尔街见闻Istio生产实践</a></td>
+</tr>
+<tr>
+<td>二零七</td>
+<td><a href="http://dockone.io/article/8780" target="_blank" rel="noopener">瓜子云平台的实践经验</a></td>
+</tr>
+<tr>
+<td>二零六</td>
+<td><a href="http://dockone.io/article/8738" target="_blank" rel="noopener">容器环境下的持续集成最佳实践</a></td>
+</tr>
+<tr>
+<td>二零五</td>
+<td><a href="http://dockone.io/article/8718" target="_blank" rel="noopener">基于OVN的Kubernetes网络架构解析</a></td>
+</tr>
+<tr>
+<td>二零四</td>
+<td><a href="http://dockone.io/article/8695" target="_blank" rel="noopener">小团队微服务落地实践</a></td>
+</tr>
+<tr>
+<td>二零三</td>
+<td><a href="http://dockone.io/article/8622" target="_blank" rel="noopener">骞云科技DevOps实践</a></td>
+</tr>
+<tr>
+<td>二零二</td>
+<td><a href="http://dockone.io/article/8600" target="_blank" rel="noopener">房多多Service Mesh实践</a></td>
+</tr>
+<tr>
+<td>二零一</td>
+<td><a href="http://dockone.io/article/8538" target="_blank" rel="noopener">得到App的容器及Kubernetes实践</a></td>
+</tr>
+<tr>
+<td>二零零</td>
+<td><a href="http://dockone.io/article/8485" target="_blank" rel="noopener">龙腾出行基于Kubernetes的DevOps流水线实战</a></td>
+</tr>
+<tr>
+<td>一九九</td>
+<td><a href="http://dockone.io/article/8472" target="_blank" rel="noopener">如何评估Kubernetes持久化存储方案</a></td>
+</tr>
+<tr>
+<td>一九八</td>
+<td><a href="http://dockone.io/article/8469" target="_blank" rel="noopener">容器网络限流实践</a></td>
+</tr>
+<tr>
+<td>一九七</td>
+<td><a href="http://dockone.io/article/8464" target="_blank" rel="noopener">etcd 集群运维实践</a></td>
+</tr>
+<tr>
+<td>一九六</td>
+<td><a href="http://dockone.io/article/8442" target="_blank" rel="noopener">聚美优品云平台实践</a></td>
+</tr>
+<tr>
+<td>一九五</td>
+<td><a href="http://dockone.io/article/8403" target="_blank" rel="noopener">智融集团基于OpenShift的容器化PaaS平台实践</a></td>
+</tr>
+<tr>
+<td>一九四</td>
+<td><a href="http://dockone.io/article/8384" target="_blank" rel="noopener">猪八戒网DevOps容器云与流水线</a></td>
+</tr>
+<tr>
+<td>一九三</td>
+<td><a href="http://dockone.io/article/8365" target="_blank" rel="noopener">容器化落地实践的一个案例</a></td>
+</tr>
+<tr>
+<td>一九二</td>
+<td><a href="http://dockone.io/article/8353" target="_blank" rel="noopener">360搜索容器云探索与实践</a></td>
+</tr>
+<tr>
+<td>一九〇</td>
+<td><a href="http://dockone.io/article/8329" target="_blank" rel="noopener">Spring Cloud Kubernetes容器化实践</a></td>
+</tr>
+<tr>
+<td>一八九</td>
+<td><a href="http://dockone.io/article/8271" target="_blank" rel="noopener">有赞容器化实践</a></td>
+</tr>
+<tr>
+<td>一八八</td>
+<td><a href="http://dockone.io/article/8257" target="_blank" rel="noopener">唯品会Noah云平台实现内幕披露</a></td>
+</tr>
+<tr>
+<td>一八七</td>
+<td><a href="http://dockone.io/article/8217" target="_blank" rel="noopener">gVisor是什么？可以解决什么问题？</a></td>
+</tr>
+<tr>
+<td>一八六</td>
+<td><a href="http://dockone.io/article/8171" target="_blank" rel="noopener">有货基于Kubernetes容器环境的持续交付实践</a></td>
+</tr>
+<tr>
+<td>一八五</td>
+<td><a href="http://dockone.io/article/8149" target="_blank" rel="noopener">Nepxion Discovery：Spring Cloud灰度发布神器</a></td>
+</tr>
+<tr>
+<td>一八四</td>
+<td><a href="http://dockone.io/article/8139" target="_blank" rel="noopener">基于Spring Cloud的微服务容器化实践</a></td>
+</tr>
+<tr>
+<td>一八三</td>
+<td><a href="http://dockone.io/article/8133" target="_blank" rel="noopener">滴滴弹性云Kubernetes实践</a></td>
+</tr>
+<tr>
+<td>一八二</td>
+<td><a href="http://dockone.io/article/8103" target="_blank" rel="noopener">基于 GitLab 的 CI 实践</a></td>
+</tr>
+<tr>
+<td>一八一</td>
+<td><a href="http://dockone.io/article/7735" target="_blank" rel="noopener">小米弹性调度平台Ocean</a></td>
+</tr>
+<tr>
+<td>一八十</td>
+<td><a href="http://dockone.io/article/7720" target="_blank" rel="noopener">Hulu大规模容器调度系统Capos</a></td>
+</tr>
+<tr>
+<td>一七八</td>
+<td><a href="http://dockone.io/article/6049" target="_blank" rel="noopener">基于Pipeline的CI/CD在趣头条的应用实践</a></td>
+</tr>
+<tr>
+<td>一七七</td>
+<td><a href="http://dockone.io/article/6021" target="_blank" rel="noopener">苏宁容器云基于Kubernetes和Contiv的网络架构技术实现</a></td>
+</tr>
+<tr>
+<td>一七六</td>
+<td><a href="http://dockone.io/article/6020" target="_blank" rel="noopener">海信商业云平台的微服务落地实践</a></td>
+</tr>
+<tr>
+<td>一七五</td>
+<td><a href="http://dockone.io/article/5992" target="_blank" rel="noopener">盘点Kubernetes网络问题的4种解决方案</a></td>
+</tr>
+<tr>
+<td>一七四</td>
+<td><a href="http://dockone.io/article/5803" target="_blank" rel="noopener">腾讯云TSF微服务平台及ServiceMesh技术实践</a></td>
+</tr>
+<tr>
+<td>一七三</td>
+<td><a href="http://dockone.io/article/5716" target="_blank" rel="noopener">全面学习Prometheus</a></td>
+</tr>
+<tr>
+<td>一七二</td>
+<td><a href="http://dockone.io/article/5501" target="_blank" rel="noopener">Kubernetes网络安全之访问控制技术实践</a></td>
+</tr>
+<tr>
+<td>一七一</td>
+<td><a href="http://dockone.io/article/5418" target="_blank" rel="noopener">TalkingData的Spark On Kubernetes实践</a></td>
+</tr>
+<tr>
+<td>一七〇</td>
+<td><a href="http://dockone.io/article/5293" target="_blank" rel="noopener">贝壳找房权限服务的探索和实践</a></td>
+</tr>
+<tr>
+<td>一六九</td>
+<td><a href="http://dockone.io/article/5269" target="_blank" rel="noopener">Helm：强大的Kubernetes包管理工具</a></td>
+</tr>
+<tr>
+<td>一六八</td>
+<td><a href="http://dockone.io/article/5268" target="_blank" rel="noopener">DBaaS在金融生产环境的落地实践</a></td>
+</tr>
+<tr>
+<td>一六六</td>
+<td><a href="http://dockone.io/article/4896" target="_blank" rel="noopener">Kubernetes on DC/OS最佳实践</a></td>
+</tr>
+<tr>
+<td>一六五</td>
+<td><a href="http://dockone.io/article/4892" target="_blank" rel="noopener">为什么Kubernetes天然适合微服务？</a></td>
+</tr>
+<tr>
+<td>一六四</td>
+<td><a href="http://dockone.io/article/4891" target="_blank" rel="noopener">扇贝网微服务编排和治理实践</a></td>
+</tr>
+<tr>
+<td>一六三</td>
+<td><a href="http://dockone.io/article/4645" target="_blank" rel="noopener">Kubernetes官方集群部署工具kubeadm原理解析</a></td>
+</tr>
+<tr>
+<td>一六二</td>
+<td><a href="http://dockone.io/article/4622" target="_blank" rel="noopener">新东方利用容器技术在用户自服务方面的探索</a></td>
+</tr>
+<tr>
+<td>一六一</td>
+<td><a href="http://dockone.io/article/4057" target="_blank" rel="noopener">聊聊Docker监控那点事儿</a></td>
+</tr>
+<tr>
+<td>一六零</td>
+<td><a href="http://dockone.io/article/3601" target="_blank" rel="noopener">基于Kubernetes的DevOps实践之路</a></td>
+</tr>
+<tr>
+<td>一五九</td>
+<td><a href="http://dockone.io/article/3300" target="_blank" rel="noopener">TensorFlow on Kubernetes的架构与实践</a></td>
+</tr>
+<tr>
+<td>一五八</td>
+<td><a href="http://dockone.io/article/3063" target="_blank" rel="noopener">Kubernetes存储系统介绍及机制实现</a></td>
+</tr>
+<tr>
+<td>一五七</td>
+<td><a href="http://dockone.io/article/3041" target="_blank" rel="noopener">一个可供参考的企业应用容器化实践案例</a></td>
+</tr>
+<tr>
+<td>一五六</td>
+<td><a href="http://dockone.io/article/3039" target="_blank" rel="noopener">由浅入深SCF无服务器云函数实践</a></td>
+</tr>
+<tr>
+<td>一五五</td>
+<td><a href="http://dockone.io/article/2992" target="_blank" rel="noopener">分布式配置中心架构与实战</a></td>
+</tr>
+<tr>
+<td>一五四</td>
+<td><a href="http://dockone.io/article/2990" target="_blank" rel="noopener">在项目实践中，如何进行容器化改造和DevOps建设？</a></td>
+</tr>
+<tr>
+<td>一五三</td>
+<td><a href="http://dockone.io/article/2988" target="_blank" rel="noopener">JDOS 2.0：Kubernetes的工业级实践</a></td>
+</tr>
+<tr>
+<td>一五二</td>
+<td><a href="http://dockone.io/article/2973" target="_blank" rel="noopener">东方国信基于Kubernetes构建容器云平台的实践和思考</a></td>
+</tr>
+<tr>
+<td>一五一</td>
+<td><a href="http://dockone.io/article/2965" target="_blank" rel="noopener">Docker在测试中的应用</a></td>
+</tr>
+<tr>
+<td>一五〇</td>
+<td><a href="http://dockone.io/article/2931" target="_blank" rel="noopener">小型公司DevOps落地实践案例</a></td>
+</tr>
+<tr>
+<td>一四九</td>
+<td><a href="http://dockone.io/article/2885" target="_blank" rel="noopener">Kubernetes调度详解</a></td>
+</tr>
+<tr>
+<td>一四八</td>
+<td><a href="http://dockone.io/article/2867" target="_blank" rel="noopener">Kubernetes的多集群管理实践</a></td>
+</tr>
+<tr>
+<td>一四七</td>
+<td><a href="http://dockone.io/article/2845" target="_blank" rel="noopener">瓜子云的任务调度系统</a></td>
+</tr>
+<tr>
+<td>一四六</td>
+<td><a href="http://dockone.io/article/2799" target="_blank" rel="noopener">中小型互联网公司微服务实践之经验和教训</a></td>
+</tr>
+<tr>
+<td>一四五</td>
+<td><a href="http://dockone.io/article/2771" target="_blank" rel="noopener">乐高式微服务化改造</a></td>
+</tr>
+<tr>
+<td>一四四</td>
+<td><a href="http://dockone.io/article/2760" target="_blank" rel="noopener">BizCloud：基于Kubernetes的私有云实践</a></td>
+</tr>
+<tr>
+<td>一四三</td>
+<td><a href="http://dockone.io/article/2733" target="_blank" rel="noopener">FreeWheel基于Kubernetes容器云构建与实践：应用编排与服务质量保证</a></td>
+</tr>
+<tr>
+<td>一四二</td>
+<td><a href="http://dockone.io/article/2730" target="_blank" rel="noopener">容器云在万达的落地经验</a></td>
+</tr>
+<tr>
+<td>一四一</td>
+<td><a href="http://dockone.io/article/2721" target="_blank" rel="noopener">如何开发部署Kubernetes Native应用</a></td>
+</tr>
+<tr>
+<td>一四零</td>
+<td><a href="http://dockone.io/article/2677" target="_blank" rel="noopener">Serverless云函数架构精解</a></td>
+</tr>
+<tr>
+<td>一三九</td>
+<td><a href="http://dockone.io/article/2634" target="_blank" rel="noopener">基于Kubernetes的应用编排实践</a></td>
+</tr>
+<tr>
+<td>一三八</td>
+<td><a href="http://dockone.io/article/2616" target="_blank" rel="noopener">白话Kubernetes网络</a></td>
+</tr>
+<tr>
+<td>一三七</td>
+<td><a href="http://dockone.io/article/2602" target="_blank" rel="noopener">Kubernetes主机和容器的监控方案</a></td>
+</tr>
+<tr>
+<td>一三六</td>
+<td><a href="http://dockone.io/article/2583" target="_blank" rel="noopener">Kubernetes健康检查策略</a></td>
+</tr>
+<tr>
+<td>一三五</td>
+<td><a href="http://dockone.io/article/2575" target="_blank" rel="noopener">求取一份极致的简单：海量应用容器化改造之路</a></td>
+</tr>
+<tr>
+<td>一三四</td>
+<td><a href="http://dockone.io/article/2563" target="_blank" rel="noopener">国内某大型酒店管理集团基于Kubernetes的实践</a></td>
+</tr>
+<tr>
+<td>一三三</td>
+<td><a href="http://dockone.io/article/2529" target="_blank" rel="noopener">深入理解Kubernetes网络策略</a></td>
+</tr>
+<tr>
+<td>一三二</td>
+<td><a href="http://dockone.io/article/2520" target="_blank" rel="noopener">58 赶集基于 Docker的自动化部署实践</a></td>
+</tr>
+<tr>
+<td>一三一</td>
+<td><a href="http://dockone.io/article/2513" target="_blank" rel="noopener">Juice——一种基于MesosFramework的任务云框架</a></td>
+</tr>
+<tr>
+<td>一三零</td>
+<td><a href="http://dockone.io/article/2504" target="_blank" rel="noopener">探究PaaS网络模型设计</a></td>
+</tr>
+<tr>
+<td>一二九</td>
+<td><a href="http://dockone.io/article/2485" target="_blank" rel="noopener">聊聊Service Mesh：linkerd</a></td>
+</tr>
+<tr>
+<td>一二八</td>
+<td><a href="http://dockone.io/article/2476" target="_blank" rel="noopener">容器化部署OpenStack的正确姿势</a></td>
+</tr>
+<tr>
+<td>一二八</td>
+<td><a href="http://dockone.io/article/2468" target="_blank" rel="noopener">容器如何监控？</a></td>
+</tr>
+<tr>
+<td>一二七</td>
+<td><a href="http://dockone.io/article/2447" target="_blank" rel="noopener">Docker的另类用法，就是这么简单粗暴</a></td>
+</tr>
+<tr>
+<td>一二六</td>
+<td><a href="http://dockone.io/article/2446" target="_blank" rel="noopener">Kubernetes在微服务化游戏中的探索实践</a></td>
+</tr>
+<tr>
+<td>一二五</td>
+<td><a href="http://dockone.io/article/2428" target="_blank" rel="noopener">深信服容器云的负载均衡实现</a></td>
+</tr>
+<tr>
+<td>一二四</td>
+<td><a href="http://dockone.io/article/2424" target="_blank" rel="noopener">轻松筹监控系统实现方案</a></td>
+</tr>
+<tr>
+<td>一二三</td>
+<td><a href="http://dockone.io/article/2405" target="_blank" rel="noopener">如何扩展Kubernetes管理的资源对象</a></td>
+</tr>
+<tr>
+<td>一二二</td>
+<td><a href="http://dockone.io/article/2392" target="_blank" rel="noopener">探索Kubernetes的网络原理及方案</a></td>
+</tr>
+<tr>
+<td>一二一</td>
+<td><a href="http://dockone.io/article/2371" target="_blank" rel="noopener">喜马拉雅FM测试环境的Docker化实践案例</a></td>
+</tr>
+<tr>
+<td>一二〇</td>
+<td><a href="http://dockone.io/article/2351" target="_blank" rel="noopener">基于Kubernetes的私有容器云建设实践</a></td>
+</tr>
+<tr>
+<td>一一九</td>
+<td><a href="http://dockone.io/article/2345" target="_blank" rel="noopener">Elastic-Job-Cloud作业云在当当的SRE实践</a></td>
+</tr>
+<tr>
+<td>一一八</td>
+<td><a href="http://dockone.io/article/2335" target="_blank" rel="noopener">容器技术在企业级服务里的实践</a></td>
+</tr>
+<tr>
+<td>一一七</td>
+<td><a href="http://dockone.io/article/2322" target="_blank" rel="noopener">沪江容器化运维实践</a></td>
+</tr>
+<tr>
+<td>一一六</td>
+<td><a href="http://dockone.io/article/2308" target="_blank" rel="noopener">某股份制商业银行定制化PaaS介绍</a></td>
+</tr>
+<tr>
+<td>一一五</td>
+<td><a href="http://dockone.io/article/2261" target="_blank" rel="noopener">基于Neutron的Kubernetes SDN实践经验之谈</a></td>
+</tr>
+<tr>
+<td>一一四</td>
+<td><a href="http://dockone.io/article/2248" target="_blank" rel="noopener">Jenkins在Google Cloud的自动化安装</a></td>
+</tr>
+<tr>
+<td>一一三</td>
+<td><a href="http://dockone.io/article/2227" target="_blank" rel="noopener">从一个实际案例来谈容器落地的问题</a></td>
+</tr>
+<tr>
+<td>一一二</td>
+<td><a href="http://dockone.io/article/2216" target="_blank" rel="noopener">Flannel中vxlan backend的原理和实现</a></td>
+</tr>
+<tr>
+<td>一一一</td>
+<td><a href="http://dockone.io/article/2191" target="_blank" rel="noopener">LAIN 平台远程进入容器功能设计与实现</a></td>
+</tr>
+<tr>
+<td>一一零</td>
+<td><a href="http://dockone.io/article/2180" target="_blank" rel="noopener">Docker在沪江落地的实践</a></td>
+</tr>
+<tr>
+<td>一零九</td>
+<td><a href="http://dockone.io/article/2145" target="_blank" rel="noopener">中小型团队的容器化之路</a></td>
+</tr>
+<tr>
+<td>一零八</td>
+<td><a href="http://dockone.io/article/2114" target="_blank" rel="noopener">基于Jenkins和Kubernetes的CI工作流</a></td>
+</tr>
+<tr>
+<td>一零七</td>
+<td><a href="http://dockone.io/article/2098" target="_blank" rel="noopener">SRE工程实践——基于时间序列存储数据的报警</a></td>
+</tr>
+<tr>
+<td>一零六</td>
+<td><a href="http://dockone.io/article/2077" target="_blank" rel="noopener">乐视云基于Kubernetes的PaaS平台建设</a></td>
+</tr>
+<tr>
+<td>一零五</td>
+<td><a href="http://dockone.io/article/2021" target="_blank" rel="noopener">度量驱动的DevOps转型</a></td>
+</tr>
+<tr>
+<td>一零四</td>
+<td><a href="http://dockone.io/article/2019" target="_blank" rel="noopener">艺龙部署体系的演进</a></td>
+</tr>
+<tr>
+<td>一零三</td>
+<td><a href="http://dockone.io/article/2016" target="_blank" rel="noopener">Kubernetes 有状态集群服务部署与管理</a></td>
+</tr>
+<tr>
+<td>一零二</td>
+<td><a href="http://dockone.io/article/1992" target="_blank" rel="noopener">基于容器的日志管理实践</a></td>
+</tr>
+<tr>
+<td>一零一</td>
+<td><a href="http://dockone.io/article/1976" target="_blank" rel="noopener">构建容器服务平台（CaaS</a></td>
+</tr>
+<tr>
+<td>一零零</td>
+<td><a href="http://dockone.io/article/1971" target="_blank" rel="noopener">构建支持多编排引擎的容器基础设施服务</a></td>
+</tr>
+<tr>
+<td>九十九</td>
+<td><a href="http://dockone.io/article/1925" target="_blank" rel="noopener">海航生态科技舆情大数据平台容器化改造</a></td>
+</tr>
+<tr>
+<td>九十八</td>
+<td><a href="http://dockone.io/article/1902" target="_blank" rel="noopener">Insta360容器化&amp;DevOps之路</a></td>
+</tr>
+<tr>
+<td>九十七</td>
+<td><a href="http://dockone.io/article/1863" target="_blank" rel="noopener">现有系统实施微服务架构改进经验分享</a></td>
+</tr>
+<tr>
+<td>九十六</td>
+<td><a href="http://dockone.io/article/1847" target="_blank" rel="noopener">爱油科技基于SpringCloud的微服务实践</a></td>
+</tr>
+<tr>
+<td>九十五</td>
+<td><a href="http://dockone.io/article/1833" target="_blank" rel="noopener">树莓派上的Docker集群管理</a></td>
+</tr>
+<tr>
+<td>九十四</td>
+<td><a href="http://dockone.io/article/1815" target="_blank" rel="noopener">唯品会基于Kubernetes的网络方案演进</a></td>
+</tr>
+<tr>
+<td>九十三</td>
+<td><a href="http://dockone.io/article/1806" target="_blank" rel="noopener">魅族云Docker实践</a></td>
+</tr>
+<tr>
+<td>九十二</td>
+<td><a href="http://dockone.io/article/1803" target="_blank" rel="noopener">如何使用 Node.js 和 Docker构建高质量的微服务</a></td>
+</tr>
+<tr>
+<td>九十一</td>
+<td><a href="http://dockone.io/article/1798" target="_blank" rel="noopener">打造百亿级数据处理量的弹性调度容器平台</a></td>
+</tr>
+<tr>
+<td>九十</td>
+<td><a href="http://dockone.io/article/1794" target="_blank" rel="noopener">猎豹移动基于CoreOS在AWS上的项目实践</a></td>
+</tr>
+<tr>
+<td>八十九</td>
+<td><a href="http://dockone.io/article/1779" target="_blank" rel="noopener">恒生金融交易系统的Docker化实践</a></td>
+</tr>
+<tr>
+<td>八十八</td>
+<td><a href="http://dockone.io/article/1775" target="_blank" rel="noopener">PPTV聚力传媒的Docker与DevOps</a></td>
+</tr>
+<tr>
+<td>八十七</td>
+<td><a href="http://dockone.io/article/1767" target="_blank" rel="noopener">基于Docker的开发云提高资源利用率的实践</a></td>
+</tr>
+<tr>
+<td>八十六</td>
+<td><a href="http://dockone.io/article/1734" target="_blank" rel="noopener">深入解析DC/OS 1.8——高可靠的微服务及大数据管理平台</a></td>
+</tr>
+<tr>
+<td>八十五</td>
+<td><a href="http://dockone.io/article/1729" target="_blank" rel="noopener">Docker存储方式选型建议</a></td>
+</tr>
+<tr>
+<td>八十四</td>
+<td><a href="http://dockone.io/article/1724" target="_blank" rel="noopener">Docker在B站的实施之路</a></td>
+</tr>
+<tr>
+<td>八十三</td>
+<td><a href="http://dockone.io/article/1713" target="_blank" rel="noopener">Acttao 开发、运维容器化实践</a></td>
+</tr>
+<tr>
+<td>八十二</td>
+<td><a href="http://dockone.io/article/1704" target="_blank" rel="noopener">基于Docker技术的CI&amp;CD实践</a></td>
+</tr>
+<tr>
+<td>八十一</td>
+<td><a href="http://dockone.io/article/1691" target="_blank" rel="noopener">唯品会数据库备份恢复容器化项目实践经验总结</a></td>
+</tr>
+<tr>
+<td>八十</td>
+<td><a href="http://dockone.io/article/1687" target="_blank" rel="noopener">云计算应用技术发展与企业异构资源池统一管理案例分析</a></td>
+</tr>
+<tr>
+<td>七十九</td>
+<td><a href="http://dockone.io/article/1658" target="_blank" rel="noopener">基于容器技术构建企业级PaaS云平台实践</a></td>
+</tr>
+<tr>
+<td>七十八</td>
+<td><a href="http://dockone.io/article/1651" target="_blank" rel="noopener">中英人寿保险有限公司基于容器技术的实践分享</a></td>
+</tr>
+<tr>
+<td>七十七</td>
+<td><a href="http://dockone.io/article/1640" target="_blank" rel="noopener">用Harbor实现容器镜像仓库的管理和运维</a></td>
+</tr>
+<tr>
+<td>七十六</td>
+<td><a href="http://dockone.io/article/1636" target="_blank" rel="noopener">容器化ICT融合初体验</a></td>
+</tr>
+<tr>
+<td>七十五</td>
+<td><a href="http://dockone.io/article/1616" target="_blank" rel="noopener">应用容器化之Kubernetes实践</a></td>
+</tr>
+<tr>
+<td>七十四</td>
+<td><a href="http://dockone.io/article/1610" target="_blank" rel="noopener">传统金融 IT 对混合云管理的一些思考</a></td>
+</tr>
+<tr>
+<td>七十三</td>
+<td><a href="http://dockone.io/article/1601" target="_blank" rel="noopener">SAP Anywhere产品背后CD的实现</a></td>
+</tr>
+<tr>
+<td>七十二</td>
+<td><a href="http://dockone.io/article/1600" target="_blank" rel="noopener">Kubernetes容器集群中的日志系统集成实践</a></td>
+</tr>
+<tr>
+<td>七十一</td>
+<td><a href="http://dockone.io/article/1582" target="_blank" rel="noopener">基于Docker的负载均衡和服务发现</a></td>
+</tr>
+<tr>
+<td>七十</td>
+<td><a href="http://dockone.io/article/1573" target="_blank" rel="noopener">浅谈Docker安全合规建设</a></td>
+</tr>
+<tr>
+<td>六十九</td>
+<td><a href="http://dockone.io/article/1553" target="_blank" rel="noopener">微服务选型之Modern Node.js</a></td>
+</tr>
+<tr>
+<td>六十八</td>
+<td><a href="http://dockone.io/article/1541" target="_blank" rel="noopener">应用容器env化实战</a></td>
+</tr>
+<tr>
+<td>六十七</td>
+<td><a href="http://dockone.io/article/1518" target="_blank" rel="noopener">互联网场景下闪存优化测试和应用</a></td>
+</tr>
+<tr>
+<td>六十六</td>
+<td><a href="http://dockone.io/article/1489" target="_blank" rel="noopener">Docker 网络方案初探</a></td>
+</tr>
+<tr>
+<td>六十五</td>
+<td><a href="http://dockone.io/article/1476" target="_blank" rel="noopener">公有云上的容器实践分享</a></td>
+</tr>
+<tr>
+<td>六十四</td>
+<td><a href="http://dockone.io/article/1445" target="_blank" rel="noopener">基于Docker实现DevOps的一些探索</a></td>
+</tr>
+<tr>
+<td>六十三</td>
+<td><a href="http://dockone.io/article/1397" target="_blank" rel="noopener">传统企业PaaS平台功能设计与业务上云思考</a></td>
+</tr>
+<tr>
+<td>六十二</td>
+<td><a href="http://dockone.io/article/1355" target="_blank" rel="noopener">站在运维的角度讲如何打造一个Docker-Mesos平台</a></td>
+</tr>
+<tr>
+<td>六十一</td>
+<td><a href="http://dockone.io/article/1347" target="_blank" rel="noopener">虚拟化老兵介绍虚拟化技术</a></td>
+</tr>
+<tr>
+<td>六十</td>
+<td><a href="http://dockone.io/article/1326" target="_blank" rel="noopener">容器的配置管理</a></td>
+</tr>
+<tr>
+<td>五十九</td>
+<td><a href="http://dockone.io/article/1289" target="_blank" rel="noopener">基于Docker的分布式服务研发实践</a></td>
+</tr>
+<tr>
+<td>五十八</td>
+<td><a href="http://dockone.io/article/1267" target="_blank" rel="noopener">基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系之大二层网络</a></td>
+</tr>
+<tr>
+<td>五十七</td>
+<td><a href="http://dockone.io/article/1257" target="_blank" rel="noopener">Docker容器对存储的定义（Volume 与 Volume Plugin</a></td>
+</tr>
+<tr>
+<td>五十六</td>
+<td><a href="http://dockone.io/article/1253" target="_blank" rel="noopener">Kubernetes代码贡献者谈Kubernetes的发展动态</a></td>
+</tr>
+<tr>
+<td>五十五</td>
+<td><a href="http://dockone.io/article/1232" target="_blank" rel="noopener">阿里云容器服务设计实践</a></td>
+</tr>
+<tr>
+<td>五十四</td>
+<td><a href="http://dockone.io/article/1213" target="_blank" rel="noopener">双模IT给你的企业装上双引擎</a></td>
+</tr>
+<tr>
+<td>五十三</td>
+<td><a href="http://dockone.io/article/1195" target="_blank" rel="noopener">搜狐基于Docker+Kubernetes的一站式运维管理实践</a></td>
+</tr>
+<tr>
+<td>五十二</td>
+<td><a href="http://dockone.io/article/1182" target="_blank" rel="noopener">DCOS中监控和弹性伸缩方案经验分享</a></td>
+</tr>
+<tr>
+<td>五十一</td>
+<td><a href="http://dockone.io/article/1172" target="_blank" rel="noopener">基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系</a></td>
+</tr>
+<tr>
+<td>五十</td>
+<td><a href="http://dockone.io/article/1169" target="_blank" rel="noopener">太保DCOS平台——微信项目实践</a></td>
+</tr>
+<tr>
+<td>四十九</td>
+<td><a href="http://dockone.io/article/1137" target="_blank" rel="noopener">Kubernetes集成外部服务实践</a></td>
+</tr>
+<tr>
+<td>四十八</td>
+<td><a href="http://dockone.io/article/1106" target="_blank" rel="noopener">微博的MySQL数据库优化实践经验</a></td>
+</tr>
+<tr>
+<td>四十七</td>
+<td><a href="http://dockone.io/article/1091" target="_blank" rel="noopener">Docker在乐视的实践之路</a></td>
+</tr>
+<tr>
+<td>四十六</td>
+<td><a href="http://dockone.io/article/1044" target="_blank" rel="noopener">一个关于不可变基础设施的实践案例</a></td>
+</tr>
+<tr>
+<td>四十五</td>
+<td><a href="http://dockone.io/article/1017" target="_blank" rel="noopener">基于Docker搭建轻量的私有构建环境</a></td>
+</tr>
+<tr>
+<td>四十四</td>
+<td><a href="http://dockone.io/article/996" target="_blank" rel="noopener">IT基础架构的自动化编排</a></td>
+</tr>
+<tr>
+<td>四十三</td>
+<td><a href="http://dockone.io/article/982" target="_blank" rel="noopener">基于OVS的Docker多主机互联设计和实践</a></td>
+</tr>
+<tr>
+<td>四十二</td>
+<td><a href="http://dockone.io/article/958" target="_blank" rel="noopener">关于混合云的一点思考</a></td>
+</tr>
+<tr>
+<td>四十一</td>
+<td><a href="http://dockone.io/article/942" target="_blank" rel="noopener">思源基于Docker和OpenStack的私有云平台实践</a></td>
+</tr>
+<tr>
+<td>四十</td>
+<td><a href="http://dockone.io/article/930" target="_blank" rel="noopener">用Docker和Git搭建在线开发环境</a></td>
+</tr>
+<tr>
+<td>三十九</td>
+<td><a href="http://dockone.io/article/916" target="_blank" rel="noopener">基于Docker和Git的持续集成工作流</a></td>
+</tr>
+<tr>
+<td>三十八</td>
+<td><a href="http://dockone.io/article/904" target="_blank" rel="noopener">容器服务如何在企业客户落地？Rancher解决之道分享。</a></td>
+</tr>
+<tr>
+<td>三十七</td>
+<td><a href="http://dockone.io/article/883" target="_blank" rel="noopener">玩转Docker镜像和镜像构建</a></td>
+</tr>
+<tr>
+<td>三十六</td>
+<td><a href="http://dockone.io/article/869" target="_blank" rel="noopener">基于Mesos，面向业务企业级云平台的实战分享</a></td>
+</tr>
+<tr>
+<td>三十五</td>
+<td><a href="http://dockone.io/article/860" target="_blank" rel="noopener">微服务架构云端应用</a></td>
+</tr>
+<tr>
+<td>三十四</td>
+<td><a href="http://dockone.io/article/852" target="_blank" rel="noopener">搭建企业私有Docker Registry实战分享</a></td>
+</tr>
+<tr>
+<td>三十三</td>
+<td><a href="http://dockone.io/article/831" target="_blank" rel="noopener">接触AWS近5年，谈谈我的运维经验</a></td>
+</tr>
+<tr>
+<td>三十二</td>
+<td><a href="http://dockone.io/article/812" target="_blank" rel="noopener"> 一篇文章带你了解Cloud Native</a></td>
+</tr>
+<tr>
+<td>三十一</td>
+<td><a href="http://dockone.io/article/801" target="_blank" rel="noopener">细节｜谈谈CoreOS的etcd</a></td>
+</tr>
+<tr>
+<td>三十</td>
+<td><a href="http://dockone.io/article/799" target="_blank" rel="noopener">Docker1.9新特性解读</a></td>
+</tr>
+<tr>
+<td>二十九</td>
+<td><a href="http://dockone.io/article/795" target="_blank" rel="noopener">蘑菇街基于Docker的私有云实践</a></td>
+</tr>
+<tr>
+<td>二十八</td>
+<td><a href="http://dockone.io/article/776" target="_blank" rel="noopener">OCI标准和runC原理解读</a></td>
+</tr>
+<tr>
+<td>二十七</td>
+<td><a href="http://dockone.io/article/753" target="_blank" rel="noopener">中兴软创（ZTEsoft基于Jenkins和Docker的CI实践</a></td>
+</tr>
+<tr>
+<td>二十六</td>
+<td><a href="http://dockone.io/article/747" target="_blank" rel="noopener">Docker Registry V1 to V2</a></td>
+</tr>
+<tr>
+<td>二十五</td>
+<td><a href="http://dockone.io/article/740" target="_blank" rel="noopener">企业级云平台的实践和思考</a></td>
+</tr>
+<tr>
+<td>二十四</td>
+<td><a href="http://dockone.io/article/722" target="_blank" rel="noopener">容器和IaaS：谁动了谁的奶酪</a></td>
+</tr>
+<tr>
+<td>二十三</td>
+<td><a href="http://dockone.io/article/718" target="_blank" rel="noopener">暴走漫画的Docker实践</a></td>
+</tr>
+<tr>
+<td>二十二</td>
+<td><a href="http://dockone.io/article/700" target="_blank" rel="noopener">基于Docker和Java的持续集成实践</a></td>
+</tr>
+<tr>
+<td>二十一</td>
+<td><a href="http://dockone.io/article/675" target="_blank" rel="noopener">Mesos在去哪儿网的应用</a></td>
+</tr>
+<tr>
+<td>二十</td>
+<td><a href="http://dockone.io/article/662" target="_blank" rel="noopener">Docker三剑客之Swarm介绍</a></td>
+</tr>
+<tr>
+<td>十九</td>
+<td><a href="http://dockone.io/article/635" target="_blank" rel="noopener">畅谈PaaS</a></td>
+</tr>
+<tr>
+<td>十八</td>
+<td><a href="http://dockone.io/article/618" target="_blank" rel="noopener">一篇文章带你了解Flannel</a></td>
+</tr>
+<tr>
+<td>十七</td>
+<td><a href="http://dockone.io/article/600" target="_blank" rel="noopener">360的容器化之路</a></td>
+</tr>
+<tr>
+<td>十六</td>
+<td><a href="http://dockone.io/article/578" target="_blank" rel="noopener">闲谈Kubernetes的主要特性和经验分享</a></td>
+</tr>
+<tr>
+<td>十五</td>
+<td><a href="http://dockone.io/article/563" target="_blank" rel="noopener">如何在裸机中自动安装部署CoreOS和Kubernetes</a></td>
+</tr>
+<tr>
+<td>十四</td>
+<td><a href="http://dockone.io/article/537" target="_blank" rel="noopener">腾讯蓝鲸数据平台之告警系统</a></td>
+</tr>
+<tr>
+<td>十三</td>
+<td><a href="http://dockone.io/article/519" target="_blank" rel="noopener">十个问题带你了解WindowsDocker</a></td>
+</tr>
+<tr>
+<td>十二</td>
+<td><a href="http://dockone.io/article/505" target="_blank" rel="noopener">新浪是如何分析处理32亿条实时日志的？</a></td>
+</tr>
+<tr>
+<td>十一</td>
+<td><a href="http://dockone.io/article/487" target="_blank" rel="noopener">DockerCon 见闻</a></td>
+</tr>
+<tr>
+<td>十</td>
+<td><a href="http://dockone.io/article/478" target="_blank" rel="noopener">跨主机的 –link</a></td>
+</tr>
+<tr>
+<td>九</td>
+<td><a href="http://dockone.io/article/470" target="_blank" rel="noopener">持续集成和”云”</a></td>
+</tr>
+<tr>
+<td>八</td>
+<td><a href="http://dockone.io/article/445" target="_blank" rel="noopener">OpenStack Magnum社区及项目介绍</a></td>
+</tr>
+<tr>
+<td>七</td>
+<td><a href="http://dockone.io/article/425" target="_blank" rel="noopener">基于Hypervisor的Docker引擎——Hyper</a></td>
+</tr>
+<tr>
+<td>六</td>
+<td><a href="http://dockone.io/article/416" target="_blank" rel="noopener">新浪SCE Docker最佳实践</a></td>
+</tr>
+<tr>
+<td>五</td>
+<td><a href="http://dockone.io/article/402" target="_blank" rel="noopener">Docker网络详解及Libnetwork前瞻</a></td>
+</tr>
+<tr>
+<td>四</td>
+<td><a href="http://dockone.io/article/383" target="_blank" rel="noopener">AppC和Docker的对比</a></td>
+</tr>
+<tr>
+<td>三</td>
+<td><a href="http://dockone.io/article/375" target="_blank" rel="noopener">Docker Registry的定制和性能分析</a></td>
+</tr>
+<tr>
+<td>二</td>
+<td><a href="http://dockone.io/article/355" target="_blank" rel="noopener">集群规模下日志处理和网络方案</a></td>
+</tr>
+<tr>
+<td>一</td>
+<td><a href="http://dockone.io/article/346" target="_blank" rel="noopener">Dockerfile与Docker构建流程解读</a></td>
+</tr>
+</tbody>
+</table>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/dockone-post-index-archives.html" title="DockOne 社群分享汇总">https://blog.502.li/archives/dockone-post-index-archives.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/kubernetes/" rel="tag"><i class="fa fa-tag"></i> kubernetes</a>
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
+            <a href="/tags/分享/" rel="tag"><i class="fa fa-tag"></i> 分享</a>
+            <a href="/tags/DockOne-微信分享汇总/" rel="tag"><i class="fa fa-tag"></i> DockOne 微信分享汇总</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#README"><span class="nav-number">1.</span> <span class="nav-text">README</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#社群分享汇总列表"><span class="nav-number">2.</span> <span class="nav-text">社群分享汇总列表</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/dockone-post-index-archives.html";
+    this.page.identifier = "archives/dockone-post-index-archives.html";
+    this.page.title = 'DockOne 社群分享汇总';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

@@ -73,8 +73,8 @@ EFF 电子前哨基金会成立并宣布帮助史蒂夫·杰克起诉美国特�
 
 #### 介绍
 
-- 英文 Deleting Online Predators Act of 2006
-- 中文 删除在线侵犯者法案
+- 英文：Deleting Online Predators Act of 2006
+- 中文：删除在线侵犯者法案
 - [法案详情](https://www.govtrack.us/congress/bills/110/hr1120/text)
 - [维基百科]( https://en.wikipedia.org/wiki/Deleting_Online_Predators_Act_of_2006 )
 
@@ -212,6 +212,8 @@ EFF is offering an [online form for citizens to write](http://action.eff.org/sit
 > 2007年1月4日，美国地区法院法官[杰克·韦恩斯坦](https://zh.wikipedia.org/w/index.php?title=杰克·韦恩斯坦&action=edit&redlink=1)（Jack B. Weinstein）发出了一则[禁制令](https://zh.wikipedia.org/wiki/禁制令)，禁止[精神医疗幸存者运动](https://zh.wikipedia.org/w/index.php?title=精神医疗幸存者运动&action=edit&redlink=1)的大量社会活动家在网站上发布[礼来公司](https://zh.wikipedia.org/wiki/礼来公司)刻意隐瞒[奥氮平](https://zh.wikipedia.org/wiki/奥氮平)致命[副作用](https://zh.wikipedia.org/wiki/副作用)的泄密文件。[电子前哨基金会](https://zh.wikipedia.org/wiki/电子前哨基金会)对此提起[上诉](https://zh.wikipedia.org/wiki/上訴)，认为法院的行为属于[预先审查](https://zh.wikipedia.org/wiki/預先審查)（prior restraint），侵犯了公民发布链接和文档的权利。基金会认为，公民记者应该享有和主流媒体一样的《第一修正案》权利保障。[[86\]](https://zh.wikipedia.org/wiki/美国网络审查#cite_note-86)随后的法庭审理中，虽然对《第一修正案》权利的主张被驳回了，但法院认为之前禁令是不可行的。[[87\]](https://zh.wikipedia.org/wiki/美国网络审查#cite_note-87) 
 >
 > 此处引用维基百科[]()
+
+### 
 
 ## 参考
 
