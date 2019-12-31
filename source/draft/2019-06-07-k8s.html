@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="#  k8s by kubeadm```1```date: 2019-05-17 1234```bash10.10.107.234  k8s-master10.10.107.235  k8s-node110.10.107.236  k8s-node2 1234```bashhostnamectl set-hostname k8s-master# 需要在每台机器上都要设置相应主机名123456```">
+<meta property="og:type" content="website">
+<meta property="og:title" content="木子">
+<meta property="og:url" content="https://blog.502.li/source/draft/2019-06-07-k8s.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="#  k8s by kubeadm```1```date: 2019-05-17 1234```bash10.10.107.234  k8s-master10.10.107.235  k8s-node110.10.107.236  k8s-node2 1234```bashhostnamectl set-hostname k8s-master# 需要在每台机器上都要设置相应主机名123456```">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-31T12:36:11.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="木子">
+<meta name="twitter:description" content="#  k8s by kubeadm```1```date: 2019-05-17 1234```bash10.10.107.234  k8s-master10.10.107.235  k8s-node110.10.107.236  k8s-node2 1234```bashhostnamectl set-hostname k8s-master# 需要在每台机器上都要设置相应主机名123456```">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/source/draft/2019-06-07-k8s">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title> | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+    <div class="post-block page">
+      <header class="post-header">
+<h2 class="post-title" itemprop="name headline">
+</h2>
+<div class="post-meta">
+  <ul class="breadcrumb">
+            <li><a href="/source/">SOURCE</a></li>
+            <li><a href="/source/draft/">DRAFT</a></li>
+            <li>2019-06-07-K8S</li>
+  </ul>
+</div>
+</header>
+      <div class="post-body">
+          <p>#</p>
+<hr>
+<figure class="highlight plain"><figcaption><span>k8s by kubeadm```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```date: 2019-05-17</span><br></pre></td></tr></table></figure>
+<h4 id><a href="#" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">10.10.107.234  k8s-master</span><br><span class="line">10.10.107.235  k8s-node1</span><br><span class="line">10.10.107.236  k8s-node2</span><br></pre></td></tr></table></figure></h4><hr>
+<h4 id="-1"><a href="#-1" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```bash</span><br><span class="line">hostnamectl set-hostname k8s-master</span><br><span class="line"># 需要在每台机器上都要设置相应主机名</span><br></pre></td></tr></table></figure></h4><h4 id="-2"><a href="#-2" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">cat &gt;&gt; /etc/hosts &lt;&lt;EOF</span><br><span class="line">10.10.107.234  k8s-master</span><br><span class="line">10.10.107.235  k8s-node1</span><br><span class="line">10.10.107.236  k8s-node2</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></h4><h4 id="-3"><a href="#-3" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```bash</span><br><span class="line">swapoff -a</span><br><span class="line">sed -i &apos;/ swap / s/^\(.*\)$/#\1/g&apos; /etc/fstab</span><br><span class="line">setenforce 0</span><br><span class="line"># sed -i &apos;s/^SELINUX=enforcing$/SELINUX= disabled/&apos; /etc/selinux/config</span><br></pre></td></tr></table></figure></h4><h4 id="-4"><a href="#-4" class="headerlink" title></a><figure class="highlight plain"><figcaption><span>docker 用户```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```bash</span><br><span class="line">useradd -m docker</span><br></pre></td></tr></table></figure></h4><h4 id="-5"><a href="#-5" class="headerlink" title></a><figure class="highlight plain"><figcaption><span>ssh 登录其它节点```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```bash</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id root@k8s-master</span><br><span class="line">ssh-copy-id root@k8s-node1</span><br><span class="line">ssh-copy-id root@k8s-node2</span><br></pre></td></tr></table></figure></h4><h4 id="-6"><a href="#-6" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">cat &gt; /etc/sysctl.d/99-kubernetes-cri.conf &lt;&lt;EOF</span><br><span class="line">net.bridge.bridge-nf-call-iptables  = 1</span><br><span class="line">enet.ipv4.ip_forward                = 1</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">EOF</span><br><span class="line">sysctl --system</span><br></pre></td></tr></table></figure></h4><h4 id="优化内核参数"><a href="#优化内核参数" class="headerlink" title="优化内核参数"></a>优化内核参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; kubernetes.conf &lt;&lt;EOF</span><br><span class="line">net.bridge.bridge-nf-call-iptables=1</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables=1</span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line">net.ipv4.tcp_tw_recycle=0</span><br><span class="line"><span class="comment"># 禁止使用 swap 空间，只有当系统 OOM 时才允许使用它</span></span><br><span class="line">vm.swappiness=0 </span><br><span class="line"><span class="comment"># 不检查物理内存是否够用</span></span><br><span class="line">vm.overcommit_memory=1 </span><br><span class="line"><span class="comment"># 开启 OOM</span></span><br><span class="line">vm.panic_on_oom=0 </span><br><span class="line">fs.inotify.max_user_instances=8192</span><br><span class="line">fs.inotify.max_user_watches=1048576</span><br><span class="line">fs.file-max=52706963</span><br><span class="line">fs.nr_open=52706963</span><br><span class="line">net.ipv6.conf.all.disable_ipv6=1</span><br><span class="line">net.netfilter.nf_conntrack_max=2310720</span><br><span class="line">EOF</span><br><span class="line">cp kubernetes.conf  /etc/sysctl.d/kubernetes.conf</span><br><span class="line">sysctl -p /etc/sysctl.d/kubernetes.conf</span><br></pre></td></tr></table></figure>
+<h4 id="-7"><a href="#-7" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">yum install -y epel-release</span><br><span class="line">#ipvs 依赖 ipset ,ntp 保证各机器系统时间同步</span><br><span class="line">yum install -y conntrack ntpdate ntp ipvsadm ipset jq iptables curl sysstat libseccomp wget</span><br><span class="line">#devicemapper存储驱动依赖 device-mapper-persistent-data 和 lvm2</span><br><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></h4><h4 id="-8"><a href="#-8" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line"># 在每台机器上关闭防火墙，清理防火墙规则，设置默认转发策略</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">iptables -F &amp;&amp; iptables -X &amp;&amp; iptables -F -t nat &amp;&amp; iptables -X -t nat</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br></pre></td></tr></table></figure></h4><h4 id="-9"><a href="#-9" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line"># 调整系统 TimeZone</span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line"># 将当前的 UTC 时间写入硬件时钟</span><br><span class="line">timedatectl set-local-rtc 0</span><br><span class="line"># 重启依赖于系统时间的服务</span><br><span class="line">systemctl restart rsyslog </span><br><span class="line">systemctl restart crond</span><br></pre></td></tr></table></figure></h4><h4 id="-10"><a href="#-10" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```bash</span><br><span class="line">systemctl stop postfix &amp;&amp; systemctl disable postfix</span><br></pre></td></tr></table></figure></h4><h4 id="-11"><a href="#-11" class="headerlink" title></a><figure class="highlight plain"><figcaption><span>rsyslogd 和 systemd journald```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">journald 默认将日志转发给 rsyslog，这会导致日志写了多份，/var/log/messages 中包含了太多无关日志，不方便后续查看，同时也影响系统性能。</span><br><span class="line">```bash</span><br><span class="line">mkdir /var/log/journal # 持久化保存日志的目录</span><br><span class="line">mkdir /etc/systemd/journald.conf.d</span><br><span class="line">cat &gt; /etc/systemd/journald.conf.d/99-prophet.conf &lt;&lt;EOF</span><br><span class="line">[Journal]</span><br><span class="line"># 持久化保存到磁盘</span><br><span class="line">Storage=persistent</span><br><span class="line"></span><br><span class="line"># 压缩历史日志</span><br><span class="line">Compress=yes</span><br><span class="line"></span><br><span class="line">SyncIntervalSec=5m</span><br><span class="line">RateLimitInterval=30s</span><br><span class="line">RateLimitBurst=1000</span><br><span class="line"></span><br><span class="line"># 最大占用空间 10G</span><br><span class="line">SystemMaxUse=10G</span><br><span class="line"></span><br><span class="line"># 单日志文件最大 200M</span><br><span class="line">SystemMaxFileSize=200M</span><br><span class="line"></span><br><span class="line"># 日志保存时间 2 周</span><br><span class="line">MaxRetentionSec=2week</span><br><span class="line"></span><br><span class="line"># 不将日志转发到 syslog</span><br><span class="line">ForwardToSyslog=no</span><br><span class="line">EOF</span><br><span class="line">systemctl restart systemd-journald</span><br></pre></td></tr></table></figure></h4><h4 id="-12"><a href="#-12" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">mkdir -p  /opt/k8s/&#123;bin,work&#125; /etc/&#123;kubernetes,etcd&#125;/cert</span><br></pre></td></tr></table></figure></h4><h4 id="-13"><a href="#-13" class="headerlink" title></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">#!/usr/bin/bash</span><br><span class="line"># 生成 EncryptionConfig 所需的加密 key</span><br><span class="line">export ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)</span><br><span class="line"></span><br><span class="line"># 集群各机器 IP 数组</span><br><span class="line">export NODE_IPS=(10.10.107.234 10.10.107.235 10.10.107.236)</span><br><span class="line"></span><br><span class="line"># 集群各 IP 对应的主机名数组</span><br><span class="line">export NODE_NAMES=(zhangjun-k8s01 zhangjun-k8s02 zhangjun-k8s03)</span><br><span class="line"></span><br><span class="line"># etcd 集群服务地址列表</span><br><span class="line">export ETCD_ENDPOINTS=&quot;https://172.27.137.240:2379,https://172.27.137.239:2379,https://172.27.137.238:2379&quot;</span><br><span class="line"></span><br><span class="line"># etcd 集群间通信的 IP 和端口</span><br><span class="line">export ETCD_NODES=&quot;zhangjun-k8s01=https://172.27.137.240:2380,zhangjun-k8s02=https://172.27.137.239:2380,zhangjun-k8s03=https://172.27.137.238:2380&quot;</span><br><span class="line"></span><br><span class="line"># kube-apiserver 的反向代理(kube-nginx)地址端口</span><br><span class="line">export KUBE_APISERVER=&quot;https://127.0.0.1:8443&quot;</span><br><span class="line"></span><br><span class="line"># 节点间互联网络接口名称</span><br><span class="line">export IFACE=&quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># etcd 数据目录</span><br><span class="line">export ETCD_DATA_DIR=&quot;/data/k8s/etcd/data&quot;</span><br><span class="line"></span><br><span class="line"># etcd WAL 目录，建议是 SSD 磁盘分区，或者和 ETCD_DATA_DIR 不同的磁盘分区</span><br><span class="line">export ETCD_WAL_DIR=&quot;/data/k8s/etcd/wal&quot;</span><br><span class="line"></span><br><span class="line"># k8s 各组件数据目录</span><br><span class="line">export K8S_DIR=&quot;/data/k8s/k8s&quot;</span><br><span class="line"></span><br><span class="line"># docker 数据目录</span><br><span class="line">export DOCKER_DIR=&quot;/data/k8s/docker&quot;</span><br><span class="line"></span><br><span class="line">## 以下参数一般不需要修改</span><br><span class="line"></span><br><span class="line"># TLS Bootstrapping 使用的 Token，可以使用命令 head -c 16 /dev/urandom | od -An -t x | tr -d &apos; &apos; 生成</span><br><span class="line">BOOTSTRAP_TOKEN=&quot;41f7e4ba8b7be874fcff18bf5cf41a7c&quot;</span><br><span class="line"></span><br><span class="line"># 最好使用 当前未用的网段 来定义服务网段和 Pod 网段</span><br><span class="line"></span><br><span class="line"># 服务网段，部署前路由不可达，部署后集群内路由可达(kube-proxy 保证)</span><br><span class="line">SERVICE_CIDR=&quot;10.254.0.0/16&quot;</span><br><span class="line"></span><br><span class="line"># Pod 网段，建议 /16 段地址，部署前路由不可达，部署后集群内路由可达(flanneld 保证)</span><br><span class="line">CLUSTER_CIDR=&quot;172.30.0.0/16&quot;</span><br><span class="line"></span><br><span class="line"># 服务端口范围 (NodePort Range)</span><br><span class="line">export NODE_PORT_RANGE=&quot;30000-32767&quot;</span><br><span class="line"></span><br><span class="line"># flanneld 网络配置前缀</span><br><span class="line">export FLANNEL_ETCD_PREFIX=&quot;/kubernetes/network&quot;</span><br><span class="line"></span><br><span class="line"># kubernetes 服务 IP (一般是 SERVICE_CIDR 中第一个IP)</span><br><span class="line">export CLUSTER_KUBERNETES_SVC_IP=&quot;10.254.0.1&quot;</span><br><span class="line"></span><br><span class="line"># 集群 DNS 服务 IP (从 SERVICE_CIDR 中预分配)</span><br><span class="line">export CLUSTER_DNS_SVC_IP=&quot;10.254.0.2&quot;</span><br><span class="line"></span><br><span class="line"># 集群 DNS 域名（末尾不带点号）</span><br><span class="line">export CLUSTER_DNS_DOMAIN=&quot;cluster.local&quot;</span><br><span class="line"></span><br><span class="line"># 将二进制目录 /opt/k8s/bin 加到 PATH 中</span><br><span class="line">export PATH=/opt/k8s/bin:$PATH</span><br></pre></td></tr></table></figure></h4>
+      </div>
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/source/">SOURCE</a></li>
+            <li><a href="/source/draft/">DRAFT</a></li>
+            <li>2019-06-07-K8S</li>
+  </ul>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1234```bash10.10.107.234  k8s-master10.10.107.235  k8s-node110.10.107.236  k8s-node2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text">1234```bashhostnamectl set-hostname k8s-master# 需要在每台机器上都要设置相应主机名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-2"><span class="nav-number">3.</span> <span class="nav-text">123456```bashcat &gt;&gt; /etc/hosts &lt;&lt;EOF10.10.107.234  k8s-master10.10.107.235  k8s-node110.10.107.236  k8s-node2EOF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-3"><span class="nav-number">4.</span> <span class="nav-text">123456```bashswapoff -ased -i &#39;/ swap / s/^\(.*\)$/#\1/g&#39; /etc/fstabsetenforce 0# sed -i &#39;s/^SELINUX=enforcing$/SELINUX= disabled/&#39; /etc/selinux/config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-4"><span class="nav-number">5.</span> <span class="nav-text">docker 用户```123```bashuseradd -m docker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-5"><span class="nav-number">6.</span> <span class="nav-text">ssh 登录其它节点```123456```bashssh-keygen -t rsassh-copy-id root@k8s-masterssh-copy-id root@k8s-node1ssh-copy-id root@k8s-node2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-6"><span class="nav-number">7.</span> <span class="nav-text">1234567```bashcat &gt; /etc/sysctl.d/99-kubernetes-cri.conf &lt;&lt;EOFnet.bridge.bridge-nf-call-iptables  = 1enet.ipv4.ip_forward                = 1net.bridge.bridge-nf-call-ip6tables = 1EOFsysctl --system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化内核参数"><span class="nav-number">8.</span> <span class="nav-text">优化内核参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-7"><span class="nav-number">9.</span> <span class="nav-text">123456```bashyum install -y epel-release#ipvs 依赖 ipset ,ntp 保证各机器系统时间同步yum install -y conntrack ntpdate ntp ipvsadm ipset jq iptables curl sysstat libseccomp wget#devicemapper存储驱动依赖 device-mapper-persistent-data 和 lvm2yum install -y yum-utils device-mapper-persistent-data lvm2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-8"><span class="nav-number">10.</span> <span class="nav-text">123456```bash# 在每台机器上关闭防火墙，清理防火墙规则，设置默认转发策略systemctl stop firewalldsystemctl disable firewalldiptables -F &amp;&amp; iptables -X &amp;&amp; iptables -F -t nat &amp;&amp; iptables -X -t natiptables -P FORWARD ACCEPT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-9"><span class="nav-number">11.</span> <span class="nav-text">12345678```bash# 调整系统 TimeZonetimedatectl set-timezone Asia/Shanghai# 将当前的 UTC 时间写入硬件时钟timedatectl set-local-rtc 0# 重启依赖于系统时间的服务systemctl restart rsyslog systemctl restart crond</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-10"><span class="nav-number">12.</span> <span class="nav-text">12```bashsystemctl stop postfix &amp;&amp; systemctl disable postfix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-11"><span class="nav-number">13.</span> <span class="nav-text">rsyslogd 和 systemd journald```1234567891011121314151617181920212223242526272829journald 默认将日志转发给 rsyslog，这会导致日志写了多份，/var/log/messages 中包含了太多无关日志，不方便后续查看，同时也影响系统性能。```bashmkdir /var/log/journal # 持久化保存日志的目录mkdir /etc/systemd/journald.conf.dcat &gt; /etc/systemd/journald.conf.d/99-prophet.conf &lt;&lt;EOF[Journal]# 持久化保存到磁盘Storage=persistent# 压缩历史日志Compress=yesSyncIntervalSec=5mRateLimitInterval=30sRateLimitBurst=1000# 最大占用空间 10GSystemMaxUse=10G# 单日志文件最大 200MSystemMaxFileSize=200M# 日志保存时间 2 周MaxRetentionSec=2week# 不将日志转发到 syslogForwardToSyslog=noEOFsystemctl restart systemd-journald</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-12"><span class="nav-number">14.</span> <span class="nav-text">12```mkdir -p  /opt/k8s/{bin,work} /etc/{kubernetes,etcd}/cert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-13"><span class="nav-number">15.</span> <span class="nav-text">1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465```#!/usr/bin/bash# 生成 EncryptionConfig 所需的加密 keyexport ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)# 集群各机器 IP 数组export NODE_IPS=(10.10.107.234 10.10.107.235 10.10.107.236)# 集群各 IP 对应的主机名数组export NODE_NAMES=(zhangjun-k8s01 zhangjun-k8s02 zhangjun-k8s03)# etcd 集群服务地址列表export ETCD_ENDPOINTS=&quot;https://172.27.137.240:2379,https://172.27.137.239:2379,https://172.27.137.238:2379&quot;# etcd 集群间通信的 IP 和端口export ETCD_NODES=&quot;zhangjun-k8s01=https://172.27.137.240:2380,zhangjun-k8s02=https://172.27.137.239:2380,zhangjun-k8s03=https://172.27.137.238:2380&quot;# kube-apiserver 的反向代理(kube-nginx)地址端口export KUBE_APISERVER=&quot;https://127.0.0.1:8443&quot;# 节点间互联网络接口名称export IFACE=&quot;eth0&quot;# etcd 数据目录export ETCD_DATA_DIR=&quot;/data/k8s/etcd/data&quot;# etcd WAL 目录，建议是 SSD 磁盘分区，或者和 ETCD_DATA_DIR 不同的磁盘分区export ETCD_WAL_DIR=&quot;/data/k8s/etcd/wal&quot;# k8s 各组件数据目录export K8S_DIR=&quot;/data/k8s/k8s&quot;# docker 数据目录export DOCKER_DIR=&quot;/data/k8s/docker&quot;## 以下参数一般不需要修改# TLS Bootstrapping 使用的 Token，可以使用命令 head -c 16 /dev/urandom | od -An -t x | tr -d &#39; &#39; 生成BOOTSTRAP_TOKEN=&quot;41f7e4ba8b7be874fcff18bf5cf41a7c&quot;# 最好使用 当前未用的网段 来定义服务网段和 Pod 网段# 服务网段，部署前路由不可达，部署后集群内路由可达(kube-proxy 保证)SERVICE_CIDR=&quot;10.254.0.0/16&quot;# Pod 网段，建议 /16 段地址，部署前路由不可达，部署后集群内路由可达(flanneld 保证)CLUSTER_CIDR=&quot;172.30.0.0/16&quot;# 服务端口范围 (NodePort Range)export NODE_PORT_RANGE=&quot;30000-32767&quot;# flanneld 网络配置前缀export FLANNEL_ETCD_PREFIX=&quot;/kubernetes/network&quot;# kubernetes 服务 IP (一般是 SERVICE_CIDR 中第一个IP)export CLUSTER_KUBERNETES_SVC_IP=&quot;10.254.0.1&quot;# 集群 DNS 服务 IP (从 SERVICE_CIDR 中预分配)export CLUSTER_DNS_SVC_IP=&quot;10.254.0.2&quot;# 集群 DNS 域名（末尾不带点号）export CLUSTER_DNS_DOMAIN=&quot;cluster.local&quot;# 将二进制目录 /opt/k8s/bin 加到 PATH 中export PATH=/opt/k8s/bin:$PATH</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/source/draft/2019-06-07-k8s.html";
+    this.page.identifier = "source/draft/2019-06-07-k8s.html";
+    this.page.title = '';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>

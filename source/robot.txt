@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /background
+Disallow: /css
+Disallow: /fancybox
+Disallow: /font-awesome
+Disallow: /img
+Disallow: /js
+Sitemap: https://blog.502.li/sitemap.xml
