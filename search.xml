@@ -1,6 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2019 review</title>
+    <url>/archives/2019-review.html</url>
+    <content><![CDATA[<h2 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h2><p>之前是么有打算写个总结啥的，但作为博客正式开通的第一年，还是要认真总结一下想法。不过这篇博客也就花了半个多小时才仓促写完，心中的想法如果要写完的话估计要花二三十个小时，今天就简简单单地写一点吧。明天就 2020 年了，作为 90 后的我们这一代也开始奔四了。</p>
+<p>离开学校，直到 2019 届大一学生开学时，带着小学弟去杜甫草堂玩儿。买门票的时候才意识到自己已经不再是学生了，无法享受到学生优惠了。离开学校这个牢笼，没有了限制，眼界也比以往大了很多。思考了很多事情，国庆前后写了一篇三万字左右的《毕业后的一点思考》。虽然已经不再是学生，但现在的生活节奏就像学生时代一样。早上八点起床，九点上班，下午五点半下班，回到住的地方看书学习，这种生活节凑几乎和学校一模一样。</p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2>
+
+<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">2019 年 review：<a href="https://t.co/epBFjZevbQ" target="_blank" rel="noopener">https://t.co/epBFjZevbQ</a><br>- 读了四十一本书<br>- 水了五十篇博客<br>- 写了五十八万字<br>- 看了六百集影视<br><br>感谢辅导员帮给找到第一份工作的机会；<br>感谢我司 955 工作制让我有这么多属于自己的时间；<br>感谢自己尽早退群删号走人，远离毫无意义的群聊扯淡撕逼，把更多的时间和精力留给自己；</p>&mdash; 502.li (@muzi_ii) <a href="https://twitter.com/muzi_ii/status/1211992923216080897?ref_src=twsrc%5Etfw" target="_blank" rel="noopener">December 31, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h3 id="读完四十一本书"><a href="#读完四十一本书" class="headerlink" title="读完四十一本书"></a>读完四十一本书</h3><p>1.《1984》</p>
+<p>2.《如果沒有今天，明天会不会有昨天？》</p>
+<p>3.《开放社会与敌人》</p>
+<p>4.《历史决定论的贫困》</p>
+<p>5.《通往奴役之路》</p>
+<p>6.《末日时在做什么？有没有空？可以来拯救吗？》</p>
+<p>7.《切尔诺贝利的悲鸣》</p>
+<p>8.《一百个人的十年》</p>
+<p>9.《娱乐至死》</p>
+<p>10.《浅薄：互联网如何毒化了我们的大脑》</p>
+<p>11.《学会提问：批判性思维指南》</p>
+<p>12.《少有人走的路》</p>
+<p>13.《上帝笑了99次：哲学悖论里的大思考》</p>
+<p>14.《疯狂的投资：跨越大西洋电缆的商业传奇》</p>
+<p>15.《乌合之众》</p>
+<p>16.《独裁者手册》</p>
+<p>17.《肠子的小心思》</p>
+<p>18.《民主的奇迹：美国宪法制定的127天》</p>
+<p>19.《Kubernetes指南第四版》</p>
+<p>20.《程序员的自我修养：链接、装载与库》</p>
+<p>21.《程序员的英语》</p>
+<p>22.《第二性》</p>
+<p>23.《过去与未来之间》</p>
+<p>24.《论革命》</p>
+<p>25.《极权主义的起源》</p>
+<p>26.《童年的消逝》</p>
+<p>27.《永久记录》</p>
+<p>28.《沃兹传：与苹果一起疯狂》</p>
+<p>29.《公正：该如何做是好?》</p>
+<p>30.《技术垄断:文化向技术投降》</p>
+<p>31.《自由与繁荣的国度》</p>
+<p>32.《苏联的最后一天》</p>
+<p>33.《流浪神差》</p>
+<p>34.《终将成为你》</p>
+<p>35.《HappySugarLife～幸福甜蜜生活～》</p>
+<p>36.《citrus 柑橘味香氣》</p>
+<ul>
+<li>以及五本真理部审查的书，在这里就不列出了</li>
+</ul>
+<h3 id="水了五十篇博客"><a href="#水了五十篇博客" class="headerlink" title="水了五十篇博客"></a>水了五十篇博客</h3><ul>
+<li>所有的文章一共 84 篇，其中 34 篇是草(wa)稿(keng)</li>
+<li>我的博客 markdown 源码文件在 <a href="https://github.com/muzi502/blog" target="_blank" rel="noopener">muzi502/blog</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">╭─root@Oracle /var/www/hexo/<span class="built_in">source</span> ‹master›</span><br><span class="line">╰─<span class="comment"># find . -name "*.md" | wc</span></span><br><span class="line">     84      84    3217</span><br><span class="line">╭─root@Oracle /var/www/hexo/<span class="built_in">source</span> ‹master›</span><br><span class="line">╰─<span class="comment"># tree</span></span><br><span class="line">.</span><br><span class="line">├── _posts</span><br><span class="line">│   ├── 2018-07-04-python-cnni.md</span><br><span class="line">│   ├── 2018-09-12-justic.md</span><br><span class="line">│   ├── 2018-10-20-kernel-note-book.md</span><br><span class="line">│   ├── 2018-11-20-domain-email.md</span><br><span class="line">│   ├── 2018-12-20-buffon.md</span><br><span class="line">│   ├── 2019-02-14-software-museum.md</span><br><span class="line">│   ├── 2019-03-03-Code-It<span class="_">-s</span>-Trivial.md</span><br><span class="line">│   ├── 2019-03-15-RMS.md</span><br><span class="line">│   ├── 2019-03-20-android-taibackup.md</span><br><span class="line">│   ├── 2019-04-02-play-with-docker.md</span><br><span class="line">│   ├── 2019-04-05-networktools.md</span><br><span class="line">│   ├── 2019-04-12-moto-z-play-AOSIP.md</span><br><span class="line">│   ├── 2019-04-14-privacy-protections.md</span><br><span class="line">│   ├── 2019-04-15-used-devices.md</span><br><span class="line">│   ├── 2019-04-24-android-tasker.md</span><br><span class="line">│   ├── 2019-04-27-android-tools.md</span><br><span class="line">│   ├── 2019-04-29-animal.md</span><br><span class="line">│   ├── 2019-05-02-ops36.md</span><br><span class="line">│   ├── 2019-05-03-oracle-rips-redhat.md</span><br><span class="line">│   ├── 2019-05-13-zabbix-compose.md</span><br><span class="line">│   ├── 2019-05-16-install-k8s-ubuntu18-04.md</span><br><span class="line">│   ├── 2019-05-18-CentOS7-install-k8s.md</span><br><span class="line">│   ├── 2019-05-22-gitlab-install.md</span><br><span class="line">│   ├── 2019-05-25-fuch-rush-app-dir.md</span><br><span class="line">│   ├── 2019-06-18-dashboard.md</span><br><span class="line">│   ├── 2019-06-24-get-someone-info.md</span><br><span class="line">│   ├── 2019-06-30-oh-my-pink.md</span><br><span class="line">│   ├── 2019-07-01-Asking-the-right-questions.md</span><br><span class="line">│   ├── 2019-07-12-amd-yes.md</span><br><span class="line">│   ├── 2019-08-08-centos7-offline-install-docker.md</span><br><span class="line">│   ├── 2019-08-15-How-to-choose-the-right-version-of-kubernetes.md</span><br><span class="line">│   ├── 2019-08-18-mirrors-test.md</span><br><span class="line">│   ├── 2019-08-23-debian-gateway.md</span><br><span class="line">│   ├── 2019-08-28-esxi-vmbase.md</span><br><span class="line">│   ├── 2019-09-20-The-Dictator’s-Handbook.md</span><br><span class="line">│   ├── 2019-09-21-esxi-openwrt.md</span><br><span class="line">│   ├── 2019-09-22-ovf-to-ova.md</span><br><span class="line">│   ├── 2019-09-23-esp8266-pc-switch.md</span><br><span class="line">│   ├── 2019-09-24-reading.md</span><br><span class="line">│   ├── 2019-09-25-docker-deploy-fastdfs.md</span><br><span class="line">│   ├── 2019-09-28-fastdfs-lua-redis.md</span><br><span class="line">│   ├── 2019-09-29-frps-prot-monitor.md</span><br><span class="line">│   ├── 2019-10-08-wndr3700v4-openwrt.md</span><br><span class="line">│   ├── 2019-10-10-ffmepg-rtsp.md</span><br><span class="line">│   ├── 2019-10-13-life-sciences.md</span><br><span class="line">│   ├── 2019-10-14-A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.md</span><br><span class="line">│   ├── 2019-10-29-checklist.md</span><br><span class="line">│   ├── 2019-10-30-Internet-related-foundations-and-organizations.md</span><br><span class="line">│   ├── 2019-11-21-blog-typecho-to-hexo.md</span><br><span class="line">│   ├── 2019-11-30-amusing-ourselves-to-death-reading-notes.md</span><br><span class="line">│   ├── 2019-12-01-Kindle-Oasis2-vs-Paperwhite3.md</span><br><span class="line">│   ├── 2019-12-04-kubernetes-QA.md</span><br><span class="line">│   ├── 2019-12-10-Kubernetes-Introduction-for-VMware-Users-zh.md</span><br><span class="line">│   ├── 2019-12-19-dockone-post-index-archives.md</span><br><span class="line">│   ├── 2019-12-27-pc-e5v3-e3v3-amd2600.md</span><br><span class="line">│   ├── 2019-12-30-2019-reading-notes.md</span><br><span class="line">│   └── 2019-12-31-container-linux-os.md</span><br><span class="line">├── about.md</span><br><span class="line">├── avatar.png</span><br><span class="line">├── booklist.md</span><br><span class="line">├── draft</span><br><span class="line">│   ├── 11-frp.md</span><br><span class="line">│   ├── 2019-06-07-k8s.md</span><br><span class="line">│   ├── 2019-06-09-Chernobyl.md</span><br><span class="line">│   ├── 2019-09-30-thinking-in-2019.md</span><br><span class="line">│   ├── 2019-10-50x.md</span><br><span class="line">│   ├── 2019-11-15-govc-cli.md</span><br><span class="line">│   ├── 2019-11-20-the-histort-of-eff.md</span><br><span class="line">│   ├── 2019-12-18-linux-login-alarm-telegram.md</span><br><span class="line">│   ├── 2019-12-20-happy-with-shell.md</span><br><span class="line">│   ├── 2019-12-30-eff-2019-review.md</span><br><span class="line">│   ├── 2020-01-01.md</span><br><span class="line">│   ├── 7-bin.md</span><br><span class="line">│   ├── eff.org</span><br><span class="line">│   │   ├── 1-exhibit.a.md</span><br><span class="line">│   │   ├── 2-exhibit.b.complaint.md</span><br><span class="line">│   │   ├── 2019-11-13-federal-court-rules-suspicionless-searches-travelers-phones-and-laptops.md</span><br><span class="line">│   │   ├── 3-exhibit.d.complaint.md</span><br><span class="line">│   │   ├── eff-final-2018.md</span><br><span class="line">│   │   ├── eff-take-on-cases.md</span><br><span class="line">│   │   ├── eff.moto.md</span><br><span class="line">│   │   └── img</span><br><span class="line">│   │       └── border-act-3.jpg</span><br><span class="line">│   ├── en</span><br><span class="line">│   │   ├── 03-english.md</span><br><span class="line">│   │   ├── 12-en.md</span><br><span class="line">│   │   ├── 1997-1.md</span><br><span class="line">│   │   └── 1997-2.md</span><br><span class="line">│   └── index.html</span><br><span class="line">├── favicon.ico</span><br><span class="line">├── img/</span><br><span class="line">├── link</span><br><span class="line">│   └── index.md</span><br><span class="line">├── robot.txt</span><br><span class="line">└── tags</span><br><span class="line">    └── index.md</span><br><span class="line"></span><br><span class="line">8 directories, 287 files</span><br></pre></td></tr></table></figure>
+<ul>
+<li>发表的文章五十二篇，其中有两篇是去年的</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">╭─root@Oracle /var/www/hexo/source/_posts ‹master›</span><br><span class="line">╰─# ls | grep 2019 | wc</span><br><span class="line">     52      52    1745</span><br></pre></td></tr></table></figure>
+<h3 id="写了五十八万字"><a href="#写了五十八万字" class="headerlink" title="写了五十八万字"></a>写了五十八万字</h3><p>把博客所有的文章全部合并为一个文件，在 VS Code 编辑器里显示的是 130 多万个字符。不过这样统计十分不准确，我只能大致估计为五十多万字，加上自己写的私密日记的话还要多一些。因为从 2019 年元旦开始养成了每周写日记的习惯，刚开始在博客上是对外开放的，后来担心怕被喝茶就搬到了 OneNote 上写，每周都写，就像流水账一样，都写下来。把胡思乱想、碎碎念等全都记录了下来。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">╭─debian@debian /mnt/d/Desktop/hexo/<span class="built_in">source</span>  ‹master*›</span><br><span class="line">╰─$ find . -name <span class="string">"*.md"</span> -<span class="built_in">exec</span> cat &#123;&#125; &gt;&gt; ~/wordcount.md \;</span><br><span class="line">╭─debian@debian /mnt/d/Desktop/hexo/<span class="built_in">source</span>  ‹master*›</span><br><span class="line">╰─$ wc ~/wordcount.md</span><br><span class="line">  41353  198713 2846233 /home/debian/wordcount.md</span><br></pre></td></tr></table></figure>
+<h3 id="看了六百集影视"><a href="#看了六百集影视" class="headerlink" title="看了六百集影视"></a>看了六百集影视</h3><p>六百集只是个大致估计，再次感谢我司 955 工作制😂，让我下班后有那么长的时间来看自己喜欢的记录破、电影、科普视频、动漫等。</p>
+<h4 id="科普视频"><a href="#科普视频" class="headerlink" title="科普视频"></a>科普视频</h4><ul>
+<li>李永乐老师</li>
+<li>回到 2049</li>
+<li>妈咪说 Mommy Talk</li>
+</ul>
+<h4 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h4><ul>
+<li>出租车司机</li>
+<li>1987：黎明到来的那一天</li>
+<li>华丽的假期</li>
+<li>刺杀金正恩</li>
+<li>斯大林之死</li>
+<li>决战中途岛</li>
+<li>绝命毒师</li>
+</ul>
+<h4 id="记录片"><a href="#记录片" class="headerlink" title="记录片"></a>记录片</h4><ul>
+<li>我们的星球</li>
+<li>蓝色海洋</li>
+<li>混沌：数学探秘</li>
+<li>维度：数学漫步</li>
+<li>大国崛起</li>
+<li>生命起源的奇幻旅程</li>
+<li>地球的起源</li>
+<li>食物的历史</li>
+<li>超级运输</li>
+<li>走进工厂：圣诞什锦巧克力</li>
+<li>走进工厂：奶酪酱探秘</li>
+<li>走进工厂：啤酒的奥秘</li>
+<li>走进工厂：鞋厂探秘</li>
+<li>走进工厂：土豆华夫饼</li>
+<li>走进工厂：披萨工厂</li>
+<li>走进工厂：黑加仑的味觉之旅</li>
+<li>走进工厂：探秘咖喱酱</li>
+<li>走进工厂：卫生卷纸工厂揭秘</li>
+<li>走进工厂：鳕鱼条工厂揭秘</li>
+<li>走进工厂：饼干工厂揭秘</li>
+<li>走进工厂：咖啡工厂揭秘</li>
+<li>走进工厂：探秘圣诞工厂</li>
+<li>走进工厂：铅笔的前世今生</li>
+<li>原油之旅</li>
+<li>蓝色星球</li>
+<li>海洋</li>
+<li>战舰 之 水面下的战争</li>
+<li>非洲伟大的文明</li>
+<li>圣地 查科峡谷</li>
+<li>新视野号冥王星之旅</li>
+<li>工程步步高 摩天大楼</li>
+<li>惊天工程 之 关西国际机场</li>
+<li>伟大工程巡礼</li>
+<li>史前公园</li>
+<li>海豚湾</li>
+<li>凛冬烈火：乌克兰为自由之战</li>
+<li>切尔诺贝利</li>
+<li>美国工厂</li>
+<li>第四公民</li>
+<li>汉娜·阿伦特</li>
+<li>汉娜•阿伦特与高斯的访谈</li>
+</ul>
+<h4 id="动漫"><a href="#动漫" class="headerlink" title="动漫"></a>动漫</h4><p>我的<a href="https://bgm.tv/anime/list/512178" target="_blank" rel="noopener">番组计划</a>.三百集只是也约数，实际上会超过这些。作为一个死肥宅来讲，这些并不多。</p>
+<ul>
+<li>银魂</li>
+<li>心理测量者</li>
+<li>女子高生的虚度日常</li>
+<li>你遭难了吗</li>
+<li>青春笨蛋少年不做怀梦美少女的梦</li>
+<li>进击的巨人第三季</li>
+<li>天行九歌</li>
+<li>复活的鲁鲁修</li>
+<li>Fate/stay night [Heaven’s Feel] II.lost butterfly</li>
+<li>辉夜大小姐想让我告白～天才们的恋爱头脑战～ </li>
+<li>家有女友 </li>
+<li>五等分的新娘</li>
+<li>天使降临到了我身边</li>
+<li>我是江小白 第二季 </li>
+<li>刀剑神域 Alicization篇 </li>
+<li>企鹅公路 </li>
+<li>Happy Sugar Life </li>
+<li>牵牛花与加濑同学</li>
+<li>ReLIFE</li>
+<li>龙王的工作！ </li>
+<li>紫罗兰永恒花园 </li>
+<li>樱Trick </li>
+<li>citrus～柑橘味香气～ </li>
+<li>3月的狮子</li>
+<li>境界的彼方 -I’LL BE HERE- 未来篇 </li>
+</ul>
+]]></content>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2019 年读书笔记和思考</title>
     <url>/archives/2019-reading-notes.html</url>
     <content><![CDATA[<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><ul>
@@ -1738,158 +1889,6 @@
         <tag>容器</tag>
         <tag>Linux</tag>
         <tag>kubernees</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2019 review</title>
-    <url>/archives/2019-review.html</url>
-    <content><![CDATA[<h2 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h2><p>之前是么有打算写个总结啥的，但作为博客正式开通的第一年，还是要认真总结一下想法。不过这篇博客也就花了半个多小时才仓促写完，心中的想法如果要写完的话估计要花二三十个小时，今天就简简单单地写一点吧。明天就 2020 年了，作为 90 后的我们这一代也开始奔四了。</p>
-<p>离开学校，直到 2019 届大一学生开学时，带着小学弟去杜甫草堂玩儿。买门票的时候才意识到自己已经不再是学生了，无法享受到学生优惠了。离开学校这个牢笼，没有了限制，眼界也比以往大了很多。思考了很多事情，国庆前后写了一篇三万字左右的《毕业后的一点思考》。虽然已经不再是学生，但现在的生活节奏就像学生时代一样。早上八点起床，九点上班，下午五点半下班，回到住的地方看书学习，这种生活节凑几乎和学校一模一样。</p>
-<h3 id="读完四十一本书"><a href="#读完四十一本书" class="headerlink" title="读完四十一本书"></a>读完四十一本书</h3><p>1.《1984》</p>
-<p>2.《如果沒有今天，明天会不会有昨天？》</p>
-<p>3.《开放社会与敌人》</p>
-<p>4.《历史决定论的贫困》</p>
-<p>5.《通往奴役之路》</p>
-<p>6.《末日时在做什么？有没有空？可以来拯救吗？》</p>
-<p>7.《切尔诺贝利的悲鸣》</p>
-<p>8.《一百个人的十年》</p>
-<p>9.《娱乐至死》</p>
-<p>10.《浅薄：互联网如何毒化了我们的大脑》</p>
-<p>11.《学会提问：批判性思维指南》</p>
-<p>12.《少有人走的路》</p>
-<p>13.《上帝笑了99次：哲学悖论里的大思考》</p>
-<p>14.《疯狂的投资：跨越大西洋电缆的商业传奇》</p>
-<p>15.《乌合之众》</p>
-<p>16.《独裁者手册》</p>
-<p>17.《肠子的小心思》</p>
-<p>18.《民主的奇迹：美国宪法制定的127天》</p>
-<p>19.《Kubernetes指南第四版》</p>
-<p>20.《程序员的自我修养：链接、装载与库》</p>
-<p>21.《程序员的英语》</p>
-<p>22.《第二性》</p>
-<p>23.《过去与未来之间》</p>
-<p>24.《论革命》</p>
-<p>25.《极权主义的起源》</p>
-<p>26.《童年的消逝》</p>
-<p>27.《永久记录》</p>
-<p>28.《沃兹传：与苹果一起疯狂》</p>
-<p>29.《公正：该如何做是好?》</p>
-<p>30.《技术垄断:文化向技术投降》</p>
-<p>31.《自由与繁荣的国度》</p>
-<p>32.《苏联的最后一天》</p>
-<p>33.《流浪神差》</p>
-<p>34.《终将成为你》</p>
-<p>35.《HappySugarLife～幸福甜蜜生活～》</p>
-<p>36.《citrus 柑橘味香氣》</p>
-<ul>
-<li>以及五本真理部审查的书，在这里就不列出了</li>
-</ul>
-<h3 id="水了五十篇博客"><a href="#水了五十篇博客" class="headerlink" title="水了五十篇博客"></a>水了五十篇博客</h3><ul>
-<li>所有的文章一共 84 篇，其中 34 篇是草(wa)稿(keng)</li>
-<li>我的博客 markdown 源码文件在 <a href="https://github.com/muzi502/blog" target="_blank" rel="noopener">muzi502/blog</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">╭─root@Oracle /var/www/hexo/<span class="built_in">source</span> ‹master›</span><br><span class="line">╰─<span class="comment"># find . -name "*.md" | wc</span></span><br><span class="line">     84      84    3217</span><br><span class="line">╭─root@Oracle /var/www/hexo/<span class="built_in">source</span> ‹master›</span><br><span class="line">╰─<span class="comment"># tree</span></span><br><span class="line">.</span><br><span class="line">├── _posts</span><br><span class="line">│   ├── 2018-07-04-python-cnni.md</span><br><span class="line">│   ├── 2018-09-12-justic.md</span><br><span class="line">│   ├── 2018-10-20-kernel-note-book.md</span><br><span class="line">│   ├── 2018-11-20-domain-email.md</span><br><span class="line">│   ├── 2018-12-20-buffon.md</span><br><span class="line">│   ├── 2019-02-14-software-museum.md</span><br><span class="line">│   ├── 2019-03-03-Code-It<span class="_">-s</span>-Trivial.md</span><br><span class="line">│   ├── 2019-03-15-RMS.md</span><br><span class="line">│   ├── 2019-03-20-android-taibackup.md</span><br><span class="line">│   ├── 2019-04-02-play-with-docker.md</span><br><span class="line">│   ├── 2019-04-05-networktools.md</span><br><span class="line">│   ├── 2019-04-12-moto-z-play-AOSIP.md</span><br><span class="line">│   ├── 2019-04-14-privacy-protections.md</span><br><span class="line">│   ├── 2019-04-15-used-devices.md</span><br><span class="line">│   ├── 2019-04-24-android-tasker.md</span><br><span class="line">│   ├── 2019-04-27-android-tools.md</span><br><span class="line">│   ├── 2019-04-29-animal.md</span><br><span class="line">│   ├── 2019-05-02-ops36.md</span><br><span class="line">│   ├── 2019-05-03-oracle-rips-redhat.md</span><br><span class="line">│   ├── 2019-05-13-zabbix-compose.md</span><br><span class="line">│   ├── 2019-05-16-install-k8s-ubuntu18-04.md</span><br><span class="line">│   ├── 2019-05-18-CentOS7-install-k8s.md</span><br><span class="line">│   ├── 2019-05-22-gitlab-install.md</span><br><span class="line">│   ├── 2019-05-25-fuch-rush-app-dir.md</span><br><span class="line">│   ├── 2019-06-18-dashboard.md</span><br><span class="line">│   ├── 2019-06-24-get-someone-info.md</span><br><span class="line">│   ├── 2019-06-30-oh-my-pink.md</span><br><span class="line">│   ├── 2019-07-01-Asking-the-right-questions.md</span><br><span class="line">│   ├── 2019-07-12-amd-yes.md</span><br><span class="line">│   ├── 2019-08-08-centos7-offline-install-docker.md</span><br><span class="line">│   ├── 2019-08-15-How-to-choose-the-right-version-of-kubernetes.md</span><br><span class="line">│   ├── 2019-08-18-mirrors-test.md</span><br><span class="line">│   ├── 2019-08-23-debian-gateway.md</span><br><span class="line">│   ├── 2019-08-28-esxi-vmbase.md</span><br><span class="line">│   ├── 2019-09-20-The-Dictator’s-Handbook.md</span><br><span class="line">│   ├── 2019-09-21-esxi-openwrt.md</span><br><span class="line">│   ├── 2019-09-22-ovf-to-ova.md</span><br><span class="line">│   ├── 2019-09-23-esp8266-pc-switch.md</span><br><span class="line">│   ├── 2019-09-24-reading.md</span><br><span class="line">│   ├── 2019-09-25-docker-deploy-fastdfs.md</span><br><span class="line">│   ├── 2019-09-28-fastdfs-lua-redis.md</span><br><span class="line">│   ├── 2019-09-29-frps-prot-monitor.md</span><br><span class="line">│   ├── 2019-10-08-wndr3700v4-openwrt.md</span><br><span class="line">│   ├── 2019-10-10-ffmepg-rtsp.md</span><br><span class="line">│   ├── 2019-10-13-life-sciences.md</span><br><span class="line">│   ├── 2019-10-14-A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.md</span><br><span class="line">│   ├── 2019-10-29-checklist.md</span><br><span class="line">│   ├── 2019-10-30-Internet-related-foundations-and-organizations.md</span><br><span class="line">│   ├── 2019-11-21-blog-typecho-to-hexo.md</span><br><span class="line">│   ├── 2019-11-30-amusing-ourselves-to-death-reading-notes.md</span><br><span class="line">│   ├── 2019-12-01-Kindle-Oasis2-vs-Paperwhite3.md</span><br><span class="line">│   ├── 2019-12-04-kubernetes-QA.md</span><br><span class="line">│   ├── 2019-12-10-Kubernetes-Introduction-for-VMware-Users-zh.md</span><br><span class="line">│   ├── 2019-12-19-dockone-post-index-archives.md</span><br><span class="line">│   ├── 2019-12-27-pc-e5v3-e3v3-amd2600.md</span><br><span class="line">│   ├── 2019-12-30-2019-reading-notes.md</span><br><span class="line">│   └── 2019-12-31-container-linux-os.md</span><br><span class="line">├── about.md</span><br><span class="line">├── avatar.png</span><br><span class="line">├── booklist.md</span><br><span class="line">├── draft</span><br><span class="line">│   ├── 11-frp.md</span><br><span class="line">│   ├── 2019-06-07-k8s.md</span><br><span class="line">│   ├── 2019-06-09-Chernobyl.md</span><br><span class="line">│   ├── 2019-09-30-thinking-in-2019.md</span><br><span class="line">│   ├── 2019-10-50x.md</span><br><span class="line">│   ├── 2019-11-15-govc-cli.md</span><br><span class="line">│   ├── 2019-11-20-the-histort-of-eff.md</span><br><span class="line">│   ├── 2019-12-18-linux-login-alarm-telegram.md</span><br><span class="line">│   ├── 2019-12-20-happy-with-shell.md</span><br><span class="line">│   ├── 2019-12-30-eff-2019-review.md</span><br><span class="line">│   ├── 2020-01-01.md</span><br><span class="line">│   ├── 7-bin.md</span><br><span class="line">│   ├── eff.org</span><br><span class="line">│   │   ├── 1-exhibit.a.md</span><br><span class="line">│   │   ├── 2-exhibit.b.complaint.md</span><br><span class="line">│   │   ├── 2019-11-13-federal-court-rules-suspicionless-searches-travelers-phones-and-laptops.md</span><br><span class="line">│   │   ├── 3-exhibit.d.complaint.md</span><br><span class="line">│   │   ├── eff-final-2018.md</span><br><span class="line">│   │   ├── eff-take-on-cases.md</span><br><span class="line">│   │   ├── eff.moto.md</span><br><span class="line">│   │   └── img</span><br><span class="line">│   │       └── border-act-3.jpg</span><br><span class="line">│   ├── en</span><br><span class="line">│   │   ├── 03-english.md</span><br><span class="line">│   │   ├── 12-en.md</span><br><span class="line">│   │   ├── 1997-1.md</span><br><span class="line">│   │   └── 1997-2.md</span><br><span class="line">│   └── index.html</span><br><span class="line">├── favicon.ico</span><br><span class="line">├── img/</span><br><span class="line">├── link</span><br><span class="line">│   └── index.md</span><br><span class="line">├── robot.txt</span><br><span class="line">└── tags</span><br><span class="line">    └── index.md</span><br><span class="line"></span><br><span class="line">8 directories, 287 files</span><br></pre></td></tr></table></figure>
-<ul>
-<li>发表的文章五十二篇，其中有两篇是去年的</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">╭─root@Oracle /var/www/hexo/source/_posts ‹master›</span><br><span class="line">╰─# ls | grep 2019 | wc</span><br><span class="line">     52      52    1745</span><br></pre></td></tr></table></figure>
-<h3 id="写了五十八万字"><a href="#写了五十八万字" class="headerlink" title="写了五十八万字"></a>写了五十八万字</h3><p>把博客所有的文章全部合并为一个文件，在 VS Code 编辑器里显示的是 130 多万个字符。不过这样统计十分不准确，我只能大致估计为五十多万字，加上自己写的私密日记的话还要多一些。因为从 2019 年元旦开始养成了每周写日记的习惯，刚开始在博客上是对外开放的，后来担心怕被喝茶就搬到了 OneNote 上写，每周都写，就像流水账一样，都写下来。把胡思乱想、碎碎念等全都记录了下来。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">╭─debian@debian /mnt/d/Desktop/hexo/<span class="built_in">source</span>  ‹master*›</span><br><span class="line">╰─$ find . -name <span class="string">"*.md"</span> -<span class="built_in">exec</span> cat &#123;&#125; &gt;&gt; ~/wordcount.md \;</span><br><span class="line">╭─debian@debian /mnt/d/Desktop/hexo/<span class="built_in">source</span>  ‹master*›</span><br><span class="line">╰─$ wc ~/wordcount.md</span><br><span class="line">  41353  198713 2846233 /home/debian/wordcount.md</span><br></pre></td></tr></table></figure>
-<h3 id="看了六百集影视"><a href="#看了六百集影视" class="headerlink" title="看了六百集影视"></a>看了六百集影视</h3><p>六百集只是个大致估计，再次感谢我司 955 工作制😂，让我下班后有那么长的时间来看自己喜欢的记录破、电影、科普视频、动漫等。</p>
-<h4 id="科普视频"><a href="#科普视频" class="headerlink" title="科普视频"></a>科普视频</h4><ul>
-<li>李永乐老师</li>
-<li>回到 2049</li>
-<li>妈咪说 Mommy Talk</li>
-</ul>
-<h4 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h4><ul>
-<li>出租车司机</li>
-<li>1987：黎明到来的那一天</li>
-<li>华丽的假期</li>
-<li>刺杀金正恩</li>
-<li>斯大林之死</li>
-<li>决战中途岛</li>
-<li>绝命毒师</li>
-</ul>
-<h4 id="记录片"><a href="#记录片" class="headerlink" title="记录片"></a>记录片</h4><ul>
-<li>我们的星球</li>
-<li>蓝色海洋</li>
-<li>混沌：数学探秘</li>
-<li>维度：数学漫步</li>
-<li>大国崛起</li>
-<li>生命起源的奇幻旅程</li>
-<li>地球的起源</li>
-<li>食物的历史</li>
-<li>超级运输</li>
-<li>走进工厂：圣诞什锦巧克力</li>
-<li>走进工厂：奶酪酱探秘</li>
-<li>走进工厂：啤酒的奥秘</li>
-<li>走进工厂：鞋厂探秘</li>
-<li>走进工厂：土豆华夫饼</li>
-<li>走进工厂：披萨工厂</li>
-<li>走进工厂：黑加仑的味觉之旅</li>
-<li>走进工厂：探秘咖喱酱</li>
-<li>走进工厂：卫生卷纸工厂揭秘</li>
-<li>走进工厂：鳕鱼条工厂揭秘</li>
-<li>走进工厂：饼干工厂揭秘</li>
-<li>走进工厂：咖啡工厂揭秘</li>
-<li>走进工厂：探秘圣诞工厂</li>
-<li>走进工厂：铅笔的前世今生</li>
-<li>原油之旅</li>
-<li>蓝色星球</li>
-<li>海洋</li>
-<li>战舰 之 水面下的战争</li>
-<li>非洲伟大的文明</li>
-<li>圣地 查科峡谷</li>
-<li>新视野号冥王星之旅</li>
-<li>工程步步高 摩天大楼</li>
-<li>惊天工程 之 关西国际机场</li>
-<li>伟大工程巡礼</li>
-<li>史前公园</li>
-<li>海豚湾</li>
-<li>凛冬烈火：乌克兰为自由之战</li>
-<li>切尔诺贝利</li>
-<li>美国工厂</li>
-<li>第四公民</li>
-<li>汉娜·阿伦特</li>
-<li>汉娜•阿伦特与高斯的访谈</li>
-</ul>
-<h4 id="动漫"><a href="#动漫" class="headerlink" title="动漫"></a>动漫</h4><p>我的<a href="https://bgm.tv/anime/list/512178" target="_blank" rel="noopener">番组计划</a>.三百集只是也约数，实际上会超过这些。作为一个死肥宅来讲，这些并不多。</p>
-<ul>
-<li>银魂</li>
-<li>心理测量者</li>
-<li>女子高生的虚度日常</li>
-<li>你遭难了吗</li>
-<li>青春笨蛋少年不做怀梦美少女的梦</li>
-<li>进击的巨人第三季</li>
-<li>天行九歌</li>
-<li>复活的鲁鲁修</li>
-<li>Fate/stay night [Heaven’s Feel] II.lost butterfly</li>
-<li>辉夜大小姐想让我告白～天才们的恋爱头脑战～ </li>
-<li>家有女友 </li>
-<li>五等分的新娘</li>
-<li>天使降临到了我身边</li>
-<li>我是江小白 第二季 </li>
-<li>刀剑神域 Alicization篇 </li>
-<li>企鹅公路 </li>
-<li>Happy Sugar Life </li>
-<li>牵牛花与加濑同学</li>
-<li>ReLIFE</li>
-<li>龙王的工作！ </li>
-<li>紫罗兰永恒花园 </li>
-<li>樱Trick </li>
-<li>citrus～柑橘味香气～ </li>
-<li>3月的狮子</li>
-<li>境界的彼方 -I’LL BE HERE- 未来篇 </li>
-</ul>
-<h2 id="毕业后"><a href="#毕业后" class="headerlink" title="毕业后"></a>毕业后</h2><p>毕业之前的花销没有统计在内，因为实在是太难算了😂。只能统计到五月到十二月这八个月的资金情况。</p>
-<h3 id="挣了三万两千块"><a href="#挣了三万两千块" class="headerlink" title="挣了三万两千块"></a>挣了三万两千块</h3><p>二线城市、955 工作制、非互联网企业，不是富二代不是官二代，穷二代的我凭技术只能挣这么多了</p>
-<h3 id="花了一万六千块"><a href="#花了一万六千块" class="headerlink" title="花了一万六千块"></a>花了一万六千块</h3><p>生活比较节俭，吃饭都是十块钱的蛋炒饭，八块钱的小面😂，何室友合租房间，所以花的不算多。</p>
-<h3 id="还了一万一千块"><a href="#还了一万一千块" class="headerlink" title="还了一万一千块"></a>还了一万一千块</h3><p>还了助学贷款一万一千块。上大学之前我就和老爸老妈赌气说大学里不要家里的钱，自己去挣钱。然，高昂的学费和生活费不得不低头，向家里讨钱花，其中学费是老爸老妈拿一部分，我自己助学贷款拿一部分。大学四年的生活费几乎都是老姐给我的。自己大学四年也挣了一点小钱，整整四年挣了不到六千块。其中绝大多数钱都买书花了，大学四年买书就花了五千块左右。</p>
-<h3 id="剩了四千两百块"><a href="#剩了四千两百块" class="headerlink" title="剩了四千两百块"></a>剩了四千两百块</h3><p>现在银行卡里的余额也仅仅有 4200 块了😂</p>
-<h3 id="还欠三万七千块"><a href="#还欠三万七千块" class="headerlink" title="还欠三万七千块"></a>还欠三万七千块</h3><p>助学贷款还欠一万三千块，争取明年五一之前全部还完，还完自己的贷款之后，存钱帮老姐也还完助学贷款，毕竟我大学四年的生活费都是老姐挣钱给我的，作为弟弟，当然也要帮助老姐啦☺</p>
-]]></content>
-      <tags>
-        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
