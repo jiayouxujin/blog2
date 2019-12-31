@@ -32,7 +32,9 @@
 <li>自动化的大规模部署： CoreOS 自身提供的解决方案能够自动地大规模批量部署并操作系统，极大地减少用户工作量。</li>
 <li>使用 systemd 做为系统服务管理工具，性能比较好，systemd 有现代化的日志功能，同时采用 socket 式与 D-Bus 总线式激活服务.</li>
 </ul>
-<h3 id="Photon-OS"><a href="#Photon-OS" class="headerlink" title="Photon OS"></a>Photon OS</h3><p>剽窃一段 VMware 官方的<a href="https://vmware.github.io/photon/" target="_blank" rel="noopener">文档</a>介绍：</p>
+<h3 id="Photon-OS"><a href="#Photon-OS" class="headerlink" title="Photon OS"></a>Photon OS</h3><h4 id="官方宣传册"><a href="#官方宣传册" class="headerlink" title="官方宣传册"></a>官方宣传册</h4><p><img src="../img/image-20191231163325900.png" alt="image-20191231163325900"></p>
+<p><img src="../img/image-20191231163400135.png" alt="image-20191231163400135"></p>
+<p>剽窃一段 VMware 官方的<a href="https://vmware.github.io/photon/" target="_blank" rel="noopener">文档</a>介绍：</p>
 <blockquote>
 <p>Project Photon OS™ is an open source, minimal Linux container host  that is optimized for cloud-native applications, cloud platforms, and  VMware infrastructure. Photon OS 3.0 introduces ARM64 support, installer improvements and updated packages. We invite partners, customers, and  community members to collaborate on using Photon OS to run  high-performance virtual machines and containerized applications.</p>
 <ul>
