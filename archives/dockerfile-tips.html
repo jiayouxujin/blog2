@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="木子">
 <meta property="og:description" content="Dockerfile 最佳实践关于 Dockerfile 最佳实践的博客，网上已经有很多很多啦，咱在这里就不赘述啦。在这里分享几个搓镜像的小技巧，尤其是针对于咱大陆的用户😂。  Best practices for writing Dockerfiles 推荐看一下官方博客上写的 Dockerfile 最佳实践   几个搓镜像的小技巧基础镜像使用体积较小的基础镜像，比如 alpine 或者  d">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-02T04:20:32.412Z">
+<meta property="og:updated_time" content="2020-01-02T04:35:24.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dockerfile 搓镜像的小技巧">
 <meta name="twitter:description" content="Dockerfile 最佳实践关于 Dockerfile 最佳实践的博客，网上已经有很多很多啦，咱在这里就不赘述啦。在这里分享几个搓镜像的小技巧，尤其是针对于咱大陆的用户😂。  Best practices for writing Dockerfiles 推荐看一下官方博客上写的 Dockerfile 最佳实践   几个搓镜像的小技巧基础镜像使用体积较小的基础镜像，比如 alpine 或者  d">
@@ -173,7 +173,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                   <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-01 23:20:32" itemprop="dateModified" datetime="2020-01-01T23:20:32-05:00">2020-01-01</time>
+                <time title="修改时间：2020-01-01 23:35:24" itemprop="dateModified" datetime="2020-01-01T23:35:24-05:00">2020-01-01</time>
           </span>
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
@@ -264,6 +264,7 @@
 <h4 id="使用虚拟编译环境"><a href="#使用虚拟编译环境" class="headerlink" title="使用虚拟编译环境"></a>使用虚拟编译环境</h4><p>对于只在编译过程中使用到的依赖，我们可以将这些依赖安装在虚拟环境中，编译完成之后可以一并删除这些依赖，比如 alpine 中可以使用 <code>apk add --no-cache --virtual .build-deps</code>  ，后面加上需要安装的相关依赖。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk add --no-cache --virtual .build-deps gcc libc-dev make perl-dev openssl-dev pcre-dev zlib-dev git</span><br></pre></td></tr></table></figure>
 <p>构建完成之后可以使用 <code>apk del .build-deps</code> 命令，一并将这些编译依赖全部删除。需要注意的是，<code>.build-deps</code> 后面接的是编译时以来的软件包，并不是所有的编译依赖都可以删除，不要把运行时的依赖包接在后面，最好单独 add 一下。</p>
+<h2 id="docker-镜像分析工具"><a href="#docker-镜像分析工具" class="headerlink" title="docker 镜像分析工具"></a>docker 镜像分析工具</h2><p>推荐阅读 <a href="https://www.qikqiak.com/post/docker-image-explore-tool-dive/" target="_blank" rel="noopener">Docker 镜像分析工具 Dive(附视频)</a> ，我就不赘述啦，其实是懒😂</p>
     </div>
       <div>
 <ul class="post-copyright">
@@ -346,7 +347,7 @@
       <!--noindex-->
         <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile-最佳实践"><span class="nav-number">1.</span> <span class="nav-text">Dockerfile 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个搓镜像的小技巧"><span class="nav-number">2.</span> <span class="nav-text">几个搓镜像的小技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础镜像"><span class="nav-number">2.0.1.</span> <span class="nav-text">基础镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#国内软件源"><span class="nav-number">2.0.2.</span> <span class="nav-text">国内软件源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时区设置"><span class="nav-number">2.0.3.</span> <span class="nav-text">时区设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#alpine"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">alpine</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#debian"><span class="nav-number">2.0.3.2.</span> <span class="nav-text">debian</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ubuntu"><span class="nav-number">2.0.3.3.</span> <span class="nav-text">ubuntu</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尽量使用-URL-添加源码"><span class="nav-number">2.0.4.</span> <span class="nav-text">尽量使用 URL 添加源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用虚拟编译环境"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用虚拟编译环境</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile-最佳实践"><span class="nav-number">1.</span> <span class="nav-text">Dockerfile 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个搓镜像的小技巧"><span class="nav-number">2.</span> <span class="nav-text">几个搓镜像的小技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础镜像"><span class="nav-number">2.0.1.</span> <span class="nav-text">基础镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#国内软件源"><span class="nav-number">2.0.2.</span> <span class="nav-text">国内软件源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时区设置"><span class="nav-number">2.0.3.</span> <span class="nav-text">时区设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#alpine"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">alpine</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#debian"><span class="nav-number">2.0.3.2.</span> <span class="nav-text">debian</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ubuntu"><span class="nav-number">2.0.3.3.</span> <span class="nav-text">ubuntu</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尽量使用-URL-添加源码"><span class="nav-number">2.0.4.</span> <span class="nav-text">尽量使用 URL 添加源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用虚拟编译环境"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用虚拟编译环境</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-镜像分析工具"><span class="nav-number">3.</span> <span class="nav-text">docker 镜像分析工具</span></a></li></div>
           </div>
         </div>
       <!--/noindex-->
