@@ -4705,7 +4705,7 @@
 </blockquote>
 <p>A：灰度发布也是基于配置不同 endpoints 权重这个思路来的，也可以部署不同的deployment，基于 pod 比例来做。蓝绿部署实践不多哈</p>
 <blockquote>
-<p>Q：  你们服务tracing和流量监控是怎么做的呢？</p>
+<p>Q：你们服务tracing和流量监控是怎么做的呢？</p>
 </blockquote>
 <p>A: traceing 目前还是原始的日志方式，在研究替代方案，后续有进展可以再分享一下。流量监控我们有做 pod 的进出流量统计，也有从 Envoy metrics 获取的请求统计</p>
 <hr>
@@ -5788,7 +5788,7 @@
 </blockquote>
 <p>2019-10-24</p>
 <hr>
-<h3 id="DockOne微信分享（二二-八）：HC-Bridge容器网络模式分享"><a href="#DockOne微信分享（二二-八）：HC-Bridge容器网络模式分享" class="headerlink" title="DockOne微信分享（二二 八）：HC Bridge容器网络模式分享"></a>DockOne微信分享（二二 八）：HC Bridge容器网络模式分享</h3><blockquote>
+<h3 id="2019-09-25：HC-Bridge容器网络模式分享"><a href="#2019-09-25：HC-Bridge容器网络模式分享" class="headerlink" title="2019-09-25：HC Bridge容器网络模式分享"></a>2019-09-25：HC Bridge容器网络模式分享</h3><blockquote>
 <p>Q：HC Bridge支持Kubernetes的Service吗？</p>
 </blockquote>
 <p>A：HC Bridge原生就是支持ClusterIP和Service的。安装Kubernetes是就会开启Br_netfilter的特性，基于Netfilter的ClusterIP仍然能够使用，所以ServiceName也是支持的。</p>
@@ -5861,7 +5861,6 @@
 <p>Q：IP是如何分配的？追问：IPAM部署在哪里呢？IP地址段配置数据存在etcd里面是吗。</p>
 </blockquote>
 <p>A：HC Bridge提供IPAM管理的功能，可以根据IP地址CIDR、VLAN等创建IPPool；然后可以根据业务、根据分区划分IP地址。HC Bridge的CNI和IPAM都会以DaemonSet形式分发到每个Node中。IP地址的相关信息肯定是存在etcd的。</p>
-<p>2019-09-25</p>
 <hr>
 <h3 id="DockOne微信分享（二二一）：初探云原生应用管理之：聊聊-Tekton-项目"><a href="#DockOne微信分享（二二一）：初探云原生应用管理之：聊聊-Tekton-项目" class="headerlink" title="DockOne微信分享（二二一）：初探云原生应用管理之：聊聊 Tekton 项目"></a>DockOne微信分享（二二一）：初探云原生应用管理之：聊聊 Tekton 项目</h3><blockquote>
 <p>Q：请比较一下 Drone 和 Tekton，thx！</p>
@@ -5900,9 +5899,8 @@
 <p>Q：请比较一下 Prow 和 Tekton，发现 Kubernetes，Prometheus 以及 Tenkton 本身都是使用了 Prow。</p>
 </blockquote>
 <p>A：Prow 是一款基于 GitHub 做的 Chatbot 工具。Tekton则是用来实现后面对接的 CI/CD 的底层框架。本人恰好也是早期参与 Prow项目，所以多说一点这个工具的历史。一开始 GitHub功能不够强大，这个工具只是为了弥补 GitHub 的不足之处，主要是要经过review 不能让人手动合并代码。后来功能做着做着变多了，有些被 GitHub重复了。但是功能集合还是比 GitHub 多，而且 CNCF 里的 infra 默认使用。</p>
-<p>2019-08-16</p>
 <hr>
-<h3 id="DockOne微信分享（二二〇）：PPmoney基于Kubernetes的DevOps实践"><a href="#DockOne微信分享（二二〇）：PPmoney基于Kubernetes的DevOps实践" class="headerlink" title="DockOne微信分享（二二〇）：PPmoney基于Kubernetes的DevOps实践"></a>DockOne微信分享（二二〇）：PPmoney基于Kubernetes的DevOps实践</h3><blockquote>
+<h3 id="2019-08-14：PPmoney基于Kubernetes的DevOps实践"><a href="#2019-08-14：PPmoney基于Kubernetes的DevOps实践" class="headerlink" title="2019-08-14：PPmoney基于Kubernetes的DevOps实践"></a>2019-08-14：PPmoney基于Kubernetes的DevOps实践</h3><blockquote>
 <p>Q：怎么支持多租户不同流程定制使用及数据隔离需要？</p>
 </blockquote>
 <p>A：这里我理解的是CI流程的定制？当前我们都是按照标准默认的Jenkinsfile/Dockerfile来接入，用户可自定义这两个文件。</p>
@@ -5955,9 +5953,8 @@
 <p>Q：请问从开发到测试到生产的发布用到了哪些工具栈？分别起什么作用？</p>
 </blockquote>
 <p>A：开发其实就只需要提交代码到SCM，之后的工作由云平台来触发，在分享中的CI/CD图里边有画出来。涉及的工具主要还是Jenkins，测试的同学会在Jenkins中做相应的任务。这种做法的缺点上面也有说到”似乎跟云原生背道而驰”。</p>
-<p>2019-08-14</p>
 <hr>
-<h3 id="DockOne微信分享（二一八）：基于OVS自研容器网络插件在金融类企业的落地实践"><a href="#DockOne微信分享（二一八）：基于OVS自研容器网络插件在金融类企业的落地实践" class="headerlink" title="DockOne微信分享（二一八）：基于OVS自研容器网络插件在金融类企业的落地实践"></a>DockOne微信分享（二一八）：基于OVS自研容器网络插件在金融类企业的落地实践</h3><blockquote>
+<h3 id="2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践"><a href="#2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践" class="headerlink" title="2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践"></a>2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践</h3><blockquote>
 <p>Q：IPAM的固定IP是怎么实现的？IP与Pod UID关联吗？</p>
 </blockquote>
 <p>A：管理员录入网络信息后，Fabric会将所有IP地址存储到etcd中统一管理。目前固定IP是通过给deployment等workload对象增加Annotation实现的。IP不与Pod UID关联。</p>
@@ -5989,9 +5986,8 @@
 <p>Q：与Kube-OVN做过对比吗？</p>
 </blockquote>
 <p>A：Kube-OVN是友商开源的产品，我了解过。首先Kube-OVN和Fabric项目都是基于OVS进行研发的，都支持Overylay/underlay模式，都可以实现CNI协议。但其实差别还是比较大。OVN项目源于OpenStack，OpenStack里的网络模型是非常重的，概念、组件都比较多，OVN也在试图统一Kubernetes/OpenStack的网络模型，所以Kube-OVN里有一些能力其实已经不在CNI spec的范围内了，比如负载均衡，DNS等，其实在社区都有对应的实现。而Fabric会简单很多，是一个标准的CNI实现，网络模型也非常清晰，能够把容器直接融入现网环境，企业的网管一般都能掌控，对安全监管等已有体系兼容性比较好。</p>
-<p>2019-08-05</p>
 <hr>
-<h3 id="DockOne微信分享（二一七）：TiDB-Operator-的设计与实现"><a href="#DockOne微信分享（二一七）：TiDB-Operator-的设计与实现" class="headerlink" title="DockOne微信分享（二一七）：TiDB Operator 的设计与实现"></a>DockOne微信分享（二一七）：TiDB Operator 的设计与实现</h3><blockquote>
+<h3 id="2019-07-24：TiDB-Operator-的设计与实现"><a href="#2019-07-24：TiDB-Operator-的设计与实现" class="headerlink" title="2019-07-24：TiDB Operator 的设计与实现"></a>2019-07-24：TiDB Operator 的设计与实现</h3><blockquote>
 <p>Q：升级开始时，partition = 节点数 - 1，也就是所有的 Pod 都不升级，为啥是partition = 节点数 - 1？</p>
 </blockquote>
 <p>A：这里要纠错一下，是 pod ordinal 从 0开始计数，大于或等于 partition 序号的 Pod 会被升级，所以最大的序号是节点数 - 1，最开始的 partition是等于节点数，分享时表达错了（我自己也记错了），抱歉。</p>
@@ -6011,7 +6007,8 @@
 <p>Q：看你的方案感觉 Kubernetes 和 PD的逻辑结合在一起了，二者之间如何互通？会有代码互相侵入吗？明白了，就好像问题2驱逐问题，pd收到驱逐任务，Kubernetes控制器不断的检查是否驱逐成功，如果成功就开始升级，对吧？</p>
 </blockquote>
 <p>A：这就是自定义控制器的绝佳场景了，Kubernetes 和 PD本身完全没有交互，是控制循环在同步两边的状态，一方面控制循环会把 PD记录的集群状态塞到 TidbCluster 对象的 status里面，另一方面控制循环在将实际状态向期望状态转移时，也会生成一些 PD的任务和操作子（Opeartor）提交到 PD 中来调谐集群状态。</p>
-<h2 id="2019-07-24"><a href="#2019-07-24" class="headerlink" title="2019-07-24"></a>2019-07-24</h2><h3 id="DockOne微信分享（二一六）：基于Istio的灰度平台实践"><a href="#DockOne微信分享（二一六）：基于Istio的灰度平台实践" class="headerlink" title="DockOne微信分享（二一六）：基于Istio的灰度平台实践"></a>DockOne微信分享（二一六）：基于Istio的灰度平台实践</h3><blockquote>
+<hr>
+<h3 id="2019-07-17：基于Istio的灰度平台实践"><a href="#2019-07-17：基于Istio的灰度平台实践" class="headerlink" title="2019-07-17：基于Istio的灰度平台实践"></a>2019-07-17：基于Istio的灰度平台实践</h3><blockquote>
 <p>Q：如何判断check、quota下放istio-proxy引入的问题？</p>
 </blockquote>
 <p>A：得通过压测了，看性能损耗了。我们后续会加入Mixer的功能再压测一轮。现在做的压测还是不开Mixer功能的场景下压的。因为我们线上目前还不打算开Mixer。</p>
@@ -6043,7 +6040,8 @@
 <p>Q：SpringCloud向Istio迁移好迁移吗？</p>
 </blockquote>
 <p>A：比较好迁移。我们遇到的问题主要就是通讯的问题。涉及到Feign和gRPC两种。需要升级一下starter，传递一下header。因为我们的流量标签是在header中传递。还有一个重要的就是分享里提到的，服务发现问题。因为要做渐进式升级，不能一下就给所有的服务上Istio，边缘服务先上，热门服务后上，所以要兼容之前的服务发现（Consul），同时有两个服务发现机制的时候会有些问题。</p>
-<h2 id="2019-07-17"><a href="#2019-07-17" class="headerlink" title="2019-07-17"></a>2019-07-17</h2><h3 id="DockOne微信分享（二一五）：Kube-OVN-的设计思路和实现原理"><a href="#DockOne微信分享（二一五）：Kube-OVN-的设计思路和实现原理" class="headerlink" title="DockOne微信分享（二一五）：Kube-OVN 的设计思路和实现原理"></a>DockOne微信分享（二一五）：Kube-OVN 的设计思路和实现原理</h3><blockquote>
+<hr>
+<h3 id="2019-07-10：Kube-OVN-的设计思路和实现原理"><a href="#2019-07-10：Kube-OVN-的设计思路和实现原理" class="headerlink" title="2019-07-10：Kube-OVN 的设计思路和实现原理"></a>2019-07-10：Kube-OVN 的设计思路和实现原理</h3><blockquote>
 <p>Q：能说说组件 kube-ovn-cni 具体是做什么的？OVN 本身不是已经是 OVS的控制面了么？</p>
 </blockquote>
 <p>A：其实做的是容器网卡和 OVS 的对接，OVN 那边生成了 port的信息，需要 kube-ovn-cni 把这个信息同步到 OVS 和容器网卡。</p>
@@ -6099,9 +6097,8 @@
 <p>Q：在没有硬件交换机的情况，这个网络插件怎么利用虚拟机模拟交换机呢？</p>
 </blockquote>
 <p>A：还是要有硬件交换机做物理上的网络连通的，虚拟交换机是在机器中用软件的方式来模拟交换机的行为，这样一台机器上的多个容器或者虚拟机就好像接在了一个物理交换机上。</p>
-<p>2019-07-10</p>
 <hr>
-<h3 id="DockOne微信分享（二一四）：震坤行的容器云实践"><a href="#DockOne微信分享（二一四）：震坤行的容器云实践" class="headerlink" title="DockOne微信分享（二一四）：震坤行的容器云实践"></a>DockOne微信分享（二一四）：震坤行的容器云实践</h3><blockquote>
+<h3 id="2019-07-03：震坤行的容器云实践"><a href="#2019-07-03：震坤行的容器云实践" class="headerlink" title="2019-07-03：震坤行的容器云实践"></a>2019-07-03：震坤行的容器云实践</h3><blockquote>
 <p>Q：Kubernetes云平台和物理机平台，在性能对比上，Kubernetes 差多少？</p>
 </blockquote>
 <p>A： Kubernetes的最小单元是 Pod，Pod 是跑在云主机上的。整个 Kubernetes都是基于云主机/物理机来完成的。</p>
@@ -6153,9 +6150,8 @@
 <p>Q：请问一下注册到注册中心的 IP 是容器内 IP 的问题如何解决？</p>
 </blockquote>
 <p>A：我们是将注册中心部署到 Kubernetes 集群中的。注册中心的内网 IP 和Kubernetes 的内网是互相可以通信的。</p>
-<p>2019-07-03</p>
 <hr>
-<h3 id="DockOne微信分享（二一三）：智能工厂的容器云实践"><a href="#DockOne微信分享（二一三）：智能工厂的容器云实践" class="headerlink" title="DockOne微信分享（二一三）：智能工厂的容器云实践"></a>DockOne微信分享（二一三）：智能工厂的容器云实践</h3><blockquote>
+<h3 id="2019-06-26：智能工厂的容器云实践"><a href="#2019-06-26：智能工厂的容器云实践" class="headerlink" title="2019-06-26：智能工厂的容器云实践"></a>2019-06-26：智能工厂的容器云实践</h3><blockquote>
 <p>Q：您认为未来工业PaaS云平台的发展前景和发展模式有哪些？</p>
 </blockquote>
 <p>A：工业场景本身是千差万别的，石油、金属、制造业等等，都有自己各自的需求，目前来看的话，主要还是要先完成信息化改造，然后才能以此为基础去做后续的比如工艺优化等等。后续应该会公有云、私有云并存，大集团型公司走私有云模式，中小型公司走公有云模式。</p>
@@ -6187,9 +6183,8 @@
 <p>Q：离线部署，是不是通过打出镜像压缩包，然后带着镜像包到现场部署的容器云平台上，上传部署的方式？</p>
 </blockquote>
 <p>A：是在家里打出镜像压缩包，然后到现场解压出来，根据镜像类型进行处理，比如一些基础镜像，会直接上传到节点，业务的镜像会在部署完成后上传到Harbor，然后节点从Harbor去拉取。</p>
-<p>2019-06-26</p>
 <hr>
-<h3 id="DockOne微信分享（二一一）：基于Actor模型的CQRS-ES解决方案分享"><a href="#DockOne微信分享（二一一）：基于Actor模型的CQRS-ES解决方案分享" class="headerlink" title="DockOne微信分享（二一一）：基于Actor模型的CQRS/ES解决方案分享"></a>DockOne微信分享（二一一）：基于Actor模型的CQRS/ES解决方案分享</h3><blockquote>
+<h3 id="2019-06-05：基于Actor模型的CQRS-ES解决方案分享"><a href="#2019-06-05：基于Actor模型的CQRS-ES解决方案分享" class="headerlink" title="2019-06-05：基于Actor模型的CQRS/ES解决方案分享"></a>2019-06-05：基于Actor模型的CQRS/ES解决方案分享</h3><blockquote>
 <p>Q：单点故障后，正在处理的Cache数据如何处理的，例如，http、tcp请求……毕竟涉及到钱？</p>
 </blockquote>
 <p>A：actor有激活和失活的生命周期，激活的时候使用快照和Events来恢复最新内存状态，失活的时候保存快照。actor框架保证系统中同一个key只会存在同一个actor，当单点故障后，actor会在其它节点重建并恢复最新状态。</p>
@@ -6225,7 +6220,9 @@
 <blockquote>
 <p>Q：同一个actor是否会存在于集群中的多台机器？如果可能，怎样的场景下可能会出现这种情况？</p>
 </blockquote>
-<h2 id="A：一个Id对应的Actor只会在集群种存在一个。-2019-06-05"><a href="#A：一个Id对应的Actor只会在集群种存在一个。-2019-06-05" class="headerlink" title="A：一个Id对应的Actor只会在集群种存在一个。 2019-06-05"></a>A：一个Id对应的Actor只会在集群种存在一个。 2019-06-05</h2><h3 id="DockOne微信分享（二一零）：平安证券Kubernetes容器集群的DevOps实践"><a href="#DockOne微信分享（二一零）：平安证券Kubernetes容器集群的DevOps实践" class="headerlink" title="DockOne微信分享（二一零）：平安证券Kubernetes容器集群的DevOps实践"></a>DockOne微信分享（二一零）：平安证券Kubernetes容器集群的DevOps实践</h3><blockquote>
+<p>A：一个Id对应的Actor只会在集群种存在一个。</p>
+<hr>
+<h3 id="2019-05-29：平安证券Kubernetes容器集群的DevOps实践"><a href="#2019-05-29：平安证券Kubernetes容器集群的DevOps实践" class="headerlink" title="2019-05-29：平安证券Kubernetes容器集群的DevOps实践"></a>2019-05-29：平安证券Kubernetes容器集群的DevOps实践</h3><blockquote>
 <p>Q：镜像有进行安全扫描吗：</p>
 </blockquote>
 <p>A：外部基本镜像进入公司内部，我们基于Harbor内置的安全功能进行扫描。</p>
@@ -6277,9 +6274,8 @@
 <p>Q：部署的动态过程是在Jenkins的Web界面上看还是在自研的Prism4k上能看到，如果是Prism4k的话，整个可视化过程的展示这些等等也是自己开发的吗？Prism4k是用什么语言开发的，Python吗？</p>
 </blockquote>
 <p>A：部署的动态过程，是在Prism4k上显示。可视化方案，也只是简单的使用ajax及websocket。Prism4k后端是基于Django2.0以上开发，其中使用了RESTfulframework、channels等库，前端使用了一些js插件。</p>
-<p>2019-05-29</p>
 <hr>
-<h3 id="DockOne微信分享（二零九）：荔枝运维平台容器化实践"><a href="#DockOne微信分享（二零九）：荔枝运维平台容器化实践" class="headerlink" title="DockOne微信分享（二零九）：荔枝运维平台容器化实践"></a>DockOne微信分享（二零九）：荔枝运维平台容器化实践</h3><blockquote>
+<h3 id="2019-04-30：荔枝运维平台容器化实践"><a href="#2019-04-30：荔枝运维平台容器化实践" class="headerlink" title="2019-04-30：荔枝运维平台容器化实践"></a>2019-04-30：荔枝运维平台容器化实践</h3><blockquote>
 <p>Q：容器的Pod网络和外部网络全部打通吗，如何实现的？</p>
 </blockquote>
 <p>A：因为kube-router是基于三层路由，所以只要在顶层交换上指定PodIP的静态路由即可，比如宿主机是192.168.0.1，该宿主机上的pod iprange是10.0.0.1/24，那只要在交换机或需要访问Pod的外部主机上添加路由10.0.0.1/24via 192.168.0.1 ...即可。</p>
@@ -6331,9 +6327,8 @@
 <p>Q：请问镜像大小是否有做优化？生产中有用alpine之类的base镜像吗？</p>
 </blockquote>
 <p>A：暂时没有，我们镜像的大小大约在100-300M之间。而且比起镜像大小的优化，运行环境的稳定和调试的便利更为重要。镜像有分层的策略，即使是很大的镜像，只要每次版本部署时更新的是最底层的镜像就不会导致每次都要拉取完整镜像。</p>
-<p>2019-04-30</p>
 <hr>
-<h3 id="DockOne微信分享（二零八）：华尔街见闻Istio生产实践"><a href="#DockOne微信分享（二零八）：华尔街见闻Istio生产实践" class="headerlink" title="DockOne微信分享（二零八）：华尔街见闻Istio生产实践"></a>DockOne微信分享（二零八）：华尔街见闻Istio生产实践</h3><blockquote>
+<h3 id="2019-04-24：华尔街见闻Istio生产实践"><a href="#2019-04-24：华尔街见闻Istio生产实践" class="headerlink" title="2019-04-24：华尔街见闻Istio生产实践"></a>2019-04-24：华尔街见闻Istio生产实践</h3><blockquote>
 <p>Q：学Service Mesh什么用？</p>
 </blockquote>
 <p>A：ServiceMesh是最近比较火的一个概念，和微服务、Kubernetes有密切关系。出于以后业务发展需要，可以学习下，增加知识储备。见闻上Istio的主要目的在文章已说明，主要是基础服务的下沉，解决了语言兼容性问题，还有一个就是灰度发布。</p>
@@ -6381,9 +6376,8 @@
 <p>Q：Istio组件实现了高可用么？</p>
 </blockquote>
 <p>A：Istio本身也是基于Kubernetes，所以可用性还是有较好保证的。</p>
-<p>2019-04-24</p>
 <hr>
-<h3 id="DockOne微信分享（二零七）：瓜子云平台的实践经验"><a href="#DockOne微信分享（二零七）：瓜子云平台的实践经验" class="headerlink" title="DockOne微信分享（二零七）：瓜子云平台的实践经验"></a>DockOne微信分享（二零七）：瓜子云平台的实践经验</h3><blockquote>
+<h3 id="2019-04-17：瓜子云平台的实践经验"><a href="#2019-04-17：瓜子云平台的实践经验" class="headerlink" title="2019-04-17：瓜子云平台的实践经验"></a>2019-04-17：瓜子云平台的实践经验</h3><blockquote>
 <p>Q：请问瓜子私有云是一朵独立的云还是多云部署？如果是多云部署，云间网络是采用的什么技术？如何打通多云之间的网络的？谢谢</p>
 </blockquote>
 <p>A：我们在设计之初就考虑多集群 / 多 IDC 部署的，这也是选择 Calico的一个原因。通过 BGP 协议将容器 IP广播出去后，云间互联和普通虚拟机互联没有区别，当然这需要网络设备支持。</p>
@@ -6435,42 +6429,33 @@
 <p>Q：目前支撑的生产应用服务规模和云平台的规模能介绍下？包括一些指标，比如多少应用进行灰度更新耗时？</p>
 </blockquote>
 <p>A：应用规模的话目前超过 1000 了，每个月发布次数超过10000。灰度更新是用户自行控制整个发布进度的，所以耗时不太有参考意义。</p>
-<p>2019-04-17</p>
 <hr>
-<h3 id="DockOne微信分享（二零六）：容器环境下的持续集成最佳实践"><a href="#DockOne微信分享（二零六）：容器环境下的持续集成最佳实践" class="headerlink" title="DockOne微信分享（二零六）：容器环境下的持续集成最佳实践"></a>DockOne微信分享（二零六）：容器环境下的持续集成最佳实践</h3><blockquote>
-<p>Q：Kubernetes 上主流的 CI/CD 方案是啥？<br>A：其实这无关</p>
+<h3 id="2019-04-03：容器环境下的持续集成最佳实践"><a href="#2019-04-03：容器环境下的持续集成最佳实践" class="headerlink" title="2019-04-03：容器环境下的持续集成最佳实践"></a>2019-04-03：容器环境下的持续集成最佳实践</h3><blockquote>
+<p>Q：Kubernetes 上主流的 CI/CD 方案是啥？</p>
 </blockquote>
-<p>Kubernetes，从市场占有率来看，前三名分别是&gt; Q：GitLab 自带的 CI 与</p>
-<p>Jenkins 和 GitLab 结合的 CI，该如何选择？想知道更深层次的理解。</p>
-<p>A：还是要结合自己团队的实际情况做选择。从成熟度来说，肯定是 Jenkins</p>
-<p>用户最多，成熟度最高，缺点是侧重 Java，配置相对繁琐。GitLab 自带的 CI</p>
-<p>相对简单，可以用 yaml，和 GitLab 结合的最好，但功能肯定没有 Jenkins</p>
-<p>全面。如果是小团队新项目，GitLab CI 又已经可以满足需求的话，并不需要上</p>
-<p>Jenkins，如果是较大的团队，又是偏 Java 的，个人更偏向 Jenkins。</p>
+<p>A：其实这无关Kubernetes，从市场占有率来看，前三名分别是</p>
+<blockquote>
+<p>Q：GitLab 自带的 CI 与Jenkins 和 GitLab 结合的 CI，该如何选择？想知道更深层次的理解。</p>
+</blockquote>
+<p>A：还是要结合自己团队的实际情况做选择。从成熟度来说，肯定是 Jenkins用户最多，成熟度最高，缺点是侧重 Java，配置相对繁琐。GitLab 自带的 CI相对简单，可以用 yaml，和 GitLab 结合的最好，但功能肯定没有 Jenkins全面。如果是小团队新项目，GitLab CI 又已经可以满足需求的话，并不需要上Jenkins，如果是较大的团队，又是偏 Java 的，个人更偏向 Jenkins。</p>
 <blockquote>
 <p>Q：Jenkins 如果不想运行在 Kubernetes 里面，该怎么和 Kubernetes 集成？</p>
 </blockquote>
-<p>A：从 CI 的流程来说，CI 应用是不是跑在 Kubernetes 的并不重要，CI</p>
-<p>只要能访问代码库，有权限在生产环境发布，是不是跑在容器里从效果来说其实没有区别，只是用</p>
-<p>Kubernetes 部署 Jenkins</p>
-<p>的话，运维的一致性比较好，运维团队不用额外花时间维护一套物理机的部署方案。</p>
-<p>> Q：Kubernetes</p>
-<p>的回滚方案是回滚代码，重做镜像，还是先切流量，后做修改？</p>
-<p>A：代码一定是打包到镜像里的，镜像的版本就是代码的版本，所以一定是切镜像。至于回滚操作本身，Kubernetes</p>
-<p>已经内置了很多滚动发布（Rolling</p>
-<p>update）的策略，无论是发新版本还是回滚版本，都可以做到用户无感知。</p>
+<p>A：从 CI 的流程来说，CI 应用是不是跑在 Kubernetes 的并不重要，CI只要能访问代码库，有权限在生产环境发布，是不是跑在容器里从效果来说其实没有区别，只是用Kubernetes 部署 Jenkins的话，运维的一致性比较好，运维团队不用额外花时间维护一套物理机的部署方案。</p>
+<blockquote>
+<p>Q：Kubernetes的回滚方案是回滚代码，重做镜像，还是先切流量，后做修改？</p>
+</blockquote>
+<p>A：代码一定是打包到镜像里的，镜像的版本就是代码的版本，所以一定是切镜像。至于回滚操作本身，Kubernetes已经内置了很多滚动发布（Rollingupdate）的策略，无论是发新版本还是回滚版本，都可以做到用户无感知。</p>
 <blockquote>
 <p>Q：镜像大到几 G 的话如何更新部署，有什么好的实践呢，以及如何回滚？</p>
 </blockquote>
 <p>A：几个要点：&gt; Q：Drone 开放 API 服务吗？这样方便其他系统集成。</p>
 <p>A：可以调整一下思路，直接把需要的功能做成镜像在 Drone 里调用就好了。</p>
 <blockquote>
-<p>Q：如果有 Drone 的 Server怎么做高可用？<br>A：Drone serve r用 Kubernetes</p>
+<p>Q：如果有 Drone 的 Server怎么做高可用？<br>A：Drone serve r用 Kubernetes部署的话本身只起到了一个任务调度的作用，很难会遇到性能瓶颈。真的有性能问题可以尝试水平扩展Drone server，共享同一数据库。</p>
 </blockquote>
-<p>部署的话本身只起到了一个任务调度的作用，很难会遇到性能瓶颈。真的有性能问题可以尝试水平扩展</p>
-<p>Drone server，共享同一数据库。 2019-04-03</p>
 <hr>
-<h3 id="DockOne微信分享（二零五）：基于OVN的Kubernetes网络架构解析"><a href="#DockOne微信分享（二零五）：基于OVN的Kubernetes网络架构解析" class="headerlink" title="DockOne微信分享（二零五）：基于OVN的Kubernetes网络架构解析"></a>DockOne微信分享（二零五）：基于OVN的Kubernetes网络架构解析</h3><blockquote>
+<h3 id="2019-03-28：基于OVN的Kubernetes网络架构解析"><a href="#2019-03-28：基于OVN的Kubernetes网络架构解析" class="headerlink" title="2019-03-28：基于OVN的Kubernetes网络架构解析"></a>2019-03-28：基于OVN的Kubernetes网络架构解析</h3><blockquote>
 <p>Q：OVS方案与基于三层交换机方案对比，各有什么优缺点？</p>
 </blockquote>
 <p>A：OVS最大的优点在于可编程，灵活性比较好。虚拟网络不用手动插网线，而且有OpenFlow加持，可以实现一些普通交换机无法实现的流量控制。物理交换机的主要有点就是性能好，而且比较稳定，不容易出问题。</p>
@@ -6530,10 +6515,8 @@
 <p>Q：你了解Contiv网络方案吗，和贵公司的实现有哪些区别？</p>
 </blockquote>
 <p>A：Contiv是思科做的，也是OVS实现的，不过它的实现比较早，自己手动实现了整个控制平面，可以认为自己写了个跟OVN类似的东西来控制 OVS。不过看它最近已经很少更新了。用OVN能用很少的代码就实现基本相同的功能。Contiv有个比较独特的功能就是支持BGP的网络间通信，这个是OVN暂时不支持的。</p>
-<p>以上内容根据2019年3月26日晚微信群分享内容整理。分享人<strong>刘梦馨，灵雀云高级工程师。2014年加入灵雀云容器团队，长期参与容器调度平台和容器网络架构的产品研发和技术架构演进，参与自研容器网络和容器应用网关。目前主要专注于容器网络功能的拓展和架构优化</strong>。</p>
-<p>2019-03-28</p>
 <hr>
-<h3 id="DockOne微信分享（二零四）：小团队微服务落地实践"><a href="#DockOne微信分享（二零四）：小团队微服务落地实践" class="headerlink" title="DockOne微信分享（二零四）：小团队微服务落地实践"></a>DockOne微信分享（二零四）：小团队微服务落地实践</h3><blockquote>
+<h3 id="2019-03-21：小团队微服务落地实践"><a href="#2019-03-21：小团队微服务落地实践" class="headerlink" title="2019-03-21：小团队微服务落地实践"></a>2019-03-21：小团队微服务落地实践</h3><blockquote>
 <p>Q：服务治理问题，服务多了，调用方请求服务方，超时或者网络抖动等需要可能需要重试，客户端等不及了怎么办？比如A-&gt; B-&gt; C，等待超时时间都是6s，因为C服务不稳定，B做了重试，那么增加了A访问B的时长，导致连锁反应？</p>
 </blockquote>
 <p>A：服务发现有两种，一种是客户端发现，一种是服务端发现。如果是客户端发现的话，客户端需要设置超时时间，如果超时客户端需要自己重试，此时如果是轮询应该可以调用到正常的服务提供方。Spring Coud的Ribbon就是对这一流程做了封装。至于连锁反应的问题，需要有降级熔断，配置Hystrix相关参数并实现fallback方法。看源码能够发现hystrixTimeout要大于ribbonTimeout，即Hystrix熔断了以后就不会重试了，防止雪崩。</p>
@@ -6582,9 +6565,8 @@
 <p>Q：Prometheus是每个集群部署一套吗？存储是怎么处理？存本地还是？</p>
 </blockquote>
 <p>A：每个集群部署一套，存储暂时存在本地，没有用持久化存储。因为现在环境都是在云上面，本身云厂商就有各种的监控数据，所以Prometheus的监控数据也只是做个辅助作用。</p>
-<p>2019-03-21</p>
 <hr>
-<h3 id="DockOne微信分享（二零三）：骞云科技DevOps实践"><a href="#DockOne微信分享（二零三）：骞云科技DevOps实践" class="headerlink" title="DockOne微信分享（二零三）：骞云科技DevOps实践"></a>DockOne微信分享（二零三）：骞云科技DevOps实践</h3><blockquote>
+<h3 id="2019-02-28：骞云科技DevOps实践"><a href="#2019-02-28：骞云科技DevOps实践" class="headerlink" title="2019-02-28：骞云科技DevOps实践"></a>2019-02-28：骞云科技DevOps实践</h3><blockquote>
 <p>Q：CMP和各个云平台打通都使用了平台的jar，并且需要各种资源生成，这个工作量也不小吧？并且如果api更新代码量也大吧？</p>
 </blockquote>
 <p>A：我们的核心业务就是做云管理平台，我们产品已经完成了对各个云平台的对接，主要调用各个云平台的API。公有云的API更新频率并不是很高，每当API有更新时，我们也及时去适配。</p>
@@ -6596,9 +6578,8 @@
 <p>Q：有了Gerrit，为什么还要GitLab，Gerrit也可以托管代码啊？</p>
 </blockquote>
 <p>A：这个是有历史背景的，我们是先选择使用GitLab做代码托管，后期才加入Gerrit做code review。Gerrit在代码review方面比GitLab的merge request要方便许多，更适合企业内部使用。关于这个，我的想法是，要么将GitLab迁移到Gerrit，要么不用Gerrit，可以使用GitLab的merge request来进行review，那GitLab其实是可以不要的。</p>
-<p>2019-02-28</p>
 <hr>
-<h3 id="DockOne微信分享（二零二）：房多多Service-Mesh实践"><a href="#DockOne微信分享（二零二）：房多多Service-Mesh实践" class="headerlink" title="DockOne微信分享（二零二）：房多多Service Mesh实践"></a>DockOne微信分享（二零二）：房多多Service Mesh实践</h3><blockquote>
+<h3 id="2019-02-22：房多多Service-Mesh实践"><a href="#2019-02-22：房多多Service-Mesh实践" class="headerlink" title="2019-02-22：房多多Service Mesh实践"></a>2019-02-22：房多多Service Mesh实践</h3><blockquote>
 <p>Q：容器和微服务的区别以及它们的关联性、应用场景、客户群体、带来的价值？</p>
 </blockquote>
 <p>A：微服务的应用场景主要是解决降低单个服务体积，满足业务的快速开发需求。容器可以说是微服务的载体，容器方面还是运维关注的比较多，带来的标准化流程和环境的提升对整个研发团队都有很大的作用。</p>
@@ -6613,8 +6594,7 @@
 <blockquote>
 <p>Q：请问，实现微服务过程中有没有考虑分布式跟踪和分布式？</p>
 </blockquote>
-<p>A：Service</p>
-<p>Mesh层可以做到简单的分布式追踪，比如可以做到基于请求的追踪，Envoy可以把trace数据接入Zipkin这样的trace系统，但是更细粒度的trace目前还做不到。</p>
+<p>A：Service Mesh层可以做到简单的分布式追踪，比如可以做到基于请求的追踪，Envoy可以把trace数据接入Zipkin这样的trace系统，但是更细粒度的trace目前还做不到。</p>
 <blockquote>
 <p>Q：不论是使用都会产生大量的配置（yaml），尤其是Envoy/Istio，系统中会有大量零散的配置文件，维护困难，还有版本管理，有什么很好的维护实践经验吗？谢谢。</p>
 </blockquote>
@@ -6647,9 +6627,8 @@
 <p>Q：我理解房多多目前的Mesh方案没有给每个微服务配一个Envoy作为Sidecar，而是使用一组Enovy并自研了xDS的配置发布管理系统，对吗？我想请问backend微服务之间的请求现在是怎么走的呢？谢谢。</p>
 </blockquote>
 <p>A：是的，刚刚文章中说了，我们后端SOA服务还是基于Dubbo的，这块目前我们还没有做改动，之后的话我们的初步构想会通过Sidecar的方式把这些Dubbo服务都接入到Mesh里面来。我们目前的Envoy也是会充当网关的角色。</p>
-<p>2019-02-22</p>
 <hr>
-<h3 id="DockOne微信分享（二零一）：得到App的容器及Kubernetes实践"><a href="#DockOne微信分享（二零一）：得到App的容器及Kubernetes实践" class="headerlink" title="DockOne微信分享（二零一）：得到App的容器及Kubernetes实践"></a>DockOne微信分享（二零一）：得到App的容器及Kubernetes实践</h3><blockquote>
+<h3 id="2019-01-25：得到App的容器及Kubernetes实践"><a href="#2019-01-25：得到App的容器及Kubernetes实践" class="headerlink" title="2019-01-25：得到App的容器及Kubernetes实践"></a>2019-01-25：得到App的容器及Kubernetes实践</h3><blockquote>
 <p>Q：业务环境有跨机房么，还是云环境，是共用一个集群还是不同集群呢？</p>
 </blockquote>
 <p>A：个人倾向多集群，上层Federation Cluster管理。</p>
@@ -6685,10 +6664,8 @@
 <p>Q：日志这块使用emptydir的话会不会有日志丢弃的情况？</p>
 </blockquote>
 <p>A：没有，logtail和filebeat使用的是Watch和tail类似的模式，我们统计过，延迟最大在5秒。</p>
-<p>以上内容根据2019年1月22日晚微信群分享内容整理。分享人<strong>孙青云，罗辑思维（得到App）容器平台负责人，目前负责得到App的内部容器云平台建设、落地以及自动化流水线</strong>。</p>
-<p>2019-01-25</p>
 <hr>
-<h3 id="DockOne微信分享（二零零）：龙腾出行基于Kubernetes的DevOps流水线实战"><a href="#DockOne微信分享（二零零）：龙腾出行基于Kubernetes的DevOps流水线实战" class="headerlink" title="DockOne微信分享（二零零）：龙腾出行基于Kubernetes的DevOps流水线实战"></a>DockOne微信分享（二零零）：龙腾出行基于Kubernetes的DevOps流水线实战</h3><blockquote>
+<h3 id="2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战"><a href="#2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战" class="headerlink" title="2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战"></a>2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战</h3><blockquote>
 <p>Q：Kubernetes本身技术框架带来的问题在生产环境中有碰到没，请举几个例子。</p>
 </blockquote>
 <p>A：Kubernetes如果出问题带来的都是雪崩效应，例如网络Calico、存储etcd出现故障是灾难性的，我们也踩过不少这方面的坑，所以要做到高可用才能稳定生产。</p>
@@ -6723,9 +6700,8 @@
 <p>Q：Kubernetes集群你们为什么没有部实体机在署上？</p>
 </blockquote>
 <p>A：虚拟机和实体机都行，我们实体机数量有限，包括中间件那些，做高可用会用占用比较多的Node机。</p>
-<p>2019-01-16</p>
 <hr>
-<h3 id="DockOne微信分享（一九九）：如何评估Kubernetes持久化存储方案"><a href="#DockOne微信分享（一九九）：如何评估Kubernetes持久化存储方案" class="headerlink" title="DockOne微信分享（一九九）：如何评估Kubernetes持久化存储方案"></a>DockOne微信分享（一九九）：如何评估Kubernetes持久化存储方案</h3><blockquote>
+<h3 id="2019-01-11：如何评估Kubernetes持久化存储方案"><a href="#2019-01-11：如何评估Kubernetes持久化存储方案" class="headerlink" title="2019-01-11：如何评估Kubernetes持久化存储方案"></a>2019-01-11：如何评估Kubernetes持久化存储方案</h3><blockquote>
 <p>Q：你好，我们公司采用GlusterFS存储，挂载三块盘，现在遇到高并发写小文件（4KB）吞吐量上不去（5MB/S），请问有什么比较好的监控工具或方法么？谢谢！</p>
 </blockquote>
 <p>A：GlusterFS本身对小文件就很不友好，GlusterFS是针对备份场景设计的，不建议用在小文件场景，如果可以的话，要么程序做优化进行小文件合并，要么选用高性能的分布式文件存储，建议看看Lustre或者YRCloudFile。</p>
@@ -6781,9 +6757,8 @@
 <p>Q：GPFS用来做Kubernetes的PV，性能怎么样？</p>
 </blockquote>
 <p>A：用GPFS的话，性能还是有一定保障的，不过GPFS跟Lustre一样，都是带着阵列一起卖的，很贵。</p>
-<p>2019-01-11</p>
 <hr>
-<h3 id="DockOne微信分享（一九七）：etcd-集群运维实践"><a href="#DockOne微信分享（一九七）：etcd-集群运维实践" class="headerlink" title="DockOne微信分享（一九七）：etcd 集群运维实践"></a>DockOne微信分享（一九七）：etcd 集群运维实践</h3><blockquote>
+<h3 id="2019-01-04：etcd-集群运维实践"><a href="#2019-01-04：etcd-集群运维实践" class="headerlink" title="2019-01-04：etcd 集群运维实践"></a>2019-01-04：etcd 集群运维实践</h3><blockquote>
 <p>Q：请问 etcd 监控和告警如何做的？告警项都有哪些？</p>
 </blockquote>
 <p>A：告警要看用的什么监控吧，和 Kubernetes 配套比较常见的是普罗米修思和 Grafana 了。告警项我没有具体配过，可以关注的点是：endpoint status -w table 里可以看到数据量，endpoints health 看到健康状态，还有内存使用这些，具体可以参考普罗米修思的 exporter 是怎么做的。</p>
@@ -6807,10 +6782,8 @@
 <p>Q：有没有试过 Kubeadm 的滚动升级，etcd 版本变更，各 Master机分别重启，数据同步是否有异常等等？</p>
 </blockquote>
 <p>A：做过。Kubeadm 的滚动升级公司内部有从 1.7 一步步升级到 1.11、1.12 的文档，或多或少有一点小坑，不过今天主题是 etcd 所以没提这部分。各个 Master 分别重启后数据的一致我们测试时没问题，还有比较极端的是直接把三 Master 停机一天，再启动后也能恢复。</p>
-<p>以上内容根据2019年1月3日晚微信群分享内容整理。分享人<strong>郭靖，灵雀云运维开发工程师，有大规模集群运维经验，对自动化迷之热衷，精通Ansible，HashiCorp工具集，容器和Kubernetes鼓捣了三年，喜欢用Python和Go写小工具，DevOps推崇及践行者，近期关注和期待OpsMop</strong>。</p>
-<p>2019-01-04</p>
 <hr>
-<h3 id="DockOne微信分享（一九六）：聚美优品云平台实践"><a href="#DockOne微信分享（一九六）：聚美优品云平台实践" class="headerlink" title="DockOne微信分享（一九六）：聚美优品云平台实践"></a>DockOne微信分享（一九六）：聚美优品云平台实践</h3><blockquote>
+<h3 id="2018-12-21：聚美优品云平台实践"><a href="#2018-12-21：聚美优品云平台实践" class="headerlink" title="2018-12-21：聚美优品云平台实践"></a>2018-12-21：聚美优品云平台实践</h3><blockquote>
 <p>Q：为啥采用Consul作为容器的服务发现与配置管理，而不采用默认的etcd？</p>
 </blockquote>
 <p>A：这个问题主要是聚美对于Web类服务已经存在了基于Consul的发现机制，所以云平台在推广时就利用了现有的架构。</p>
@@ -6843,9 +6816,8 @@
 <p>Q：Pod跨节点的访问是怎么做到的，如果两个节点不在同一个swtich下，需要跨路由器的情况下？</p>
 </blockquote>
 <p>A：IPVLAN的网络是提前规划好的，并保存在网络配置管理平台上。对于IPVLAN不同网段的之间的通信，还是在三层交换机上做路由来实现的。</p>
-<p>2018-12-21</p>
 <hr>
-<h3 id="DockOne微信分享（一九五）：智融集团基于OpenShift的容器化PaaS平台实践"><a href="#DockOne微信分享（一九五）：智融集团基于OpenShift的容器化PaaS平台实践" class="headerlink" title="DockOne微信分享（一九五）：智融集团基于OpenShift的容器化PaaS平台实践"></a>DockOne微信分享（一九五）：智融集团基于OpenShift的容器化PaaS平台实践</h3><blockquote>
+<h3 id="2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践"><a href="#2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践" class="headerlink" title="2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践"></a>2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践</h3><blockquote>
 <p>Q：请问通过OpenShift怎么做高可用？</p>
 </blockquote>
 <p>A：OpenShift的高可用是跟Kubernetes的高可用一致的，就是延用了Kubernetes的Service IP来做服务发现和负载均衡；另外，前面还有DNS服务，（例如：Hostname: service.abc-platform.svc，后端就是指向的Cluster IP）。</p>
@@ -6897,10 +6869,8 @@
 <p>Q：业务应用的自动化发布你们是怎么设计的，能否详细说说思路？</p>
 </blockquote>
 <p>A：我们是自己定义了S2I的流程。Build镜像统一在代码仓库里加一个Makefile，定义一个assemble的role，来做初始化（依赖包的安装、nodejs的Build等等，这里还是比较灵活的）。自动发布：我们是自定义了部署模板，分享的内容里有（只需要简单的几步就可以部署一套服务）。</p>
-<p>以上内容根据2018年12月4日晚微信群分享内容整理。分享人<strong>徐义义，智融集团容器化PaaS平台负责人，从事云计算开发、设计6年（其中4年私有云，2年公有云\&lt;京东云>），目前负责公司内部PaaS平台的建设与应用的变更交付</strong>。</p>
-<p>2018-12-07</p>
 <hr>
-<h3 id="DockOne微信分享（一九四）：猪八戒网DevOps容器云与流水线"><a href="#DockOne微信分享（一九四）：猪八戒网DevOps容器云与流水线" class="headerlink" title="DockOne微信分享（一九四）：猪八戒网DevOps容器云与流水线"></a>DockOne微信分享（一九四）：猪八戒网DevOps容器云与流水线</h3><blockquote>
+<h3 id="2018-11-29：猪八戒网DevOps容器云与流水线"><a href="#2018-11-29：猪八戒网DevOps容器云与流水线" class="headerlink" title="2018-11-29：猪八戒网DevOps容器云与流水线"></a>2018-11-29：猪八戒网DevOps容器云与流水线</h3><blockquote>
 <p>Q：Ingress是用的那个组建？</p>
 </blockquote>
 <p>A：这里我再详细补充下，我们没有使用到Ingress Service这些对象，为了维护与虚拟机项目的统一管理，方便运维使用，我们的Nginx是部署在集群外部的，与nginx-ingress-controller一样，使用Lua扩展自己做服务发现，Nginx直接向Pod转发流量。</p>
@@ -6976,9 +6946,8 @@
 <p>Q：DevOps的资料都存在etcd中的吗？ 这个是怎么做的 能否讲讲设计思路？</p>
 </blockquote>
 <p>A：是我们的Deployment发布模块及元数据都存在了etcd中，把etcd当做一个K-V数据库来用，当时在数据库选型时也考虑过MySQL，但是我们的数据类型适合KV存储，如我们的每个项目Deployment模板都是不一样的，存放在/deployment/region/env/projectname/这样的路径下，并且etcd更加稳定高可用。</p>
-<p>2018-11-29</p>
 <hr>
-<h3 id="DockOne微信分享（一九三）：容器化落地实践的一个案例-gt"><a href="#DockOne微信分享（一九三）：容器化落地实践的一个案例-gt" class="headerlink" title="DockOne微信分享（一九三）：容器化落地实践的一个案例&gt;"></a>DockOne微信分享（一九三）：容器化落地实践的一个案例&gt;</h3><p>Q：PreStop Hook的参考地址能给个外网地址看嘛？</p>
+<h3 id="2018-11-22：容器化落地实践的一个案例-gt"><a href="#2018-11-22：容器化落地实践的一个案例-gt" class="headerlink" title="2018-11-22：容器化落地实践的一个案例&gt;"></a>2018-11-22：容器化落地实践的一个案例&gt;</h3><p>Q：PreStop Hook的参考地址能给个外网地址看嘛？</p>
 <p>A：这个看官方的文档就行吧，我这个场景里只是用了一个curl，让开发提供一个接口就行。具体PreStop Hook官方文档上有详细的举例。</p>
 <blockquote>
 <p>Q：Apollo配置中心，配置怎么落到服务里的，或者容器里？</p>
@@ -7009,9 +6978,8 @@
 </blockquote>
 <p>A：这块我们写了一个简单的服务部署到了Kubernetes的Master节点上，当一个服务接入Kubernetes上以后，运维平台会去掉这个服务的接口，就会创建一个Prometheus Server专门抓取该服务的监控数据，通过Prometheus的配置可以做到只匹配该服务，我们这边是每个服务配置一个单独的Prometheus Server抓取端。</p>
 <p>以上内容根据2018年11月20日晚微信群分享内容整理。分享人<strong>吴飞群，一下科技运维工程师</strong>。</p>
-<p>2018-11-22</p>
 <hr>
-<h3 id="DockOne微信分享（一九〇）：Spring-Cloud-Kubernetes容器化实践"><a href="#DockOne微信分享（一九〇）：Spring-Cloud-Kubernetes容器化实践" class="headerlink" title="DockOne微信分享（一九〇）：Spring Cloud Kubernetes容器化实践"></a>DockOne微信分享（一九〇）：Spring Cloud Kubernetes容器化实践</h3><blockquote>
+<h3 id="2018-11-03：Spring-Cloud-Kubernetes容器化实践"><a href="#2018-11-03：Spring-Cloud-Kubernetes容器化实践" class="headerlink" title="2018-11-03：Spring Cloud Kubernetes容器化实践"></a>2018-11-03：Spring Cloud Kubernetes容器化实践</h3><blockquote>
 <p>Q：使用NFS有存在性能瓶颈或单点故障的问题吗，如何解决，对于持久化要求高的Redis应该采用哪种存储？</p>
 </blockquote>
 <p>A：具体看你的规模数量，测试、开发环境，单节点NFS毫无压力，数据是先写到缓存内存，速度很快，我文章中的说的内核注意bug，没必要做高可用，公有云有NAS服务，不必担心，自建机房可以用drbd Keepalived vip。</p>
@@ -7036,9 +7004,8 @@
 </blockquote>
 <p>A：有状态容器创建后，尽量少动，少迁移，遇到过卡住，容器无法迁移或删除，重要的MySQL之类的建议放外部运行。</p>
 <p>以上内容根据2018年10月30日晚微信群分享内容整理。分享人<strong>涂小刚，新浪爱问普惠科技容器平台负责人，负责Kubernetes容器平台的推广与建设</strong>。</p>
-<p>2018-11-03</p>
 <hr>
-<h3 id="DockOne微信分享（一八九）：有赞容器化实践"><a href="#DockOne微信分享（一八九）：有赞容器化实践" class="headerlink" title="DockOne微信分享（一八九）：有赞容器化实践"></a>DockOne微信分享（一八九）：有赞容器化实践</h3><blockquote>
+<h3 id="2018-09-29：有赞容器化实践"><a href="#2018-09-29：有赞容器化实践" class="headerlink" title="2018-09-29：有赞容器化实践"></a>2018-09-29：有赞容器化实践</h3><blockquote>
 <p>Q：你们的上线审批流程是怎样的？</p>
 </blockquote>
 <p>A：我们主要是定义了发布窗口、发布次数等限制，如果在限制以内的，只需要走普通的发布审批流程，否则走紧急发布流程。</p>
@@ -7063,9 +7030,8 @@
 </blockquote>
 <p>A：是的，我们确实改造过整个调用链里的每个环节，会全链路透传一个环境标签，以及我们灰度实现的方案也是基于这个。</p>
 <p>以上内容根据2018年9月25日晚微信群分享内容整理。分享人<strong>王波，十年运维老兵，现担任有赞运维平台负责人，负责有赞基础保障平台的建设，面向有赞开发、测试和运维提供涵盖应用生命周期管理、项目研发生命周期管理（持续交付）等功能的DevOps一站式服务</strong>。</p>
-<p>2018-09-29</p>
 <hr>
-<h3 id="DockOne微信分享（一八八）：唯品会Noah云平台实现内幕披露-Q：总CPU数"><a href="#DockOne微信分享（一八八）：唯品会Noah云平台实现内幕披露-Q：总CPU数" class="headerlink" title="DockOne微信分享（一八八）：唯品会Noah云平台实现内幕披露 Q：总CPU数"></a>DockOne微信分享（一八八）：唯品会Noah云平台实现内幕披露 Q：总CPU数</h3><blockquote>
+<h3 id="2018-09-20：唯品会Noah云平台实现内幕披露-Q：总CPU数"><a href="#2018-09-20：唯品会Noah云平台实现内幕披露-Q：总CPU数" class="headerlink" title="2018-09-20：唯品会Noah云平台实现内幕披露 Q：总CPU数"></a>2018-09-20：唯品会Noah云平台实现内幕披露 Q：总CPU数</h3><blockquote>
 <p>Q：灰度发布时，两个应用前要加负载均衡吗？</p>
 </blockquote>
 <p>A：我在服务注册发现章节提到唯品会有自研的服务化框架，是通过服务化框架的Proxy做LB的，LB是服务治理的一个重要功能。对于HTTP服务，最后还是注册到HAProxy的，因此还是通过它做LB的。</p>
@@ -7094,16 +7060,14 @@
 </blockquote>
 <p>A：我们为了提高资源利用率，做了很多事情，上面有说到，你说的60%就不稳定，需要具体分析下，因为我们也踩过一些Kubernetes和Docker的坑，同时也需要优化好系统参数，有时候问题也跟内核版本有关。</p>
 <p>以上内容根据2018年9月18日晚微信群分享内容整理。分享人<strong>王志雄，唯品会云平台架构师，参与工作15+，其中10多年在亿讯（中国电信），爱立信参与电信领域产品开发研究工作，4年前加入唯品会基础架构部，主要负责服务化平台（唯品会OSP）的研发和推广落地工作，OSP现已经是唯品会主流的服务化框架。17年开始云平台产品相关工作，现是唯品会云平台架构师，主要负责唯品会Noah云平台的产品研发和推广落地工作，Noah云平台已经接入了大部分核心域和其他业务域，并顺利承载了公司的多次大促</strong>。</p>
-<p>2018-09-20</p>
 <hr>
-<h3 id="DockOne微信分享（一八七）：gVisor是什么？可以解决什么问题？"><a href="#DockOne微信分享（一八七）：gVisor是什么？可以解决什么问题？" class="headerlink" title="DockOne微信分享（一八七）：gVisor是什么？可以解决什么问题？"></a>DockOne微信分享（一八七）：gVisor是什么？可以解决什么问题？</h3><blockquote>
+<h3 id="2018-09-09：gVisor是什么？可以解决什么问题？"><a href="#2018-09-09：gVisor是什么？可以解决什么问题？" class="headerlink" title="2018-09-09：gVisor是什么？可以解决什么问题？"></a>2018-09-09：gVisor是什么？可以解决什么问题？</h3><blockquote>
 <p>Q：gVisor是yet another container，gVisor = Kata Linux的隔离性 + Docker的隔离低消耗，可以这样理解吗？</p>
 </blockquote>
 <p>A：基本上可以这样理解，看业界对gVisor的评价普遍认为隔离性与虚拟机方案的隔离性相当，但也有人顾虑是否真能提供到这么高的隔离性，个人觉得需要时间来证明。关于低损耗我觉得得看业务的场景，目前来说对于高性能的场景我觉得是不合适的。</p>
 <p>以上内容根据2018年9月4日晚微信群分享内容整理。分享人<strong>王重山，深圳米筐科技有限公司运维总监。2014年底加入米筐，先后参与米筐在线平台以及运维系统的建设，在运维体系建设期间调研和落地了容器相关技术</strong>。</p>
-<p>2018-09-09</p>
 <hr>
-<h3 id="DockOne微信分享（一八六）：有货基于Kubernetes容器环境的持续交付实践"><a href="#DockOne微信分享（一八六）：有货基于Kubernetes容器环境的持续交付实践" class="headerlink" title="DockOne微信分享（一八六）：有货基于Kubernetes容器环境的持续交付实践"></a>DockOne微信分享（一八六）：有货基于Kubernetes容器环境的持续交付实践</h3><blockquote>
+<h3 id="2018-08-25：有货基于Kubernetes容器环境的持续交付实践"><a href="#2018-08-25：有货基于Kubernetes容器环境的持续交付实践" class="headerlink" title="2018-08-25：有货基于Kubernetes容器环境的持续交付实践"></a>2018-08-25：有货基于Kubernetes容器环境的持续交付实践</h3><blockquote>
 <p>Q：为什么没有和CI结合在一起？使用这个比较重的Spannaker有什么优势？</p>
 </blockquote>
 <p>A：可以和CI进行结合，比如Webhook的方式，或者采用Jenkins调度的方式。优势在于可以和很多云平台进行结合，而且他的Pipeline比较的完美，参数化程度很高。</p>
@@ -7127,10 +7091,8 @@
 <p>Q：Spannaker之前的截图看到也有对部分用户开发的功能，用Spannaker之后还需要Istio吗？</p>
 </blockquote>
 <p>A：这两个有不同的功能，【对部分用户开发的功能】这个是依靠创建不同的service以及Ingress来实现的，他的路由能力肯定没有Istio强悍，而且也不具备熔断等等的技术，我们线下这么创建主要为了方便开发人员进行快速的部署与调试。</p>
-<p>以上内容根据2018年8月21日晚微信群分享内容整理。分享人<strong>季邦华，有货质量保障工程师。2016年加入有货主导质量体系平台的构建以及线下线上容器环境的部署与监控，目前专注于微服务与容器技术的DevOps在项目组的落地</strong>。</p>
-<p>2018-08-25</p>
 <hr>
-<h3 id="DockOne微信分享（一八四）：基于Spring-Cloud的微服务容器化实践"><a href="#DockOne微信分享（一八四）：基于Spring-Cloud的微服务容器化实践" class="headerlink" title="DockOne微信分享（一八四）：基于Spring Cloud的微服务容器化实践"></a>DockOne微信分享（一八四）：基于Spring Cloud的微服务容器化实践</h3><blockquote>
+<h3 id="2018-08-13：基于Spring-Cloud的微服务容器化实践"><a href="#2018-08-13：基于Spring-Cloud的微服务容器化实践" class="headerlink" title="2018-08-13：基于Spring Cloud的微服务容器化实践"></a>2018-08-13：基于Spring Cloud的微服务容器化实践</h3><blockquote>
 <p>Q：WSO2的APIManager会将所有流量都统一到他这里进出，如何解决统一API网关的大流量问题？</p>
 </blockquote>
 <p>A：API Manager是可以拆开的，分开部署，比如调用你接口走网关模块，可以做高可用。当然不拆开也可以做高可用，前面加负载均衡。</p>
@@ -7142,9 +7104,8 @@
 <p>Q：服务之间二阶段事务控制一般怎么做？或者说有没有现成工具或代码？服务间用http靠谱还是其他协议靠谱？</p>
 </blockquote>
 <p>A：这个网上有一些思路比如补偿的方式，还有就是通过流数据库（Kafka），事件驱动的方式。我们目前正在尝试这种方式。</p>
-<p>2018-08-13</p>
 <hr>
-<h3 id="DockOne微信分享（一八三）：滴滴弹性云Kubernetes实践"><a href="#DockOne微信分享（一八三）：滴滴弹性云Kubernetes实践" class="headerlink" title="DockOne微信分享（一八三）：滴滴弹性云Kubernetes实践"></a>DockOne微信分享（一八三）：滴滴弹性云Kubernetes实践</h3><blockquote>
+<h3 id="2018-08-11：滴滴弹性云Kubernetes实践"><a href="#2018-08-11：滴滴弹性云Kubernetes实践" class="headerlink" title="2018-08-11：滴滴弹性云Kubernetes实践"></a>2018-08-11：滴滴弹性云Kubernetes实践</h3><blockquote>
 <p>Q：利用cgroup v2的blk-throttle实现对非driect io场景下的磁盘读写速度隔离，这个怎么做的，Kubernetes支持吗？</p>
 </blockquote>
 <p>A：如果是3的内核，那么只支持cgroup v1，v1只支持对driect io的磁盘读写限制，而我们知道大多数情况下的写磁盘都是先写到内存里再FLUSH到磁盘上，所以要限制的是从内存到磁盘的这个环节。4的内核支持cgroup v2，这个功能已经比较成熟，你可以尝试升级内核或者将v2的功能移植到v1上。</p>
@@ -7184,9 +7145,8 @@
 <p>Q：我们在运维过程中发现：某些配置了探针的容器因为服务没有成功启动而不断的被Kubernetes杀掉重建，在重建超过几百或数千次之后会偶发性的导致宿主的一些异常。这个问题的原因我们尚未查明，但是这种容器不断的重建本身就显得没有意义，再加上我们使用了自研的服务发现，所以就对每个容器的重启次数做了限制，让负载均衡层去做健康检查。</p>
 </blockquote>
 <p>A：启动上百个Pod以后我也遇见过这个问题，后来排查问题发现是docker docker_storage的overlay和overlay2没有使用xfs 文件系统导致，不知道你们有没有研究io的问题。我们使用的是overlayfs2，这个我们在生产环境中验证过，还是比较靠谱的。如果你是低版本的Docker的话，需要加一个参数就能使用overlayfs2了。有没有调研过RedHat的OpenShift，感觉网上文档很全也解决了很多问题，听说小米在用，但是你知道基础架构是牵一发而动全身的，不能轻易变化。</p>
-<p>2018-08-11</p>
 <hr>
-<h3 id="DockOne微信分享（一八二）：基于-GitLab-的-CI-实践"><a href="#DockOne微信分享（一八二）：基于-GitLab-的-CI-实践" class="headerlink" title="DockOne微信分享（一八二）：基于 GitLab 的 CI 实践"></a>DockOne微信分享（一八二）：基于 GitLab 的 CI 实践</h3><blockquote>
+<h3 id="2018-07-29：基于-GitLab-的-CI-实践"><a href="#2018-07-29：基于-GitLab-的-CI-实践" class="headerlink" title="2018-07-29：基于 GitLab 的 CI 实践"></a>2018-07-29：基于 GitLab 的 CI 实践</h3><blockquote>
 <p>Q：您提到把各种依赖都以 Service 的提供，请问是以哪种方式呢？比如Python的依赖，怎么做成Service呢？</p>
 </blockquote>
 <p>A：Service 化的依赖，主要是指类似 DB / MySQL/ Reids 之类的。 或者是 dind 其实它提供的是 2375 端口的TCP服务。 Python 的依赖，我推荐的做法是， 构建一个换了源的 Python 镜像。 安装依赖的时候，耗时会少很多。 或者说， 可以在定义 Pipeline 的时候， 将虚拟环境的 venv 文件夹作为 cache ，之后的安装也会检查这个，避免不必要的安装。</p>
@@ -7210,9 +7170,8 @@
 <p>Q：GitLab CI适合什么类型的项目呢？国内目前还比较小众吧？</p>
 </blockquote>
 <p>A：国内目前还较为小众（相比 Jenkins 来说）其实只要需要 CI 的项目，它都适合。</p>
-<p>2018-07-29</p>
 <hr>
-<h3 id="DockOne微信分享（一八一）：小米弹性调度平台Ocean"><a href="#DockOne微信分享（一八一）：小米弹性调度平台Ocean" class="headerlink" title="DockOne微信分享（一八一）：小米弹性调度平台Ocean"></a>DockOne微信分享（一八一）：小米弹性调度平台Ocean</h3><blockquote>
+<h3 id="2018-07-20：小米弹性调度平台Ocean"><a href="#2018-07-20：小米弹性调度平台Ocean" class="headerlink" title="2018-07-20：小米弹性调度平台Ocean"></a>2018-07-20：小米弹性调度平台Ocean</h3><blockquote>
 <p>Q：请教下你们ELB用的什么代理软件，HAProxy、Nginx？是否遇到过缩容时出现部分请求失败的问题，有解决方案吗？</p>
 </blockquote>
 <p>A：IDC ELB底层封装的是公司的LVS，LVS管理平台提供了完事的API支持，ELB这边调用LVS管理平台的API进行的相关操作。缩容目前没有遇到流量丢失问题，这个是在docker init内接收信号，然后做的回收处理。</p>
@@ -7225,9 +7184,8 @@
 </blockquote>
 <p>A：LXCFS目前仅支持改变容器的CPU视图（/proc/cpuinfo文件内容）并且只有--cpuset-cpus参数可以生效，对于系统调用sysconf(_SC_NPROCESSORS_ONLN)返回的同样还是物理机的CPU核数。另：我们采用的劫持方案已开源，欢迎围观：&lt;<a href="https://github.com/agile6v/container_cpu_detection" target="_blank" rel="noopener">https://github.com/agile6v/container_cpu_detection</a></p>
 <p>以上内容根据2018年7月17日晚微信群分享内容整理。分享人<strong>赵云，小米云平台运维部SRE，负责小米有品产品线运维工作</strong>。</p>
-<p>2018-07-20</p>
 <hr>
-<h3 id="DockOne微信分享（一八十）：Hulu大规模容器调度系统Capos"><a href="#DockOne微信分享（一八十）：Hulu大规模容器调度系统Capos" class="headerlink" title="DockOne微信分享（一八十）：Hulu大规模容器调度系统Capos"></a>DockOne微信分享（一八十）：Hulu大规模容器调度系统Capos</h3><blockquote>
+<h3 id="2018-07-13：Hulu大规模容器调度系统Capos"><a href="#2018-07-13：Hulu大规模容器调度系统Capos" class="headerlink" title="2018-07-13：Hulu大规模容器调度系统Capos"></a>2018-07-13：Hulu大规模容器调度系统Capos</h3><blockquote>
 <p>Q：Capos如何处理健康检查？之前了解到，Mesos内置的健康检查不是特别完善。</p>
 </blockquote>
 <p>A：目前Capos focus的作业大部分都是短作业类型，所以我们目前就是通过容器的退出码来判断success或者fail，如果你说的健康检查是针对服务的，一般实现是支持多种健康检查的方式，bash，http等，然后为了大规模容器运行情况下的可用性，建议这种健康检查的发起client和服务instance是在一台机器上，或者是一个Pod中，发现不健康通过某种机制上报，或者退出Container，但是需要控制Threshold以免整个服务downtime。这样可以探测instance的健康，整个服务的健康，可以在通过外部的一些子系统去check。</p>
@@ -7243,9 +7201,8 @@
 <p>Q：想请问下Capos的鉴权是怎么做的，有没有用户权限认证系统？此外，针对每个用户有没有容器资源使用量的限制？</p>
 </blockquote>
 <p>A：可以翻到之前share的架构组件图，我们有一个Capos portal组件，这个组件是提供Restful API和Portal，我们在这边集成Hulu SSO，然后关联Hulu yellowpages（Hulu的服务权限控制系统），做的用户的认证，我们分成自己的Capos APP， team的APP，别的组无法操作不属于自己的Capos APP。对于Quota的管理，我们做了Queue/Label机制，每个服务会建一个标识，然后在标识底下配置总的资源使用量，以及可以用的机器列表（通配符），用这样的机制控制Capos的用户资源使用。</p>
-<p>2018-07-13</p>
 <hr>
-<h3 id="DockOne微信分享（一七八）：基于Pipeline的CI-CD在趣头条的应用实践"><a href="#DockOne微信分享（一七八）：基于Pipeline的CI-CD在趣头条的应用实践" class="headerlink" title="DockOne微信分享（一七八）：基于Pipeline的CI/CD在趣头条的应用实践"></a>DockOne微信分享（一七八）：基于Pipeline的CI/CD在趣头条的应用实践</h3><blockquote>
+<h3 id="2018-06-28：基于Pipeline的CI-CD在趣头条的应用实践"><a href="#2018-06-28：基于Pipeline的CI-CD在趣头条的应用实践" class="headerlink" title="2018-06-28：基于Pipeline的CI/CD在趣头条的应用实践"></a>2018-06-28：基于Pipeline的CI/CD在趣头条的应用实践</h3><blockquote>
 <p>Q：生成新的镜像怎么自动打新的tag？</p>
 </blockquote>
 <p>A：我们镜像Tag使用本次构建选定的Git版本，如分支名称或者Tag。</p>
@@ -7290,8 +7247,9 @@
 </blockquote>
 <p>A：echo输出调试（手动滑稽）。</p>
 <blockquote>
-<p>Q：Pipeline语法和使用上有什么参考链接吗？<br>A：<a href="http://www.groovy-lang.org/" target="_blank" rel="noopener">http://www.groovy-lang.org/</a>、<a href="https://www.w3cschool.cn/groovy/" target="_blank" rel="noopener">https://www.w3cschool.cn/groovy/</a>、&lt;<a href="https://jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://jenkins.io/doc/book/pipeline/syntax/</a> Q：Git Checkout的时候，你们的Git SCM没有考虑隐私安全的事情吗，比如代码权限受限？<br>A：Jenkins使用了一个最小权限用户去GitLab上拉代码。安全方面，Jenkins所有节点都是可控的。</p>
+<p>Q：Pipeline语法和使用上有什么参考链接吗？<br>A：<a href="http://www.groovy-lang.org/" target="_blank" rel="noopener">http://www.groovy-lang.org/</a>、<a href="https://www.w3cschool.cn/groovy/" target="_blank" rel="noopener">https://www.w3cschool.cn/groovy/</a>、&lt;<a href="https://jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://jenkins.io/doc/book/pipeline/syntax/</a> Q：Git Checkout的时候，你们的Git SCM没有考虑隐私安全的事情吗，比如代码权限受限？</p>
 </blockquote>
+<p>A：Jenkins使用了一个最小权限用户去GitLab上拉代码。安全方面，Jenkins所有节点都是可控的。</p>
 <blockquote>
 <p>Q: 你们的各工具间，有没有做集成？比如使用Pipeline来操作Jira相关issue等？或其他问题管理工具。</p>
 </blockquote>
@@ -7300,9 +7258,8 @@
 <p>Q：构建及部署都在容器中？要构建的文件或制品文件怎么存放与管理的？</p>
 </blockquote>
 <p>A：Agent容器启动时挂载了一个目录，里面有全套附属文件及Jenkins &gt; home目录。build节点完成自己工作后，其它节点按需接手处理。</p>
-<p>2018-06-28</p>
 <hr>
-<h3 id="DockOne微信分享（一七七）：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"><a href="#DockOne微信分享（一七七）：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现" class="headerlink" title="DockOne微信分享（一七七）：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"></a>DockOne微信分享（一七七）：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现</h3><blockquote>
+<h3 id="2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"><a href="#2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现" class="headerlink" title="2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"></a>2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现</h3><blockquote>
 <p>Q：网络限速的对于系统级别是如何实现的？</p>
 </blockquote>
 <p>A：网络限速其实依然利用的操作系统的特性，比如tc，其实不管是OVS Ingress还是Netlink都是通过和内核通信，将限速规则加入到对应的port上。</p>
@@ -7322,10 +7279,8 @@
 <p>Q：你们做了大量定制化开发，是否提交社区了，如何保障与社区同步？</p>
 </blockquote>
 <p>A：没有提交社区，但是我们发现了一些重要的bug提交了，可能是因为很多代码涉及比较广，并且我们改动的有些并不是思科能够接受的，比如pod-ip固定，这个其实不符合Kubernetes开源思想。</p>
-<p>以上内容根据2018年6月12日晚微信群分享内容整理。分享人<strong>王晓飞，现担任苏宁云容器网络架构师职位，在针对OpenStack、Kubernetes、Swarm网络架构方面有着专业的研究和理解，在该领域拥有4年以上经验，现在负责苏宁云容器网络架构、OpenStack网络架构、容器集群监控，主导容器云监控系统开发、容器网络需求定制开发。对DevOps理念有很深的掌握</strong>。</p>
-<p>2018-06-24</p>
 <hr>
-<h3 id="DockOne微信分享（一七五）：盘点Kubernetes网络问题的4种解决方案"><a href="#DockOne微信分享（一七五）：盘点Kubernetes网络问题的4种解决方案" class="headerlink" title="DockOne微信分享（一七五）：盘点Kubernetes网络问题的4种解决方案"></a>DockOne微信分享（一七五）：盘点Kubernetes网络问题的4种解决方案</h3><blockquote>
+<h3 id="2018-06-14：盘点Kubernetes网络问题的4种解决方案"><a href="#2018-06-14：盘点Kubernetes网络问题的4种解决方案" class="headerlink" title="2018-06-14：盘点Kubernetes网络问题的4种解决方案"></a>2018-06-14：盘点Kubernetes网络问题的4种解决方案</h3><blockquote>
 <p>Q：今天讲了很多方法解决容器网络的问题，似乎可以从集群外部或集群内部可以直接访问容器的IP，但是在集群外部访问容器IP的场景有吗？我觉得容器的IP不应该暴露出来，从外部不能直接访问容器的IP，因为容器的IP可能是变化的。有的时候使用RC之类的。我的问题是能不能从集群外部通过clusterip或node-port ip来访问基于容器的业务呢？如果可以的话，今天介绍的Flanel或Calico的价值是什么呢，这两种方案，我感觉都是直接访问容器的IP地址，那么如果某个容器出问题，重启之后，肯定要换IP，那这个时候怎么办呢？另外，集群内容器到容器的访问，到底是直接访问对端容器的IP，还是访问cluster-ip，我这个有点晕，谢谢。</p>
 </blockquote>
 <p>A：集群内容器到容器的访问，可以直接通过localhost加端口即可。如果是同一主机上的Pod，由于它们在同一个docker0网桥上，地址段相同，可以直接通信。如果是不同主机上的Pod，则需要跨越物理机上的物理网卡，通过宿主机的IP转到docker0上再到对应的Pod里的某个容器。不管是Flanel或Calico，都有各自的应用场景。Flanel不是直接访问容器IP的，它还有自己的flanel0网桥，Calico节点组网可以直接利用数据中心的网络结构（支持L2或者 L3），可以直接通信。从外部可以直接访问容器的IP，需要做容器固定IP，针对某些特定应用比如数据库。</p>
@@ -7341,10 +7296,8 @@
 <p>Q：对于Kubernetes版本选择是否可以提供一些建议？</p>
 </blockquote>
 <p>A：建议使用1.8以上版本，在高可用、兼容性、稳定性上都更好一些。</p>
-<p>以上内容根据2018年6月5日晚微信群分享内容整理。分享人<strong>孙杰，北京中油瑞飞信息技术有限责任公司架构师，开源技术爱好者。专注于系统、运维、云计算和数据中心管理，先后在外企、互联网、电商、大型企业任职，参与实施数据中心建设、私有云架构规划及运维管理、大数据挖掘等相关工作，在若干大中型项目的建设和部署运维中，积累了丰富的架构设计、项目实施和一线经验。不仅是技术分享的推崇者，也是IT行业的实践者、布道者</strong>。DockOne每周都会组织定向的技术分享，欢迎感兴趣的同学加微信：liyingjiesa，进群参与，您有想听的话题或者想分享的话题都可以给我们留言。</p>
-<p>2018-06-14</p>
 <hr>
-<h3 id="DockOne微信分享（一七四）：腾讯云TSF微服务平台及ServiceMesh技术实践"><a href="#DockOne微信分享（一七四）：腾讯云TSF微服务平台及ServiceMesh技术实践" class="headerlink" title="DockOne微信分享（一七四）：腾讯云TSF微服务平台及ServiceMesh技术实践"></a>DockOne微信分享（一七四）：腾讯云TSF微服务平台及ServiceMesh技术实践</h3><blockquote>
+<h3 id="2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践"><a href="#2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践" class="headerlink" title="2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践"></a>2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践</h3><blockquote>
 <p>Q：感谢分享，请问目前TSF的集群规模大概是多大，ServiceMesh从选型到落地大概用了多少人月？</p>
 </blockquote>
 <p>A：公司内部万级的集群规模，ServiceMesh落地大概20人月。</p>
@@ -7384,10 +7337,8 @@
 <p>Q：请问是否有过使用gRPC通讯的相关案例或者需要注意的坑？目前是否能够在生产环境应用？</p>
 </blockquote>
 <p>A：暂时没有发现envoy-grpc的坑，不过Istio官方对于gRPC的feature状态是alpha，所以个人不建议在生产环境的使用Istio。</p>
-<p>以上内容根据2018年05月15日晚微信群分享内容整理。分享人<strong>单家骏，腾讯中间件研发高级工程师，负责腾讯云中间件PaaS以及ServiceMesh的研发与架构。曾在华为公司任职，从事云计算及中间件7年有余。热爱开源、崇尚技术，希望能够使用技术使软件的应用变得简单、高效和美好</strong>。DockOne每周都会组织定向的技术分享，欢迎感兴趣的同学加微信：liyingjiesa，进群参与，您有想听的话题或者想分享的话题都可以给我们留言。</p>
-<p>2018-05-27</p>
 <hr>
-<h3 id="DockOne微信分享（一七三）：全面学习Prometheus"><a href="#DockOne微信分享（一七三）：全面学习Prometheus" class="headerlink" title="DockOne微信分享（一七三）：全面学习Prometheus"></a>DockOne微信分享（一七三）：全面学习Prometheus</h3><blockquote>
+<h3 id="2018-05-23：全面学习Prometheus"><a href="#2018-05-23：全面学习Prometheus" class="headerlink" title="2018-05-23：全面学习Prometheus"></a>2018-05-23：全面学习Prometheus</h3><blockquote>
 <p>Q：Prometheus的数据能否自动同步到InfluxDB中？</p>
 </blockquote>
 <p>A：可以，通过remote_write可以实现，可以参考：<a href="https://github.com/prometheus/prometheus/tree/master/documentation/examples/remote_storage/remote_storage_adapter" target="_blank" rel="noopener">https://github.com/prometheus/apter</a>。Prometheus通过将采集到的数据发送到Adaptor，再由Adaptor完成对数据格式的转换存储到InfluxDB即可。</p>
@@ -7451,9 +7402,8 @@
 <p>Q：有个问题Prometheus是如何监控域名的？Zabbix可以监控域名，Prometheus不知道可不可以？</p>
 </blockquote>
 <p>A: 上面分享的Blackbox exporter就是做这个的。</p>
-<p>2018-05-23</p>
 <hr>
-<h3 id="DockOne微信分享（一七二）：Kubernetes网络安全之访问控制技术实践"><a href="#DockOne微信分享（一七二）：Kubernetes网络安全之访问控制技术实践" class="headerlink" title="DockOne微信分享（一七二）：Kubernetes网络安全之访问控制技术实践"></a>DockOne微信分享（一七二）：Kubernetes网络安全之访问控制技术实践</h3><blockquote>
+<h3 id="2018-05-13：Kubernetes网络安全之访问控制技术实践"><a href="#2018-05-13：Kubernetes网络安全之访问控制技术实践" class="headerlink" title="2018-05-13：Kubernetes网络安全之访问控制技术实践"></a>2018-05-13：Kubernetes网络安全之访问控制技术实践</h3><blockquote>
 <p>Q：根据<a href="http://cmgs.me/life/docker-network-cloud" target="_blank" rel="noopener">http://cmgs.me/life/docker-network-cloud</a>的测试，Weave网络方案在性能上比其他方案差很多，这是真的吗？</p>
 </blockquote>
 <p>A：该文章测试的时候并未开启fast-data-path，经过我们的测试，在fast-data-path开启的情况下，还是很可观的。况且这个测试到今天已经过去了2年时间，Weave社区一直以来还是很活跃的，相信未来只会更好。</p>
@@ -7466,9 +7416,8 @@
 </blockquote>
 <p>A：至少现在还不可以，一般来说这不应该是普遍的需求，因为每个应用在一个Namespace下，而每个应用的的访问控制策略不大可能是相同的。从另一个方面看，以Kubernetes社区的风格，任何普遍的需求最终都是会被实现的，而且速度很快。</p>
 <p>以上内容根据2018年05月10日晚微信群分享内容整理。分享人<strong>徐国韬，十余年分布式系统开发和架构设计经验。曾供职华为、UIT、也曾创过业，担任CTO。目前在深圳行云创新公司与伙伴们打造一款非常酷的开发云产品。在团队中负责的主要是产品底层容器、网络、存储、安全等相关领域的技术实现</strong>。DockOne每周都会组织定向的技术分享，欢迎感兴趣的同学加微信：liyingjiesa，进群参与，您有想听的话题或者想分享的话题都可以给我们留言。</p>
-<p>2018-05-13</p>
 <hr>
-<h3 id="DockOne微信分享（一七一）：TalkingData的Spark-On-Kubernetes实践"><a href="#DockOne微信分享（一七一）：TalkingData的Spark-On-Kubernetes实践" class="headerlink" title="DockOne微信分享（一七一）：TalkingData的Spark On Kubernetes实践"></a>DockOne微信分享（一七一）：TalkingData的Spark On Kubernetes实践</h3><blockquote>
+<h3 id="2018-05-09：TalkingData的Spark-On-Kubernetes实践"><a href="#2018-05-09：TalkingData的Spark-On-Kubernetes实践" class="headerlink" title="2018-05-09：TalkingData的Spark On Kubernetes实践"></a>2018-05-09：TalkingData的Spark On Kubernetes实践</h3><blockquote>
 <p>Q：我想问权限方面的问题，前面有看到一个提交作业的例子是spark－summit –files hdfs://host:port/path/to/file1，即用Spark处理HDFS上的数据，出于数据安全的考虑，HDFS一般会开启权限认证，用户在kerberos上做认证，用同一个身份信息访问Spark和HDFS。对于Spark on Kubernetes 这样一个方案，是如何认证并与HDFS结合的呢？</p>
 </blockquote>
 <p>A：老实说，我们原生的Spark集群也还是基于POSIX，并没有使用kerberos。不过我认为一个可行的结合方案是使用Kubernetes的webhook，在作业提交时，和kerberos交互换取身份验证信息。具体可参考：<a href="https://kubernetes.io/docs/admin/authorization/webhook/" target="_blank" rel="noopener">https://kubernetes.io/docs/hook/</a>。</p>
@@ -7506,7 +7455,6 @@
 <p>A：我们以前的Spark就是采用Spark On Yarn的方式，不过我对Yarn不是非常了解。之所以采用Kubernetes是因为，我们想统一底层的资源调度平台。但是Yarn目前还是和Hadoop生态强耦合的。</p>
 <p>以上内容根据2018年5月8日晚微信群分享内容整理。</p>
 <p>分享人<strong>徐蓓，现任TalkingData云计算架构师，负责云计算、OpenStack、Kubernetes和容器平台的研发与架构。曾在HP、Face++等公司任职，从事云计算研发5年有余。同时也是OpenStack与Kubernetes的contributor。崇尚工程师文化，以目的为导向，致力于推动技术落地与实践。</strong>DockOne每周都会组织定向的技术分享，欢迎感兴趣的同学加微信：liyingjiesa，进群参与，您有想听的话题或者想分享的话题都可以给我们留言。</p>
-<p>2018-05-09</p>
 <hr>
 <h3 id="DockOne微信分享（一六九）：Helm：强大的Kubernetes包管理工具"><a href="#DockOne微信分享（一六九）：Helm：强大的Kubernetes包管理工具" class="headerlink" title="DockOne微信分享（一六九）：Helm：强大的Kubernetes包管理工具"></a>DockOne微信分享（一六九）：Helm：强大的Kubernetes包管理工具</h3><blockquote>
 <p>Q：Helm结合CD有什么好的建议吗？</p>
@@ -11272,7 +11220,7 @@
 <p>Q：您有物理机和虚机，请问根据什么场景选择运行在物理机还是虚机上？是性能的选择吗？</p>
 </blockquote>
 <p>A：这完全看业务方的需求，Harbor本身不关心。 它允许业务自己创建私有集群，把自己的虚拟机或者物理主机添加进去。</p>
-<p>以上内容根据2016年3月3日晚微信群分享内容整理。分享人**张杰，邮箱：<a href="mailto:&#x7a;&#104;&#97;&#x6e;&#x67;&#x6a;&#105;&#101;&#48;&#54;&#x31;&#x39;&#64;&#121;&#x65;&#97;&#x68;&#46;&#110;&#101;&#x74;" target="_blank" rel="noopener">&#x7a;&#104;&#97;&#x6e;&#x67;&#x6a;&#105;&#101;&#48;&#54;&#x31;&#x39;&#64;&#121;&#x65;&#97;&#x68;&#46;&#110;&#101;&#x74;</a>，QQ：695160664，乐视云计算有限公司高级研发工程师，容器云负责人，4年技术团队管理经验，</p>
+<p>以上内容根据2016年3月3日晚微信群分享内容整理。分享人**张杰，邮箱：<a href="mailto:&#x7a;&#104;&#x61;&#x6e;&#x67;&#x6a;&#x69;&#101;&#48;&#x36;&#x31;&#x39;&#64;&#121;&#101;&#x61;&#x68;&#46;&#110;&#x65;&#x74;" target="_blank" rel="noopener">&#x7a;&#104;&#x61;&#x6e;&#x67;&#x6a;&#x69;&#101;&#48;&#x36;&#x31;&#x39;&#64;&#121;&#101;&#x61;&#x68;&#46;&#110;&#x65;&#x74;</a>，QQ：695160664，乐视云计算有限公司高级研发工程师，容器云负责人，4年技术团队管理经验，</p>
 <p>对新技术有着强烈的好奇心。</p>
 <p>DockOne每周都会组织定向的技术分享，欢迎感兴趣的同学加微信：liyingjiesz，进群参与，您有想听的话题或者想分享的话题都可以给我们留言。</p>
 <p>2016-03-04</p>
