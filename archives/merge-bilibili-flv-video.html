@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="theme-color" content="#222">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
+  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: "",
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+  <meta name="description" content="弄啥咧？ B 站收藏夹里的视频一点一点 404 了，索性就把所有收藏里还存活的视频都使用 UWP 客户端下载下来了，大概 400 多 GB。为了将 UWP 客户端下载的分段 .flv，写了个 shell 脚本来转码合并为 .mp4。目前处理了 100 多GB 的 .flv 文件没啥大碍需要的拿去https://t.co/GX4FsswcfC pic.twitter.com/LG37IGrMdI&amp;m">
+<meta name="keywords" content="技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高效批量下载 B 站视频并合并转码为 mp4">
+<meta property="og:url" content="https://blog.502.li/archives/merge-bilibili-flv-video.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="弄啥咧？ B 站收藏夹里的视频一点一点 404 了，索性就把所有收藏里还存活的视频都使用 UWP 客户端下载下来了，大概 400 多 GB。为了将 UWP 客户端下载的分段 .flv，写了个 shell 脚本来转码合并为 .mp4。目前处理了 100 多GB 的 .flv 文件没啥大碍需要的拿去https://t.co/GX4FsswcfC pic.twitter.com/LG37IGrMdI&amp;m">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-14T12:25:06.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高效批量下载 B 站视频并合并转码为 mp4">
+<meta name="twitter:description" content="弄啥咧？ B 站收藏夹里的视频一点一点 404 了，索性就把所有收藏里还存活的视频都使用 UWP 客户端下载下来了，大概 400 多 GB。为了将 UWP 客户端下载的分段 .flv，写了个 shell 脚本来转码合并为 .mp4。目前处理了 100 多GB 的 .flv 文件没啥大碍需要的拿去https://t.co/GX4FsswcfC pic.twitter.com/LG37IGrMdI&amp;m">
+  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+  <link rel="canonical" href="https://blog.502.li/archives/merge-bilibili-flv-video">
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>高效批量下载 B 站视频并合并转码为 mp4 | 木子</title>
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+  </div>
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  </li>
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+          <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+  </li>
+          <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+  </li>
+          <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+  </li>
+        <li class="menu-item menu-item-search">
+            <a href="javascript:;" class="popup-trigger">
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+    </ul>
+    <div class="site-search">
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+    </div>
+</nav>
+</div>
+    </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+  <div id="posts" class="posts-expand">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/merge-bilibili-flv-video.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.png">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木子">
+    </span>
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">高效批量下载 B 站视频并合并转码为 mp4
+          </h2>
+        <div class="post-meta">
+          <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+                <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2020-01-13 00:00:00" itemprop="dateCreated datePublished" datetime="2020-01-13T00:00:00-05:00">2020-01-13</time>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                  <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 07:25:06" itemprop="dateModified" datetime="2020-01-14T07:25:06-05:00">2020-01-14</time>
+          </span>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/archives/merge-bilibili-flv-video.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/merge-bilibili-flv-video.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            <div class="post-symbolscount">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                  <span class="post-meta-item-text">本文字数：</span>
+                <span title="本文字数">35k</span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                <span title="阅读时长">44 分钟</span>
+            </div>
+        </div>
+      </header>
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="弄啥咧？"><a href="#弄啥咧？" class="headerlink" title="弄啥咧？"></a>弄啥咧？</h2>
+<blockquote class="twitter-tweet"><p lang="zh" dir="ltr">B 站收藏夹里的视频一点一点 404 了，索性就把所有收藏里还存活的视频都使用 UWP 客户端下载下来了，大概 400 多 GB。<br>为了将 UWP 客户端下载的分段 .flv，写了个 shell 脚本来转码合并为 .mp4。<br>目前处理了 100 多GB 的 .flv 文件没啥大碍<br><br>需要的拿去<a href="https://t.co/GX4FsswcfC" target="_blank" rel="noopener">https://t.co/GX4FsswcfC</a> <a href="https://t.co/LG37IGrMdI" target="_blank" rel="noopener">pic.twitter.com/LG37IGrMdI</a></p>&mdash; 502.li (@muzi_ii) <a href="https://twitter.com/muzi_ii/status/1216726922157228035?ref_src=twsrc%5Etfw" target="_blank" rel="noopener">January 13, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>好很久没上小破站了，翻了一下自己的收藏夹，我咧个去，将近三分之一的视频都 404 了……，存活的不知道会不会被拉清单。索性就把自己收藏的视频都下载下来，永久保存在自己的硬盘上，咱也不用担心删帖封号了。其中收藏的视频绝大多数都是纪录片和科普视频，在此还是推荐一下[纪录片之家字幕组]，中英双语是英语学习的好材料。尤其是<code>走进工厂</code>系列，基本上每次都会追着看完😂。</p>
+<p>另外把这些视频下载下来就不用担心哪天这些优秀的 UP 炸号了，这么宝贵的资源就飞灰湮灭了。所以，自己收藏的视频还是第一时间下载下来为好，另外平时观看的时候也方便。</p>
+<p>我是通过 Windows 应用商店里的 <a href>哔哩哔哩动画</a> 下载的，事实证明，这玩意下载起来最稳定，我房东家 100MBps 的带宽一直跑满，一天多的时间下载了将近 400GB 的视频。但下载的这些视频有的被分段存储了，而且格式都是 .flv 。然后就想着如何合并这些 flv 文件并转码为 mp4 格式。</p>
+<h2 id="劝退三要素😂"><a href="#劝退三要素😂" class="headerlink" title="劝退三要素😂"></a>劝退三要素😂</h2><ul>
+<li>需要在 Linux 命令行下操作，任何 Linux 发行版或者 Windows Subsystem for Linux，推荐 WSL</li>
+<li>需要在 Linux 环境下安装 <code>ffmpeg</code> 和 <code>jq</code> 命令</li>
+<li>需要 UWP 哔哩哔哩动画客户端下载和缓存视频文件</li>
+</ul>
+<h2 id="咋弄"><a href="#咋弄" class="headerlink" title="咋弄"></a>咋弄</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>使用哔哩哔哩动画客户端下载下来的视频，每个视频有一 P 或者多 P ，每一 P 分别存放在从 1 开始正整数命名的文件夹内。每个 P 有的被分割成了若干个 flv 文件，有的是单个 flv 文件。在每个 P 的目录下分别有以下文件.</p>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- .flv <span class="comment"># 视频文件，有一个或多个</span></span><br><span class="line">- xml  <span class="comment"># 弹幕文件，可忽略</span></span><br><span class="line">- info <span class="comment"># 视频元数据信息，有每个视频的 Title 以及每一 P 的名称</span></span><br><span class="line">╭─debian@debian /mnt/d/Downloads/bilibili/6918663</span><br><span class="line">╰─$ tree</span><br><span class="line">.</span><br><span class="line">├── 1</span><br><span class="line">│   ├── 6918663_1_0.flv</span><br><span class="line">│   ├── 6918663_1_10.flv</span><br><span class="line">│   ├── 6918663_1_11.flv</span><br><span class="line">│   ├── 6918663_1_12.flv</span><br><span class="line">│   ├── 6918663_1_1.flv</span><br><span class="line">│   ├── 6918663_1_2.flv</span><br><span class="line">│   ├── 6918663_1_3.flv</span><br><span class="line">│   ├── 6918663_1_4.flv</span><br><span class="line">│   ├── 6918663_1_5.flv</span><br><span class="line">│   ├── 6918663_1_6.flv</span><br><span class="line">│   ├── 6918663_1_7.flv</span><br><span class="line">│   ├── 6918663_1_8.flv</span><br><span class="line">│   ├── 6918663_1_9.flv</span><br><span class="line">│   ├── 6918663_1.xml <span class="comment"># 视频弹幕文件</span></span><br><span class="line">│   └── 6918663.info <span class="comment"># 每 P 视频的元数据信息</span></span><br><span class="line">├── 6918663.dvi <span class="comment"># 视频元数据信息</span></span><br><span class="line">└── cover.jpg <span class="comment"># 视频封面</span></span><br></pre></td></tr></table></figure>
+<p>多 P 的情况下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">╭─debian@debian /mnt/d/Downloads/bilibili/29656570</span><br><span class="line">╰─$ tree</span><br><span class="line">.</span><br><span class="line">├── 1</span><br><span class="line">│   ├── 29656570_1_0.flv</span><br><span class="line">│   ├── 29656570_1.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 10</span><br><span class="line">│   ├── 29656570_10_0.flv</span><br><span class="line">│   ├── 29656570_10_1.flv</span><br><span class="line">│   ├── 29656570_10_2.flv</span><br><span class="line">│   ├── 29656570_10_3.flv</span><br><span class="line">│   ├── 29656570_10_4.flv</span><br><span class="line">│   ├── 29656570_10_5.flv</span><br><span class="line">│   ├── 29656570_10_6.flv</span><br><span class="line">│   ├── 29656570_10_7.flv</span><br><span class="line">│   ├── 29656570_10.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 11</span><br><span class="line">│   ├── 29656570_11_0.flv</span><br><span class="line">│   ├── 29656570_11_1.flv</span><br><span class="line">│   ├── 29656570_11_2.flv</span><br><span class="line">│   ├── 29656570_11_3.flv</span><br><span class="line">│   ├── 29656570_11_4.flv</span><br><span class="line">│   ├── 29656570_11_5.flv</span><br><span class="line">│   ├── 29656570_11_6.flv</span><br><span class="line">│   ├── 29656570_11_7.flv</span><br><span class="line">│   ├── 29656570_11.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 12</span><br><span class="line">│   ├── 29656570_12_0.flv</span><br><span class="line">│   ├── 29656570_12_1.flv</span><br><span class="line">│   ├── 29656570_12_2.flv</span><br><span class="line">│   ├── 29656570_12_3.flv</span><br><span class="line">│   ├── 29656570_12_4.flv</span><br><span class="line">│   ├── 29656570_12_5.flv</span><br><span class="line">│   ├── 29656570_12_6.flv</span><br><span class="line">│   ├── 29656570_12_7.flv</span><br><span class="line">│   ├── 29656570_12.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 13</span><br><span class="line">│   ├── 29656570_13_0.flv</span><br><span class="line">│   ├── 29656570_13.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 2</span><br><span class="line">│   ├── 29656570_2_0.flv</span><br><span class="line">│   ├── 29656570_2.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 29656570.dvi</span><br><span class="line">├── 3</span><br><span class="line">│   ├── 29656570_3_0.flv</span><br><span class="line">│   ├── 29656570_3.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 4</span><br><span class="line">│   ├── 29656570_4_0.flv</span><br><span class="line">│   ├── 29656570_4_1.flv</span><br><span class="line">│   ├── 29656570_4_2.flv</span><br><span class="line">│   ├── 29656570_4_3.flv</span><br><span class="line">│   ├── 29656570_4_4.flv</span><br><span class="line">│   ├── 29656570_4_5.flv</span><br><span class="line">│   ├── 29656570_4_6.flv</span><br><span class="line">│   ├── 29656570_4_7.flv</span><br><span class="line">│   ├── 29656570_4.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 5</span><br><span class="line">│   ├── 29656570_5_0.flv</span><br><span class="line">│   ├── 29656570_5_1.flv</span><br><span class="line">│   ├── 29656570_5_2.flv</span><br><span class="line">│   ├── 29656570_5_3.flv</span><br><span class="line">│   ├── 29656570_5_4.flv</span><br><span class="line">│   ├── 29656570_5_5.flv</span><br><span class="line">│   ├── 29656570_5_6.flv</span><br><span class="line">│   ├── 29656570_5_7.flv</span><br><span class="line">│   ├── 29656570_5.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 6</span><br><span class="line">│   ├── 29656570_6_0.flv</span><br><span class="line">│   ├── 29656570_6.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 7</span><br><span class="line">│   ├── 29656570_7_0.flv</span><br><span class="line">│   ├── 29656570_7_1.flv</span><br><span class="line">│   ├── 29656570_7_2.flv</span><br><span class="line">│   ├── 29656570_7_3.flv</span><br><span class="line">│   ├── 29656570_7_4.flv</span><br><span class="line">│   ├── 29656570_7_5.flv</span><br><span class="line">│   ├── 29656570_7_6.flv</span><br><span class="line">│   ├── 29656570_7_7.flv</span><br><span class="line">│   ├── 29656570_7.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 8</span><br><span class="line">│   ├── 29656570_8_0.flv</span><br><span class="line">│   ├── 29656570_8_1.flv</span><br><span class="line">│   ├── 29656570_8_2.flv</span><br><span class="line">│   ├── 29656570_8_3.flv</span><br><span class="line">│   ├── 29656570_8_4.flv</span><br><span class="line">│   ├── 29656570_8_5.flv</span><br><span class="line">│   ├── 29656570_8_6.flv</span><br><span class="line">│   ├── 29656570_8_7.flv</span><br><span class="line">│   ├── 29656570_8.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── 9</span><br><span class="line">│   ├── 29656570_9_0.flv</span><br><span class="line">│   ├── 29656570_9_1.flv</span><br><span class="line">│   ├── 29656570_9_2.flv</span><br><span class="line">│   ├── 29656570_9_3.flv</span><br><span class="line">│   ├── 29656570_9_4.flv</span><br><span class="line">│   ├── 29656570_9_5.flv</span><br><span class="line">│   ├── 29656570_9_6.flv</span><br><span class="line">│   ├── 29656570_9_7.flv</span><br><span class="line">│   ├── 29656570_9.xml</span><br><span class="line">│   └── 29656570.info</span><br><span class="line">├── cover.jpg</span><br><span class="line">└── desktop.ini</span><br></pre></td></tr></table></figure>
+<h4 id="info-文件"><a href="#info-文件" class="headerlink" title="info 文件"></a>info 文件</h4><p>这个 .info 文件时是以视频 av 号命名的(老司机们不要误以为是番号😂)，是压缩过的 json 格式，在 Linux 命令行下可以使用 jq 命令来格式化压缩过的 json 文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Type"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"GroupKey"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"File"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"IsSelected"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"IsLastHit"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"DownloadState"</span>: <span class="string">"正在下载弹幕"</span>,</span><br><span class="line">  <span class="attr">"Aid"</span>: <span class="string">"6918663"</span>,</span><br><span class="line">  <span class="attr">"Cid"</span>: <span class="string">"11273505"</span>,</span><br><span class="line">  <span class="attr">"SeasonId"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"EpisodeId"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"Title"</span>: <span class="string">"【宇宙】卡西尼号：去往土星的伟大航程【中英字幕】"</span>,</span><br><span class="line">  <span class="attr">"Uploader"</span>: <span class="string">"魔术师Magic"</span>,</span><br><span class="line">  <span class="attr">"Description"</span>: <span class="string">"人人影视 卡西尼号：去往土星的伟大航程（Cassini-Epic Journey at Saturn）"</span>,</span><br><span class="line">  <span class="attr">"CoverURL"</span>: <span class="string">"http://i1.hdslb.com/bfs/archive/8430c49571dc1f61f3f9a7260f06ceb79418235f.jpg"</span>,</span><br><span class="line">  <span class="attr">"Tag"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"From"</span>: <span class="string">"vupload"</span>,</span><br><span class="line">  <span class="attr">"PartNo"</span>: <span class="string">"1"</span>,</span><br><span class="line">  <span class="attr">"PartName"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"Format"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"TotalParts"</span>: <span class="number">13</span>,</span><br><span class="line">  <span class="attr">"DownloadTimeRelative"</span>: <span class="number">166896023</span>,</span><br><span class="line">  <span class="attr">"CreateDate"</span>: <span class="string">"2016-11-01 19:14"</span>,</span><br><span class="line">  <span class="attr">"TotalTime"</span>: <span class="string">"01:16:21.0890000"</span>,</span><br><span class="line">  <span class="attr">"TotalTimeString"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"PartTime"</span>: [</span><br><span class="line">    <span class="number">327169</span>,</span><br><span class="line">    <span class="number">408276</span>,</span><br><span class="line">    <span class="number">240210</span>,</span><br><span class="line">    <span class="number">429477</span>,</span><br><span class="line">    <span class="number">417077</span>,</span><br><span class="line">    <span class="number">325544</span>,</span><br><span class="line">    <span class="number">297610</span>,</span><br><span class="line">    <span class="number">469810</span>,</span><br><span class="line">    <span class="number">286511</span>,</span><br><span class="line">    <span class="number">493610</span>,</span><br><span class="line">    <span class="number">370544</span>,</span><br><span class="line">    <span class="number">197277</span>,</span><br><span class="line">    <span class="number">317974</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"TotalSizeString"</span>: <span class="string">"544MB"</span>,</span><br><span class="line">  <span class="attr">"IsSinglePart"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"IsDownloaded"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"HasDanmaku"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"FontSize6"</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">"FontSize8"</span>: <span class="number">12</span>,</span><br><span class="line">  <span class="attr">"FontSize10"</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="attr">"FontSize12"</span>: <span class="number">16</span>,</span><br><span class="line">  <span class="attr">"FontSize14"</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">"FontSize16"</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">"FontSize18"</span>: <span class="number">22</span>,</span><br><span class="line">  <span class="attr">"FontSize20"</span>: <span class="number">24</span>,</span><br><span class="line">  <span class="attr">"FontSize22"</span>: <span class="number">26</span>,</span><br><span class="line">  <span class="attr">"FontSize24"</span>: <span class="number">28</span>,</span><br><span class="line">  <span class="attr">"FontSize30"</span>: <span class="number">34</span>,</span><br><span class="line">  <span class="attr">"FontSize34"</span>: <span class="number">38</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要在这个 info 文件中提取几个关键字段来重命合并转码后的 mp4 文件，为了方便起见我们选择 <code>Title</code> 、<code>PartName</code> 、 <code>CreateDate</code> 这三个字段来重命名转码合并后的视频文件。如果视频是单 P 的话 <code>PartName</code> 的值为 <code>null</code>。在 shell 中获取这三个值也比较简单。在此用 <code>tr</code> 命令去除掉不能当作文件名的特殊字符。</p>
+<ul>
+<li>Title</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 sed 和 tr 去除不能当作文件名的特殊字符</span></span><br><span class="line">video_name=$(jq <span class="string">".Title"</span> *.info | tr -d <span class="string">"[:punct:]\040\011\012\015"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>PartName</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">part_name=$(jq <span class="string">".PartName"</span> *.info | tr -d <span class="string">"[:punct:]\040\011\012\015"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CreateDate</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">upload_time=$(grep -Eo <span class="string">"20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"</span> *.info)</span><br></pre></td></tr></table></figure>
+<h2 id="flv-合并"><a href="#flv-合并" class="headerlink" title="flv 合并"></a>flv 合并</h2><p>合并 flv 视频文件使用 ffmpeg 工具很简单就能完成，debian/ubuntu 的下直接 <code>apt update &amp;&amp; apt install ffmpeg -y</code> 一把梭就行啦，其他发行使用各自的包管理器安装即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果执行环境没有安装 jq 命令的话需要安装上哦</span></span><br><span class="line">apt update</span><br><span class="line">apt install ffmpeg jq -y</span><br></pre></td></tr></table></figure>
+<h3 id="合并多个-flv-文件"><a href="#合并多个-flv-文件" class="headerlink" title="合并多个 flv 文件"></a>合并多个 flv 文件</h3><p>使用 ffmpeg 合并文件需要准备一个文本文件，里面记录类似一下的格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file <span class="string">'/path/1.flv'</span></span><br><span class="line">file <span class="string">'/path/2.flv'</span></span><br><span class="line">file <span class="string">'/path/3.flv'</span></span><br></pre></td></tr></table></figure>
+<p>而我们在 shell 脚本中可以通过 <code>ls *.flv &gt; ff.txt;sed -i ‘s/^/file /g’ ff.txt</code> 来生成该文件</p>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>我放在了 GitHub 上，<a href="https://github.com/muzi502/mbcf/blob/master/merge_bilibili_client_flv.sh" target="_blank" rel="noopener">mbcf </a> 方便维护和问题反馈</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># for: bulk merge bilibili UWP download file *.flv</span></span><br><span class="line"><span class="comment"># by: muzi502 blog.502.li</span></span><br><span class="line"><span class="comment"># date: 2019-01-12</span></span><br><span class="line"><span class="comment"># 执行环境需要安装 ffmpeg、jq</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -xu</span><br><span class="line">start_time=$(date)</span><br><span class="line">root_dir=$(<span class="built_in">pwd</span>)</span><br><span class="line">mp4_dir=<span class="variable">$&#123;root_dir&#125;</span>/mp4</span><br><span class="line">mkdir -p <span class="variable">$&#123;root_dir&#125;</span>/mp4</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dir <span class="keyword">in</span> $(ls | sort -n | grep -v .sh | grep -v mp4)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$&#123;root_dir&#125;</span>/<span class="variable">$&#123;dir&#125;</span></span><br><span class="line">  <span class="keyword">for</span> p_dir <span class="keyword">in</span> $(ls | sort -n | grep -E -v <span class="string">".dvi|.jpg|.ini|.mp4|.txt"</span>)</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;root_dir&#125;</span>/<span class="variable">$&#123;dir&#125;</span>/<span class="variable">$&#123;p_dir&#125;</span></span><br><span class="line">    video_name=$(jq <span class="string">".Title"</span> *.info | tr -d <span class="string">"[:punct:]\040\011\012\015"</span>)</span><br><span class="line">    part_name=$(jq <span class="string">".PartName"</span> *.info | tr -d <span class="string">"[:punct:]\040\011\012\015"</span>)</span><br><span class="line">    upload_time=$(grep -Eo <span class="string">"20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"</span> *.info)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"null"</span> = <span class="string">"<span class="variable">$&#123;part_name&#125;</span>"</span> ];<span class="keyword">then</span></span><br><span class="line">      mp4_file_name=<span class="variable">$&#123;upload_time&#125;</span>_<span class="variable">$&#123;video_name&#125;</span>.mp4</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      mp4_file_name=<span class="variable">$&#123;upload_time&#125;</span>_<span class="variable">$&#123;video_name&#125;</span>_<span class="variable">$&#123;p_dir&#125;</span>_<span class="variable">$&#123;part_name&#125;</span>.mp4</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    ls *.flv | sort -n &gt; ff.txt</span><br><span class="line">    sed -i <span class="string">'s/^/file /g'</span> ff.txt</span><br><span class="line">    ffmpeg -f concat -i ff.txt -c copy <span class="variable">$&#123;mp4_dir&#125;</span>/<span class="string">"<span class="variable">$&#123;mp4_file_name&#125;</span>"</span>;rm -rf ff.txt</span><br><span class="line">    <span class="built_in">cd</span> <span class="variable">$&#123;root_dir&#125;</span>/<span class="variable">$&#123;dir&#125;</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$&#123;root_dir&#125;</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"><span class="comment"># 如果需要保留原视频请注释掉下面这一行</span></span><br><span class="line"><span class="comment"># rm -rf $&#123;root_dir&#125;/$&#123;dir&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>把 UWP 哔哩哔哩动画客户端或者 Android 客户端下载缓存视频的目录拷贝到 PC 工作目录下（我的环境是 <code>Windows 10 WSL GNU/Debian</code>），然后创建该脚本。接着安装好 ffmpeg 和 jq 这两个工具。然后在命令行下执行这个脚本就可以了。合并转码后的 mp4 文件都放在了脚本执行目录下的 mp4 文件夹中。在此一定要将脚本放在正确的目录下执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">╭─debian@debian /mnt/d/Downloads/bilibili</span><br><span class="line">╰─$ tree</span><br><span class="line">364 directories, 1542 files</span><br><span class="line">╭─debian@debian /mnt/d/Downloads/bilibili</span><br><span class="line">╰─$ du -sh</span><br><span class="line">114G    .</span><br><span class="line">╭─debian@debian /mnt/d/Downloads/bilibili</span><br><span class="line">╰─$ ./merge_bilibili_video.sh</span><br><span class="line">+ end_time=<span class="string">'Tue 14 Jan 2020 10:52:32 AM CST'</span></span><br><span class="line">++ du -sh /mnt/d/Downloads/bilibili/mp4</span><br><span class="line">+ mp4_size=<span class="string">'113G        /mnt/d/Downloads/bilibili/mp4'</span></span><br><span class="line">+ <span class="built_in">echo</span> <span class="string">'Tue 14 Jan 2020 10:42:07 AM CST'</span></span><br><span class="line">Tue 14 Jan 2020 10:42:07 AM CST</span><br><span class="line">+ <span class="built_in">echo</span> <span class="string">'Tue 14 Jan 2020 10:52:32 AM CST'</span></span><br><span class="line">Tue 14 Jan 2020 10:52:32 AM CST</span><br><span class="line">+ <span class="built_in">echo</span> <span class="string">'all flv size 114G       /mnt/d/Downloads/bilibili'</span></span><br><span class="line">all flv size 114G       /mnt/d/Downloads/bilibili</span><br><span class="line">+ <span class="built_in">echo</span> <span class="string">'all output mp4 size 113G        /mnt/d/Downloads/bilibili/mp4'</span></span><br><span class="line">all output mp4 size 113G        /mnt/d/Downloads/bilibili/mp4</span><br></pre></td></tr></table></figure>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>合并转码的速度主要取决于磁盘性能，我放在 5200RPM 的机械硬盘下转码合并 110 多 GB 的 flv 文件，耗时 1 个多小时，放在 NVME 的固态硬盘下十几分钟就转换完了。</p>
+<ul>
+<li>截取一小部分😂</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">2016-08-06_【木鱼微剧场】《帝国的毁灭》万恶之源.mp4</span><br><span class="line">2018-06-06_【木鱼微剧场】蝴蝶效应真的存在吗？《混沌：数学探秘》（下）.mp4</span><br><span class="line">2018-06-22_【木鱼微剧场】《海豚湾》豆瓣Top250排名最高的纪录片.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_10_大国崛起10新国新梦——美国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_11_大国崛起11危局新政——美国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_12_大国崛起12大道行思——大国之谜.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_13_《大国崛起》高清片头国语高清.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_1_大国崛起1海洋时代——葡萄牙、西班牙.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_2_大国崛起2小国大业——荷兰.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_3_大国崛起3走向现代——英国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_4_大国崛起4工业先声——英国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_5_大国崛起5激情岁月——法国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_6_大国崛起6帝国春秋——德国.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_7_大国崛起7百年维新——日本.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_8_大国崛起8寻道图强——俄罗斯.mp4</span><br><span class="line">2018-08-19_央视纪录片《大国崛起TheRiseOfGreatNations》全12集国语中字720P高清纪录片_9_大国崛起9风云新途——俄罗斯.mp4</span><br><span class="line">2018-08-30_生命起源的奇幻旅程ROSETTACOMETCHASERAJOURNEYTOTHEO.mp4</span><br><span class="line">2019-02-18_【经济】复旦大学新城与债务：造城运动真的带来发展吗？全4讲主讲陆铭_1_1.mp4</span><br><span class="line">2019-02-18_【经济】复旦大学新城与债务：造城运动真的带来发展吗？全4讲主讲陆铭_2_2.mp4</span><br><span class="line">2019-02-18_【经济】复旦大学新城与债务：造城运动真的带来发展吗？全4讲主讲陆铭_3_3.mp4</span><br><span class="line">2019-02-18_【经济】复旦大学新城与债务：造城运动真的带来发展吗？全4讲主讲陆铭_4_4.mp4</span><br><span class="line">2019-04-07_湊あくあlettersong自制spiral版.mp4</span><br><span class="line">2019-04-12_【爱的旋律】与你相遇，便是我生命中最美好的时光——最美的爱情.mp4</span><br><span class="line">2020-01-14_【纪录片】食物的历史4【双语特效字幕】【纪录片之家字幕组】.mp4</span><br></pre></td></tr></table></figure>
+    </div>
+      <div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>木子</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.502.li/archives/merge-bilibili-flv-video.html" title="高效批量下载 B 站视频并合并转码为 mp4">https://blog.502.li/archives/merge-bilibili-flv-video.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
+</ul>
+      </div>
+    <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/技巧/" rel="tag"><i class="fa fa-tag"></i> 技巧</a>
+        </div>
+    </footer>
+  </div>
+  </article>
+  </div>
+          </div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+        </div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
+             </a>   
+              <p class="site-author-name" itemprop="name">木子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+            <div class="links-of-author motion-element">
+                <span class="links-of-author-item">
+                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+                <span class="links-of-author-item">
+                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+            </div>
+             <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#弄啥咧？"><span class="nav-number">1.</span> <span class="nav-text">弄啥咧？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#劝退三要素😂"><span class="nav-number">2.</span> <span class="nav-text">劝退三要素😂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#咋弄"><span class="nav-number">3.</span> <span class="nav-text">咋弄</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目录结构"><span class="nav-number">3.1.1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#info-文件"><span class="nav-number">3.1.2.</span> <span class="nav-text">info 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flv-合并"><span class="nav-number">4.</span> <span class="nav-text">flv 合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#合并多个-flv-文件"><span class="nav-number">4.1.</span> <span class="nav-text">合并多个 flv 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本"><span class="nav-number">5.</span> <span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">6.</span> <span class="nav-text">效果</span></a></li></ol></div>
+          </div>
+        </div>
+      <!--/noindex-->
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+            <span id="scrollpercent"><span>0</span>%</span>
+        </div>
+    </div>
+  </aside>
+      </div>
+    </main>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">748k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15:36</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+      </div>
+    </footer>
+  </div>
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.502.li/archives/merge-bilibili-flv-video.html";
+    this.page.identifier = "archives/merge-bilibili-flv-video.html";
+    this.page.title = '高效批量下载 B 站视频并合并转码为 mp4';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+</script>
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+</body>
+</html>
