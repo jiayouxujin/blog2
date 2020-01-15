@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #edd7ff;
+  background: #66e9f4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2846,6 +2846,11 @@ body {
 ::-moz-selection {
   background: #00c4b6;
   color: #f7f7f7;
+}
+del {
+  color: #b35888;
+  background: #fbf7f8;
+  margin: 2px;
 }
 .footer-inner {
   color: #ff7600;
