@@ -1,63 +1,71 @@
 <!DOCTYPE html>
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
-  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
-<script id="hexo.configurations">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
-    lazyload: true,
-    tabs: true,
-    motion: "",
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
-    }
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
-  <meta name="description" content="TL 分享一个装机方案：CPU: E5 2670V3 ×2主板: Dell T7810 准系统内存: 三星 DDR4 2133 16G×4显卡: Quador K2000 2GB硬盘: 西数 HC310 7K 4TB固态: 三星 PM 981 256GB价格: 550×2+1700+260×4+400+760+290=5290￥你就能拥有一台 24C/48T CPU、64GB RAM 、256GB">
-<meta name="keywords" content="捡垃圾,PC">
+  <meta name="description" content="TL 分享一个装机方案：CPU: E5 2670V3 ×2主板: Dell T7810 准系统内存: 三星 DDR4 2133 16G×4显卡: Quador K2000 2GB硬盘: 西数 HC310 7K 4TB固态: 三星 PM 981 256GB价格: 550×2+1700+260×4+400+760+290&#x3D;5290￥你就能拥有一台 24C&#x2F;48T CPU、64GB RAM 、256GB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="台式机装机方案">
 <meta property="og:url" content="https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html">
 <meta property="og:site_name" content="木子">
-<meta property="og:description" content="TL 分享一个装机方案：CPU: E5 2670V3 ×2主板: Dell T7810 准系统内存: 三星 DDR4 2133 16G×4显卡: Quador K2000 2GB硬盘: 西数 HC310 7K 4TB固态: 三星 PM 981 256GB价格: 550×2+1700+260×4+400+760+290=5290￥你就能拥有一台 24C/48T CPU、64GB RAM 、256GB">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T12:26:46.902Z">
+<meta property="og:description" content="TL 分享一个装机方案：CPU: E5 2670V3 ×2主板: Dell T7810 准系统内存: 三星 DDR4 2133 16G×4显卡: Quador K2000 2GB硬盘: 西数 HC310 7K 4TB固态: 三星 PM 981 256GB价格: 550×2+1700+260×4+400+760+290&#x3D;5290￥你就能拥有一台 24C&#x2F;48T CPU、64GB RAM 、256GB">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.033Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="捡垃圾">
+<meta property="article:tag" content="PC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="台式机装机方案">
-<meta name="twitter:description" content="TL 分享一个装机方案：CPU: E5 2670V3 ×2主板: Dell T7810 准系统内存: 三星 DDR4 2133 16G×4显卡: Quador K2000 2GB硬盘: 西数 HC310 7K 4TB固态: 三星 PM 981 256GB价格: 550×2+1700+260×4+400+760+290=5290￥你就能拥有一台 24C/48T CPU、64GB RAM 、256GB">
-  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
-  <link rel="canonical" href="https://blog.502.li/archives/pc-e5v3-e3v3-amd2600">
-<script id="page.configurations">
+<link rel="canonical" href="https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true
   };
 </script>
   <title>台式机装机方案 | 木子</title>
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -66,8 +74,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-  .use-motion .logo,
+  .use-motion .collection-header { opacity: initial; }
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -77,127 +84,115 @@
   .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">木子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
   </li>
-          <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
   </li>
-          <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
   </li>
-          <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
   </li>
-          <li class="menu-item menu-item-about">
-    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
   </li>
-        <li class="menu-item menu-item-search">
-            <a href="javascript:;" class="popup-trigger">
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-    </ul>
-    <div class="site-search">
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-    </div>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
 </nav>
 </div>
     </header>
-    <main id="main" class="main">
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-  <div id="posts" class="posts-expand">
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  <div class="post-block">
+          <div class="content">
+  <div class="posts-expand">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog.502.li/favicon.ico">
       <meta itemprop="name" content="木子">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/avatar.png">
+      <meta itemprop="description" content="">
     </span>
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="木子">
     </span>
       <header class="post-header">
-          <h2 class="post-title" itemprop="name headline">台式机装机方案
-          </h2>
+        <h1 class="post-title" itemprop="name headline">
+          台式机装机方案
+        </h1>
         <div class="post-meta">
-          <span class="post-time">
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                <span class="post-meta-item-text">发表于</span>
-              <time title="创建时间：2019-12-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-26T00:00:00-05:00">2019-12-26</time>
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-12-26 2019-12-26T00:00:00+08:00" itemprop="dateCreated datePublished" datetime="2019-12-26T00:00:00+08:00">2019-12-26</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                  <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 07:26:46" itemprop="dateModified" datetime="2020-01-14T07:26:46-05:00">2020-01-14</time>
-          </span>
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/pc-e5v3-e3v3-amd2600.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/pc-e5v3-e3v3-amd2600.html" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 2020-01-14T22:23:37+08:00" itemprop="dateModified" datetime="2020-01-14T22:23:37+08:00">2020-01-14</time>
               </span>
-            <div class="post-symbolscount">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                  <span class="post-meta-item-text">本文字数：</span>
-                <span title="本文字数">13k</span>
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                <span title="阅读时长">16 分钟</span>
-            </div>
+  <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    <a title="disqus" href="/archives/pc-e5v3-e3v3-amd2600.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/pc-e5v3-e3v3-amd2600.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody">
@@ -206,62 +201,61 @@
 <h2 id="E3-V3"><a href="#E3-V3" class="headerlink" title="E3 V3"></a>E3 V3</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">硬件</th>
+<th align="center">硬件</th>
 <th>配置</th>
-<th style="text-align:center">价格</th>
-<th style="text-align:center">备注</th>
+<th align="center">价格</th>
+<th align="center">备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">CPU</td>
+<tbody><tr>
+<td align="center">CPU</td>
 <td>E3-1270 V3 4C/8T 3.50 GHz~3.90 GHz</td>
-<td style="text-align:center">520</td>
-<td style="text-align:center"></td>
+<td align="center">520</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">主板</td>
+<td align="center">主板</td>
 <td>T1700 准系统：Intel ®C2261</td>
-<td style="text-align:center">400</td>
-<td style="text-align:center"></td>
+<td align="center">400</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">内存</td>
+<td align="center">内存</td>
 <td>三星 DDR3 ECC 16GB 1600 Mhz ×2</td>
-<td style="text-align:center">260×2</td>
-<td style="text-align:center"></td>
+<td align="center">260×2</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">显卡</td>
+<td align="center">显卡</td>
 <td>GTX 950 2GB</td>
-<td style="text-align:center">300</td>
-<td style="text-align:center"></td>
+<td align="center">300</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">固态</td>
+<td align="center">固态</td>
 <td>三星 850 PRO SATA III 256GB</td>
-<td style="text-align:center">210</td>
-<td style="text-align:center"></td>
+<td align="center">210</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">机箱</td>
+<td align="center">机箱</td>
 <td>T1700 准系统：</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center"></td>
+<td align="center">0</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">电源</td>
+<td align="center">电源</td>
 <td>T1700 准系统：290W 开关电源</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center"></td>
+<td align="center">0</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center">总价</td>
+<td align="center">总价</td>
 <td></td>
-<td style="text-align:center">1950</td>
+<td align="center">1950</td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li>如今的 E3 V3 价格已经跌破 500 左右了，但 AMD Ryzen R5 的价格散片也就 650 左右，加上 150 块钱就能提升 30% 的单核性能，外加 2 个核心和 4 个框框😂，总之 E3 V3 目前来讲性价比不如 AMD Ryzen R5。</li>
 <li>E3 V3 是 Intel 第四代  CPU 1150 芯片组无法从 M.2 启动，速度只能达到 SATA III 也就是顶多 600 MB/s 的读写速度，而目前随便一块支持  PCI-e M.2 的主板普遍都能达到 3000MB/s 了。所以这一点来讲 E3 V3 已经不值得捡了。</li>
@@ -269,62 +263,61 @@
 <h2 id="AMD-Ryzen"><a href="#AMD-Ryzen" class="headerlink" title="AMD Ryzen"></a>AMD Ryzen</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">硬件</th>
+<th align="center">硬件</th>
 <th>配置</th>
-<th style="text-align:center">价格</th>
+<th align="center">价格</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">CPU</td>
+<tbody><tr>
+<td align="center">CPU</td>
 <td>AMD Ryzen R5 2400G</td>
-<td style="text-align:center">720</td>
+<td align="center">720</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">主板</td>
+<td align="center">主板</td>
 <td>MSI B350M</td>
-<td style="text-align:center">320</td>
+<td align="center">320</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">内存</td>
+<td align="center">内存</td>
 <td>镁光 DDR4 16GB 2400 Mhz ×2</td>
-<td style="text-align:center">300 ×2</td>
+<td align="center">300 ×2</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">显卡</td>
+<td align="center">显卡</td>
 <td>GTX 950 2GB</td>
-<td style="text-align:center">300</td>
+<td align="center">300</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">固态</td>
+<td align="center">固态</td>
 <td>三星 PM 981 256GB</td>
-<td style="text-align:center">290</td>
+<td align="center">290</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">机箱</td>
+<td align="center">机箱</td>
 <td>Dell 3010 机箱</td>
-<td style="text-align:center">170</td>
+<td align="center">170</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">电源</td>
+<td align="center">电源</td>
 <td>Dell 3010 电源： 230W 光宝开关电源</td>
-<td style="text-align:center">0</td>
+<td align="center">0</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">总价</td>
+<td align="center">总价</td>
 <td></td>
-<td style="text-align:center">2400</td>
+<td align="center">2400</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="天梯图"><a href="#天梯图" class="headerlink" title="天梯图"></a><a href="http://itianti.sinaapp.com/index.php/cpu" target="_blank" rel="noopener">天梯图</a></h3><ul>
 <li>仅供娱乐，实际性能还要做对比测试，只是让您心里有点 B 数</li>
 <li>AMD Ryzen 5 2400G 的性能和 E3-1270 V3 性能相近，AMD Ryzen 5 2600 性能要比两者高大概 30% 的性能（个人瞎猜）。</li>
@@ -340,8 +333,7 @@
 <th>14377</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>101</td>
 <td>AMD Ryzen 7 2700X</td>
 <td>16971</td>
@@ -441,68 +433,66 @@
 <td>Intel Core i3-8350K @ 4.00GHz</td>
 <td>9221</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><p>这也是我目前的装机方案。我是在 7 月分的时组装的，那时候第三代 Ryzen 刚刚发布，而那时候的价格要比第二代 Ryzen 高出 500 多块钱，所以就没有使用第三代  Ryzen 。不过我当时买的是 U 板套装，加起来价格才 1180￥ ，那时候价格是相当便宜了，主板是华硕 B350M-K 丐板 的，理论上是支持第三代 Ryzen 的。虽然现在很后悔，但当时心切想买😂</p>
 <h2 id="双路-E5-V3"><a href="#双路-E5-V3" class="headerlink" title="双路 E5 V3"></a>双路 E5 V3</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">硬件</th>
+<th align="center">硬件</th>
 <th>配置</th>
-<th style="text-align:center">价格</th>
+<th align="center">价格</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">CPU</td>
+<tbody><tr>
+<td align="center">CPU</td>
 <td>Intel Xeon E5-2660 v3 @ 2.60GHz ×2</td>
-<td style="text-align:center">600 ×2</td>
+<td align="center">600 ×2</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">主板</td>
+<td align="center">主板</td>
 <td>Dell T7810 准系统 或者 Dell R630 准系统</td>
-<td style="text-align:center">1700</td>
+<td align="center">1700</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">内存</td>
+<td align="center">内存</td>
 <td>三星 DDR4 2133 Mhz 16GB ×4</td>
-<td style="text-align:center">260×4</td>
+<td align="center">260×4</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">显卡</td>
+<td align="center">显卡</td>
 <td>GTX 950 2GB</td>
-<td style="text-align:center">300</td>
+<td align="center">300</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">固态</td>
+<td align="center">固态</td>
 <td>三星 PM 981 256GB</td>
-<td style="text-align:center">290</td>
+<td align="center">290</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">机箱</td>
+<td align="center">机箱</td>
 <td>Dell T7810 准系统</td>
-<td style="text-align:center">0</td>
+<td align="center">0</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">电源</td>
+<td align="center">电源</td>
 <td>Dell T7810 准系统</td>
-<td style="text-align:center">0</td>
+<td align="center">0</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">总价</td>
+<td align="center">总价</td>
 <td></td>
-<td style="text-align:center">4530</td>
+<td align="center">4530</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li><p>目前来讲 E5 V3 平台装机最令人头疼的就是主板死贵，主板价格都比两个 U 加起来的价格还要高。之所以选择 Dell T7810 准系统 准系统是因为相比来讲 Dell 塔式服务器的稳定性要比捡垃圾搞来的工包主板稳定性强很多，翻车概率要小一些。如果单独买主板的话还要和机箱象匹配，电源功率也要够。而 Dell T7810 准系统完美地解决了这些困扰，不用再考虑买合适的机箱和电源。一整套配合起来完美运行。</p>
 </li>
@@ -512,14 +502,22 @@
 </li>
 <li><blockquote>
 <ul>
-<li>并不建议使用DELL T7910，非常伤 因为阵列卡的原因，系统速度会非常慢（肉眼可见的，比如说打开Windows Image Viewer，会等1-2秒才会显示（不管大小） 目测应该是什么硬件冲突，禁用板载阵列卡就好了（已经在国外论坛上看到很多案例了，很多公司/个人因为这个不去买DELL这个账</li>
-<li>那是不是禁用阵列卡不用他不就好了呢 然而T7910的阵列卡和“背板”是12G的，接口使用的MiniSAS HD（SFF-8643）不管是再买阵列卡还是通道卡，都要有一笔不小的花费 还有K2000太烂了。</li>
-<li>当然，我指的是这一代DELL Precision，不光是T7910</li>
-<li>继续吐槽，T7910正面是三个风扇的，通过橡胶的减震钉固定在风扇架上。这些橡胶的减震钉，时间长了会老化，然后就会变得很恶心（最后被我拆掉用螺丝+螺帽代替）（我印象中我摸过其他的Lenovo的机器，甚至时间更长的都没有DELL这个老化之后的恶心 而且风扇的异响会变得比较讨厌（购入后1年内</li>
-<li>顺便，应该是批次问题，如果你不幸买到了我这批的 你的电源会出现电弧的声音（没错，就是那个电弧 但是看不到任何东西，客服跟我讲可能我这边潮湿（你逗我，北方潮湿？？</li>
-<li>电源，不管是T7910这样的模块化电源还是普通的电源，OEM机型你都会遇到一个问题，扩展电源接口不够 T7910只有一个SATA供电接口，本身设计是给光驱使用的 其他的电源接口是直接给硬盘笼供电的 如果你比较扭曲，像我这样可以直接剪掉重新焊接，或者你愿意多花钱买扩展线，那无所谓</li>
-<li>以及前面提到的硬盘问题，别想着直接不用板载的SAS3008用板子上的SATA就完了 板子上就两个SATA。</li>
-<li>这一代的Precision有巨多的问题（设计和硬件上的） 我是不可能推荐Precision的（至少是这代，因为我用了，用的还是旗舰） 相比之下，如果是OEM准系统组装的话，我更愿意推荐PowerEdge T630或者HPE的Z系列 T630有更好的电源配置，散热系统，扩展性，以及易于维护 HPE Z系列的模块化设计也是甩DELL10条街</li>
+<li><p>并不建议使用DELL T7910，非常伤 因为阵列卡的原因，系统速度会非常慢（肉眼可见的，比如说打开Windows Image Viewer，会等1-2秒才会显示（不管大小） 目测应该是什么硬件冲突，禁用板载阵列卡就好了（已经在国外论坛上看到很多案例了，很多公司/个人因为这个不去买DELL这个账</p>
+</li>
+<li><p>那是不是禁用阵列卡不用他不就好了呢 然而T7910的阵列卡和“背板”是12G的，接口使用的MiniSAS HD（SFF-8643）不管是再买阵列卡还是通道卡，都要有一笔不小的花费 还有K2000太烂了。</p>
+</li>
+<li><p>当然，我指的是这一代DELL Precision，不光是T7910</p>
+</li>
+<li><p>继续吐槽，T7910正面是三个风扇的，通过橡胶的减震钉固定在风扇架上。这些橡胶的减震钉，时间长了会老化，然后就会变得很恶心（最后被我拆掉用螺丝+螺帽代替）（我印象中我摸过其他的Lenovo的机器，甚至时间更长的都没有DELL这个老化之后的恶心 而且风扇的异响会变得比较讨厌（购入后1年内</p>
+</li>
+<li><p>顺便，应该是批次问题，如果你不幸买到了我这批的 你的电源会出现电弧的声音（没错，就是那个电弧 但是看不到任何东西，客服跟我讲可能我这边潮湿（你逗我，北方潮湿？？</p>
+</li>
+<li><p>电源，不管是T7910这样的模块化电源还是普通的电源，OEM机型你都会遇到一个问题，扩展电源接口不够 T7910只有一个SATA供电接口，本身设计是给光驱使用的 其他的电源接口是直接给硬盘笼供电的 如果你比较扭曲，像我这样可以直接剪掉重新焊接，或者你愿意多花钱买扩展线，那无所谓</p>
+</li>
+<li><p>以及前面提到的硬盘问题，别想着直接不用板载的SAS3008用板子上的SATA就完了 板子上就两个SATA。</p>
+</li>
+<li><p>这一代的Precision有巨多的问题（设计和硬件上的） 我是不可能推荐Precision的（至少是这代，因为我用了，用的还是旗舰） 相比之下，如果是OEM准系统组装的话，我更愿意推荐PowerEdge T630或者HPE的Z系列 T630有更好的电源配置，散热系统，扩展性，以及易于维护 HPE Z系列的模块化设计也是甩DELL10条街</p>
+</li>
 <li><p>btw, 我在6月把这台机器扔给我妈办公用之前，DELL的新固件我都会刷，然而并没有任何卵用</p>
 <p>引用自 <a href="https://twitter.com/AkatsukiRyuu/status/1210157947906490368" target="_blank" rel="noopener">暁龍之介的推文</a></p>
 </li>
@@ -541,8 +539,7 @@
 <th>得分</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>101</td>
 <td>AMD Ryzen 7 2700X</td>
 <td>16971</td>
@@ -612,8 +609,7 @@
 <td>AMD Ryzen 7 PRO 1700X</td>
 <td>15367</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="双路"><a href="#双路" class="headerlink" title="双路"></a>双路</h4><table>
 <thead>
 <tr>
@@ -622,8 +618,7 @@
 <th>23727</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>44</td>
 <td>[双路] Intel Xeon E5-2687W v2 @ 3.40GHz</td>
 <td>23727</td>
@@ -673,167 +668,194 @@
 <td>[双路] Intel Xeon E5-2670 v3 @ 2.30GHz</td>
 <td>22383</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="单路-E5-V3"><a href="#单路-E5-V3" class="headerlink" title="单路 E5 V3"></a>单路 E5 V3</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">硬件</th>
+<th align="center">硬件</th>
 <th>配置</th>
-<th style="text-align:center">价格</th>
+<th align="center">价格</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">CPU</td>
+<tbody><tr>
+<td align="center">CPU</td>
 <td>Intel Xeon E5-2660 v3 @ 2.60GHz</td>
-<td style="text-align:center">600</td>
+<td align="center">600</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">主板</td>
+<td align="center">主板</td>
 <td>Dell T5810 准系统</td>
-<td style="text-align:center">1200</td>
+<td align="center">1200</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">内存</td>
+<td align="center">内存</td>
 <td>三星 DDR4 2133 Mhz 16GB ×4</td>
-<td style="text-align:center">260×4</td>
+<td align="center">260×4</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">显卡</td>
+<td align="center">显卡</td>
 <td>GTX 950 2GB</td>
-<td style="text-align:center">300</td>
+<td align="center">300</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">固态</td>
+<td align="center">固态</td>
 <td>三星 PM 981 256GB M.2</td>
-<td style="text-align:center">290</td>
+<td align="center">290</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">机箱</td>
+<td align="center">机箱</td>
 <td>Dell T7810 准系统</td>
-<td style="text-align:center">0</td>
+<td align="center">0</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">电源</td>
+<td align="center">电源</td>
 <td>Dell T7810 准系统</td>
-<td style="text-align:center">0</td>
+<td align="center">0</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">总价</td>
+<td align="center">总价</td>
 <td></td>
-<td style="text-align:center">3430</td>
+<td align="center">3430</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>不过我倒是 jio 着，既然垃圾佬都上 E5 了，不玩玩双路对得起自己嘛，所以多花 1000 块相当于多一个 U ，多 12C/24T ，双路要比单路多 24 个框框啊，数起可好玩喽😂</p>
     </div>
-      <div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>木子</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html" title="台式机装机方案">https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
-</ul>
-      </div>
-    <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/捡垃圾/" rel="tag"><i class="fa fa-tag"></i> 捡垃圾</a>
-            <a href="/tags/PC/" rel="tag"><i class="fa fa-tag"></i> PC</a>
-        </div>
-    </footer>
-  </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8D%A1%E5%9E%83%E5%9C%BE/" rel="tag"><i class="fa fa-tag"></i> 捡垃圾</a>
+              <a href="/tags/PC/" rel="tag"><i class="fa fa-tag"></i> PC</a>
+          </div>
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/dockone-post-index-archives.html" rel="prev" title="DockOne 社群分享汇总">
+      <i class="fa fa-chevron-left"></i> DockOne 社群分享汇总
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/container-linux-os.html" rel="next" title="Container Linux OS 从入坑到爬出来😂">
+      Container Linux OS 从入坑到爬出来😂 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
   </article>
   </div>
           </div>
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-        </div>
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
-  <aside id="sidebar" class="sidebar">
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a href="/">
-              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
-             </a>   
-              <p class="site-author-name" itemprop="name">木子</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-            <div class="links-of-author motion-element">
-                <span class="links-of-author-item">
-                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
-                </span>
-            </div>
-             <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-             </div>
-        </div>
-      </div>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
       <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL"><span class="nav-number">1.</span> <span class="nav-text">TL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E3-V3"><span class="nav-number">2.</span> <span class="nav-text">E3 V3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">2.1.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD-Ryzen"><span class="nav-number">3.</span> <span class="nav-text">AMD Ryzen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#天梯图"><span class="nav-number">3.1.</span> <span class="nav-text">天梯图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项-1"><span class="nav-number">3.2.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双路-E5-V3"><span class="nav-number">4.</span> <span class="nav-text">双路 E5 V3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项-2"><span class="nav-number">4.1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天梯图-1"><span class="nav-number">4.2.</span> <span class="nav-text">天梯图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双路"><span class="nav-number">4.2.1.</span> <span class="nav-text">双路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单路-E5-V3"><span class="nav-number">5.</span> <span class="nav-text">单路 E5 V3</span></a></li></ol></div>
-          </div>
-        </div>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL"><span class="nav-number">1.</span> <span class="nav-text">TL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E3-V3"><span class="nav-number">2.</span> <span class="nav-text">E3 V3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">2.1.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD-Ryzen"><span class="nav-number">3.</span> <span class="nav-text">AMD Ryzen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#天梯图"><span class="nav-number">3.1.</span> <span class="nav-text">天梯图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项-1"><span class="nav-number">3.2.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双路-E5-V3"><span class="nav-number">4.</span> <span class="nav-text">双路 E5 V3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项-2"><span class="nav-number">4.1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天梯图-1"><span class="nav-number">4.2.</span> <span class="nav-text">天梯图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#双路"><span class="nav-number">4.2.1.</span> <span class="nav-text">双路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单路-E5-V3"><span class="nav-number">5.</span> <span class="nav-text">单路 E5 V3</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-        <div class="back-to-top">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+          <span>0%</span>
         </div>
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
       </div>
     </main>
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">木子</span>
@@ -841,380 +863,59 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">751k</span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:38</span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
       </div>
     </footer>
   </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  <script src="/js/utils.js?v=7.1.0"></script>
-  <script src="/js/motion.js?v=7.1.0"></script>
-  <script src="/js/affix.js?v=7.1.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html";
-    this.page.identifier = "archives/pc-e5v3-e3v3-amd2600.html";
-    this.page.title = '台式机装机方案';
-    };
-  function loadComments() {
+  function loadCount() {
     var d = document, s = d.createElement('script');
-    s.src = 'https://muzi.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
     (d.head || d.body).appendChild(s);
   }
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        loadComments();
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-                // show search results
-                if (isMatch) {
-                  // sort index by position of keyword
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-                  // merge hits into slices
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-                      // move to next position of hit
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-                  // sort slices in content by search text's count and hits' count
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-                  // select top N slices in content
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-                  // highlight title and content
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-                  var resultItem = '';
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html",
+            identifier: "archives/pc-e5v3-e3v3-amd2600.html",
+            title: "台式机装机方案"
           }
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-          proceedsearch();
         }
       });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
     }
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-<script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
+  });
 </script>
 </body>
 </html>

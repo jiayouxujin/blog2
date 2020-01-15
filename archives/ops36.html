@@ -1,63 +1,72 @@
 <!DOCTYPE html>
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
-  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
-<script id="hexo.configurations">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
-    lazyload: true,
-    tabs: true,
-    motion: "",
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
-    }
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
-  <meta name="description" content="高效运维社区分享系列.运维三十六计v0.6原文链接 专栏撰写专家（按首字母拼音顺序）：    姓名 公司     范伦挺 阿里巴巴，技术专家   盖国强    高向冉 腾讯，技术总监   韩方 丫丫直播，安全总监   梁定安 腾讯，织云负责人   潘晓明 京东，开发测试专家   涂彦 腾讯，技术总监   万千一 京东，测试经理   王晶 华为，资深架构师   胥峰 盛大游戏，高级研究员   徐奇琛">
-<meta name="keywords" content="运维,ops,运维规范">
+  <meta name="description" content="高效运维社区分享系列.运维三十六计v0.6原文链接 专栏撰写专家（按首字母拼音顺序）：    姓名 公司    范伦挺 阿里巴巴，技术专家   盖国强    高向冉 腾讯，技术总监   韩方 丫丫直播，安全总监   梁定安 腾讯，织云负责人   潘晓明 京东，开发测试专家   涂彦 腾讯，技术总监   万千一 京东，测试经理   王晶 华为，资深架构师   胥峰 盛大游戏，高级研究员   徐奇琛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高效运维社区分享系列.运维三十六计">
 <meta property="og:url" content="https://blog.502.li/archives/ops36.html">
 <meta property="og:site_name" content="木子">
-<meta property="og:description" content="高效运维社区分享系列.运维三十六计v0.6原文链接 专栏撰写专家（按首字母拼音顺序）：    姓名 公司     范伦挺 阿里巴巴，技术专家   盖国强    高向冉 腾讯，技术总监   韩方 丫丫直播，安全总监   梁定安 腾讯，织云负责人   潘晓明 京东，开发测试专家   涂彦 腾讯，技术总监   万千一 京东，测试经理   王晶 华为，资深架构师   胥峰 盛大游戏，高级研究员   徐奇琛">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T12:26:46.850Z">
+<meta property="og:description" content="高效运维社区分享系列.运维三十六计v0.6原文链接 专栏撰写专家（按首字母拼音顺序）：    姓名 公司    范伦挺 阿里巴巴，技术专家   盖国强    高向冉 腾讯，技术总监   韩方 丫丫直播，安全总监   梁定安 腾讯，织云负责人   潘晓明 京东，开发测试专家   涂彦 腾讯，技术总监   万千一 京东，测试经理   王晶 华为，资深架构师   胥峰 盛大游戏，高级研究员   徐奇琛">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.021Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="ops">
+<meta property="article:tag" content="运维规范">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高效运维社区分享系列.运维三十六计">
-<meta name="twitter:description" content="高效运维社区分享系列.运维三十六计v0.6原文链接 专栏撰写专家（按首字母拼音顺序）：    姓名 公司     范伦挺 阿里巴巴，技术专家   盖国强    高向冉 腾讯，技术总监   韩方 丫丫直播，安全总监   梁定安 腾讯，织云负责人   潘晓明 京东，开发测试专家   涂彦 腾讯，技术总监   万千一 京东，测试经理   王晶 华为，资深架构师   胥峰 盛大游戏，高级研究员   徐奇琛">
-  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
-  <link rel="canonical" href="https://blog.502.li/archives/ops36">
-<script id="page.configurations">
+<link rel="canonical" href="https://blog.502.li/archives/ops36.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true
   };
 </script>
   <title>高效运维社区分享系列.运维三十六计 | 木子</title>
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -66,8 +75,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-  .use-motion .logo,
+  .use-motion .collection-header { opacity: initial; }
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -77,127 +85,115 @@
   .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">木子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
   </li>
-          <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
   </li>
-          <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
   </li>
-          <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
   </li>
-          <li class="menu-item menu-item-about">
-    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
   </li>
-        <li class="menu-item menu-item-search">
-            <a href="javascript:;" class="popup-trigger">
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-    </ul>
-    <div class="site-search">
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-    </div>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
 </nav>
 </div>
     </header>
-    <main id="main" class="main">
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-  <div id="posts" class="posts-expand">
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  <div class="post-block">
+          <div class="content">
+  <div class="posts-expand">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/ops36.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog.502.li/favicon.ico">
       <meta itemprop="name" content="木子">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/avatar.png">
+      <meta itemprop="description" content="">
     </span>
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="木子">
     </span>
       <header class="post-header">
-          <h2 class="post-title" itemprop="name headline">高效运维社区分享系列.运维三十六计
-          </h2>
+        <h1 class="post-title" itemprop="name headline">
+          高效运维社区分享系列.运维三十六计
+        </h1>
         <div class="post-meta">
-          <span class="post-time">
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                <span class="post-meta-item-text">发表于</span>
-              <time title="创建时间：2019-05-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-02T00:00:00-04:00">2019-05-02</time>
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-05-02 2019-05-02T00:00:00+08:00" itemprop="dateCreated datePublished" datetime="2019-05-02T00:00:00+08:00">2019-05-02</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                  <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 07:26:46" itemprop="dateModified" datetime="2020-01-14T07:26:46-05:00">2020-01-14</time>
-          </span>
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/ops36.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/ops36.html" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 2020-01-14T22:23:37+08:00" itemprop="dateModified" datetime="2020-01-14T22:23:37+08:00">2020-01-14</time>
               </span>
-            <div class="post-symbolscount">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                  <span class="post-meta-item-text">本文字数：</span>
-                <span title="本文字数">21k</span>
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                <span title="阅读时长">26 分钟</span>
-            </div>
+  <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    <a title="disqus" href="/archives/ops36.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/ops36.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>28 分钟</span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody">
@@ -210,8 +206,7 @@
 <th>公司</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>范伦挺</td>
 <td>阿里巴巴，技术专家</td>
 </tr>
@@ -283,8 +278,7 @@
 <td>张乐</td>
 <td>百度，资深敏捷教练</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <hr>
 <h2 id="三十六计-运维管理-涂彦"><a href="#三十六计-运维管理-涂彦" class="headerlink" title="三十六计-运维管理-涂彦"></a>三十六计-运维管理-涂彦</h2><p>1.运维管理的两个主要目标，管人与理事。<br>2.运维管理需要经历的三个阶段，生存、生长、生态。<br>3.未来十年团队中坚力量是年轻一代。<br>4.认同年轻团队的五个价值观：不惧权威、自主管理、HERO、女汉子、理想现实主义者。<br>5.打好领导与领袖的组合拳，用法定权责奖赏和鼓励员工，用个人专业能力影响员工，用好事半功倍，用不好人财两空。<br>6.运维团队在企业中的角色，不是外包和救火队员可以代替的，而是要与企业和业务共同成长的角色。<br>7.不论公司规模大小，运维团队都可以从是高想象力团队还是低想象力团队，是高创造力团队还是低创造力团队来看发展潜力。<br>8.高想象力与高创造力来源于如何建立运维价值输入输出关键路径，即INPUT与.OUTPUT机制。<br>9.对于运维团队的架构职能，平台型与垂直型是驱动团队发展的内在因子，而不仅仅只是一种僵硬的组织形式。<br>10.混搭平台与垂直，是一种面向服务对象的灵活组织管理模式。<br>11.运维团队的能力体系建设应该像互联网产品一样，不断做好迭代与交付能力。<br>12.团队的发展好比一个人的成长，除了好的组织架构外，还需要好的思维模式。<br>13.成长思维模式中，需要不断挖掘与释放团队内各种成员的潜在能力，做好兼容与适配。<br>14.导师制度，对一个技术团队的人才培养非常重要，不同阶段不同领域都需要灯塔指引我.们，在学习知识同时收获友情。<br>15.营造创新环境也是成长思维模式中必不可少的环节，坚持与服务对象保持紧密沟通，特.别是对一件事的持续专注。<br>16.对遇到成长瓶颈的成员,需要让其自身成长的诉求与不断推陈出新的业务需求发生化学.反应，才能走出困惑，重拾信心。<br>17.运维团队应该根据企业的文化价值观形成带有鲜明团队自身属性的文化价值观,并且这.样的团队文化能深入人心。<br>18.团队文化可以看成是团队内各成员对于彼此工作方法的一种高度共识。<br>19.随着企业业务规模发展，不少管理者将面临远程团队管理，要正确认识远程团队在企业.发展中的真正价值。<br>20.管理远程团队要经历的三个阶段：活下去（初创期X追赶与超越（发展期X自循环（稳.健期)。<br>21.管理远程团队要解决的三个问题：时间、距离、文化。<br>22.时间：远程团队如何解决各类工作信息高效同步与任务执行。<br>23.距离：远程团队如何自我发展、外部合作如何开展。<br>24.文化：远程团队如何读懂和落地公司、部门文化。<br>25.当作为一个职业经理人空降一个运维技术团队时，首先要学会快速融入，而不是快速换人。<br>26.空降管理中，基于管理与被管理双方强烈的认知欲望，如何快速压缩认知成本，认识别人眼中的自己，是破冰的关键路径。<br>27.作为运维团队管理者，要学会培养自身与团队在核心业务上的技术洞见能力。<br>28.运维团队随着业务发展，自身在经历不同时期的建设过程中将体现出技术洞见为团队能力提升所带来的重要变化。<br>29.技术洞见在业务扩张建设和实现业务转型中，都扮演着关键角色，是管理者及团队的重.要专业能力。<br>30.运维管理者要理性看待技术洞见带来的风险,特别是失败案例以及早期技术方案雏形的.不完善。<br>31.创新与关注核心业务是可以不冲突的,运维管理者要围绕核心业务进行技术洞见的灰度.和全量。<br>32.运维团队作为面向服务对象的技术团队，要具备产品思维能力。<br>33.对于运维服务的对象，可以分为客户与用户，前者偏向于企业内部业务团队，.后者偏向于企业外部最终用户。<br>34.运维的产品思维可以体现在工具文化中：创新方式解决问题、利用该方式快速成长与扩.张、以产品为基础。<br>35.运维团队可以用创业模式来管理建设中的项目以及待评估的技术洞见。<br>36.将创业模式的项目管理引进运维团队，可以激发团队的狼性，产生更多好的运维服务与产品。</p>
 <hr>
@@ -310,105 +304,134 @@
 <hr>
 <h2 id="三十六计-数据中心节能运维-闫林"><a href="#三十六计-数据中心节能运维-闫林" class="headerlink" title="三十六计-数据中心节能运维-闫林"></a>三十六计-数据中心节能运维-闫林</h2><p>1.选址是第一要素。DC尽量选择高海拔、高纬度、温度低、湿度适中的地点。<br>2.大型DC制冷方式选择参考：能源利用效率是风冷、水冷、自然冷却<br>3.设计全封闭型的数据中心，提高机房密闭性能，取消外窗，防止太阳辐射消耗能量，满.足LEED要求的绿色节能建筑要求。<br>4.在机房制冷控制区域对维护结构进行保温处理，防止机房相邻区域因温度、湿度差异较.大而产生冷凝水，同时降低制冷的负荷。<br>5.合理摆放空调设备位置，风口地板与空调保持6英尺以上距离，避免气流短路。<br>6.对线缆穿出地板的开口处进行密封处理，优化机房地板下结构降低风阻。<br>7.空调摆放与机柜排垂直；避开冷通道<br>8.在数据中心机房中建设冷通道，并配置下送风机房专用风冷式精密空调；在数据中心机.房中建设热通道，并配置下送风机房专用风冷式精密空调。<br>9.在数据中心机房建设专用大型水冷式机房精密空调和芯片冷却管道，直接给IT设备芯.片散热。<br>10.在数据中心机房采用机房风冷式精密空调+大型新风机1：1配置，合理利用自然新风.冷源。<br>11.机房功率密度高时，空调机分散安放，应适当提高活动地板铺高和地板风口出风速度,.送风均匀。<br>12.有条件时可在空调机顶部接回风道，热通道上方加回风口（有吊顶机房）<br>13.空调机管线尽量布置在空调机后部<br>14.将大功率、高负荷的服务器摆放在机柜的底部或中间<br>15.选用节能的加湿系统，能耗：超声波加湿、湿膜加湿、电极加湿、红外线<br>16.设定空调最佳工况，防止出现部分空调正在加湿，部分空调正在除湿的情况<br>17.推荐空调机冷凝器自动雾化技能技术，采用磁悬浮离心冷水机组，采用太空纤维的风机.和冰蓄冷技术<br>18.空调采用高能效比压缩机，电机使用变频系统，末端空调使用，下沉EC风机<br>19.各种数据中心皆可广泛采用板式热交换器<br>20.大型数据中心采用大容量蓄冷罐<br>21.水冷背板机柜，选用高效率、模块化UPS<br>22.使用UPS的ECO模式（智能休眠），使UPS运行在经济状态下<br>23.谐波治理：加隔离变压器；对谐波进行抑制，12次脉冲附加11次滤波<br>24.对电力系统进行无功补偿<br>25.在配电柜断路器和UPS输出端加装节电器<br>26.市电直供+240V高压直流供电系统<br>27.选择节能灯具，并引入智能照明系统，提高自动化程度，减少不必要的光照强度<br>28.机柜加盲板，有效使用机柜封闭盲板，减少冷热空气的混合<br>29.推荐柜门：网孔六角形设计，通风率78%<br>30.关闭不用的IT负载。找出并且淘汰没有使用的或者利用率低的设备和应用。<br>31.选用低能耗IT设备，淘汰高能耗设备<br>32.采用耐35度高温服务器，采用液冷服务器<br>33.采用多种能源：太阳能、地热能、核能、潮汐能、风能<br>34.燃气冷热电三联供系统<br>35.采用数据中心微模块技术。<br>36.作好除尘：空调、风机尤其是风扇、滤网除尘</p>
     </div>
-      <div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>木子</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://blog.502.li/archives/ops36.html" title="高效运维社区分享系列.运维三十六计">https://blog.502.li/archives/ops36.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
-</ul>
-      </div>
-    <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/运维/" rel="tag"><i class="fa fa-tag"></i> 运维</a>
-            <a href="/tags/ops/" rel="tag"><i class="fa fa-tag"></i> ops</a>
-            <a href="/tags/运维规范/" rel="tag"><i class="fa fa-tag"></i> 运维规范</a>
-        </div>
-    </footer>
-  </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="fa fa-tag"></i> 运维</a>
+              <a href="/tags/ops/" rel="tag"><i class="fa fa-tag"></i> ops</a>
+              <a href="/tags/%E8%BF%90%E7%BB%B4%E8%A7%84%E8%8C%83/" rel="tag"><i class="fa fa-tag"></i> 运维规范</a>
+          </div>
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/animal.html" rel="prev" title="我青年时代就--看过的动漫">
+      <i class="fa fa-chevron-left"></i> 我青年时代就--看过的动漫
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/oracle-rips-redhat.html" rel="next" title="Oracle rips RedHat and 'sort of' launches a new Linux">
+      Oracle rips RedHat and 'sort of' launches a new Linux <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
   </article>
   </div>
           </div>
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-        </div>
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
-  <aside id="sidebar" class="sidebar">
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a href="/">
-              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
-             </a>   
-              <p class="site-author-name" itemprop="name">木子</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-            <div class="links-of-author motion-element">
-                <span class="links-of-author-item">
-                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
-                </span>
-            </div>
-             <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-             </div>
-        </div>
-      </div>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
       <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高效运维社区分享系列-运维三十六计v0-6"><span class="nav-number">1.</span> <span class="nav-text">高效运维社区分享系列.运维三十六计v0.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-运维管理-涂彦"><span class="nav-number">2.</span> <span class="nav-text">三十六计-运维管理-涂彦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-曰常运维-梁定安"><span class="nav-number">3.</span> <span class="nav-text">三十六计-曰常运维-梁定安</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-自动化运维-胥峰"><span class="nav-number">4.</span> <span class="nav-text">三十六计-自动化运维-胥峰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-基础监控-赵舜东"><span class="nav-number">5.</span> <span class="nav-text">三十六计-基础监控-赵舜东</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-安全运维-韩方"><span class="nav-number">6.</span> <span class="nav-text">三十六计-安全运维-韩方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-网络运维-张永福"><span class="nav-number">7.</span> <span class="nav-text">三十六计-网络运维-张永福</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-数据库运维-周小军"><span class="nav-number">8.</span> <span class="nav-text">三十六计-数据库运维-周小军</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-MySQL运维-叶金荣"><span class="nav-number">9.</span> <span class="nav-text">三十六计-MySQL运维-叶金荣</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-PostgreSQL运维-周正中"><span class="nav-number">10.</span> <span class="nav-text">三十六计-PostgreSQL运维-周正中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-Orade运维-盖国强"><span class="nav-number">11.</span> <span class="nav-text">三十六计-Orade运维-盖国强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-存储运营-高向冉"><span class="nav-number">12.</span> <span class="nav-text">三十六计-存储运营-高向冉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-数据中心节能运维-闫林"><span class="nav-number">13.</span> <span class="nav-text">三十六计-数据中心节能运维-闫林</span></a></li></ol></div>
-          </div>
-        </div>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高效运维社区分享系列-运维三十六计v0-6"><span class="nav-number">1.</span> <span class="nav-text">高效运维社区分享系列.运维三十六计v0.6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-运维管理-涂彦"><span class="nav-number">2.</span> <span class="nav-text">三十六计-运维管理-涂彦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-曰常运维-梁定安"><span class="nav-number">3.</span> <span class="nav-text">三十六计-曰常运维-梁定安</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-自动化运维-胥峰"><span class="nav-number">4.</span> <span class="nav-text">三十六计-自动化运维-胥峰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-基础监控-赵舜东"><span class="nav-number">5.</span> <span class="nav-text">三十六计-基础监控-赵舜东</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-安全运维-韩方"><span class="nav-number">6.</span> <span class="nav-text">三十六计-安全运维-韩方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-网络运维-张永福"><span class="nav-number">7.</span> <span class="nav-text">三十六计-网络运维-张永福</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-数据库运维-周小军"><span class="nav-number">8.</span> <span class="nav-text">三十六计-数据库运维-周小军</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-MySQL运维-叶金荣"><span class="nav-number">9.</span> <span class="nav-text">三十六计-MySQL运维-叶金荣</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-PostgreSQL运维-周正中"><span class="nav-number">10.</span> <span class="nav-text">三十六计-PostgreSQL运维-周正中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-Orade运维-盖国强"><span class="nav-number">11.</span> <span class="nav-text">三十六计-Orade运维-盖国强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-存储运营-高向冉"><span class="nav-number">12.</span> <span class="nav-text">三十六计-存储运营-高向冉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三十六计-数据中心节能运维-闫林"><span class="nav-number">13.</span> <span class="nav-text">三十六计-数据中心节能运维-闫林</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-        <div class="back-to-top">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+          <span>0%</span>
         </div>
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
       </div>
     </main>
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">木子</span>
@@ -416,380 +439,59 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">751k</span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:38</span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
       </div>
     </footer>
   </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  <script src="/js/utils.js?v=7.1.0"></script>
-  <script src="/js/motion.js?v=7.1.0"></script>
-  <script src="/js/affix.js?v=7.1.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.502.li/archives/ops36.html";
-    this.page.identifier = "archives/ops36.html";
-    this.page.title = '高效运维社区分享系列.运维三十六计';
-    };
-  function loadComments() {
+  function loadCount() {
     var d = document, s = d.createElement('script');
-    s.src = 'https://muzi.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
     (d.head || d.body).appendChild(s);
   }
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        loadComments();
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-                // show search results
-                if (isMatch) {
-                  // sort index by position of keyword
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-                  // merge hits into slices
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-                      // move to next position of hit
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-                  // sort slices in content by search text's count and hits' count
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-                  // select top N slices in content
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-                  // highlight title and content
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-                  var resultItem = '';
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/archives/ops36.html",
+            identifier: "archives/ops36.html",
+            title: "高效运维社区分享系列.运维三十六计"
           }
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-          proceedsearch();
         }
       });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
     }
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-<script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
+  });
 </script>
 </body>
 </html>

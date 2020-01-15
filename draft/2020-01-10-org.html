@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+  <meta name="description" content="说实话，我在学校里的课堂上，基本上没有认真听过课，除了数据结构、计算机组成、计算机网络等一些十分重要的基础课认真听讲了。其他课都是瞎几把玩儿😂。但课下我通过开源社区以及一些技术峰会，了解和学习到很多主流的技术。那时候 2016 年的时候 docker 正式如日中天地向前发展，我参加了 2016 年的阿里云云栖大会，在那里第一次听过 docker 容器，也是第一次和 MySQL 的作者米卡埃尔·维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="木子">
+<meta property="og:url" content="https://blog.502.li/draft/2020-01-10-org.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="说实话，我在学校里的课堂上，基本上没有认真听过课，除了数据结构、计算机组成、计算机网络等一些十分重要的基础课认真听讲了。其他课都是瞎几把玩儿😂。但课下我通过开源社区以及一些技术峰会，了解和学习到很多主流的技术。那时候 2016 年的时候 docker 正式如日中天地向前发展，我参加了 2016 年的阿里云云栖大会，在那里第一次听过 docker 容器，也是第一次和 MySQL 的作者米卡埃尔·维">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-14T14:23:37.045Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.045Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://blog.502.li/draft/2020-01-10-org.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false
+  };
+</script>
+  <title> | 木子
+  </title>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">时光痕迹</p>
+  </div>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+  </li>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+  </li>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+  </li>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+  </li>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+  </li>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
+</nav>
+</div>
+    </header>
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div class="content">
+  <div class="posts-expand">
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+<h1 class="post-title" itemprop="name headline">
+</h1>
+<div class="post-meta">
+</div>
+</header>
+      <div class="post-body">
+          <p>说实话，我在学校里的课堂上，基本上没有认真听过课，除了数据结构、计算机组成、计算机网络等一些十分重要的基础课认真听讲了。其他课都是瞎几把玩儿😂。但课下我通过开源社区以及一些技术峰会，了解和学习到很多主流的技术。那时候 2016 年的时候 docker 正式如日中天地向前发展，我参加了 2016 年的阿里云云栖大会，在那里第一次听过 docker 容器，也是第一次和 MySQL 的作者<code>米卡埃尔·维德纽斯</code> <a href="https://en.wikipedia.org/wiki/Michael_Widenius" target="_blank" rel="noopener">Michael Widenius</a> 站在一起合影😂，还有 docker 创始人之一的。回到学校后还和同学们分享了在大会上听取到的技术，当时我特别建议大三或大四的也来听听。因为像 docker 这样的技术在面试的时候绝对是个加分项😂。很可惜大三大四的都没来，只有我们年级和大一的学弟学妹们来捧场 😂</p>
+<p>对于想学习编程的小伙伴建议去读一下</p>
+<p>中文翻译 <a href="https://liuyandong.com/2017/10/25/122/" target="_blank" rel="noopener">十年学会编程 | 栋哥的博客</a></p>
+<p>英文原文 <a href="http://norvig.com/21-days.html" target="_blank" rel="noopener">Teach Yourself Programming in Ten Years</a></p>
+<p>以及 <a href="https://program-think.blogspot.com/2012/05/weekly-share-5.html" target="_blank" rel="noopener">每周转载：IT 大牛谈编程语言（网文3篇）</a></p>
+<p>大学四年我所有的技能基本都是从开源社区、从 Linux 、从各种技术峰会上自学而得。不要去指望老师给你们多少知识。大学四年正是靠你自己自学而得技能。就拿 docker 及容器虚拟化 、kubernetes 这些技术在互联网公司使用的极为广泛，当你面试的时候这些技能也绝对是你的加分项。然，目前国内的大学除了一些有远瞻性的大学会开设这类的课程。其他绝大多数都不会去主动接触和使用这些主流的技术。因为老师只顾着教会课本上所学的，而课本上的东西，你翻翻都早已经过时很久了。但一些基础课程，像操作系统原理、计算机组成、数据结构与算法、计算机网络等等这类的基础课程还是要认真听讲的，因为这些基础知识是你构建整个计算机技术的底层基础，并不分过时与否。</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>hosts project / work / service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.linuxfoundation.org/" target="_blank" rel="noopener">Linux 基金会</a></td>
+<td><a href="https://kernel.org" target="_blank" rel="noopener">kernel</a>  <a href="[https://nodejs.org">NodeJs</a>  <a href="https://xenproject.org/" target="_blank" rel="noopener">Xen</a>   <a href="https://www.dpdk.org/" target="_blank" rel="noopener">DPDK</a>  <a href="[https://etcd.io">etcd</a>  <a href="[https://jenkins.io">Jenkins</a>  <a href="[https://kubernetes.io">kubernetes</a> <a href="https://ceph.com/foundation/" target="_blank" rel="noopener">Ceph</a>  <a href="https://github.com/containernetworking/cni" target="_blank" rel="noopener">CNI</a>  <a href="https://www.fluentd.org/" target="_blank" rel="noopener">Fluentd</a>  <a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a>  <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>  <a href="https://coredns.io/" target="_blank" rel="noopener">CoreDNS</a></td>
+</tr>
+<tr>
+<td><a href="https://www.gnu.org" target="_blank" rel="noopener">FSF 自由软件基金会</a></td>
+<td><a href="https://www.gnu.org/" target="_blank" rel="noopener">GNU</a> <a href="https://www.gnu.org/software/libc/" target="_blank" rel="noopener">libc</a> <a href="https://www.gnu.org/software/glib/" target="_blank" rel="noopener">glib</a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener">bash</a> <a href="https://www.gnu.org/software/gzip/" target="_blank" rel="noopener">gzip</a> <a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener">wget</a>  <a href="https://www.gnu.org/software/gcc/" target="_blank" rel="noopener">gcc</a> <a href="https://www.gnu.org/software/grub/" target="_blank" rel="noopener">grub</a> <a href="https://www.gnu.org/software/sed/" target="_blank" rel="noopener">sed</a>  <a href="https://www.gnu.org/software/tar/" target="_blank" rel="noopener">tar</a>  <a href="https://www.gnu.org/software/grep/" target="_blank" rel="noopener">grep</a></td>
+</tr>
+<tr>
+<td><a href="https://foundation.mozilla.org" target="_blank" rel="noopener">Mozilla 基金会</a></td>
+<td><a href="[https://www.mozilla.org">Firefox</a>  <a href="[https://www.thunderbird.net">Thunderbird</a></td>
+</tr>
+<tr>
+<td><a href="https://wikimediafoundation.org/" target="_blank" rel="noopener">维基媒体基金会</a></td>
+<td><a href="https://www.mediawiki.org/wiki/MediaWiki" target="_blank" rel="noopener">MediaWiki</a></td>
+</tr>
+<tr>
+<td><a href="https://www.openssl.org/" target="_blank" rel="noopener">OpenSSL 基金会</a></td>
+<td><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">OpenSSL</a></td>
+</tr>
+<tr>
+<td><a href="https://www.spi-inc.org/" target="_blank" rel="noopener">SPI 组织</a></td>
+<td><a href="https://www.debian.org/distrib/" target="_blank" rel="noopener">Debian</a>  <a href="https://ffmpeg.org/" target="_blank" rel="noopener">FFmpeg</a>  <a href="https://openwrt.org/" target="_blank" rel="noopener">OpenWrt</a>  <a href="[https://www.postgresql.org">PostgreSQL</a>  <a href="https://www.libreoffice.org/" target="_blank" rel="noopener">LibreOffice</a> <a href="[https://jenkins.io">Jenkins</a>  <a href="https://www.archlinux.org/" target="_blank" rel="noopener">Arch Linux</a> <a href="https://www.spi-inc.org/projects/mingw" target="_blank" rel="noopener">MinGW</a> <a href="https://www.spi-inc.org/projects/x.org" target="_blank" rel="noopener">X.Org</a> <a href="https://www.spi-inc.org/projects/haskell" target="_blank" rel="noopener">haskell.org</a> <a href="https://www.spi-inc.org/projects/gallery" target="_blank" rel="noopener">Gallery</a> <a href="https://www.spi-inc.org/projects/openzfs" target="_blank" rel="noopener">OpenZFS</a></td>
+</tr>
+<tr>
+<td><a href="https://www.eff.org/" target="_blank" rel="noopener">EFF 电子前哨基金会</a></td>
+<td><a href="https://www.eff.org/https-everywhere" target="_blank" rel="noopener">HTTPS Everywhere</a>  <a href="https://www.eff.org/privacybadger" target="_blank" rel="noopener">Privacy Badger</a>  <a href="https://letsencrypt.org/about/" target="_blank" rel="noopener">Let’s Encrypt</a></td>
+</tr>
+<tr>
+<td><a href="https://www.openstack.org/foundation/" target="_blank" rel="noopener">OpenStack 基金会</a></td>
+<td><a href="https://www.openstack.org/software/releases/stein/components/nova" target="_blank" rel="noopener">nova</a>  <a href="https://www.openstack.org/software/project-navigator/openstack-components/#openstack-services" target="_blank" rel="noopener">OpenStack </a></td>
+</tr>
+<tr>
+<td><a href="https://www.cncf.io/" target="_blank" rel="noopener">CNCF 基金会</a></td>
+<td><a href="http://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a></td>
+</tr>
+<tr>
+<td><a href="https://www.cloudfoundry.org" target="_blank" rel="noopener">Cloud Foundry 基金会</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.apache.org/" target="_blank" rel="noopener">Apache 软件基金会</a></td>
+<td><a href="https://www.apache.org/" target="_blank" rel="noopener">Apache</a>  <a href="https://hadoop.apache.org/" target="_blank" rel="noopener">Hadoop</a>  <a href="http://kafka.apache.org/" target="_blank" rel="noopener">Kafka</a>  <a href="http://zookeeper.apache.org/" target="_blank" rel="noopener">Zookeeper</a>  <a href="http://hbase.apache.org/" target="_blank" rel="noopener">HBase</a>  <a href="http://maven.apache.org/" target="_blank" rel="noopener">Maven</a></td>
+</tr>
+<tr>
+<td><a href="https://www.python.org/psf/" target="_blank" rel="noopener">Python 基金会</a></td>
+<td><a href="[https://www.python.org">Python</a></td>
+</tr>
+<tr>
+<td><a href="https://www.gnome.org/foundation/" target="_blank" rel="noopener">GNOME 基金会</a></td>
+<td><a href="[https://www.gnome.org">GNOME</a>  <a href="http://www.freedesktop.org/wiki/Software/systemd/" target="_blank" rel="noopener">systemd</a>  <a href="https://developer.gnome.org/glib/" target="_blank" rel="noopener">GLib</a>  <a href="http://www.gtk.org/" target="_blank" rel="noopener">GTK+</a>  <a href="http://www.freedesktop.org/wiki/Software/dbus/" target="_blank" rel="noopener">D-Bus</a>  <a href="https://www.kernel.org/" target="_blank" rel="noopener">Linux Kernel</a>  <a href="https://wiki.gnome.org/Projects/GDM" target="_blank" rel="noopener">GDM</a></td>
+</tr>
+<tr>
+<td><a href="http://openwebfoundation.org/" target="_blank" rel="noopener">OWF 开放 web 基金会</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.opennetworking.org/" target="_blank" rel="noopener">ONF 开放网络基金会</a></td>
+<td><a href="https://www.opennetworking.org/onos/" target="_blank" rel="noopener">onos</a> <a href="https://www.opennetworking.org/omec/" target="_blank" rel="noopener">OMEC</a></td>
+</tr>
+<tr>
+<td><a href="https://www.freebsdfoundation.org/" target="_blank" rel="noopener">FreeBSD 基金会</a></td>
+<td><a href="https://www.freebsd.org" target="_blank" rel="noopener">FreeBSD</a></td>
+</tr>
+<tr>
+<td><a href="http://www.openbsdfoundation.org/" target="_blank" rel="noopener">OpenBSD 基金会</a></td>
+<td><a href="http://www.openssh.com/" target="_blank" rel="noopener"> OpenSSH</a>  <a href="http://www.libressl.org/" target="_blank" rel="noopener">LibreSSL</a>  <a href="http://www.openbsd.org/" target="_blank" rel="noopener">OpenBSD</a></td>
+</tr>
+<tr>
+<td><a href="http://golangfoundation.org/about/" target="_blank" rel="noopener">Golang 基金会</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://opensource.org/" target="_blank" rel="noopener">OSI 开放源代码组织</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.linaro.org/" target="_blank" rel="noopener">Linaro 非营利性组织</a></td>
+<td><a href="https://www.linaro.org/downloads/" target="_blank" rel="noopener">Linaro Toolchain</a></td>
+</tr>
+<tr>
+<td><a href="https://www.torproject.org/" target="_blank" rel="noopener">Tor 项目</a></td>
+<td><a href="https://www.torproject.org/download/" target="_blank" rel="noopener">Tor </a></td>
+</tr>
+<tr>
+<td><a href="https://freedom.press/" target="_blank" rel="noopener">FPF 新闻自由基金会</a></td>
+<td><a href="https://securedrop.org/" target="_blank" rel="noopener">SecureDrop</a>  <a href="https://securethe.news/" target="_blank" rel="noopener">Secure the News</a>  <a href="https://freedom.press/news/archiving-alternative-press-threatened-wealthy-buyers/" target="_blank" rel="noopener">Archive the News</a> <a href="https://twitter.com/foiafeed" target="_blank" rel="noopener">FOIAFeed</a></td>
+</tr>
+<tr>
+<td><a href="https://cpj.org" target="_blank" rel="noopener">OPJ 保护记者委员会</a></td>
+<td><a href="https://cpj.org/safety-kit/" target="_blank" rel="noopener">Safety Kit</a>  <a href="https://cpj.org/safety-advisories/" target="_blank" rel="noopener">Safety Advisories</a></td>
+</tr>
+<tr>
+<td><a href="https://webfoundation.org/" target="_blank" rel="noopener">Web Foundation 万维网基金会</a></td>
+<td><a href="https://webfoundation.org/our-work/projects/alliance-for-affordable-internet/" target="_blank" rel="noopener">Alliance for Affordable Internet</a>  <a href="https://webfoundation.org/our-work/projects/open-data-barometer/" target="_blank" rel="noopener">Open Data Barometer</a>  <a href="https://webfoundation.org/our-work/projects/womens-rights-online/" target="_blank" rel="noopener">Women’s Rights Online</a> <a href="https://webfoundation.org/our-work/projects/the-web-index/" target="_blank" rel="noopener">The Web Index</a></td>
+</tr>
+<tr>
+<td><a href="https://epic.org/" target="_blank" rel="noopener">EPIC 电子隐私信息中心</a></td>
+<td><a href="https://epic.org/privacy/litigation/" target="_blank" rel="noopener">Litigation Docket</a> <a href="https://epic.org/campaigns/" target="_blank" rel="noopener">Privacy Campaigns</a> <a href="https://epic.org/privacy/surveillance/spotlight/" target="_blank" rel="noopener">Spotlight on Surveillance</a></td>
+</tr>
+<tr>
+<td><a href="https://sfconservancy.org/" target="_blank" rel="noopener">SFC 软件自由保护组织</a></td>
+<td><a href="https://busybox.net/" target="_blank" rel="noopener">BusyBox</a>  <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>  <a href="https://phpmyadmin.net/" target="_blank" rel="noopener">phpMyAdmin</a>  <a href="http://qemu.org/" target="_blank" rel="noopener">QEMU</a>  <a href="https://www.samba.org/samba/" target="_blank" rel="noopener">Samba</a>  <a href="http://www.winehq.org/" target="_blank" rel="noopener">Wine</a> <a href=""></a></td>
+</tr>
+<tr>
+<td><a href="https://www.softwarefreedom.org/" target="_blank" rel="noopener">SFLC 软件自由法律中心</a></td>
+<td><a href="https://www.softwarefreedom.org/services/" target="_blank" rel="noopener">services</a></td>
+</tr>
+<tr>
+<td><a href="https://archive.org/" target="_blank" rel="noopener">Internet Archive 互联网档案馆</a></td>
+<td><a href="https://archive.org/projects/" target="_blank" rel="noopener">Building Libraries Together</a>  <a href="https://openlibrary.org/" target="_blank" rel="noopener">Open Library</a>  <a href="https://archive.org/details/301works" target="_blank" rel="noopener">301Works.org</a>  <a href="https://archive.org/web/sflan.php" target="_blank" rel="noopener">Open Community Networks</a></td>
+</tr>
+<tr>
+<td><a href="https://www.x.org/wiki/" target="_blank" rel="noopener">X.Org 基金会</a></td>
+<td><a href="https://www.x.org" target="_blank" rel="noopener">X.Org project</a></td>
+</tr>
+<tr>
+<td><a href="https://riscv.org/" target="_blank" rel="noopener">RISC-V 基金会</a></td>
+<td><a href="https://riscv.org/" target="_blank" rel="noopener">RISC-V</a></td>
+</tr>
+<tr>
+<td><a href="https://creativecommons.org/" target="_blank" rel="noopener">Creative Commons</a></td>
+<td><a href="https://creativecommons.org/about/" target="_blank" rel="noopener">about</a></td>
+</tr>
+<tr>
+<td><a href="https://www.eclipse.org/org/foundation/" target="_blank" rel="noopener">Eclipse 基金会</a></td>
+<td><a href="https://projects.eclipse.org/" target="_blank" rel="noopener">Eclipse</a></td>
+</tr>
+<tr>
+<td><a href="https://www.documentfoundation.org/" target="_blank" rel="noopener">TDF 文档基金会</a></td>
+<td><a href="http://www.libreoffice.org/" target="_blank" rel="noopener">LibreOffice</a></td>
+</tr>
+<tr>
+<td><a href="https://www.abetterinternet.org/" target="_blank" rel="noopener">ISRG 互联网安全研究小组</a></td>
+<td><a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a></td>
+</tr>
+</tbody></table>
+<p>美国拥有着世界上最多的开源软件、自由软件基金会及其非营利性组织、社区。同时这些基金会和非营利性组织在独立于政府、公开透明、开放包容、自由平等的社会环境下领跑整个世界开源软件/自由软件的发展。在美国，假如向这些非营利性组织捐款，纳税人或者企业能够在自己的收入税中抵税。没有这一条，许多非营利组织就不能收到足够的捐款。</p>
+<p>从服务器领域的Linux发行版到Android手机内核，从视频解码器的ffmpeg到解压缩软件7zip，从Web服务器Apache到保障Web安全传输的OpenSSL。每一个都为全球互联网的发展自由的发展推波助澜。以上组织虽都诞生于美国，但他们的运作都独立于美国政府，甚至有些组织就是专门用来对抗美国政府的监控，比如EFF基金会的”粉碎棱镜计划”，以及对抗商业软件潮流的GNU工程。这些组织需要独立自主，自由开放，公开透明的生存环境。美国这种以基金会、社区运作的方式已经很成熟了，使用开源软件/自由软件的公司和个人乐意捐赠，开发者有稳定的收入，从而使软件能够稳定地维护，形成了良性循环。</p>
+<blockquote>
+<p>Electronic Frontier Foundation 简称 <a href="https://sexywp.com/tags/eff" target="_blank" rel="noopener">EFF</a>，是一个具有领导地位的非盈利组织，致力于在数字世界捍卫公民自由。建立于 1990 年，<a href="https://sexywp.com/tags/eff" target="_blank" rel="noopener">EFF</a> 通过影响诉讼，政策分析，基层行动以及技术研发，捍卫用户隐私，言论自由以及创新。该基金会的试图通过努力保障，在技术进步的前提下，人们的自由和权力也受到相应的保护。看了这个基金会的愿景，诚然时代进步了，技术改善了生活，但是，公民权力和言论自由以及民主，离我们的生活越来越远了。技术是一柄双刃剑，可能用它来捍卫人的自由和权力，也可以用它来禁锢人的思想和灵魂。</p>
+<p>此处引用自  <a href="https://sexywp.com/eff.htm" target="_blank" rel="noopener">EFF 电子前哨基金会– Becomin’ Charles</a></p>
+</blockquote>
+<p>事实上，越是自由民主的国家，越会存在很多监督问责政府、对抗商业公司、保护个人隐私、捍卫言论自由、独立于政府的非营利性组织。比如捍卫互联网自由的电子前哨基金会；对抗商业公司监控的自由软件基金会；捍卫言论自由的新闻自由基金会、出版自由基金会、保护记者委员会；保护Web信息安全传输的OpenSSL基金会；提供匿名访问的Tor项目；保护个人隐私的粉碎棱镜计划；反抗商业软件监控的自由软件运动。</p>
+<ul>
+<li>推荐去读一下我翻译的 <a href="https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide">一段在法律与技术冲突的地方捍卫自由的历史</a></li>
+<li>原文来自电子前哨基金会官网  <a href="https://www.eff.org/about/history" target="_blank" rel="noopener">A History of Protecting Freedom Where Law and Technology Collide</a></li>
+</ul>
+<p>这篇文章讲述了关于电子前哨基金会历史：史蒂夫·杰克逊游戏案第一确立了执法部门在扣押和阅读所有电子邮件之前，必须持有特别描述所有电子邮件的搜查令；伯恩斯坦诉美国政府案第一次裁定软件源代码是受宪法第一修正案保护的言论。当然对于某些摸着石头过河的国家来说，这两个法案就是吃痴人说梦。</p>
+      </div>
+    </div>
+  </div>
+          </div>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/draft/2020-01-10-org.html",
+            identifier: "draft/2020-01-10-org.html",
+            title: ""
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+</body>
+</html>

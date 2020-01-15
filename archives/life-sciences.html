@@ -1,63 +1,70 @@
 <!DOCTYPE html>
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
-  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
-<script id="hexo.configurations">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
-    lazyload: true,
-    tabs: true,
-    motion: "",
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
-    }
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="偶然间翻到了 OneDrive 里六年前写下的疑问，大概是我高三的时候思考的生物学问题。当时梦想着大学的时候能去研究生命科学、去研究生命如何进化来的、去研究地球是如何孕育出生命、又是经历了几十亿年的进化之旅，生命的奇迹降临在我身上。一个鲜活的生命由此诞生。那时的我对高中生物学的知识早已学的滚瓜烂熟，甚至但是还拿来大学教材《普通生物学》、《细胞生物学》、《植物学》来自学😂。我只是想迫切地知道大学里">
-<meta name="keywords" content="思考">
 <meta property="og:type" content="article">
 <meta property="og:title" content="六年前思考的一些东西">
 <meta property="og:url" content="https://blog.502.li/archives/life-sciences.html">
 <meta property="og:site_name" content="木子">
 <meta property="og:description" content="偶然间翻到了 OneDrive 里六年前写下的疑问，大概是我高三的时候思考的生物学问题。当时梦想着大学的时候能去研究生命科学、去研究生命如何进化来的、去研究地球是如何孕育出生命、又是经历了几十亿年的进化之旅，生命的奇迹降临在我身上。一个鲜活的生命由此诞生。那时的我对高中生物学的知识早已学的滚瓜烂熟，甚至但是还拿来大学教材《普通生物学》、《细胞生物学》、《植物学》来自学😂。我只是想迫切地知道大学里">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T12:26:46.854Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.025Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="思考">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="六年前思考的一些东西">
-<meta name="twitter:description" content="偶然间翻到了 OneDrive 里六年前写下的疑问，大概是我高三的时候思考的生物学问题。当时梦想着大学的时候能去研究生命科学、去研究生命如何进化来的、去研究地球是如何孕育出生命、又是经历了几十亿年的进化之旅，生命的奇迹降临在我身上。一个鲜活的生命由此诞生。那时的我对高中生物学的知识早已学的滚瓜烂熟，甚至但是还拿来大学教材《普通生物学》、《细胞生物学》、《植物学》来自学😂。我只是想迫切地知道大学里">
-  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
-  <link rel="canonical" href="https://blog.502.li/archives/life-sciences">
-<script id="page.configurations">
+<link rel="canonical" href="https://blog.502.li/archives/life-sciences.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true
   };
 </script>
   <title>六年前思考的一些东西 | 木子</title>
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -66,8 +73,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-  .use-motion .logo,
+  .use-motion .collection-header { opacity: initial; }
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -77,127 +83,115 @@
   .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">木子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
   </li>
-          <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
   </li>
-          <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
   </li>
-          <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
   </li>
-          <li class="menu-item menu-item-about">
-    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
   </li>
-        <li class="menu-item menu-item-search">
-            <a href="javascript:;" class="popup-trigger">
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-    </ul>
-    <div class="site-search">
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-    </div>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
 </nav>
 </div>
     </header>
-    <main id="main" class="main">
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-  <div id="posts" class="posts-expand">
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  <div class="post-block">
+          <div class="content">
+  <div class="posts-expand">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/life-sciences.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog.502.li/favicon.ico">
       <meta itemprop="name" content="木子">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/avatar.png">
+      <meta itemprop="description" content="">
     </span>
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="木子">
     </span>
       <header class="post-header">
-          <h2 class="post-title" itemprop="name headline">六年前思考的一些东西
-          </h2>
+        <h1 class="post-title" itemprop="name headline">
+          六年前思考的一些东西
+        </h1>
         <div class="post-meta">
-          <span class="post-time">
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                <span class="post-meta-item-text">发表于</span>
-              <time title="创建时间：2019-10-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:00-04:00">2019-10-14</time>
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-10-14 2019-10-14T00:00:00+08:00" itemprop="dateCreated datePublished" datetime="2019-10-14T00:00:00+08:00">2019-10-14</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                  <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 07:26:46" itemprop="dateModified" datetime="2020-01-14T07:26:46-05:00">2020-01-14</time>
-          </span>
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/life-sciences.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/life-sciences.html" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 2020-01-14T22:23:37+08:00" itemprop="dateModified" datetime="2020-01-14T22:23:37+08:00">2020-01-14</time>
               </span>
-            <div class="post-symbolscount">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                  <span class="post-meta-item-text">本文字数：</span>
-                <span title="本文字数">22k</span>
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                <span title="阅读时长">28 分钟</span>
-            </div>
+  <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    <a title="disqus" href="/archives/life-sciences.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/life-sciences.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody">
@@ -215,1171 +209,1213 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">序号</th>
+<th align="center">序号</th>
 <th>高三时对关于生物学的奇思异想</th>
 <th>进度</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
+<tbody><tr>
+<td align="center">1</td>
 <td>植物细胞发育起源，及各种细胞进化。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
+<td align="center">2</td>
 <td>细胞器的来源及进化，以及联系功能。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">3</td>
+<td align="center">3</td>
 <td>原核细胞的发展史，及细胞结构。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">4</td>
+<td align="center">4</td>
 <td>生物界的分类，及植物界细分。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">5</td>
+<td align="center">5</td>
 <td>研究新的耕作方式，抛弃话费，研究新的增肥农作物</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">6</td>
+<td align="center">6</td>
 <td>农作物秸秆在农田里高效率降解，减少化肥污染。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">7</td>
+<td align="center">7</td>
 <td>研究新的农田增肥方法，彻底摆脱化肥的需求。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">8</td>
+<td align="center">8</td>
 <td>核细胞分裂，转录机制，核糖体的形成。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">9</td>
+<td align="center">9</td>
 <td>将目的基因导入细胞的方法改进研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">10</td>
+<td align="center">10</td>
 <td>植物受精卵细胞初期的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">11</td>
+<td align="center">11</td>
 <td>动物配子细胞结构特点，染色体的特异。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">12</td>
+<td align="center">12</td>
 <td>减数分裂联会后染色体的变化，全能型的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">13</td>
+<td align="center">13</td>
 <td>动物受精卵及胚胎发育早期细胞的全能性特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">14</td>
+<td align="center">14</td>
 <td>细胞全能性的变化与细胞分化的关联。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">15</td>
+<td align="center">15</td>
 <td>培育出高效的光合作用农作物，生产酒精。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">16</td>
+<td align="center">16</td>
 <td>酒精发酵的改进，用植物秸秆发酵技术改进研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">17</td>
+<td align="center">17</td>
 <td>植物蒸腾作用是否能净化水，怎样收集水。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">18</td>
+<td align="center">18</td>
 <td>研究一些南瓜等藤类植物茎中运输的水的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">19</td>
+<td align="center">19</td>
 <td>藤类农作物是否可以净化术，由此改进净水系统。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">20</td>
+<td align="center">20</td>
 <td>光合作用的全部过程，完全详细研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">21</td>
+<td align="center">21</td>
 <td>多倍体染色体联会产配子，及染色体表达的情况。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">22</td>
+<td align="center">22</td>
 <td>同源染色体联会的调控，正常细胞诱导联会后变化。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">23</td>
+<td align="center">23</td>
 <td>植物细胞动物细胞在人体内怎样被消化，细胞器去向。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">24</td>
+<td align="center">24</td>
 <td>核酸 及细胞器怎样消化，及各种细胞器的营养价值</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">25</td>
+<td align="center">25</td>
 <td>植物有机物的积累，变化，。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">26</td>
+<td align="center">26</td>
 <td>两条互补DNA链表达的蛋白质存在怎样的联系及特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">27</td>
+<td align="center">27</td>
 <td>显性基因和隐性基因表达的关系，及控制表达的机制。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">28</td>
+<td align="center">28</td>
 <td>具有胚性分生组织细胞特点，染色体及细胞器的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">29</td>
+<td align="center">29</td>
 <td>受精卵基因表达与细胞全能性的关系，表达基因的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">30</td>
+<td align="center">30</td>
 <td>植物细胞与动物细胞内基因表达的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">31</td>
+<td align="center">31</td>
 <td>动手实践植物体细胞杂交及植物组织培养。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">32</td>
+<td align="center">32</td>
 <td>人类，动物思维的物质基础及与细胞功能的联系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">33</td>
+<td align="center">33</td>
 <td>神经细胞基因表达的特点，与思维的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">34</td>
+<td align="center">34</td>
 <td>植物蛋白与动物蛋白各自的特点，及营养价值。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">35</td>
+<td align="center">35</td>
 <td>连续光照对植物光合作用的影响，及净光合作速率的变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">36</td>
+<td align="center">36</td>
 <td>光合作用与细胞呼吸的联系，相互影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">37</td>
+<td align="center">37</td>
 <td>线粒体与叶绿体内核糖体的特点，DNA的特点，相似处。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">38</td>
+<td align="center">38</td>
 <td>DNA转录，复制时染色体上的蛋白质变化去向作用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">39</td>
+<td align="center">39</td>
 <td>把一条染色体离在细胞核外基因是否能表达，及影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">40</td>
+<td align="center">40</td>
 <td>受精作用时阻止细胞核融合，及后来的变化，是否存活</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">41</td>
+<td align="center">41</td>
 <td>细胞核融合的原理，怎样阻止细胞核融合。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">42</td>
+<td align="center">42</td>
 <td>植物体细胞杂交与动物细胞融合，受精作用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">43</td>
+<td align="center">43</td>
 <td>细胞核融合的特点，是否相似 怎样阻止细胞核融合</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">44</td>
+<td align="center">44</td>
 <td>高等生物是否存在具有两个细胞核的生物体?</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">45</td>
+<td align="center">45</td>
 <td>病毒侵入细胞后怎样转录表达，地点 方式 酶</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">46</td>
+<td align="center">46</td>
 <td>利用病毒基因的特性能否将核基因分离在细胞核外。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">47</td>
+<td align="center">47</td>
 <td>显隐性基因表达出的蛋白质有什么相似特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">48</td>
+<td align="center">48</td>
 <td>蛋白质的分类及酶的分类。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">49</td>
+<td align="center">49</td>
 <td>配子细胞核与衰老细胞细胞核的差异及特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">50</td>
+<td align="center">50</td>
 <td>癌细胞细胞核的特点，基因表达的特点，染色体端粒特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">51</td>
+<td align="center">51</td>
 <td>细胞生命与个体生命与原癌基因和抑癌基因的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">52</td>
+<td align="center">52</td>
 <td>研究染色体端粒学说，比较受精卵，配子，不同细胞端粒</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">53</td>
+<td align="center">53</td>
 <td>人工控制核酸的合成，用核酸储存一些信息</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">54</td>
+<td align="center">54</td>
 <td>讲线粒体和叶绿体在细胞外培养，是否能长时间存活。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">55</td>
+<td align="center">55</td>
 <td>将控制呼吸和光合的核基因导入线粒体和叶绿体，研究</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">56</td>
+<td align="center">56</td>
 <td>研究癌细胞的一些基因表达的特点，一些基因对它的影响</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">57</td>
+<td align="center">57</td>
 <td>将细胞器分离出怎样表现生物活性。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">58</td>
+<td align="center">58</td>
 <td>植物细胞的动物细胞线粒体的相似或起源特点，核酸特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">59</td>
+<td align="center">59</td>
 <td>不同线粒体和叶绿体基因是否存在很大的差异或联系</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">60</td>
+<td align="center">60</td>
 <td>动物细胞的植物细胞内化合物的差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">61</td>
+<td align="center">61</td>
 <td>动物细胞和植物细胞对环境的适应要求</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">62</td>
+<td align="center">62</td>
 <td>不同细胞对PH要求的差异，及PH的影响原因。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">63</td>
+<td align="center">63</td>
 <td>动物细胞和植物细胞细胞器之间的差异和联系，相似之处</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">64</td>
+<td align="center">64</td>
 <td>不同细胞对外界环境的要求差异及原因。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">65</td>
+<td align="center">65</td>
 <td>红细胞无细胞核后特点，能否在适宜条件下无限存活</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">66</td>
+<td align="center">66</td>
 <td>生殖隔离的基因阻碍交流的分子基础，怎样克服。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">67</td>
+<td align="center">67</td>
 <td>为什么不同种子对水的亲水能力不同。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">68</td>
+<td align="center">68</td>
 <td>在细胞外模拟DNA复制对基因染色体端粒的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">69</td>
+<td align="center">69</td>
 <td>DNA复制过程中是否缺失一些片段，及与端粒的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">70</td>
+<td align="center">70</td>
 <td>非编码区片段的作用，切掉后的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">71</td>
+<td align="center">71</td>
 <td>根尖细胞是否可以进行植物组织培养，培养出来的个体叶绿体怎样形成的。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">72</td>
+<td align="center">72</td>
 <td>皮肤生发层细胞，癌细胞，胚胎干细胞等细胞内基因表达的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">73</td>
+<td align="center">73</td>
 <td>端粒酶,HIV病毒，逆转录病毒，致癌因子的研究</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">74</td>
+<td align="center">74</td>
 <td>能否将细胞呼吸产生的ATP用到光合作用上。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">75</td>
+<td align="center">75</td>
 <td>怎样将细胞的亚显微结构镜像放大，便于研究和观察。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">76</td>
+<td align="center">76</td>
 <td>怎样提高光合怎样速率，以及人造太阳的研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">77</td>
+<td align="center">77</td>
 <td>反复研究HIV病毒的致病机理，及HIV的特点怎样加强人体抗体的杀伤力。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">78</td>
+<td align="center">78</td>
 <td>人体产生的HIV抗体及免疫细胞的特点，及怎样加强免疫</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">79</td>
+<td align="center">79</td>
 <td>怎样控制HIV反转录酶的活性影响HIV的增殖。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">80</td>
+<td align="center">80</td>
 <td>加强吞噬细胞对HIV的免疫作用，在人体内找到合适的抗体</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">81</td>
+<td align="center">81</td>
 <td>利用其它动物研究不同免疫细胞及抗体对HIV的作用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">82</td>
+<td align="center">82</td>
 <td>研究HIV的起源，以及HIV遗传信息表达出蛋白质的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">83</td>
+<td align="center">83</td>
 <td>把HIV病毒的基因整合到细胞中，观察基因表达的情况。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">84</td>
+<td align="center">84</td>
 <td>HIV是否能感染其它细胞，如癌细胞，以及为什么能感染T细胞</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">85</td>
+<td align="center">85</td>
 <td>破解HIV的遗传信息，以及HIV怎样识别出T细胞</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">86</td>
+<td align="center">86</td>
 <td>研究不同人感染HIV后体内产生免疫细胞及抗体的特点，产生的抗体是否相同</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">87</td>
+<td align="center">87</td>
 <td>怎样提高免疫能力是癌细胞消除，以及产生癌细胞抗体的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">88</td>
+<td align="center">88</td>
 <td>其它动物是否都能被HIV感染，及不同动物产生的免疫反应特点差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">89</td>
+<td align="center">89</td>
 <td>T细胞完全能清楚是否可以将HIV清除。是否可以经过换雪技术将HIV清除</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">90</td>
+<td align="center">90</td>
 <td>在交换血液时，研究识别HIV的药物，将之清除</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">91</td>
+<td align="center">91</td>
 <td>癌细胞表面减少 与细胞内内质网高尔基体等有关关系 以及癌细胞是否向外分泌物质</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">92</td>
+<td align="center">92</td>
 <td>细胞膜表面蛋白质形成的控制机制 及相关基因控制情况</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">93</td>
+<td align="center">93</td>
 <td>不同HIV感染人体，人体产生相应抗体的特点及种类与变异HIV的关系</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">94</td>
+<td align="center">94</td>
 <td>DNA复制出现的差错对后代的影响  是否积累影响后代 与动物细胞培养细胞核改变的机制</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">95</td>
+<td align="center">95</td>
 <td>叶绿体对强光和弱光的感应机制</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">96</td>
+<td align="center">96</td>
 <td>硝化细菌 轮虫  线虫 研究生命历程  生命力前的硫细菌及一些古细菌</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">97</td>
+<td align="center">97</td>
 <td>整合细胞细胞质基质能利用氧气吗？ 以及利用氧气的反应及场所出细胞呼吸外</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">98</td>
+<td align="center">98</td>
 <td>食草动物与肉食动物身体蛋白质的差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">99</td>
+<td align="center">99</td>
 <td>TI质粒上的TDNA怎么整合到染色体上的 与病毒整合到染色体上的相似之处</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">100</td>
+<td align="center">100</td>
 <td>主动运输必须从低浓度运输到高浓度吗？从高浓度到底浓度为什么不消耗能量？</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">102</td>
+<td align="center">102</td>
 <td>叶绿体在植物生长繁殖过程中的变化 以及怎样把基因遗传给子代</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">102</td>
+<td align="center">102</td>
 <td>叶绿体基因的来源 根尖细胞无叶绿体经植物组织培养后的植株怎样形成叶绿体的</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">103</td>
+<td align="center">103</td>
 <td>记录一片树叶的生命历程变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">104</td>
+<td align="center">104</td>
 <td>出国参观P3   P4实验室</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">105</td>
+<td align="center">105</td>
 <td>脱分化再分化植物细胞的变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">106</td>
+<td align="center">106</td>
 <td>蛋白质的合成机制及其分类 以及有利核糖体合成的蛋白质与内质网上合成蛋白质的差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">107</td>
+<td align="center">107</td>
 <td>个细胞器的形成机制起源 生命历程 及其控制的物质</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">108</td>
+<td align="center">108</td>
 <td>将软病毒蛋白质的基因序列合成 研究起源</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">109</td>
+<td align="center">109</td>
 <td>卵细胞内所含与的特殊物质促进全能型表达</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">110</td>
+<td align="center">110</td>
 <td>研究动植物细胞在使用后消化的过程及最终物质的变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">111</td>
+<td align="center">111</td>
 <td>细胞有无活性的判断及细胞器在细胞外的活性</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">112</td>
+<td align="center">112</td>
 <td>植物细胞发育起源，及各种细胞进化。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">113</td>
+<td align="center">113</td>
 <td>细胞器的来源及进化，以及联系功能。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">114</td>
+<td align="center">114</td>
 <td>原核细胞的发展史，及细胞结构。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">115</td>
+<td align="center">115</td>
 <td>生物界的分类，及植物界细分。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">116</td>
+<td align="center">116</td>
 <td>研究新的耕作方式，抛弃话费，研究新的增肥农作物</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">117</td>
+<td align="center">117</td>
 <td>农作物秸秆在农田里高效率降解，减少化肥污染。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">118</td>
+<td align="center">118</td>
 <td>研究新的农田增肥方法，彻底摆脱化肥的需求。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">119</td>
+<td align="center">119</td>
 <td>核细胞分裂，转录机制，核糖体的形成。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">120</td>
+<td align="center">120</td>
 <td>将目的基因导入细胞的方法改进研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">121</td>
+<td align="center">121</td>
 <td>植物受精卵细胞初期的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">122</td>
+<td align="center">122</td>
 <td>动物配子细胞结构特点，染色体的特异。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">123</td>
+<td align="center">123</td>
 <td>减数分裂联会后染色体的变化，全能型的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">124</td>
+<td align="center">124</td>
 <td>动物受精卵及胚胎发育早期细胞的全能性特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">125</td>
+<td align="center">125</td>
 <td>细胞全能性的变化与细胞分化的关联。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">126</td>
+<td align="center">126</td>
 <td>培育出高效的光合作用农作物，生产酒精。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">127</td>
+<td align="center">127</td>
 <td>酒精发酵的改进，用植物秸秆发酵技术改进研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">128</td>
+<td align="center">128</td>
 <td>植物蒸腾作用是否能净化水，怎样收集水。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">129</td>
+<td align="center">129</td>
 <td>研究一些南瓜等藤类植物茎中运输的水的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">130</td>
+<td align="center">130</td>
 <td>藤类农作物是否可以净化术，由此改进净水系统。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">131</td>
+<td align="center">131</td>
 <td>光合作用的全部过程，完全详细研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">132</td>
+<td align="center">132</td>
 <td>多倍体染色体联会产配子，及染色体表达的情况。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">133</td>
+<td align="center">133</td>
 <td>同源染色体联会的调控，正常细胞诱导联会后变化。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">134</td>
+<td align="center">134</td>
 <td>植物细胞动物细胞在人体内怎样被消化，细胞器去向。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">135</td>
+<td align="center">135</td>
 <td>核酸 及细胞器怎样消化，及各种细胞器的营养价值</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">136</td>
+<td align="center">136</td>
 <td>植物有机物的积累，变化，。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">137</td>
+<td align="center">137</td>
 <td>两条互补DNA链表达的蛋白质存在怎样的联系及特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">138</td>
+<td align="center">138</td>
 <td>显性基因和隐性基因表达的关系，及控制表达的机制。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">139</td>
+<td align="center">139</td>
 <td>具有胚性分生组织细胞特点，染色体及细胞器的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">140</td>
+<td align="center">140</td>
 <td>受精卵基因表达与细胞全能性的关系，表达基因的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">141</td>
+<td align="center">141</td>
 <td>植物细胞与动物细胞内基因表达的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">142</td>
+<td align="center">142</td>
 <td>动手实践植物体细胞杂交及植物组织培养。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">143</td>
+<td align="center">143</td>
 <td>人类，动物思维的物质基础及与细胞功能的联系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">144</td>
+<td align="center">144</td>
 <td>神经细胞基因表达的特点，与思维的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">145</td>
+<td align="center">145</td>
 <td>植物蛋白与动物蛋白各自的特点，及营养价值。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">146</td>
+<td align="center">146</td>
 <td>连续光照对植物光合作用的影响，及净光合作速率的变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">147</td>
+<td align="center">147</td>
 <td>光合作用与细胞呼吸的联系，相互影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">148</td>
+<td align="center">148</td>
 <td>线粒体与叶绿体内核糖体的特点，DNA的特点，相似处。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">149</td>
+<td align="center">149</td>
 <td>DNA转录，复制时染色体上的蛋白质变化去向作用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">150</td>
+<td align="center">150</td>
 <td>把一条染色体离在细胞核外基因是否能表达，及影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">151</td>
+<td align="center">151</td>
 <td>受精作用时阻止细胞核融合，及后来的变化，是否存活</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">152</td>
+<td align="center">152</td>
 <td>细胞核融合的原理，怎样阻止细胞核融合。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">153</td>
+<td align="center">153</td>
 <td>植物体细胞杂交与动物细胞融合，受精作用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">154</td>
+<td align="center">154</td>
 <td>细胞核融合的特点，是否相似 怎样阻止细胞核融合</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">155</td>
+<td align="center">155</td>
 <td>高等生物是否存在具有两个细胞核的生物体?</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">156</td>
+<td align="center">156</td>
 <td>病毒侵入细胞后怎样转录表达，地点 方式 酶</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">157</td>
+<td align="center">157</td>
 <td>利用病毒基因的特性能否将核基因分离在细胞核外。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">158</td>
+<td align="center">158</td>
 <td>显隐性基因表达出的蛋白质有什么相似特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">159</td>
+<td align="center">159</td>
 <td>蛋白质的分类及酶的分类。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">160</td>
+<td align="center">160</td>
 <td>配子细胞核与衰老细胞细胞核的差异及特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">161</td>
+<td align="center">161</td>
 <td>癌细胞细胞核的特点，基因表达的特点，染色体端粒特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">162</td>
+<td align="center">162</td>
 <td>细胞生命与个体生命与原癌基因和抑癌基因的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">163</td>
+<td align="center">163</td>
 <td>研究染色体端粒学说，比较受精卵，配子，不同细胞端粒</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">164</td>
+<td align="center">164</td>
 <td>人工控制核酸的合成，用核酸储存一些信息</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">165</td>
+<td align="center">165</td>
 <td>讲线粒体和叶绿体在细胞外培养，是否能长时间存活。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">166</td>
+<td align="center">166</td>
 <td>将控制呼吸和光合的核基因导入线粒体和叶绿体，研究</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">167</td>
+<td align="center">167</td>
 <td>研究癌细胞的一些基因表达的特点，一些基因对它的影响</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">168</td>
+<td align="center">168</td>
 <td>将细胞器分离出怎样表现生物活性。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">169</td>
+<td align="center">169</td>
 <td>植物细胞的动物细胞线粒体的相似或起源特点，核酸特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">170</td>
+<td align="center">170</td>
 <td>不同线粒体和叶绿体基因是否存在很大的差异或联系</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">171</td>
+<td align="center">171</td>
 <td>动物细胞的植物细胞内化合物的差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">172</td>
+<td align="center">172</td>
 <td>动物细胞和植物细胞对环境的适应要求</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">173</td>
+<td align="center">173</td>
 <td>不同细胞对PH要求的差异，及PH的影响原因。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">174</td>
+<td align="center">174</td>
 <td>动物细胞和植物细胞细胞器之间的差异和联系，相似之处</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">175</td>
+<td align="center">175</td>
 <td>不同细胞对外界环境的要求差异及原因。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">176</td>
+<td align="center">176</td>
 <td>红细胞无细胞核后特点，能否在适宜条件下无限存活</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">177</td>
+<td align="center">177</td>
 <td>生殖隔离的基因阻碍交流的分子基础，怎样克服。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">178</td>
+<td align="center">178</td>
 <td>为什么不同种子对水的亲水能力不同。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">179</td>
+<td align="center">179</td>
 <td>在细胞外模拟DNA复制对基因染色体端粒的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">180</td>
+<td align="center">180</td>
 <td>DNA复制过程中是否缺失一些片段，及与端粒的关系。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">181</td>
+<td align="center">181</td>
 <td>非编码区片段的作用，切掉后的影响。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">182</td>
+<td align="center">182</td>
 <td>根尖细胞是否可以进行植物组织培养，培养出来的个体叶绿体怎样形成的。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">183</td>
+<td align="center">183</td>
 <td>皮肤生发层细胞，癌细胞，胚胎干细胞等细胞内基因表达的特点。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">184</td>
+<td align="center">184</td>
 <td>端粒酶,HIV病毒，逆转录病毒，致癌因子的研究</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">185</td>
+<td align="center">185</td>
 <td>能否将细胞呼吸产生的ATP用到光合作用上。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">186</td>
+<td align="center">186</td>
 <td>怎样将细胞的亚显微结构镜像放大，便于研究和观察。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">187</td>
+<td align="center">187</td>
 <td>怎样提高光合怎样速率，以及人造太阳的研究。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">188</td>
+<td align="center">188</td>
 <td>经常使用素食 素食主义者的身体情况，及蔬菜水果对人体的好处及不利影响</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">189</td>
+<td align="center">189</td>
 <td>植物熟食与生食营养价值的差别，怎样使用更加健康。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">190</td>
+<td align="center">190</td>
 <td>给素食者研究出合理健康的食谱</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">191</td>
+<td align="center">191</td>
 <td>肉类蛋白一植物蛋白在人体内消化的过程差别，及脂肪的利用。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">192</td>
+<td align="center">192</td>
 <td>人在有困意时脑电波的变化及怎样帮助学生消除困意，与脑电波的关系</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">193</td>
+<td align="center">193</td>
 <td>研究水果蔬菜的口感味道酸甜气味与细胞内化学物质的关系，怎样提高质量</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">194</td>
+<td align="center">194</td>
 <td>种子储藏脱落酸的影响因素，及休眠种子种脱落酸对种子的影响，原因。</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">195</td>
+<td align="center">195</td>
 <td>休眠时间与脱落酸的关系，及怎样控制种子的休眠，及休眠种子细胞代谢特点，基因表达特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">196</td>
+<td align="center">196</td>
 <td>休眠时间长的种子如莲子细胞内脱落酸的含量，</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">197</td>
+<td align="center">197</td>
 <td>细胞对物质运输有选择吸收作用，为什么主动运输若高浓度时则为协助扩散</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">198</td>
+<td align="center">198</td>
 <td>离体培养的叶绿体或其他细胞器是否可以长时间存活及独立代谢</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">199</td>
+<td align="center">199</td>
 <td>研究硝化细菌和反硝化细菌的特点，及代谢的差异特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">200</td>
+<td align="center">200</td>
 <td>细胞器的活性与细胞生命的关系，胚胎干细胞细胞/癌细胞器的特点</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">201</td>
+<td align="center">201</td>
 <td>双核细胞（双核草履虫）两个细胞核对细胞的控制，及基因表达情况，</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">202</td>
+<td align="center">202</td>
 <td>研究豆科植物与根瘤菌共生的机制及结构基础</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">203</td>
+<td align="center">203</td>
 <td>研究水葫芦的价值利用，以及怎样应用于污水治理</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">204</td>
+<td align="center">204</td>
 <td>研究轮虫和线虫耐低温的特点，及细胞内化合物的特点，蛋白质，，基因表达特点，休眠机制</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">205</td>
+<td align="center">205</td>
 <td>抗体基因的数目，以及人类和动物免疫系统的差异，海洋动物免疫系统的特点，差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">206</td>
+<td align="center">206</td>
 <td>研究怎样提高农作物秸秆的分解后的价值，以及联系微生物研究</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">207</td>
+<td align="center">207</td>
 <td>研究轮虫与线虫耐低温的特点及细胞结构的特点，以及细胞内特殊蛋白质的特点，寻找新的应用</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">209</td>
+<td align="center">209</td>
 <td>抗体基因的数目及种类，以及人和其他动物相同抗原产生的抗体的差异及原因，以及免疫功能的差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">209</td>
+<td align="center">209</td>
 <td>分析一些植物种子萌发过程中细胞内化合物的变化</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">210</td>
+<td align="center">210</td>
 <td>植物（红薯等）蒸熟过程中细胞内化合物的变化及营养价差异</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">211</td>
+<td align="center">211</td>
 <td>黑种人脚为什么是白色的？</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">212</td>
+<td align="center">212</td>
 <td>人类喜欢吃其他动物的肉以及一些和稀有的物种，其他动物是否存在喜欢吃人肉的?</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">213</td>
+<td align="center">213</td>
 <td>休眠时间很长的生物细胞的特点，基因表达的情况</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">214</td>
+<td align="center">214</td>
 <td>膜蛋白是分泌蛋白吗？</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center">215</td>
+<td align="center">215</td>
 <td>母体为什么对外来胚胎不产生免疫排斥反应，研究应用于器官移植</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
     </div>
-      <div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>木子</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://blog.502.li/archives/life-sciences.html" title="六年前思考的一些东西">https://blog.502.li/archives/life-sciences.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
-</ul>
-      </div>
-    <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/思考/" rel="tag"><i class="fa fa-tag"></i> 思考</a>
-        </div>
-    </footer>
-  </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%80%9D%E8%80%83/" rel="tag"><i class="fa fa-tag"></i> 思考</a>
+          </div>
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" rel="prev" title="一段在法律与技术冲突的地方捍卫自由的历史">
+      <i class="fa fa-chevron-left"></i> 一段在法律与技术冲突的地方捍卫自由的历史
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/kernel-note-book.html" rel="next" title="深入理解 Linux 内核读书笔记">
+      深入理解 Linux 内核读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
   </article>
   </div>
           </div>
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-        </div>
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a href="/">
-              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
-             </a>   
-              <p class="site-author-name" itemprop="name">木子</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-            <div class="links-of-author motion-element">
-                <span class="links-of-author-item">
-                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
-                </span>
-            </div>
-             <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-             </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
         </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
       </div>
-        <div class="back-to-top">
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+          <span>0%</span>
         </div>
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
       </div>
     </main>
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">木子</span>
@@ -1387,380 +1423,59 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">751k</span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:38</span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
       </div>
     </footer>
   </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  <script src="/js/utils.js?v=7.1.0"></script>
-  <script src="/js/motion.js?v=7.1.0"></script>
-  <script src="/js/affix.js?v=7.1.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.502.li/archives/life-sciences.html";
-    this.page.identifier = "archives/life-sciences.html";
-    this.page.title = '六年前思考的一些东西';
-    };
-  function loadComments() {
+  function loadCount() {
     var d = document, s = d.createElement('script');
-    s.src = 'https://muzi.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
     (d.head || d.body).appendChild(s);
   }
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        loadComments();
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-                // show search results
-                if (isMatch) {
-                  // sort index by position of keyword
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-                  // merge hits into slices
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-                      // move to next position of hit
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-                  // sort slices in content by search text's count and hits' count
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-                  // select top N slices in content
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-                  // highlight title and content
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-                  var resultItem = '';
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/archives/life-sciences.html",
+            identifier: "archives/life-sciences.html",
+            title: "六年前思考的一些东西"
           }
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-          proceedsearch();
         }
       });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
     }
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-<script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
+  });
 </script>
 </body>
 </html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+  <meta name="description" content="更新日志 2019-09-30 初稿 2019-10-06 release 2019-11-10 补充 2019-11-17 博客迁移，原链接失效 2019-11-17 内容太杂，想重写，于是迁移到草稿文件夹 2020-01-11 整理删除多余内容后再次发表  致读者 本文只是我的一些杂想，没有系统性地构思文章脉络，所以都是想到什么就写什么，平时思考什么就写什么，但我确定这些问题都是事实，都与我们">
+<meta property="og:type" content="website">
+<meta property="og:title" content="初入社会的一点碎碎念">
+<meta property="og:url" content="https://blog.502.li/draft/2020-01-11-thinking-for-2020.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="更新日志 2019-09-30 初稿 2019-10-06 release 2019-11-10 补充 2019-11-17 博客迁移，原链接失效 2019-11-17 内容太杂，想重写，于是迁移到草稿文件夹 2020-01-11 整理删除多余内容后再次发表  致读者 本文只是我的一些杂想，没有系统性地构思文章脉络，所以都是想到什么就写什么，平时思考什么就写什么，但我确定这些问题都是事实，都与我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.045Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://blog.502.li/draft/2020-01-11-thinking-for-2020.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false
+  };
+</script>
+  <title>初入社会的一点碎碎念 | 木子
+  </title>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">时光痕迹</p>
+  </div>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+  </li>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+  </li>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+  </li>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+  </li>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+  </li>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
+</nav>
+</div>
+    </header>
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div class="content">
+  <div class="posts-expand">
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+<h1 class="post-title" itemprop="name headline">初入社会的一点碎碎念
+</h1>
+<div class="post-meta">
+</div>
+</header>
+      <div class="post-body">
+          <h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><ul>
+<li>2019-09-30 初稿</li>
+<li>2019-10-06 release</li>
+<li>2019-11-10 补充</li>
+<li>2019-11-17 博客迁移，原链接失效</li>
+<li>2019-11-17 内容太杂，想重写，于是迁移到草稿文件夹</li>
+<li>2020-01-11 整理删除多余内容后再次发表</li>
+</ul>
+<h2 id="致读者"><a href="#致读者" class="headerlink" title="致读者"></a>致读者</h2><ul>
+<li><p>本文只是我的一些杂想，没有系统性地构思文章脉络，所以都是想到什么就写什么，平时思考什么就写什么，但我确定这些问题都是事实，都与我们每一个人息息相关，并全部给出了可靠的引用和信息来源。</p>
+</li>
+<li><p>我是那种爱憎分明、嫉恶如仇的人，面对一些令人可恨的事情，会有些极端思想的存在，希望读者不要盲从。</p>
+</li>
+<li><p>文章内容或许还是有些意气用事和冲动甚至是幼稚，也恳请大家雅正与交流( •̀∀•́ )。</p>
+</li>
+</ul>
+<h2 id="应该写点什么"><a href="#应该写点什么" class="headerlink" title="应该写点什么"></a>应该写点什么</h2><p>这篇文章去年写的，那时候刚刚毕业，还是个热血青年，满怀希望地离开了学校这个温床。踏入社会才发现，历经大学四年的洗礼，以及所谓的资产阶级自由化的熏陶，自己俨然已经变成了一个 <code>反贼</code>，一个在长辈眼里的<code>愤青</code>。于是当时对当今社会的种种不满喷了一通，以至于满脸喷粪般地抱怨诉苦。时隔三个多月，又读了一点书，思考了很多事儿，于是整理一下思绪，重新思考一些当时想的问题。发现到头来，自己还是没有多大变化，还是 kui 然不动地当着<code>反贼</code>。作为一个<code>反贼</code>和<code>愤青</code>，因为我看到这个社会的对待弱势群体的不公、看到那些吃着人血馒头的人愤怒不已。我不想被这个社会同化成像胡锡进、胡鞍钢、金灿荣这类对帝王歌功赞德、拍马溜须、谄媚献媚、阿谀奉承，我不想做这种为了保全自己而泯灭良心的小人！</p>
+<p>所以就把这些所思所想记录下来，同时呢作为一个长者 👓 也来告诉后辈们 <code>一点人生的经验</code></p>
+<blockquote>
+<p><code>我今天是作为一个长者给你们讲的，我不是新闻工作者，但是我见得太多了，我有這個必要告诉你们一点人生的经验</code></p>
+<p>此处引用江主席的讲话  <a href="https://gist.github.com/mizegit/1ab35d512fb3bf99912c6c3bcd0ee79b" target="_blank" rel="noopener">江主席怒斥香港记者</a> 😂</p>
+</blockquote>
+<h2 id="十年前"><a href="#十年前" class="headerlink" title="十年前"></a>十年前</h2><p>梦回十年前，年少无知的初中时代，也就是 2010 年。那时候还是因为厌学辍学，讨厌学校。记得上小学的时候还是个老老实实的乖宝宝，但自从上了初中之后，加上正值叛逆青春期。于是刚上初中后就开始和一群街上的小流氓鬼混。想想那时的自己还是个吸烟喝酒、打架斗殴、欺凌弱小、上课捣乱、通宵上网、夜不归宿的小流氓。和父母吵架，和老师干架，和同学打架，那几年伤害了很多人，悔恨至今。</p>
+<p>也就是 2010 年是人生中个转折点吧，那时候因为厌学又转到了另一个学校（其实我初中四年换了四个学校）。刚刚过完年开学的第一天晚上晚自习。上课玩手机听歌被班主任逮到。那还了得，班主任二话不说让我把手机交出来，不知道当初哪来的勇气，站起来立马怼了回去。“不交咋滴！”。然后班主任和我抢手机，我也怒了，一巴掌掌掴在她脸上。那声音在晚上安安静静的教室里格外响亮。然后班主任就哭着去了办公室，我也就被教导处主任叫去了政教处。第二天，开除学籍，卷铺盖走人，而这所学校，我仅仅呆了不到一个月。这也是初中四年呆的最短的一个学校。</p>
+<p>被学校开除后，第二天也没在家歇着。家里人商量着既然不想上学，那就去工地上打工吧，感受一下打工的辛苦。于是第二天早上，老爸把我送到去省会城市的客车上。那时候才十五岁，只身一人来到一个陌生的城市，开始打工漂泊。依稀记得在坐车的时候，手机也丢了。以至于一个多月都没和家人联系。在工地上搬砖打工的日子，那种感受到现在依然历历在目，机械式的重复工作，在泥土坑道里拿着机器穿来穿去，扛着一百多斤重的发电机在狭窄的沟子里。全年无休，更不要提 996 了。</p>
+<h2 id="国家、政府、政党"><a href="#国家、政府、政党" class="headerlink" title="国家、政府、政党"></a>国家、政府、政党</h2><blockquote>
+<p>唯有对于人民权利的尊重才能衡量一个国家的自由，而我相信这些权利实际上是国家权力的界线，明确界定一个政府到何种程度不得侵犯个人领域或个人自由，在美国革命时期所谓的“自由”，在网络革命时期就是所谓的“隐私”。</p>
+</blockquote>
+<p>所谓的“长大”代表的是你体会到：你的存在受制于成套的规范、模棱两可的规则以及毫无根据的常规。这些规定未经过你的同意便强加在你身上，而且随时随地都有可能改变，甚至在你违反规则时，你才意识到它们的存在。</p>
+<p>关心政治不是说让你和别人撕逼争吵，而是去思考，去读书。和一群菜鸡互啄没有任何意义。不要去和民逗、五毛、小粉红等去撕逼。理解政治最好的方式就是多去思考这个社会，多看一些书籍。作者的水平远远高于我们身边的普通人吧。书籍是你交流沟通最好的朋友。</p>
+<p><a href="https://program-think.blogspot.com/2017/02/weekly-share-109.html" target="_blank" rel="noopener">耶鲁教授关于【政治素质】的20条建议</a> ，国内用户无法访问😡</p>
+<blockquote>
+<p>People will tell me again to not mix politics with software/business. Doing so surely impacts the popularity of Notepad++: talking about politics is exactly what software and commercial companies generally try to avoid. The problem is, if we don’t deal with politics, politics will deal with us. We can choose to not act when people are being oppressed, but when it’s our turn to be oppressed, it will be too late and there will be no one for us. You don’t need to be Uyghur or a Muslim to act, you need only to be a human and have empathy for our fellow humans.</p>
+<p>此处引用 notepad++ 官网声明 <a href="https://notepad-plus-plus.org/news/v781-free-uyghur-edition/" target="_blank" rel="noopener">Notepad++ v7.8.1 : Free Uyghur</a></p>
+<p>翻译如下：<br>人们会告诉我不要将政治与软件/商业混为一谈。这样做肯定会影响到 Notepad ++ 声望：谈论政治正是软件和商业公司通常要避免的事情。问题是，如果我们不关心政治，政治会关心我们。当人们被压迫时，我们可以选择无所作为，但是当轮到我们被压迫时，就为时已晚，那时也就没有人为我们发声了。不需要你是维吾尔人或穆斯林来行动，你只需要作为一个人并同情我们的人类同胞，仅此而已。</p>
+</blockquote>
+<p>思考了很久想明白，人民拥有的力量的唯一来源就是<code>自由</code>，即言论自由、新闻自由、出版自由、集会自由。</p>
+<blockquote>
+<p>《独裁者手册》一段精彩的论述，freedom 是是一件最廉价且最具价值的公共品。廉价是，给予人民freedom无需任何经济成本，相反限制freedom就要付出巨大物力财力。最具价值是，freedom它能它能让领导者知道人民的诉求，知道民众的不满，从而去修正那些让民众不满的制度，另一方面freedom能催生多元化的的思想，就像生态系统一样，多元化的社会相较于单一思想的社会整体更加稳定。或许这也是US 强大的原因之一吧。</p>
+</blockquote>
+<p>当我看到小学六年级的课本上要求默写下面的这句话时就对这样的洗脑教育很绝望</p>
+<blockquote>
+<p>祖宗疆土，当以死守，不可尺寸与人</p>
+</blockquote>
+<p>我绝对不认可国家主权高于人权，我和爱因斯坦一样，认为人权高于主权。</p>
+<p>一些在自由民主国家很正常不过的事情比如：批评政府，要求总统下台，指责官员等等，在国内这些小粉红眼里就是叛国，卖国贼，辱华。我就举着这样很可笑。</p>
+<p>明明时人民授予政府限制的权力来管理这个社会，一个国家政府权力的边界正是人民的自由</p>
+<p>宪法，是人民用来构建政府权力的，政府拥有多少权力，能做什么，都要有个边界，而这个边界正是人民的自由。</p>
+<p>政府权利法案的起草者杰斐逊所言“一部权利法案是人民”</p>
+<blockquote>
+<p>“A GOOD newspaper, I suppose, is a nation talking to itself,” mused Arthur Miller in 1961.</p>
+<p>此处引用自  <a href="https://www.economist.com/leaders/2006/08/24/who-killed-the-newspaper" target="_blank" rel="noopener">Who killed the newspaper?</a></p>
+</blockquote>
+<p>一份好的报纸就如同一个民族同自己谈话。无论是线下报纸亦或是线上自媒体，你们本应当担负起监督政府职能的角色，而不是政府的犬牙和扩音器。</p>
+<h2 id="粉碎的憧憬"><a href="#粉碎的憧憬" class="headerlink" title="粉碎的憧憬"></a>粉碎的憧憬</h2><p>上大学以前我是特别有名校情结，特别崇拜羡慕清华北大这样的名校。高中的时候更是将这种学校当作值得付出整个青春来追求，更是被像很衡水中学这样的高考工厂所洗脑，发誓一定要进入这种名校。即便是到了大一大二的时候，也特别羡慕其他名校的学生多么优秀。直到后来了解到了 <a href="https://zh.wikipedia.org/wiki/北大岳昕事件" target="_blank" rel="noopener">北大岳昕事件</a>  以及 <a href="[https://zh.wikipedia.org/wiki/%E4%BD%B3%E5%A3%AB%E4%BA%8B%E4%BB%B6](https://zh.wikipedia.org/wiki/佳士事件)">佳士事件</a>  后，如今的这些大学，他们的形象在我心中砰然倒塌，彻底粉碎之前的崇拜。甚至有一种痛恨感，痛恨他们作为国内顶级的学府却做着打压为受压迫的工人维权学生的龌龊勾当。直到现在岳昕、沈梦雨以及众多为佳士员工发声的学生们仍然生死不明。再到后来的复旦大学修改校章，去除<code>自由思想</code>，增加<code>**的领导</code>。还有众多研究生导师做出禽兽不如的事情，<a href="https://new.qq.com/omn/20200105/20200105A0LX0E00.html" target="_blank" rel="noopener">南京邮电大学研究生导师逼死学生？继蒋同学自杀后又一人意外身亡！</a></p>
+<blockquote>
+<p>上周末，十余名中国劳工权益活动人士在数个<a href="http://www.ftchinese.com/story/001080195" target="_blank" rel="noopener">城市失踪</a>，其中有至少5名大学在校或毕业生，他们自称坚定的马克思主义者。北京大学历史学系本科生于天夫<a href="https://chinadigitaltimes.net/chinese/2018/11/%E4%BA%8E%E5%A4%A9%E5%A4%AB%EF%BC%9A%E6%88%91%E5%9C%A8%E5%8C%97%E5%A4%A7%E7%99%BE%E8%AE%B2%E8%A2%AB%E4%B8%8D%E6%98%8E%E8%BA%AB%E4%BB%BD%E7%9A%84%E9%BB%91%E8%A1%A3%E4%BA%BA%E6%AE%B4%E6%89%93" target="_blank" rel="noopener">撰文称</a>，他9日晚在校内遭到5名不明人士的殴打，并目击到该校药学院毕业生张圣业被扭拽到一辆黑色轿车上带走，路过现场的其他几名同学也被要求删除拍下的照片。张圣业此前发起了寻找北京大学失踪校友的行动，现在，他本人也<a href="https://cn.nytimes.com/china/20181112/china-student-activists" target="_blank" rel="noopener">失踪了</a>。今年8月，北京大学毕业生岳昕、顾佳悦等人，因帮助深圳佳士工厂的工人维权，在警方的一次大规模抓捕行动中<a href="https://t.me/OverDaily/2757" target="_blank" rel="noopener">失联</a>，至今杳无音信。10月下旬，前北京市国家安全局党委书记邱水平被<a href="https://www.apnews.com/1eae981a33f242d886bbf3fcafd715d2" target="_blank" rel="noopener">任命</a>为北京大学党委书记。北京大学向<a href="https://www.reuters.com/article/uk-china-education-peking/chinas-peking-university-tightens-party-control-curbs-activism-idUKKCN1NJ1HU" target="_blank" rel="noopener">路透社称</a>，9日晚间发生的事件为警方依法抓捕嫌犯。</p>
+<p>此处引用自 <a href="https://t.me/c/1184132480/1091" target="_blank" rel="noopener">乙烷日报–中国多名劳工权益活动人士失踪</a></p>
+</blockquote>
+<p>每当看到有人赞美祖国强的大时候，心中总会想起岳昕他们是否还活着？他们生死未卜，一个连为底层工人呐喊的学生都要去迫害，我们的祖国是否真的强大？还是说，祖国强大了，我们也就无处可逃了？前不久国庆期间，很多网友因发表不当言论被拘留。呵呵，我们连最基本得包容心都没有，无法容忍反对的声音，这算是真正得强大吗？真正的强大、真正的自信应当包容反对他的声音、容许批评指责的声音存在。然，连一句无意的调侃都不容许，我们的玻璃心是否太敏感了?不肯接受任何批评和异议，关押打击异议人士，通各种手段压制异议的声音。社会问题出来，往往不是先解决问题，而是先解决掉提出问题的人。</p>
+<p>作为最应该提倡自由的大学校园却做着各种限制自由的龌龊勾当，虽为 985 、211、国内顶级大学，也不过如此，同样乌烟瘴气，甚至是审查者重点关注的对象。</p>
+<blockquote>
+<p>清华大学校长邱勇在校庆日前夕宣布，今年校庆主题是“自信的清华更开放”。而校方以施工为由，提前将铭刻“独立之精神，自由之思想”碑文的王国维纪念碑用蓝色铁皮墙围住，引起一些校友抗议。</p>
+<p>此处引用 <a href="https://www.voachinese.com/a/Alumni-calling-for-spirit-of-independence-and-freedom-of-thought-on-Tsinghuas-108th-birthday-20190429/4895719.html" target="_blank" rel="noopener"> 清华校友呼唤“独立之精神，自由之思想” </a></p>
+</blockquote>
+<h2 id="破灭的梦想"><a href="#破灭的梦想" class="headerlink" title="破灭的梦想"></a>破灭的梦想</h2><p>上大一的时候，我一直坚定自己以后要做一名老师，但、这随着对社会的不断失望慢慢地就放弃了这个梦想。</p>
+<blockquote>
+<p>因言论遭遇迫害的大学教授、副教授、助理教授、讲师有： 许章润、夏业良、乔木、杨绍政、张雪忠、邓相超、尤盛东、李默海、史杰鹏、孙文广、唐云、翟桔红、萧瀚、滕彪、谭松、周运中、焦国标、子肃、单少杰、王刚、无眠（冯红莲）</p>
+<p>此处引用自  <a href="https://twitter.com/wentieqiaosiji/status/1112695545632415745" target="_blank" rel="noopener">文铁乔✊️✊️✊️ on Twitter: “lifang072：已统计到21位，因言论 …</a></p>
+<p>但，推文已经不存在。搜索以上老师，确实有被处分的事实报道。</p>
+</blockquote>
+<p>直到我看到六安教师上街讨薪、后来许章润教授被撤职，遭到处分，再到后来的电子科技大学教授因言论不当被处分。越来越多的教授和老师因言论不当被处分、学生不爱国被退学、女教师进京为女儿看病被定性为“上访” 丈夫被解聘、南京应用技术学校事件、还有很多很多事件，一件一件戳透我的思想，让我不得不去认真思考这个社会。种种加起来，让我最终放弃了做老师的打算，让我对中国的大学彻底失望透顶，对中国的教育彻底失望透顶，对中国的未来也彻底绝望。如果我以后当老师，以我的性格和原则，绝对会是因为”言论不当“被处分的对象。</p>
+<blockquote>
+<p>在我看到所谓中国顶尖高校面对类似年初的沈阳事件后的做派，看到北大对于那些敢于站出来为工人维权的北大学子的打压，取缔马会，就觉得，呵，所谓名校也不过如此，同样乌烟瘴气。当最应当倡导自由和正义的大学校园中不允许出现自由的时候，我就已经对这类学校非常失望了。</p>
+<p>摘自  <a href="http://lulalap.com/2019/01/01/hello-2019/" target="_blank" rel="noopener">Philo</a></p>
+</blockquote>
+<p>假如我当老师的话，我会给他们揭露真相，让他们远离真理部的谎言；我会给他们传播常识，然他们摆脱无知，去辨别真理部的假新闻；我会启发他们思考，让他们走出愚昧，去思考社会公平正义；我会教育自己的学生去独立的思考；我会教会他们去使用维基百科认识这个世界；我会教会怎么在互联网时代保护自己的隐私。。。</p>
+<p>但，国内允许这样的老师存在吗？大概一刻都不允许吧。只有沉默或者唱赞歌、歌功赞德、拍马溜须、谄媚献媚、阿谀奉承才能有立足之地吧。</p>
+<blockquote>
+<p>帮助学生扣好人生第一粒扣子，思政课教师重任在肩。近日，教育部、中组部等五部门联合发布《关于加强新时代中小学思想政治理论课教师队伍建设的意见》，《意见》<strong>要求中小学须配齐思政课教师，并要建立中小学思政课教师退出制度，在教育教学活动中损害党中央权威、违背党的路线方针政策者，不得再从事教育教学工作。高校思政教育相关专业未来将适度扩招，为中小学储备相关师资。</strong></p>
+<p>《意见》要求，切实加强中小学思政课教师队伍配备管理，核定或调整中小学编制时应充分考虑思政课教师配备情况，严格按要求配齐思政课教师；严把选聘政治关、师德关、业务关，让有理想的人讲理想，有信仰的人讲信仰，师德高尚的人讲思政课；建立中小学思政课教师退出制度，对在教育教学活动中损害党中央权威、违背党的路线方针政策的按相关要求从严处理，对违反职业道德行为的、不能胜任思政课教学和未按要求完成培训学时的及时调离或退出思政课教师岗位。</p>
+<p>此处引用自  <a href="http://www.bjd.com.cn/a/201910/14/WS5da3e795e4b0ed1b67c5ac31.html" target="_blank" rel="noopener">这些人“必须出局”！我国将建立中小学思政教师退出制 - 京报网</a></p>
+</blockquote>
+<p>呵呵，这些老师都被清退了，剩下的都是只会唱赞歌的老师了。思政老师，我希望他们告诉我们什么是国家、什么是政府、什么是政党以及他们三者之间的关系。我希望思政老师能够告诉我们，一个国家的政府他们的权力边界是什么？我们人民如何对抗来自政府强加给我们危险（出自乌尔里希·贝克）？我们如何有效地监督政府，防止他们作恶？社会的司法公正如何制约凌驾于法律之上的无限权力？</p>
+<p>从小到大，我没从没有在思政老师那里学到这些，而这些都是最最基本的政治素养，可以有些人即便博士毕业依旧不明白这些最最基本的政治素养。因为i我们从小接触的思想政治教育都是用来给当权者歌功赞德，填鸭式地洗脑，被动性接受，大脑里只有一种思想，那就是<code>xx的领导</code>。</p>
+<h2 id="爱国主义？"><a href="#爱国主义？" class="headerlink" title="爱国主义？"></a>爱国主义？</h2><p>我承认在我高中时代，见识短浅的时候我还算是个爱国主义者，看到真理部的宣传视频也能感动得掉泪的那种但，后来我随着不断地了解历史和这个世界，我转变了，我觉着爱国主义、主权意识这些和暴政一样，乃一丘之貂。都是当权者用来控制人民思想意识形态的工具而已。集体主义会以为集体的利益就是他自己的利益，这一观念往往还需要对少数群体的压迫来进行强化。通过对外示强来提升自豪感，通过对内压迫少数群体来建立优越感。这一群体中的每一个人都认为自己是主要人群，外部势力都是敌对的，被欺压的都是少数异类。所以该机制也依赖于对外部和少数群体发声渠道的封杀。</p>
+<blockquote>
+<p>在我们这个世界上，有些东西比爱国更为重要，那就是生命与尊严、自由与民主、公平与正义。这些都是整个人类生存和发展的基础，是普世价值观，不会因为国家、种族的不同而有所改变。任何一个国家，如果维护不了它们，那么这个国家就没有存在的必要和基础，就根本不值得你去爱。</p>
+<p>此处引用自  <a href="http://wangcong.org/2012/09/16/-e4-b8-ba-e4-bb-80-e4-b9-88-e4-bd-a0-e4-b8-8d-e5-ba-94-e8-af-a5-e7-88-b1-e5-9b-bd/" target="_blank" rel="noopener">为什么你不应该爱国| A Geek’s Page</a></p>
+</blockquote>
+<p>国家是为国民而建立，国民不是为国家而活。也就是说，国家其实只是让国民活得更好的工具，国民为了活得更好而更换国籍就像是更换工具一样。如果国家把国民当作工具，那么这样的国家被国民抛弃也理所当然，有人整天割你韭菜你还爱他脑子有病吧。我想那些全家移民海外的权贵们也会觉着如此吧，即便是美国歼灭了他们国家的将领，也依旧改变不了伊朗每年至少三千名权贵们移民到美国的事实。</p>
+<p>引用人民日报在 2012 年 8 月 5 日发表的一篇 <a href="https://www.weibo.com/2803301701/yvO8Xb3es?type=comment#_rnd1569064328001" target="_blank" rel="noopener">微博</a> 。如果哪天这条微博消失了，说明这个社会已经成为 1984 了吧，祈求上帝保卫住这条微博吧。这也很像是《动物庄园》里刚开始写在墙上的那几句话吧。</p>
+<blockquote>
+<p>【你好，明天】专家最近宣布，经三级指标体系测评，民族复兴任务已完成62%。然而，当湖南永州遭强暴幼女的母亲因上访被劳教的新闻传出，这一数字显得如此苍白。一个国家的强大，不应只有GDP和奥运金牌，复杂的数理模型中，更应包含百姓的权利与尊严、社会的公平与正义。我们共同努力。晚安。</p>
+</blockquote>
+<p>事实上，这个社会已经开始迈入 1984 了，越来越多的人因言论不当被拘留<a href="">文字狱受害者列表</a>，越来越多的教授和老师遭到处分，越来越多的东西要抵制，权力也越来越集中。</p>
+<p>真理部经常宣传的一句话就是 <code>国家有力量、人民有信仰、民族有希望</code> ,看到就觉着辣眼睛。在一个自由民主的国家不应该是 <code>人民有力量、民族有信仰、国家有希望</code> 吗？一个人人惧怕政府的国家即便再强大，人民也只能生活在政府的权威统治之下，这样的民族能有什么样的希望？苏联政府是上世纪的老大哥，国家足够强大吧，但他们的人民生活好吗？</p>
+<h2 id="重塑世界观价值观"><a href="#重塑世界观价值观" class="headerlink" title="重塑世界观价值观"></a>重塑世界观价值观</h2><p>中学的时候可能因为高考中考的压力，没有花时间和精力去读课外书籍，很多奇思异想也因为考试压力被压制了，到了大学，有了充足的时间和精力去思考这个世界。在中学小学接受所谓的红色教育，这都是洗脑灌输的思想。大学的时候你可以好好地去反思过去接受的教育，多去读一些书，去重新了解这个世界。下面是我建议的书单：另外这是我的 kindle  <a href="https://blog.502.li/booklist.html">书单</a></p>
+<table>
+<thead>
+<tr>
+<th>书名</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《自由与繁荣的国度》</td>
+<td></td>
+</tr>
+<tr>
+<td>《人类不平等的起源和基础》</td>
+<td></td>
+</tr>
+<tr>
+<td>《社会主义：社会学与经济学的分析》</td>
+<td></td>
+</tr>
+<tr>
+<td>《法律、立法与自由》</td>
+<td></td>
+</tr>
+<tr>
+<td>《规则与惩罚：监狱的诞生》</td>
+<td></td>
+</tr>
+<tr>
+<td>《民主的奇迹》</td>
+<td></td>
+</tr>
+<tr>
+<td>《1984》</td>
+<td></td>
+</tr>
+<tr>
+<td>《独裁者手册》</td>
+<td></td>
+</tr>
+<tr>
+<td>《动物农庄》</td>
+<td></td>
+</tr>
+<tr>
+<td>《美丽新世界》</td>
+<td></td>
+</tr>
+<tr>
+<td>《娱乐至死》</td>
+<td></td>
+</tr>
+<tr>
+<td>《公正：该如何做是好》</td>
+<td></td>
+</tr>
+<tr>
+<td>《哈佛大学公开课：公正-该如何做是好》</td>
+<td></td>
+</tr>
+<tr>
+<td>《如果没有今天，明天会不会有昨天？》</td>
+<td></td>
+</tr>
+<tr>
+<td>《学会提问 - 批判性思维指南》</td>
+<td></td>
+</tr>
+<tr>
+<td>《通往奴役之路》</td>
+<td><a href="https://blog.laisky.com/p/serfdom/" target="_blank" rel="noopener">《通往奴役之路》读后感 &amp; 摘抄</a></td>
+</tr>
+<tr>
+<td><a href="http://unirule.cloud/index.php?c=article&id=4625" target="_blank" rel="noopener">许章润：我们当下的恐惧与期待</a></td>
+<td><a href="http://unirule.cloud/" target="_blank" rel="noopener">天泽经济研究所</a></td>
+</tr>
+<tr>
+<td>《哈耶克作品集</td>
+<td></td>
+</tr>
+<tr>
+<td>《乌合之众》</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>“无数渺小的思考填满了人的一生”  ——维特根斯坦</p>
+</blockquote>
+<p>去读书、去思考吧，书中有你想要的。读书也不正是和作者沟通交流，解答心中的答案吗？</p>
+<p>我依稀记得高中毕业时最后一堂课上，我们的班主任给我们班同学讲过一句话<code>你所读过的书和你接触的人，决定了你以后能走什么样的路</code>，我一直铭记至今，并把它当作大学四年的唯一信条，很庆幸，正是这则信条伴随着我完成了思想的改造和重塑。现在我手机上还保留着当时班主任讲话时的录音，或许这是我值得保存众生的财富。</p>
+<p>在互联网时代我觉着还可以加上一样东西，或者把书籍修改成更为广泛的信息。</p>
+<blockquote>
+<p>你所接触的信息和人，决定了你以后走什么样的路</p>
+<p>在这个世界上遇到的所有的缘分，都会成为培养人成长的老师</p>
+</blockquote>
+<p>这句话嘛，如果我们接触的都是真理部审查过的书籍、新闻、视频等，那么我们的思想也只会受制于真理部。我们从小学到中学再到高中再到大学，接受真理部的洗脑教育。对于真正的历史真相避而不谈，反而去美化自己，掩盖自己丑陋的罪行，不断用谎言来掩盖，不断地我们的认知也被真理部牢牢掌控。而真理部的那些谎言也就成为了组成了我们的一部分。而读书思考正是要去揭露这些卑鄙无耻的谎言，从而让自己更加清楚地认识这个世界。</p>
+<h2 id="那堵墙"><a href="#那堵墙" class="headerlink" title="那堵墙"></a>那堵墙</h2><p>在 21 世纪，无论是文科生还是理科生，计算机对于你们来说是最强大的工具，互联网是我们的另一双眼睛。掌握好计算机这个工具，无论在生活工作或学习上都能提高我们的办事儿效率，给我们带来极大的便利。</p>
+<p>互联网封锁将导致你接受的信息都是真理部审查过的，信息的不对称使你理解这个世界也是扭曲的。科学上网就是要我们夺回这项本应属于我们的知情权。比如，作为一个中国人，作为一个公民，我们有权利去了解国家历史，有权利去知道 1989 年春夏之交发生的那场惨绝人寰的屠杀。如果一个政府连自己的历史都不敢让人民去了解，我们有还能相信他说的话嘛?</p>
+<blockquote>
+<p>此处引用自 <a href="https://www.solidot.org/story?sid=61465" target="_blank" rel="noopener">甲骨文报告称中国的互联网像内联网</a></p>
+<p>根据甲骨文发表的一项研究，中国的互联网结构不同于其它任何国家，更像是一个巨大的<a href="https://www.zdnet.com/article/oracle-chinas-internet-is-designed-more-like-an-intranet/" target="_blank" rel="noopener">内联网</a>。中国与全球的联网的连接点非常少，没有一家国外电信公司在中国境内运营。境内互联网流量不会流向境外。这一设计允许中国脱离全球互联网独立运行。在通常情况下，大多数国家允许本国和外国电信服务商在境内运营，这些公司通过叫 Internet Exchange Points（互联网交换点）的物理位置互联各自的基础设施，整个互联网就是这些对等互联点构成的巨大网状网。但中国不是这么做的。中国一方面禁止外国电信公司在其境内运营，另一方面本国电信公司则将其基础设施延伸到其他国家，在这些国家与全球互联网进行互联。整个结构就像是一个企业内联网。</p>
+</blockquote>
+<p>《图书馆的战争》中有一段精彩的对话：身为作者对言论审查不管不顾，也是同罪，作为一个接受过大学教育的知识分子，我们有责任也有义务去维护言论自由。</p>
+<blockquote>
+<p>互联网之子Aaron 最常见的介绍是“reddit 联合创始人，RSS 参与者，Markdown 标准参与者”。 Aaron 中学时代深受 John Perry Barlow（电子前线基金会 EFF 的创始人）的影响，与万维网之父Tim Berners-Lee 在一起工作。按照他的年龄，很难想象和这些互联网的创建者们一起工作和活动。但是他和他们相处很好，这些人也都喜欢他。在Aaron自杀以后，Aaron的朋友和合作者，哈佛大学法学院教授Laurence Lessig，回忆说，他当年和仅15岁的Aaron 有过一次谈话。Aaron问他：“您刚才讲到网络审查和管制的这些弊病，那您有没有什么实际的方案来解决这些问题呢？”Lessig有点尴尬地说：“没有。我是个学者，我只负责做研究，解决问题不关我的事儿。”Aaron接着问：“您是个学者，所以解决问题不关你的事儿。那，您作为一个公民，又该如何呢？”</p>
+<p>此处引用自  <a href="https://coolshell.cn/articles/11928.html" target="_blank" rel="noopener">互联网之子– Aaron Swartz | | 酷壳- CoolShell</a></p>
+</blockquote>
+<p>一个十五岁的少年，就已经开始思考互联网审查的弊病问题了，同时参与让互联网自由传播的协议制定。想想我们大陆的孩子，他们十五岁时在思考些什么？中考、辅导班？做不完的题？他们会理解互联网自由吗？在 GFW 成长起来的下一代他们的未来又是什么样的？</p>
+<blockquote>
+<p>如今的互联网，是发展起来的。并没有某一个组织对互联网进行自上而下的监管。现有的和等组织都是非营利机构，不是政府部门。这些组织的运作是公开透明的，各方面的人士都可以参与其中。　　如果这个提案被通过，那将是一场灾难。因为只有国家才能成为 ITU 的成员。而且 ITU 的运作是不公开，不透明的（比如 WCIT 会议连记者都不让进去采访）。如果让 ITU 来接管互联网，那些专制国家的政府就可以派代表秘密干预互联网的管辖。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>几乎所有的欧美发达国家都反对该提案（顺便说一下，美国众议院表决，<strong>全票反对</strong> ITU 接管互联网）。</p>
+</li>
+<li><p>很多世界级 IT 大公司（比如 Google、微软、思科、Facebook、AT&amp;T ……）强烈反对。</p>
+</li>
+<li><p>很多有影响力的组织（比如：互联网协会、国际工会联合会、绿色和平组织 ……）极力反对该提案。</p>
+</li>
+<li><p>很多有影响力的企业界和学术界名人现身喊话，反对该提案。最有名的是 <a href="https://en.wikipedia.org/wiki/Vint_Cerf" target="_blank" rel="noopener">Vint Cerf</a>（Internet 之父）和 <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank" rel="noopener">Tim Berners-Lee</a>（Web 之父）。</p>
+</li>
+<li><p>最后，当然还包括在网上签名反对的几百万网民。</p>
+<p>  此处引用自 <a href="https://program-think.blogspot.com/2012/12/wcit-12.html" target="_blank" rel="noopener">国际电信世界大会以失败告终——互联网躲过一劫</a></p>
+</li>
+</ul>
+</blockquote>
+<p>互联审查和屏蔽会导致中国网民很难与西方世界融合交流。从而中国这种以爱国主义强调主权意识的价值观，与西方以自由主义为核心强调人权意识的价值观，产生难以逾越的鸿沟。当中国进行互联网审查和屏蔽的时候，互联网变得越来越封闭的时候。美国的各种开源软件基金会等组织在吸引着全球的精英加入到开源社区中，在独立自主，自由开放，公开透明的环境下维护着众多优秀的开源软件。</p>
+<blockquote>
+<p>Q：如何摆脱网络的依赖来创建个Docker的image呢，我觉得这个是Docker用户自己的基本权利？</p>
+<p>A：这个基本权利我觉得还是要问GFW。国外的开发人员是非常难理解有些他们认为跟水电一样普及的基础设施在某些地方还是很困难的。</p>
+</blockquote>
+<p>推荐阅读 <a href="https://typeof.pw/archives/cyberspace-independence" target="_blank" rel="noopener">赛博空间独立宣言</a></p>
+<h2 id="远离国内毒瘤软件和服务"><a href="#远离国内毒瘤软件和服务" class="headerlink" title="远离国内毒瘤软件和服务"></a>远离国内毒瘤软件和服务</h2><p>事实上，国内的互联网已经是群狗割据、混乱不堪的现状。隐私肆意收集，权限滥用已经到了无法无天猖獗的地步，而政府对此却不管不顾，即便有要管制的声音也是风声大雨点小。不给权限不让运行这种流氓无耻的行为也只有你国这群狗屎垃圾毒瘤软件才这样。</p>
+<p>面对全球化的互联网，欧盟各国选择制定严格但明确具体的法律(GDPR)要求跨国企业遵守🌝，在一定程度上推动了全球范围内的规范化👍,最大化保护欧盟公民的个人隐私；而国内选择制定严格且模糊的相关法律法规赶走大多数国际化服务😱，同时悄悄地甚至明面上纵容墙内企业滥收集个人信息😒。</p>
+<p>从小米手机自带浏览器屏蔽GitHub以及讯飞输入法审查输入记录早已证明，国产手机厂商以及互联网公司已经成为用来监控审查公民的爪牙，而且以后会越来越严格。收集的隐私信息也会越来越多。你的联系人，短信，通话记录，打字输入记录，搜索记录，应用使用记录，电池使用记录，GPS定位记录，浏览器访问记录等等这些及其敏感的个人信息，手机厂商早已经完全掌握并上交国家。</p>
+<blockquote>
+<p>封锁维基百科，将是对审查者的极大讽刺，因为我们不是他们宣称的任何一种审查对象；审查维基百科等于承认，恰恰是中立的事实资料令其担惊受怕。我们不是政治宣传机器，我们不是网路赌博，我们不是色情。我们是一部百科全书。</p>
+</blockquote>
+<p>作为一名合格的大学生，远离百度这种毫无底线的无耻流氓</p>
+<p>方可成教授曾写过一篇文章 <a href="https://www.huxiu.com/article/282406.html" target="_blank" rel="noopener">搜索引擎百度已死</a>，以及他的视频 <a href="https://www.bilibili.com/video/av41533916/" target="_blank" rel="noopener">我为什么要写《搜索引擎百度已死》？</a></p>
+<blockquote>
+<p>但最重要的，还是百度自身饮鸩止渴的商业决策。<strong>基本上，百度已经不打算好好做一个搜索引擎了，它只想做一个营销号平台，把希望来搜索内容的人全都变为自家的流量，然后变现。</strong></p>
+<p><strong>偌大的中文互联网竟已堕落到如此境地，连一个搜索引擎都没有了。</strong></p>
+</blockquote>
+<p>一个可以随意侵犯他人版权，给钱就可以删除负面消息，竞价排名发布假药广告，通过百度全家桶强制捆绑安装软件，宣称中国人更愿意用隐私换效率，将莆田医院放在搜索结果第一，这样的企业竟然成为中国搜索引擎市场的排名第一，这的确是中国网民的悲哀。如果百度真的依靠这种劣质的搜索质量“再赢Google一次”，那就是中国网民的耻辱，因为我们生在一个劣币驱逐良币的时代。</p>
+<blockquote>
+<p>是的，很多中国人已经慢慢习惯了百度，甚至已经不知道什么是谷歌，没有谷歌又怎样？大家还是开心的看微信微博，看娱乐节目。慢慢的，搜索结果里的假药广告、莆田医院越来越多，你想看到的搜索结果却越挪越后，越挪越后，最后就不见了，好像原本就不存在一样，连大学生魏则西都会被百度的虚假搜索结果害的丢了性命，普通的老百姓自然更会被百度玩弄于股掌之间。</p>
+<p>此处引用自 <a href="https://www.williamlong.info/archives/4058.html" target="_blank" rel="noopener">慢慢的，就没有了，就像从未存在过</a></p>
+</blockquote>
+<p>所以，多去使用谷歌，彻底告别百度狗屎吧</p>
+<blockquote>
+<p>在《搜索引擎百度已死》一文之后，方可成再次撰文称，中国互联网既是牢笼又是<a href="https://www.bbc.com/zhongwen/simp/chinese-news-46997294" target="_blank" rel="noopener">丛林</a>。他说，如果谷歌做了个 “谷家号”，然后把搜索结果都导向 “谷家号”，那么一定会是巨大的丑闻，首席执行官一定会被请到国会的听证会上，整个社会也一定会掀起抵制谷歌的运动。如果谷歌是在欧洲市场做这样的事情，那更是会引发欧盟的铁腕监管。2017 年，谷歌因为在搜索结果中优先呈现了自家的比价服务，就被欧盟罚款 24 亿欧元之巨。如果在欧洲市场做 “谷家号”，恐怕会被罚到破产。然而神奇的是，在一个以监管闻名的国度，做这样的事情却无需付出任何代价。百度现象折射了中国互联网产业的现状：在不应干涉的领域强力管控，在最应监管的地方却非常放任。</p>
+<p>此处引用自  <a href="https://www.solidot.org/story?sid=59438" target="_blank" rel="noopener">中国互联网既是牢笼又是丛林 - Solidot</a></p>
+</blockquote>
+<h2 id="域名和备案"><a href="#域名和备案" class="headerlink" title="域名和备案"></a>域名和备案</h2><p>备案个锤子，备案是为了方便抓你。最近几年管制越来越严了，现在域名备案要求工信部和公安部，双备案。相信以后也会越来越严格的。还是选择国外的域名服务商吧。我一般用 <a href="https://www.namecheap.com/" target="_blank" rel="noopener">namecheap</a> 后来转到了 <a href="https://www.ovh.com/" target="_blank" rel="noopener">OVH</a> ，在 OVH 上购买域名需要提交身份证明，特别麻烦。但转入和续费是不需要提供身份证明。我的两个域名都是先从 namecheap 那里注册，然后再转到 OVH 那里，不过 OVH 的 DNS 管理太难用了，还是把域名解析都转到了 <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">cloudflare</a>。</p>
+<p>多提一嘴😂维基百科上有一段 <a href="https://zh.wikipedia.org/zh-cn/CloudFlare" target="_blank" rel="noopener">cloudflare</a> 的描述，感觉特别有意思</p>
+<blockquote>
+<p>Cloudflare 对言论自由价值的支持一直为人所传颂，首席执行官 Matthew Prince 表示：“美国之所以强大的其中一个原因是言论 (特别是政治言论) 的神圣性。当然，网站不就是一个言论集散地吗…网站本身就是言论。它不是炸弹。它不会造成立即危险，而且没有任何提供者有义务监视网站上所可能包含的言论，并裁定某些言论理论上有害。”Cloudflare 每半年都会发布“透明度报告”，说明执法机构要求其客户数据的频率。</p>
+<p>此处引用自维基百科词条 <a href="https://zh.wikipedia.org/zh-cn/CloudFlare#cite_note-28" target="_blank" rel="noopener">28</a></p>
+</blockquote>
+<h2 id="大学生一定要逃的课"><a href="#大学生一定要逃的课" class="headerlink" title="大学生一定要逃的课"></a>大学生一定要逃的课</h2><p>思想政治课在不挂科的前提下，自己把握分寸能逃就逃。中国大学的思想政治课就是给学生灌输伟大光荣正确的思想、洗脑教育、狼奶喝不得、得吐🤮。<code>你也应当认识到，我们在课堂中接收到的政治教育是缺失的，甚至是扭曲的，那些要求背诵的无聊段落不配称为政治</code>（ 此处引用自 <a href="http://lulalap.com/2019/02/26/my-view-on-devotion-being-blocked/#7-%E5%85%B6%E4%BB%96%E6%83%B3%E6%B3%95" target="_blank" rel="noopener">Philo </a> ）。逃课的时间你可以去看一下我上面推荐的 《哈佛大学公开课：公正-该如何做是好》 这才是真正的政治课好吧，哈佛大学教授的水平远远高于国内那些唱赞歌的老师吧。我的第一门政治启蒙课就是这个吧，真的。这门课能让你去思考政治制度、公正和权利、道德准则、人权法制、自由平等等理念。反观国内的大学思想政治课，基本上全是死记硬背，灌输思想，任何一种告诉你“这是对的”或者“这是错的”的教育，本身就已经值得质疑。</p>
+<p>说实话，国内大学的这些思想政治课、考研政治、公务员考试等等与政治相关的，无非都只在给你灌输一种思想“伟大光荣正确”，基本上都是洗脑教育。根本就没有任何让我们思考的空间，考试只管死记硬背即可。这样的思想政治教育不配称之为政治，干脆改名叫伟光正的课堂就好了，去教会学生如何唱赞歌。仔细想想自己从小学到初中高中大学十多年的思想政治教育，接受到的只有一种思想而已。还有一些你觉着无法从老师那里学到你想要的课，课堂上接受知识效率及其低下的课，在在不挂科的前提下，自己把握分寸能逃就逃。</p>
+<p>像一些夹带私货洗脑的教育就不要去碰了，比如 <code>学习 xx</code> ，<code>青年大学X</code> ，一个人无法代表一个国家，同样一个人的思想也无法代表我们整个国家的想法。被洗脑灌输个人思想是及其危险的，个人崇拜是及其危险的。一个小学博士的思想不值得你去学习，倒不如去读一下像《通往奴役之路》作者哈耶克，这些作家的书，他们都是一些获得过诺贝尔经济学奖，并在经济学领域取得巨大成就的人。这些人的思想才值得我们去学习，不像某些个人独裁主义思想。</p>
+<p>在此提醒一下各位一定要提防住 <code>共青团中央</code> 这个货色，他的确传播了一些社会正能量、传播了一些正义。但他的一些内容，尤其是对外的内容比如美国和香港、台湾等，极具民族主义、极具煽动性，一定要提防住，不要被这种民族主义所煽动。</p>
+<h2 id="社会主义铁拳？"><a href="#社会主义铁拳？" class="headerlink" title="社会主义铁拳？"></a>社会主义铁拳？</h2><p>上大学之前还算个爱国主义者吧，看一些真理部的宣传片也能感动得掉泪得那种😂 。不过从家里遭遇过“强拆”后，我就再也不觉着这个国家值得我爱了。也是从那以后开始变成了一个反贼，也是从那以后开始去思考为什么像我家这样的穷苦老百姓就是被压榨的。</p>
+<p>大概是大二下学期的时候、五月份、家里面发生了一些事故。当时的我还在教室上着毛概课，毛概老师还在讲着中国特色社会主义制度的优越性。家里人发消息说，家里遭遇了”强拆“，但拆的不是房子，而是我们家辛辛苦苦孕育五年多的树苗。乡政府让人开着推土机，直接把三亩多地的树林给推平了😡。</p>
+<p>那些树苗是我们家在上我高一的时候种下的，我亲手扦插的手指粗的树枝，那时候我外甥刚出生。经过五年的生长已经四五米高，枝繁叶茂、笔直地伸展树干。父亲从事绿化种植行业十五六年了，他手下栽培的树苗都在茁壮地成长，这些树木的生长还伴随着老爸对我们几个的期待。在这五年里，给他们浇水、除草、剪枝，就像自己的孩子一样呵护着这些树苗。那是我们辛辛苦苦培育的树苗啊，就像自己的孩子一样啊。</p>
+<p>当我远在三千里外的教室里收到家里的消息，说我们家里的树苗都被推土机推平了，当时的泪水真的是流了下来。更为讽刺的是，老师当时还在课堂上讲着中国特色社会主义制度的优越性。真是可笑，一个连底层老百姓财产和尊严都无法保护的社会，你还给我谈什么优越性？</p>
+<p><strong>那就是那时我才明白，面对社会主义铁拳的打击，我和我的家人，除了无能的愤怒，别的什么都做不了。</strong></p>
+<blockquote>
+<p>我一直都觉得水滴筹和轻松筹是最好的移民广告，你国不是有医保嘛？怎么那么多筹，还号称全球3亿人都在用，简直要笑死我了好吧，韭菜病了，小病自我诊断，大病自我了断已经成了社会的共识，医保在哪里？在新闻联播里！那里面可以报销90%，那里掌声雷鸣，那里突飞猛进，那里国泰民安，这盛世，如你所愿</p>
+<p><a href="https://twitter.com/Winniepoohdie/status/1180404650534735872" target="_blank" rel="noopener">此处引用自</a></p>
+</blockquote>
+<p><strong>不要觉着岁月静好，你之所以看不见黑暗并不是因为有人为你负重前行，而是因为根据相关法律法规和有关政策部分内容未予显示，是因为有人在帮你删帖封号让你看不到那些低端人口的悲惨遭遇。</strong></p>
+<p>假疫苗的受害者、维权的退役老兵、维权的尘肺病工人、罢工的环卫工人、罢工的卡车司机、上街讨薪的六安教师、强拆受害者、因言论不当被处分的教师、关心底层的大学生、维权的佳士员工、被抓捕的律师、被性侵的花季少女、被失踪的民主人士、豆腐渣工程的受害者、讨要血汗钱的农民工、上访的穷苦老百姓、被驱逐的低端人口、毒奶粉的受害者、红黄蓝幼儿园家属们、被摘走器官的罪犯、因言获罪的网民、被拘禁的调查记者、暴力执法的受害者、P2P 暴雷的受害者、被导师虐待自杀的研究生……他们的悲惨遭遇你之所以不知道，是因为根据相关法律法规和有关政策部分内容未予显示。但在这片土地上，类似的事情，比比皆是。这些事情都是确定无疑的事实，不能说被删帖封号之后这些事情就不存在了。</p>
+<p>当你也受到铁拳打击的时候，你也会和我一样，转变成一个正常人。</p>
+<blockquote>
+<p>或许，在党国强大的机器下，无知和恐惧是可以养成的，信息和新闻是可能屏蔽的，现实和真相是可以被扭曲的。但亲身经历了，见证了，就不能假装无知，不能放弃记录，不能坐而待毙。黑暗无边，仅剩的一丝真实和亮光，绝对不能拱手相让。</p>
+</blockquote>
+<p>此处引用自独立记者黄雪琴的文章 <a href="[https://jinnews.wordpress.com/2019/10/24/%E9%BB%84%E9%9B%AA%E7%90%B4%EF%BC%9A%E8%AE%B0%E5%BD%95%E6%88%91%E7%9A%84%E5%8F%8D%E9%80%81%E4%B8%AD%E5%A4%A7%E6%B8%B8%E8%A1%8C%E5%9B%BE/](https://jinnews.wordpress.com/2019/10/24/黄雪琴：记录我的反送中大游行图/)">黄雪琴：记录我的“反送中”大游行</a>，目前她本人现在已经被消失。</p>
+<blockquote>
+<p>  我已经身处险境了</p>
+<p>  我们现在都身处险境</p>
+<p>  因为那些机密和谎言</p>
+<p>  基本上成为了我们的一部分</p>
+<p>  当真相浮出水面  我们不断用谎言覆盖</p>
+<p>  直到我们都记不起真相是什么</p>
+<p>  但真相依旧在那里</p>
+<p>  我们撒的每一个谎言都是对真相的透支</p>
+<p>  早晚  要偿还</p>
+<p>  这就是压力管式石墨沸水堆反应堆核心爆炸的原因–谎言</p>
+</blockquote>
+<p>处引用切尔诺贝利 S1E5，另外推荐大家去看一下 HBO 的这部纪录片，切尔诺贝利</p>
+<h2 id="身为人的良知"><a href="#身为人的良知" class="headerlink" title="身为人的良知"></a>身为人的良知</h2><p>自己在推特上讲了一个故事</p>
+<blockquote>
+<p>1.一名小孩儿在吃冰激淋，过来一个虎背熊腰的大人，恐吓小孩说：“喂，小家伙，别吃冰激凌了，来把这坨屎吃了”，随即拉了一把屎。小孩儿不愿吃屎，然后大人就动手殴打小孩儿。小孩为了反抗大人就扯大人的衣服，咬大人的胳膊，抓大人的脸，嚎啕大哭。在反抗的过程中小孩抓破的大人的脸。</p>
+<p>2.现在的社会舆论(墙内)就是，小孩不对，不应该去抓破大人的脸，不应该咬大人的胳膊，小孩这种过激行为是暴徒，小孩的哭声是无理取闹。完全选择性失明，无视大人让小孩吃屎这件事。<br>于是众人纷纷撑大人，为大人加油助威，支持大人接着殴打小孩，支持大人接着给小孩喂屎。媒体也造谣污蔑小孩儿。</p>
+<p>3.看到这种场景，我始终认为，无论小孩做出何等行为都不过分，反抗大人让大人受伤绝对不是小孩儿的错。</p>
+<p>生而为人，看到这种场景，我绝对不会因为大人的威胁而去给他唱赞歌，我无法做到客观，更不可能做到中立。<br>一个大人给小孩喂屎，小孩不吃就殴打小孩，你让我客观？你让我中立？去你妈的客观中立!</p>
+<p>4.我唯一能做的就是：记录下这个大人的罪行；将这段令人发指的历史纪录下来；将小孩儿的诉求传播给身边的人；将小孩儿的哭声传遍地全世界；告诉后辈们这件事情的真相。<br>如果大人不给小孩喂屎，小孩就不会反抗还击大人，大人的脸也不会被抓伤。可惜，很多人不去思考这么简单的道理，反而甘愿被洗脑控制</p>
+</blockquote>
+<p>我想做一个有良知的人。当看到一个大人在欺负和殴打一名儿童时，无论这名儿童如何反击大人，去咬大人手、去扯大人的衣服、去抓大人的脸、或者大哭大叫告诉周围的人，儿童的做法都不过分。看到这种场景，生而为人，抱歉，我无法做到客观，更不可能做到中立。虽然我没有能力去制止大人，但我<code>绝对不会</code>因为大人的威胁而给他唱赞歌。我唯一能做的就是把儿童的哭声传遍全世界；记录下这个大人的罪行；记录下这段令人发指的历史；将这个故事流传给后辈们；传播真相与正义。</p>
+<p>这样的大人世界上唯有一种————<code>独裁、专制、极权、暴政</code></p>
+<p>但这样的儿童世界上数不胜数————香港反送中和平示威民众、假疫苗的受害者、维权的退役老兵、维权的尘肺病工人、罢工的环卫工人、罢工的卡车司机、上街讨薪的六安教师、强拆受害者、因言论不当被处分的教师、关心底层的大学生、维权的佳士员工、被抓捕的律师、被性侵的花季少女、被失踪的民主人士、豆腐渣工程的受害者、讨要血汗钱的农民工、上访的穷苦老百姓、被驱逐的低端人口、毒奶粉的受害者、红黄蓝幼儿园家属们、被摘走器官的罪犯、因言获罪的网民、被拘禁的调查记者、暴力执法的受害者、P2P 暴雷的受害者，还有很多很多吧。</p>
+<blockquote>
+<p>因家里地被占用修路，91岁老人讨说法，被悬赏寻衅滋事罪线索。</p>
+<p>【江苏邳州扫黑办悬赏征集9旬夫妻犯罪线索】7月5日，“邳州市公安局扫黑办”发布了一则举报违法犯罪线索的通告。3名犯罪嫌疑人，丈夫91岁、妻子81岁。夫妻俩涉嫌寻衅滋事罪被刑拘。</p>
+</blockquote>
+<p>看到他们的遭遇，我也十分同情和理解，因为我也是其中的一员，我理解他们和我一样，底层的低端人口当遭到不公时，对这个社会的绝望和无助。</p>
+<h2 id="守护家人"><a href="#守护家人" class="headerlink" title="守护家人"></a>守护家人</h2><p>我不惧怕死亡，即便现在、此时此刻、我不幸意外身亡了，我也不会觉着遗憾，我也不会觉着我还要很多事想做。我对未来没有抱有希望、没有值得我追求的事情，我要做的就是守护好我的家人。除此之外，别无所求。假如有一个机会，拿我的生命去换取我家人的一生平安，我会毫不犹豫地为他们付出自己的一切，包括自己的生命。</p>
+<p>说实话，我最惧怕的就是官员，我惧怕他们手中无限的权力能把我捏得粉身碎骨，惧怕他们去迫害我的家人，整的我家破人亡。我一介草民，贱命一条，死不足惜，我敢面对生死却对权力恐惧至极。我的家人、我的朋友以及与我相关的人，他们是我最珍贵的人。家人的生命远高于我的一切，甚至我愿意用牺牲我的生命来保护他们，但我能保护好他们吗？我姐是一个基督徒，当她有一天因为宗教信仰受到迫害时，我怎么去保护她呢？弱小的自己无法守护住任何人吧，要怪就怪自己弱小吧。等自己变强大了，就带着家人逃离这个专制的国家，即便是在美国当个难民捡垃圾也要比在国内活得有尊严吧。</p>
+<h2 id="对未来的担忧"><a href="#对未来的担忧" class="headerlink" title="对未来的担忧"></a>对未来的担忧</h2><p>这是一个荒唐的社会，说句真话都要面临处罚。像许章润这样的知识分子，不畏强权，用刚硬的笔杆子发出铿锵有力的呐喊，以唤醒人们对社会问题本源的思考，这样做何罪之有？难道作为知识分子只有像胡鞍钢、胡锡进、金灿荣那样对当权者歌功赞德、拍马溜须、谄媚献媚、阿谀奉承才能有立足之地吗？我痛恨这个社会的体制为了当权者的权力不让好人活着！</p>
+<p><a href="[https://zh.wikipedia.org/wiki/%E8%AE%B8%E7%AB%A0%E6%B6%A6](https://zh.wikipedia.org/wiki/许章润)">许章润</a>教授曾写过一篇文章 <a href="http://unirule.cloud/index.php?c=article&id=4625" target="_blank" rel="noopener">我们当下的恐惧与期待</a> 值得我们每个人去思考和阅读，像许章润这样干讲真话的教授真的不多了。在受政府和政党控制的大学里，为了在体制内生存，沉默的人也会越来越多（但我坚信未来有一天他们集体站出来反抗，只不过不是现在）。唯独唱赞歌的人比如胡锡进、胡鞍钢、金灿荣等混得如鱼得水，真是对知识份子得极大侮辱。中国知识分子界的逆向淘汰，以致整个国家浮夸骄躁，假大空盛行。</p>
+<p><strong>易中天教授曾这样评价过中国的逆向淘汰社会，他说富人和知识分子选择离开，便带走了财富和知识。一个国家若留不住知识和财富，那么剩下的会是什么？贫穷和愚昧！贫穷和愚昧的人需要什么？他们需要一个皇帝。</strong></p>
+<blockquote>
+<p>2015年，清华历史系教授秦晖的《走出D制》，在出版后不到一个月，便被勒令下架。次年，其本人也在校园内遭遇了一场蹊跷的车祸，而在此之前，也屡传“清华要整秦晖”的传言。最终，这位百科全书式的知识分子，迫不得已离开了清华。但是这些年，中国的高级知识分子，禁言的禁言，打压的打压。张维迎遭全网封杀；茅于轼被扣上汉奸的帽子；贺卫方被彻底禁声。敢于说真话的人已经比熊猫还稀少，倒是像胡鞍钢、胡锡进、金灿荣这种满嘴跑火车的人，各个混得人模人样。不仅如此，由于中国的经济泡沫，和每年高歌猛进的通胀率，中国的富人们，也无不纷纷加入移民的大军。</p>
+</blockquote>
+<p><strong>不为权贵唱赞歌，只为苍生讲人话</strong>的知识份子恐怕也会越来越少了吧，我们这一代人早就失去了自由和民主，失去了自由和民主是要靠流血才能从独裁政府那里夺回的啊。</p>
+<h2 id="对未来"><a href="#对未来" class="headerlink" title="对未来"></a>对未来</h2><blockquote>
+<p>很久前修订「寻衅滋事罪」的时候大家肯定没想到此罪会如此包罗万象成为万能罪。修订「非法侵入计算机系统罪」的时候，想不到有一天提供VPN也是此罪。修订「英烈保护法」的时候，也不会知道在网上提出质疑就会被刑拘吧。</p>
+<p>此处引用推友推文 <a href="https://twitter.com/waylybaye/status/1139819815990784000" target="_blank" rel="noopener">Baye</a></p>
+</blockquote>
+<p><code>对未来充满憧憬的人，往往对历史一无所知</code>。与看好未来，觉着国家越来越繁荣富强的人不同，我认为未来必然是高压的反乌托邦世界；政府掌握一切，人民在高科技武器前手无缚鸡之力。阶级完全固化，高等家庭的子女出生即可在无污染高素质的环境中生存，并且意识不到“伊甸园”外的普通人的生活。</p>
+<p><a href="https://www.solidot.org/story?sid=57822" target="_blank" rel="noopener">为什么科技会帮助暴政</a> ，人工智能最可怕的不在于机器能否取代人，而是技术的滥用。我恐惧着无限权力的政府会利用人工智能、机器学习、数据挖掘、人脸识别等技术来分析我们的思想。现在的人脸识别结合机器学习已经完全可以识别人的面部表情，根据表情分析出他的情绪。而且这项技术很容易被滥用，比如用来分析学生上课时的情绪。假如思想政治课上，老师唱了几句赞歌，和我一样的学生不爱听，流露出反感的情绪，那么就极有可能被标记为“危险分子”，然后再重点关照你。然后再利用利用数据挖掘和大数据分析我们的上网记录，通过聊天内容完全可以分析出我们的思想，分析出我们是哪一类人，看看我们爱不爱老大哥。根据对老大哥的忠诚度分个三六九等，不唱赞歌的人就被关起来洗脑教育。</p>
+<p>自我审查、自我阉割、个人崇拜、言论审查、网络封锁、实名认证、人脸识别、扫码登录、征信系统、失信名单、人工智能、域名备案等，这些对个人（屁民）没有多少好处，在专制国家只会沦为<code>极权专制暴政独裁</code>政府控制人民的工具</p>
+<h2 id="未来的打算"><a href="#未来的打算" class="headerlink" title="未来的打算"></a>未来的打算</h2><p><strong>未来几年只做这四件事情吧，赚钱、学好英语、积累技术、做个温顺的体制反抗者</strong></p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="http://lulalap.com/" target="_blank" rel="noopener">未知的世界</a></li>
+<li><a href="http://unirule.cloud/" target="_blank" rel="noopener">天泽经济研究所</a></li>
+<li><a href="https://terminus2049.github.io/archive/2019/05/23/China-America-trade-war.html" target="_blank" rel="noopener">贸易战的本质问题是什么</a></li>
+<li><a href="http://newslab.info/2016/10/resources/" target="_blank" rel="noopener">了解传媒界前沿的16个网站</a></li>
+<li><a href="http://unirule.cloud/index.php?c=article&id=4625" target="_blank" rel="noopener">许章润：我们当下的恐惧与期待</a></li>
+<li><a href="https://www.bbc.com/zhongwen/simp/chinese-news-43708415" target="_blank" rel="noopener">北大“沈 阳事件”：中国高校的“扑火”与“追责”</a></li>
+<li><a href="https://www.bbc.com/zhongwen/simp/chinese-news-45058201" target="_blank" rel="noopener">胡鞍钢被讽“给帝王唱赞歌” 千人联名要求清华将其开除</a></li>
+<li><a href="https://telegra.ph/%E5%86%99%E4%BA%8E%E8%B1%86%E7%93%A3106%E4%BA%8B%E4%BB%B6%E5%90%8E%E5%9C%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%9F%E5%9C%B0%E4%B8%8A%E6%B5%81%E7%A6%BB%E5%A4%B1%E6%89%80%E7%9A%84%E4%BA%92%E8%81%94%E7%BD%91%E9%9A%BE%E6%B0%91-10-08" target="_blank" rel="noopener">写于豆瓣106事件后：在自己的土地上流离失所的互联网难民</a></li>
+<li><a href="https://cn.nytimes.com/opinion/20190828/why-mainlanders-dont-get-hong-kongers/" target="_blank" rel="noopener">为何许多大陆民众不理解港人的抗争</a></li>
+<li><a href="https://jhuo.ca/post/opensource_freedom_forever/" target="_blank" rel="noopener">开源是自由的，永远</a></li>
+<li><a href="[https://telegra.ph/%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%B8%E6%9C%80%E9%9C%87%E6%92%BC%E5%85%A5%E5%AD%B8%E8%87%B4%E8%A9%9E%E7%AD%89%E5%BE%85%E4%BD%A0%E5%80%91%E7%9A%84%E6%98%AF%E4%B8%8D%E5%85%AC%E7%9A%84%E7%A4%BE%E6%9C%83-04-20](https://telegra.ph/東京大學最震撼入學致詞等待你們的是不公的社會-04-20)">東京大學最震撼入學致詞：等待你們的是不公的社會</a></li>
+<li><a href="https://program-think.blogspot.com/2010/11/institutionalize.html" target="_blank" rel="noopener">谈谈【体制化】，并推荐《肖申克的救赎》</a></li>
+<li><a href="[https://telegra.ph/%E5%8C%97%E5%A4%A7%E5%9B%BD%E5%8F%91%E9%99%A2%E6%AF%95%E4%B8%9A%E5%85%B8%E7%A4%BC%E6%BC%94%E8%AE%B2%E5%BC%A0%E7%BB%B4%E8%BF%8E%E8%87%AA%E7%94%B1%E6%98%AF%E4%B8%80%E7%A7%8D%E8%B4%A3%E4%BB%BB-08-11](https://telegra.ph/北大国发院毕业典礼演讲张维迎自由是一种责任-08-11)">【北大国发院毕业典礼演讲】张维迎：自由是一种责任</a></li>
+<li><a href="https://www.solidot.org/story?sid=57133" target="_blank" rel="noopener">腾讯如何应对政府的审查</a></li>
+<li><a href="https://new.qq.com/omn/20190324/20190324A0HU17.html" target="_blank" rel="noopener">揭露血淋淋的真实，他们以笔为刃 - 腾讯新闻</a></li>
+<li><a href="https://bowenpress.com/news/bowen_196831.html" target="_blank" rel="noopener">8年前曝光致百儿童死残假疫苗被解职媒体人今何在– 博聞社</a></li>
+<li><a href="https://zh.wikipedia.org/zh-sg/因言获罪" target="_blank" rel="noopener">因言获罪- 维基百科，自由的百科全书</a></li>
+</ul>
+<h2 id="为什么要写这篇文章？"><a href="#为什么要写这篇文章？" class="headerlink" title="为什么要写这篇文章？"></a>为什么要写这篇文章？</h2><p>我未必能唤醒被愚民洗脑的人，我只是挣扎着不让自己被体制同化；</p>
+<p>我不想被同化成缺少博爱的人，去污蔑自己的同胞为废青暴徒；</p>
+<p>我不想被同化成没有思想的人，脑袋里只装着伟大光荣正确；</p>
+<p>我不想被同化成心胸狭窄的人，容不得别人半点批评和质疑；</p>
+<p>我不想被同化成懦弱无能的人，面对权贵只懂得拍马溜须；</p>
+<p>我不想被同化成道德沦丧的人，去举报自己的老师和同学；</p>
+<p>我不想被同化成睚眦必报的人，去抵制这个、抵制那个；</p>
+<p>我没能力推翻一堵墙，但我不会给这堵墙添砖加瓦；</p>
+<p>我注定改变不了权贵，我只是抗争着不让权贵改变我；</p>
+<p><strong>许多年后，假如有人问我，当年你为社会做过的贡献是什么？我会说：我传播了很多充满人性、良知、散发着正义光芒的文字，我拒绝了给<code>独裁专制极权暴政</code>唱赞歌。</strong></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><blockquote>
+<p>  “切勿生而无法言表；生命中次好的东西，其来也急，其逝也疾。”</p>
+<p>  他借传说中雅典的奠基者，以及由此而成为雅典代言人的忒修斯之口，也让我们懂得了使普通人，无论老老少少，去承受生命之重负的究竟是什么。它就是城邦，是人们无拘无束的自由行为和活生生的语言的空间，它让生命充满华彩</p>
+</blockquote>
+      </div>
+    </div>
+  </div>
+          </div>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新日志"><span class="nav-number">1.</span> <span class="nav-text">更新日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#致读者"><span class="nav-number">2.</span> <span class="nav-text">致读者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应该写点什么"><span class="nav-number">3.</span> <span class="nav-text">应该写点什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十年前"><span class="nav-number">4.</span> <span class="nav-text">十年前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#国家、政府、政党"><span class="nav-number">5.</span> <span class="nav-text">国家、政府、政党</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粉碎的憧憬"><span class="nav-number">6.</span> <span class="nav-text">粉碎的憧憬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破灭的梦想"><span class="nav-number">7.</span> <span class="nav-text">破灭的梦想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爱国主义？"><span class="nav-number">8.</span> <span class="nav-text">爱国主义？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重塑世界观价值观"><span class="nav-number">9.</span> <span class="nav-text">重塑世界观价值观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#那堵墙"><span class="nav-number">10.</span> <span class="nav-text">那堵墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远离国内毒瘤软件和服务"><span class="nav-number">11.</span> <span class="nav-text">远离国内毒瘤软件和服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名和备案"><span class="nav-number">12.</span> <span class="nav-text">域名和备案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大学生一定要逃的课"><span class="nav-number">13.</span> <span class="nav-text">大学生一定要逃的课</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#社会主义铁拳？"><span class="nav-number">14.</span> <span class="nav-text">社会主义铁拳？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#身为人的良知"><span class="nav-number">15.</span> <span class="nav-text">身为人的良知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#守护家人"><span class="nav-number">16.</span> <span class="nav-text">守护家人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对未来的担忧"><span class="nav-number">17.</span> <span class="nav-text">对未来的担忧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对未来"><span class="nav-number">18.</span> <span class="nav-text">对未来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未来的打算"><span class="nav-number">19.</span> <span class="nav-text">未来的打算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关"><span class="nav-number">20.</span> <span class="nav-text">相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要写这篇文章？"><span class="nav-number">21.</span> <span class="nav-text">为什么要写这篇文章？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">22.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/draft/2020-01-11-thinking-for-2020.html",
+            identifier: "draft/2020-01-11-thinking-for-2020.html",
+            title: "初入社会的一点碎碎念"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+  <meta name="description" content="TLD:DR过去的 30 多年中，自由软件基金会 （Free Software Foundation 简称 FSF ）和电子前线基金会 (Electronic Frontier Foundation 简称 EFF）一直是无政府主义（Anarchy）对抗 BIG BROTHER 的最前线，这种对抗不仅仅是在技术领域，法律领域也是如此。FSF 倡导了三十多年的自由软件运动对抗商业公司的私有软件以及 E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="电子前哨基金会 2019 年回顾">
+<meta property="og:url" content="https://blog.502.li/draft/2019-12-30-eff-2019-review.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="TLD:DR过去的 30 多年中，自由软件基金会 （Free Software Foundation 简称 FSF ）和电子前线基金会 (Electronic Frontier Foundation 简称 EFF）一直是无政府主义（Anarchy）对抗 BIG BROTHER 的最前线，这种对抗不仅仅是在技术领域，法律领域也是如此。FSF 倡导了三十多年的自由软件运动对抗商业公司的私有软件以及 E">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.045Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://blog.502.li/draft/2019-12-30-eff-2019-review.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false
+  };
+</script>
+  <title>电子前哨基金会 2019 年回顾 | 木子
+  </title>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">时光痕迹</p>
+  </div>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+  </li>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+  </li>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+  </li>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+  </li>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+  </li>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
+</nav>
+</div>
+    </header>
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div class="content">
+  <div class="posts-expand">
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+<h1 class="post-title" itemprop="name headline">电子前哨基金会 2019 年回顾
+</h1>
+<div class="post-meta">
+</div>
+</header>
+      <div class="post-body">
+          <h2 id="TLD-DR"><a href="#TLD-DR" class="headerlink" title="TLD:DR"></a>TLD:DR</h2><p>过去的 30 多年中，自由软件基金会 （Free Software Foundation 简称 FSF ）和电子前线基金会 (Electronic Frontier Foundation 简称 EFF）一直是无政府主义（Anarchy）对抗 BIG BROTHER 的最前线，这种对抗不仅仅是在技术领域，法律领域也是如此。FSF 倡导了三十多年的自由软件运动对抗商业公司的私有软件以及 EFF 在从成立那一天起就一直与危害互联网自由的法案作立法斗争。</p>
+<p>今天翻译 EFF 官网的一篇文章 </p>
+<h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h2><ul>
+<li><a href="https://www.eff.org/deeplinks/2019/12/2019-review" target="_blank" rel="noopener">2019 in Review</a></li>
+</ul>
+<h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><blockquote>
+<p>  In November’s landmark opinion in <em>Alasaad v. McAleenan</em>, a federal judge ruled that suspicionless electronic device searches at U.S. ports of entry violate the Fourth Amendment. The <em>Alasaad</em> opinion was the perfect way to end 2019—the culmination of two years of hard work by EFF, ACLU, and our 11 clients. In another sense, it was a culmination of our decades of work explaining to the public and the courts that you don’t lose your rights when you go online or use digital tools.</p>
+</blockquote>
+<p>在 11 月标志性的 <code>Alasaad v. McAleenan</code> 案中，一位联邦法官裁定，联邦特工在美国入境口岸对旅客的电子设备进行毫无怀疑的搜索违反了《第四修正案》。Alasaad 的认为这是 2019 年美好的结尾，这是EFF（电子前哨基金会），ACLU（美国公民自由联盟） 和我们 11 个客户两年努力付出的胜利告终。从另一种意义上来说，向公众和法院解释了您上网或使用数字设备时不会失去你的权力，这也是我们数十年来工作的结晶。</p>
+<blockquote>
+<p>  <strong>Every time policymakers or private companies tried to undermine your rights online, we were there.</strong></p>
+</blockquote>
+<p><strong>每当决策者或私有企业试图侵害你的网络权力时，我们都会与你站在一起。</strong></p>
+<blockquote>
+<p>  Looking back over 2019, there were so many moments when powerful forces tried to bargain away our digital rights. Both in the U.S. and around the world, authorities used increasingly sneaky word games to undermine our right to secure, private communications. They used new terminology like “ghost” and “client-side scanning” to obscure the fact that they were simply pushing to undermine end-to-end encryption, just as they have been trying to do for 20 years.</p>
+</blockquote>
+<p>回顾 2019 年，强权多次试图侵犯我们的网络权力。在美国及世界各地，当局不断地使用卑鄙的文字游戏来破坏我们保护私密通信的权利。他们使用诸如“幽灵”和“客户端扫描”之类的新术语来掩盖他们试图破坏端到端加密，就像他们已经尝试了 20 年一样。</p>
+<blockquote>
+<p>  Some members of Congress tried to create a “small-claims court” for copyright infringement online. That might sound reasonable until you realize that it would put ordinary Internet users on the hook for $30,000 for common activities like sharing memes and videos online. Others attempted to dismantle Section 230, the essential law protecting your ability to speak online. Others tried to undermine <em>Alice v. CLS Bank</em>, the Supreme Court opinion that protects innovators online by taking dangerous, broad software patents out of the hands of patent trolls.</p>
+</blockquote>
+<p>一些国会议员试图为网络侵权建立一个“小额诉讼法院”。这听起来可能很合理，但你会意识到，这会让普通的互联网用户因在线分享表情包和视频等常见活动支付 3 万美元。其他人则试图取消第230节，这是保护您在线发言能力的基本法律。其他人则试图破坏最高法院的Alice诉CLS银行的意见，该意见通过从专利巨魔手中夺走危险的广泛软件专利来保护在线创新者。</p>
+<blockquote>
+<p>  But every time policymakers or private companies tried to undermine your rights online, we were there. EFF stood before Congress this year to defend Section 230 and also to explain why limits on software patents protect small businesses. Here in California, we defended the groundbreaking California Consumer Privacy Act against numerous attempts by powerful Internet companies to weaken its protections for Internet users. Across the country, we helped communities stand up and pass bans on police use of facial recognition.</p>
+</blockquote>
+<p>但是，每当决策者或私人公司试图在网上破坏您的权利时，我们就在那里。EFF今年在国会上为第230条辩护，并解释了为什么软件专利限制可以保护小型企业。在加利福尼亚州，我们为功能强大的互联网公司为削弱对互联网用户的保护而进行的众多尝试而为具有突破性意义的《加州消费者隐私法》辩护。在全国范围内，我们帮助社区站起来并通过了禁止警察使用面部识别的禁令。</p>
+<blockquote>
+<p>  Every time, you were right there with us. Thousands of you wrote and called your lawmakers to explain to them why you need free speech and privacy online. And they listened. Some of this year’s most important victories didn’t come down to dramatic final votes. They came when experts like us explained to decisionmakers how an idea would harm online speech and privacy, and that idea was quietly backburnered.</p>
+</blockquote>
+<p>每次，您都和我们在一起。成千上万的你们写信并打电话给国会议员，向他们表达为什么需要网络言论自由和隐私权。他们留心听了。今年一些最重要的胜利并没有获得戏剧性的最终投票。当我们这样的专家向决策者们解释一个想法如何损害在线言论和隐私时，他们就来了，这个想法被悄悄地推倒了。</p>
+<blockquote>
+<p>  It’s not enough to defend digital rights in the courts and in Congress. That’s why EFF redoubled our efforts to hard code privacy principles into the Internet itself. We released Version 1.0 of Certbot, our tool that has helped over 2 million users maintain HTTPS access to over 20 million websites. We led the charge to champion the development of DNS over HTTPS, the next step in building a truly encrypted web. We also raised alarms about Amazon Ring’s insidious partnerships with law enforcement agencies, as well about the serious security issues with Ring and other Internet-connected cameras both inside and outside of our homes. In the final days of the year, we rallied over 500 .orgs to defend, well, .ORG.</p>
+</blockquote>
+<p>仅在法院和国会捍卫数字版权是不够的。这就是EFF加倍努力将硬性隐私原则硬编码到Internet本身的原因。我们发布了Certbot 1.0版，该工具已帮助超过200万用户维护了对超过2000万个网站的HTTPS访问。我们负责领导通过HTTPS进行DNS的开发，这是构建真正加密的Web的下一步。我们还对Amazon Ring与执法机构的阴险合作伙伴关系，以及与Ring以及我们房屋内外的其他联网摄像头的严重安全问题发出了警报。在一年的最后几天，我们召集了500多个.org来捍卫.ORG。</p>
+<blockquote>
+<p>  None of this would have been possible without you. Thanks to each and every one of you for standing on the side of digital civil liberties. Thanks for calling your members of Congress, demanding better policies from the tech companies you rely on, and even helping your relatives install Privacy Badger. Together, we’re building a digital future that serves everyone, not just the most powerful.</p>
+</blockquote>
+<p>没有您，这一切都是不可能的。感谢你们每一个人站在数字公民自由方面。感谢您致电国会议员，要求您依赖的科技公司制定更好的政策，甚至帮助您的亲戚安装Privacy Badger。我们将共同打造一个数字化的未来，为所有人服务，而不仅仅是最强大的人。</p>
+<blockquote>
+<p>  In the coming weeks, EFF’s banner case <em>Jewel v. NSA</em> will move to its next step, the Ninth Circuit Court of Appeals. In <em>Jewel</em>, we challenge the NSA’s mass surveillance practices. We believe that mass surveillance is illegal, unconstitutional, and wrong, and will never stop fighting it.</p>
+</blockquote>
+<p>在接下来的几周内，EFF的标志性案件Jewel v。NSA将移至下一步，即第九巡回上诉法院。在Jewel中，我们挑战了NSA的大规模监视做法。我们认为，大规模监视是非法的，违宪的和错误的，并且永远不会停止与之对抗。</p>
+<blockquote>
+<p>  Please consider joining EFF. Our fights are long—often years or even decades—and they require a long-term investment.</p>
+</blockquote>
+<p>请考虑加入EFF。我们的斗争是漫长的-通常是几年甚至几十年-并且它们需要长期的投资。</p>
+<p><a href="https://supporters.eff.org/donate/YEDL--19" target="_blank" rel="noopener">DONATE TO EFF</a>  SUPPORT EFF</p>
+<blockquote>
+<p>  EFF has an annual tradition of writing several blog posts on what we’ve accomplished this year, what we’ve learned, and where we have more to do. We will update this page with new stories about digital rights in 2019 every day between now and New Year’s Day.</p>
+</blockquote>
+<p>EFF的传统是每年写几篇博客文章，介绍我们今年的成就，学到的知识以及需要做的事情。从现在到元旦之间，我们每天都会在2019年每天更新有关数字版权的新故事。</p>
+<h3 id="2019-Retrospective-Blog-Posts"><a href="#2019-Retrospective-Blog-Posts" class="headerlink" title="2019 Retrospective Blog Posts"></a><strong>2019 Retrospective Blog Posts</strong></h3><ul>
+<li><a href="https://www.eff.org/deeplinks/2019/12/year-we-fought-get-net-neutrality-back-2019-year-review" target="_blank" rel="noopener">The Year We Fought to Get Net Neutrality Back</a></li>
+<li><a href="https://www.eff.org/deeplinks/2019/12/2019-end-year-review-smart-home-tech-police-and-your-privacy" target="_blank" rel="noopener">Smart Home Tech, Police, and Your Privacy</a></li>
+</ul>
+      </div>
+    </div>
+  </div>
+          </div>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TLD-DR"><span class="nav-number">1.</span> <span class="nav-text">TLD:DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原文"><span class="nav-number">2.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#翻译"><span class="nav-number">3.</span> <span class="nav-text">翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-Retrospective-Blog-Posts"><span class="nav-number">3.1.</span> <span class="nav-text">2019 Retrospective Blog Posts</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/draft/2019-12-30-eff-2019-review.html",
+            identifier: "draft/2019-12-30-eff-2019-review.html",
+            title: "电子前哨基金会 2019 年回顾"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+</body>
+</html>

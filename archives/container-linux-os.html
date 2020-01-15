@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
-  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
-<script id="hexo.configurations">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
-    lazyload: true,
-    tabs: true,
-    motion: "",
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
-    }
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="更新日志 2019-12-31 初稿，可能完成不了，等到来年了😂 2020-01-01  容器优化型操作系统？GKE 的  Container-Optimized OSGoogle 家的  GKE  中的每个节点都是使用 Container-Optimized OS 来运行工作负载，不过仅仅是针对 GCE 来进行优化的，可能在 OpenStack 或者 vSphere 上运行不起来，(瞎猜😂">
-<meta name="keywords" content="docker,容器,Linux,kubernees">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Container Linux OS 从入坑到爬出来😂">
 <meta property="og:url" content="https://blog.502.li/archives/container-linux-os.html">
 <meta property="og:site_name" content="木子">
 <meta property="og:description" content="更新日志 2019-12-31 初稿，可能完成不了，等到来年了😂 2020-01-01  容器优化型操作系统？GKE 的  Container-Optimized OSGoogle 家的  GKE  中的每个节点都是使用 Container-Optimized OS 来运行工作负载，不过仅仅是针对 GCE 来进行优化的，可能在 OpenStack 或者 vSphere 上运行不起来，(瞎猜😂">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="../img/image-20191231163325900.png">
 <meta property="og:image" content="../img/image-20191231163400135.png">
 <meta property="og:image" content="../img/rancheroshowitworks.png">
@@ -59,22 +64,27 @@
 <meta property="og:image" content="../img/image-20191231135348120.png">
 <meta property="og:image" content="../img/image-20191231142454934.png">
 <meta property="og:image" content="../img/image-20191231143958024.png">
-<meta property="og:updated_time" content="2020-01-14T12:26:46.906Z">
+<meta property="article:published_time" content="2019-12-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.037Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="容器">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="kubernees">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Container Linux OS 从入坑到爬出来😂">
-<meta name="twitter:description" content="更新日志 2019-12-31 初稿，可能完成不了，等到来年了😂 2020-01-01  容器优化型操作系统？GKE 的  Container-Optimized OSGoogle 家的  GKE  中的每个节点都是使用 Container-Optimized OS 来运行工作负载，不过仅仅是针对 GCE 来进行优化的，可能在 OpenStack 或者 vSphere 上运行不起来，(瞎猜😂">
 <meta name="twitter:image" content="../img/image-20191231163325900.png">
-  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
-  <link rel="canonical" href="https://blog.502.li/archives/container-linux-os">
-<script id="page.configurations">
+<link rel="canonical" href="https://blog.502.li/archives/container-linux-os.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true
   };
 </script>
   <title>Container Linux OS 从入坑到爬出来😂 | 木子</title>
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -83,8 +93,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-  .use-motion .logo,
+  .use-motion .collection-header { opacity: initial; }
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -94,127 +103,115 @@
   .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">木子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
   </li>
-          <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
   </li>
-          <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
   </li>
-          <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
   </li>
-          <li class="menu-item menu-item-about">
-    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
   </li>
-        <li class="menu-item menu-item-search">
-            <a href="javascript:;" class="popup-trigger">
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-    </ul>
-    <div class="site-search">
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-    </div>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
 </nav>
 </div>
     </header>
-    <main id="main" class="main">
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-  <div id="posts" class="posts-expand">
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  <div class="post-block">
+          <div class="content">
+  <div class="posts-expand">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/container-linux-os.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog.502.li/favicon.ico">
       <meta itemprop="name" content="木子">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/avatar.png">
+      <meta itemprop="description" content="">
     </span>
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="木子">
     </span>
       <header class="post-header">
-          <h2 class="post-title" itemprop="name headline">Container Linux OS 从入坑到爬出来😂
-          </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Container Linux OS 从入坑到爬出来😂
+        </h1>
         <div class="post-meta">
-          <span class="post-time">
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                <span class="post-meta-item-text">发表于</span>
-              <time title="创建时间：2019-12-31 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-31T00:00:00-05:00">2019-12-31</time>
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-12-31 2019-12-31T00:00:00+08:00" itemprop="dateCreated datePublished" datetime="2019-12-31T00:00:00+08:00">2019-12-31</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                  <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 07:26:46" itemprop="dateModified" datetime="2020-01-14T07:26:46-05:00">2020-01-14</time>
-          </span>
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/container-linux-os.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/container-linux-os.html" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 2020-01-14T22:23:37+08:00" itemprop="dateModified" datetime="2020-01-14T22:23:37+08:00">2020-01-14</time>
               </span>
-            <div class="post-symbolscount">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                  <span class="post-meta-item-text">本文字数：</span>
-                <span title="本文字数">113k</span>
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                <span title="阅读时长">2:21</span>
-            </div>
+  <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    <a title="disqus" href="/archives/container-linux-os.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/container-linux-os.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>38k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1:03</span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody">
@@ -296,9 +293,12 @@
 <li><h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5></li>
 <li><p><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Amazon Machine Image</a></p>
 </li>
-<li><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Google Compute Engine image</a></li>
-<li><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Azure VHD</a></li>
-<li><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Raspberry Pi3</a></li>
+<li><p><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Google Compute Engine image</a></p>
+</li>
+<li><p><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Azure VHD</a></p>
+</li>
+<li><p><a href="https://github.com/vmware/photon/wiki/Downloading-Photon-OS" target="_blank" rel="noopener">Raspberry Pi3</a></p>
+</li>
 </ul>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载好 OVA 虚拟机模板后，登录到 ESXi 或者 vCenter 中直接使用 OVA 创建虚拟机模板即可，对于 <code>VMware® Workstation 1x Pro</code>  可以直接将 OVA 导入成为虚拟机来运行。</p>
 <h4 id="1-导入-OVA-虚拟机模板"><a href="#1-导入-OVA-虚拟机模板" class="headerlink" title="1. 导入 OVA 虚拟机模板"></a>1. 导入 OVA 虚拟机模板</h4><p><img src="../img/image-20191231105906355.png" alt="image-20191231105906355"></p>
@@ -330,7 +330,7 @@
 <ul>
 <li>启动 docker 进程之后的占用情况，也仅仅 109Mi</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@photon-machine [ ~ ]# free -h</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:          2.0Gi       109Mi       1.6Gi       0.0Ki       238Mi       1.8Gi</span><br><span class="line">Swap:            0B          0B          0B</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@photon-machine [ ~ ]# free -h</span><br><span class="line">              total        used        free      shared  buff&#x2F;cache   available</span><br><span class="line">Mem:          2.0Gi       109Mi       1.6Gi       0.0Ki       238Mi       1.8Gi</span><br><span class="line">Swap:            0B          0B          0B</span><br></pre></td></tr></table></figure>
 <h4 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h4><p>使用 OVA 虚拟机模板启动后的虚拟机，磁盘仅仅占用了 515MB ，确实是相当轻量化，这还是包含了 docker。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@photon-machine [ ~ ]<span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/root        16G  515M   15G   4% /</span><br><span class="line">devtmpfs        998M     0  998M   0% /dev</span><br><span class="line">tmpfs          1000M     0 1000M   0% /dev/shm</span><br><span class="line">tmpfs          1000M  532K  999M   1% /run</span><br><span class="line">tmpfs          1000M     0 1000M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs          1000M     0 1000M   0% /tmp</span><br><span class="line">/dev/sda2        10M  2.2M  7.9M  22% /boot/efi</span><br><span class="line">tmpfs           200M     0  200M   0% /run/user/0</span><br></pre></td></tr></table></figure>
 <h4 id="负载"><a href="#负载" class="headerlink" title="负载"></a>负载</h4><p><img src="../img/image-20191231113306435.png" alt="image-20191231113306435"></p>
@@ -452,7 +452,7 @@
 <h4 id="内存-2"><a href="#内存-2" class="headerlink" title="内存"></a>内存</h4><ul>
 <li>初始化启动后内存使用了 1224MB😂，要比 CoreOS 和 Photon OS 加起来还多😂</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[rancher@rancher ~]$ free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:          3947       1224       2722        993          0        993</span><br><span class="line">-/+ buffers/cache:        231       3715</span><br><span class="line">Swap:            0          0          0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[rancher@rancher ~]$ free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:          3947       1224       2722        993          0        993</span><br><span class="line">-&#x2F;+ buffers&#x2F;cache:        231       3715</span><br><span class="line">Swap:            0          0          0</span><br></pre></td></tr></table></figure>
 <h4 id="磁盘-2"><a href="#磁盘-2" class="headerlink" title="磁盘"></a>磁盘</h4><p>由于系统服务是以容器的方式来运行的，而容器内的进程要访问系统文件系统的话就要将这些文件挂载到容器里去，所以会出现这么多的分区情况，不过绝大多数都是容器挂载的数据卷。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">[root@rancher rancher]<span class="comment"># df -h</span></span><br><span class="line">Filesystem                Size      Used Available Use% Mounted on</span><br><span class="line">overlay                  28.0G      1.0G     25.5G   4% /</span><br><span class="line">tmpfs                     1.9G         0      1.9G   0% /dev</span><br><span class="line">tmpfs                     1.9G         0      1.9G   0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /media</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /opt</span><br><span class="line">none                      1.9G    944.0K      1.9G   0% /run</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /mnt</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /home</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/resolv.conf</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/logrotate.d</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/lib/firmware</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/sbin/iptables</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/docker</span><br><span class="line">none                      1.9G    944.0K      1.9G   0% /var/run</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/<span class="built_in">log</span></span><br><span class="line">devtmpfs                  1.9G         0      1.9G   0% /host/dev</span><br><span class="line">shm                      64.0M         0     64.0M   0% /host/dev/shm</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/selinux</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/hosts</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/lib/modules</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/hostname</span><br><span class="line">shm                      64.0M         0     64.0M   0% /dev/shm</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/bin/system-docker</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/boot2docker</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/share/ros</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/m-user-docker</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/waagent</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/docker</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/kubelet</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/rancher</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/bin/ros</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /usr/bin/system-docker-runc</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /etc/ssl/certs/ca-certificates.crt.rancher</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/rancher/cache</span><br><span class="line">/dev/sda1                28.0G      1.0G     25.5G   4% /var/lib/rancher/conf</span><br><span class="line">devtmpfs                  1.9G         0      1.9G   0% /dev</span><br><span class="line">shm                      64.0M         0     64.0M   0% /dev/shm</span><br></pre></td></tr></table></figure>
 <h4 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">[root@rancher rancher]<span class="comment"># mount</span></span><br><span class="line">overlay on / <span class="built_in">type</span> overlay (rw,relatime,lowerdir=/var/lib/system-docker/overlay2/l/TBWLXSEPWSCBGMNSU37HJXNRO3:/var/lib/system-docker/overlay2/l/DWK2WF5FKFYZTH74WUBGHTRF4V:/var/lib/system-docker/overlay2/l/HDUW6LV2DFEIJPW3IA33YTCNWX:/var/lib/system-docker/overlay2/l/ZDK3KMGDSN5O33AR6XJJF27NFO:/var/lib/system-docker/overlay2/l/TSWFV744M2LUOSPV2N6QHON4NP:/var/lib/system-docker/overlay2/l/QZ3U27554L5LKMJDYP3DC356L7:/var/lib/system-docker/overlay2/l/D6LSXZS2UGAZ7NMKQJKMQVT24P:/var/lib/system-docker/overlay2/l/KHB3OKMEQIL2P34QMHYF3HWTLT,upperdir=/var/lib/system-docker/overlay2/fc79b6b6cf5c6d0b34b5abb95a1a19d765c1a00d66d0cff1ef3778d109471522/diff,workdir=/var/lib/system-docker/overlay2/fc79b6b6cf5c6d0b34b5abb95a1a19d765c1a00d66d0cff1ef3778d109471522/work)</span><br><span class="line">proc on /proc <span class="built_in">type</span> proc (rw,nosuid,nodev,noexec,relatime)</span><br><span class="line">tmpfs on /dev <span class="built_in">type</span> tmpfs (rw,nosuid,mode=755)</span><br><span class="line">devpts on /dev/pts <span class="built_in">type</span> devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)</span><br><span class="line">sysfs on /sys <span class="built_in">type</span> sysfs (rw,nosuid,nodev,noexec,relatime)</span><br><span class="line">tmpfs on /sys/fs/cgroup <span class="built_in">type</span> tmpfs (rw,nosuid,nodev,noexec,relatime,mode=755)</span><br><span class="line">none on /sys/fs/cgroup/freezer <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,freezer)</span><br><span class="line">none on /sys/fs/cgroup/devices <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,devices)</span><br><span class="line">none on /sys/fs/cgroup/net_cls,net_prio <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)</span><br><span class="line">none on /sys/fs/cgroup/perf_event <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)</span><br><span class="line">none on /sys/fs/cgroup/hugetlb <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)</span><br><span class="line">none on /sys/fs/cgroup/cpuset <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)</span><br><span class="line">none on /sys/fs/cgroup/cpu,cpuacct <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)</span><br><span class="line">none on /sys/fs/cgroup/blkio <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,blkio)</span><br><span class="line">none on /sys/fs/cgroup/memory <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,memory)</span><br><span class="line">none on /sys/fs/cgroup/pids <span class="built_in">type</span> cgroup (rw,nosuid,nodev,noexec,relatime,pids)</span><br><span class="line">mqueue on /dev/mqueue <span class="built_in">type</span> mqueue (rw,nosuid,nodev,noexec,relatime)</span><br><span class="line">/dev/sda1 on /media <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /opt <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">none on /run <span class="built_in">type</span> tmpfs (rw,relatime)</span><br><span class="line">nsfs on /run/docker/netns/default <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">nsfs on /run/system-docker/netns/default <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">nsfs on /run/system-docker/netns/d15f3e062bb6 <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">/dev/sda1 on /mnt <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /home <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/resolv.conf <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/logrotate.d <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/lib/firmware <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/sbin/iptables <span class="built_in">type</span> ext4 (ro,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/docker <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">none on /var/run <span class="built_in">type</span> tmpfs (rw,relatime)</span><br><span class="line">nsfs on /var/run/docker/netns/default <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">nsfs on /var/run/system-docker/netns/default <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">nsfs on /var/run/system-docker/netns/d15f3e062bb6 <span class="built_in">type</span> nsfs (rw)</span><br><span class="line">/dev/sda1 on /var/<span class="built_in">log</span> <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">devtmpfs on /host/dev <span class="built_in">type</span> devtmpfs (rw,relatime,size=1949420k,nr_inodes=487355,mode=755)</span><br><span class="line">none on /host/dev/pts <span class="built_in">type</span> devpts (rw,relatime,mode=600,ptmxmode=000)</span><br><span class="line">shm on /host/dev/shm <span class="built_in">type</span> tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)</span><br><span class="line">mqueue on /host/dev/mqueue <span class="built_in">type</span> mqueue (rw,nosuid,nodev,noexec,relatime)</span><br><span class="line">/dev/sda1 on /etc/selinux <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/hosts <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/lib/modules <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/hostname <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">shm on /dev/shm <span class="built_in">type</span> tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)</span><br><span class="line">/dev/sda1 on /usr/bin/system-docker <span class="built_in">type</span> ext4 (ro,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/boot2docker <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/share/ros <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/m-user-docker <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/waagent <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/docker <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/kubelet <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/rancher <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/bin/ros <span class="built_in">type</span> ext4 (ro,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /usr/bin/system-docker-runc <span class="built_in">type</span> ext4 (ro,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /etc/ssl/certs/ca-certificates.crt.rancher <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/rancher/cache <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">/dev/sda1 on /var/lib/rancher/conf <span class="built_in">type</span> ext4 (rw,relatime,data=ordered)</span><br><span class="line">devtmpfs on /dev <span class="built_in">type</span> devtmpfs (rw,relatime,size=1949420k,nr_inodes=487355,mode=755)</span><br><span class="line">none on /dev/pts <span class="built_in">type</span> devpts (rw,relatime,mode=600,ptmxmode=000)</span><br><span class="line">shm on /dev/shm <span class="built_in">type</span> tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)</span><br><span class="line">mqueue on /dev/mqueue <span class="built_in">type</span> mqueue (rw,nosuid,nodev,noexec,relatime)</span><br><span class="line">cgroup on /sys/fs/cgroup/systemd <span class="built_in">type</span> cgroup (rw,relatime,name=systemd)</span><br><span class="line">none on /sys/fs/selinux <span class="built_in">type</span> selinuxfs (ro,relatime)</span><br></pre></td></tr></table></figure>
@@ -470,106 +470,135 @@
 <h3 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h3><p>和 CoreOS 一样，RancherOS 也没得相应的包管理器😂，都是采用容器来运行所需的服务，使用 <code>ros</code> 命令来管理相应的服务。如果想要运行一个服务的话，需要使用 ros 来创建相应的容器来运行才可以。而使用 ros 来创建服务</p>
 <h3 id="使用体验-2"><a href="#使用体验-2" class="headerlink" title="使用体验"></a>使用体验</h3><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>文章写的太仓促了，感觉这些容器优化行操作系统都值得玩一玩得，尤其是 RancherOS 这种将 systemc 取代掉使用 docker 来管理系统服务得牛皮技术，值得研究一哈。因为时间有限，所以就没有详细地展开来将，就等到 2020 年吧😂。祝大家 2020 年元旦快乐，新的一年里……省略千字祝福😝</p>
     </div>
-      <div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>木子</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://blog.502.li/archives/container-linux-os.html" title="Container Linux OS 从入坑到爬出来😂">https://blog.502.li/archives/container-linux-os.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
-</ul>
-      </div>
-    <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
-            <a href="/tags/容器/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
-            <a href="/tags/kubernees/" rel="tag"><i class="fa fa-tag"></i> kubernees</a>
-        </div>
-    </footer>
-  </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
+              <a href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/kubernees/" rel="tag"><i class="fa fa-tag"></i> kubernees</a>
+          </div>
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/pc-e5v3-e3v3-amd2600.html" rel="prev" title="台式机装机方案">
+      <i class="fa fa-chevron-left"></i> 台式机装机方案
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/2019-reading-notes.html" rel="next" title="2019 年读书笔记和思考">
+      2019 年读书笔记和思考 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
   </article>
   </div>
           </div>
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-        </div>
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
-  <aside id="sidebar" class="sidebar">
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a href="/">
-              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
-             </a>   
-              <p class="site-author-name" itemprop="name">木子</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-            <div class="links-of-author motion-element">
-                <span class="links-of-author-item">
-                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
-                </span>
-            </div>
-             <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-             </div>
-        </div>
-      </div>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
       <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新日志"><span class="nav-number">1.</span> <span class="nav-text">更新日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器优化型操作系统？"><span class="nav-number">2.</span> <span class="nav-text">容器优化型操作系统？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GKE-的-Container-Optimized-OS"><span class="nav-number">2.1.</span> <span class="nav-text">GKE 的  Container-Optimized OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CoreOS-Container-Linux"><span class="nav-number">2.2.</span> <span class="nav-text">CoreOS Container Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点如下"><span class="nav-number">2.2.1.</span> <span class="nav-text">特点如下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Photon-OS"><span class="nav-number">2.3.</span> <span class="nav-text">Photon OS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官方宣传册"><span class="nav-number">2.3.1.</span> <span class="nav-text">官方宣传册</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RancherOS"><span class="nav-number">2.4.</span> <span class="nav-text">RancherOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装体验"><span class="nav-number">3.</span> <span class="nav-text">安装体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Container-Optimized-OS"><span class="nav-number">3.1.</span> <span class="nav-text">Container-Optimized OS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photon-OS-1"><span class="nav-number">4.</span> <span class="nav-text">Photon OS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档"><span class="nav-number">4.1.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像"><span class="nav-number">4.2.</span> <span class="nav-text">安装镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISO"><span class="nav-number">4.2.1.</span> <span class="nav-text">ISO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OVA"><span class="nav-number">4.2.2.</span> <span class="nav-text">OVA</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#其他"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">4.3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-导入-OVA-虚拟机模板"><span class="nav-number">4.3.1.</span> <span class="nav-text">1. 导入 OVA 虚拟机模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-添加-OVA-虚拟机模板"><span class="nav-number">4.3.2.</span> <span class="nav-text">2.添加 OVA 虚拟机模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-选择存储"><span class="nav-number">4.3.3.</span> <span class="nav-text">3. 选择存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-同意许可协议"><span class="nav-number">4.3.4.</span> <span class="nav-text">4. 同意许可协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-部署选项"><span class="nav-number">4.3.5.</span> <span class="nav-text">5.部署选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-即将完成"><span class="nav-number">4.3.6.</span> <span class="nav-text">6. 即将完成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统启动"><span class="nav-number">4.4.</span> <span class="nav-text">系统启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核"><span class="nav-number">4.5.</span> <span class="nav-text">内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用情况"><span class="nav-number">4.6.</span> <span class="nav-text">资源占用情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存"><span class="nav-number">4.6.1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘"><span class="nav-number">4.6.2.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#负载"><span class="nav-number">4.6.3.</span> <span class="nav-text">负载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和服务"><span class="nav-number">4.7.</span> <span class="nav-text">进程和服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理工具"><span class="nav-number">4.8.</span> <span class="nav-text">包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎"><span class="nav-number">4.9.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验"><span class="nav-number">4.10.</span> <span class="nav-text">使用体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoreOS-Container-Linux-1"><span class="nav-number">5.</span> <span class="nav-text">CoreOS Container Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档-1"><span class="nav-number">5.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cloud-Providers"><span class="nav-number">5.1.1.</span> <span class="nav-text">Cloud Providers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bare-Metal"><span class="nav-number">5.1.2.</span> <span class="nav-text">Bare Metal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Community-Platforms"><span class="nav-number">5.1.3.</span> <span class="nav-text">Community Platforms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像-OVA"><span class="nav-number">5.2.</span> <span class="nav-text">安装镜像 OVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">5.3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他设置"><span class="nav-number">5.3.1.</span> <span class="nav-text">其他设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统启动-1"><span class="nav-number">5.4.</span> <span class="nav-text">系统启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用情况-1"><span class="nav-number">5.5.</span> <span class="nav-text">资源占用情况</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#内存-1"><span class="nav-number">5.5.0.1.</span> <span class="nav-text">内存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘-1"><span class="nav-number">5.5.1.</span> <span class="nav-text">磁盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核以及发行版信息"><span class="nav-number">5.6.</span> <span class="nav-text">内核以及发行版信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎-1"><span class="nav-number">5.7.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载-1"><span class="nav-number">5.8.</span> <span class="nav-text">负载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和服务-1"><span class="nav-number">5.9.</span> <span class="nav-text">进程和服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理工具-1"><span class="nav-number">5.10.</span> <span class="nav-text">包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验-1"><span class="nav-number">5.11.</span> <span class="nav-text">使用体验</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#RancherOS-1"><span class="nav-number">6.</span> <span class="nav-text">RancherOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档-2"><span class="nav-number">6.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cloud-云平台"><span class="nav-number">6.1.1.</span> <span class="nav-text">Cloud 云平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bare-Metal-amp-Virtual-Servers-裸金属"><span class="nav-number">6.1.2.</span> <span class="nav-text">Bare Metal &amp; Virtual Servers 裸金属</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像-1"><span class="nav-number">6.2.</span> <span class="nav-text">安装镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-2"><span class="nav-number">6.3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核以及发行版信息-1"><span class="nav-number">6.4.</span> <span class="nav-text">内核以及发行版信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎-2"><span class="nav-number">6.5.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rancher-引擎"><span class="nav-number">6.6.</span> <span class="nav-text">rancher 引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用"><span class="nav-number">6.7.</span> <span class="nav-text">资源占用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负载-2"><span class="nav-number">6.7.1.</span> <span class="nav-text">负载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存-2"><span class="nav-number">6.7.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘-2"><span class="nav-number">6.7.3.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统"><span class="nav-number">6.7.4.</span> <span class="nav-text">文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统服务容器化"><span class="nav-number">6.8.</span> <span class="nav-text">系统服务容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#top"><span class="nav-number">6.8.1.</span> <span class="nav-text">top</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros"><span class="nav-number">6.9.</span> <span class="nav-text">ros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统进程"><span class="nav-number">6.10.</span> <span class="nav-text">系统进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理器"><span class="nav-number">6.11.</span> <span class="nav-text">包管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验-2"><span class="nav-number">6.12.</span> <span class="nav-text">使用体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">7.</span> <span class="nav-text">结束</span></a></li></div>
-          </div>
-        </div>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新日志"><span class="nav-number">1.</span> <span class="nav-text">更新日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器优化型操作系统？"><span class="nav-number">2.</span> <span class="nav-text">容器优化型操作系统？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GKE-的-Container-Optimized-OS"><span class="nav-number">2.1.</span> <span class="nav-text">GKE 的  Container-Optimized OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CoreOS-Container-Linux"><span class="nav-number">2.2.</span> <span class="nav-text">CoreOS Container Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点如下"><span class="nav-number">2.2.1.</span> <span class="nav-text">特点如下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Photon-OS"><span class="nav-number">2.3.</span> <span class="nav-text">Photon OS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官方宣传册"><span class="nav-number">2.3.1.</span> <span class="nav-text">官方宣传册</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RancherOS"><span class="nav-number">2.4.</span> <span class="nav-text">RancherOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装体验"><span class="nav-number">3.</span> <span class="nav-text">安装体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Container-Optimized-OS"><span class="nav-number">3.1.</span> <span class="nav-text">Container-Optimized OS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photon-OS-1"><span class="nav-number">4.</span> <span class="nav-text">Photon OS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档"><span class="nav-number">4.1.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像"><span class="nav-number">4.2.</span> <span class="nav-text">安装镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISO"><span class="nav-number">4.2.1.</span> <span class="nav-text">ISO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OVA"><span class="nav-number">4.2.2.</span> <span class="nav-text">OVA</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#其他"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">4.3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-导入-OVA-虚拟机模板"><span class="nav-number">4.3.1.</span> <span class="nav-text">1. 导入 OVA 虚拟机模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-添加-OVA-虚拟机模板"><span class="nav-number">4.3.2.</span> <span class="nav-text">2.添加 OVA 虚拟机模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-选择存储"><span class="nav-number">4.3.3.</span> <span class="nav-text">3. 选择存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-同意许可协议"><span class="nav-number">4.3.4.</span> <span class="nav-text">4. 同意许可协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-部署选项"><span class="nav-number">4.3.5.</span> <span class="nav-text">5.部署选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-即将完成"><span class="nav-number">4.3.6.</span> <span class="nav-text">6. 即将完成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统启动"><span class="nav-number">4.4.</span> <span class="nav-text">系统启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核"><span class="nav-number">4.5.</span> <span class="nav-text">内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用情况"><span class="nav-number">4.6.</span> <span class="nav-text">资源占用情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存"><span class="nav-number">4.6.1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘"><span class="nav-number">4.6.2.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#负载"><span class="nav-number">4.6.3.</span> <span class="nav-text">负载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和服务"><span class="nav-number">4.7.</span> <span class="nav-text">进程和服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理工具"><span class="nav-number">4.8.</span> <span class="nav-text">包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎"><span class="nav-number">4.9.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验"><span class="nav-number">4.10.</span> <span class="nav-text">使用体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoreOS-Container-Linux-1"><span class="nav-number">5.</span> <span class="nav-text">CoreOS Container Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档-1"><span class="nav-number">5.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cloud-Providers"><span class="nav-number">5.1.1.</span> <span class="nav-text">Cloud Providers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bare-Metal"><span class="nav-number">5.1.2.</span> <span class="nav-text">Bare Metal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Community-Platforms"><span class="nav-number">5.1.3.</span> <span class="nav-text">Community Platforms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像-OVA"><span class="nav-number">5.2.</span> <span class="nav-text">安装镜像 OVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">5.3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他设置"><span class="nav-number">5.3.1.</span> <span class="nav-text">其他设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统启动-1"><span class="nav-number">5.4.</span> <span class="nav-text">系统启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用情况-1"><span class="nav-number">5.5.</span> <span class="nav-text">资源占用情况</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#内存-1"><span class="nav-number">5.5.0.1.</span> <span class="nav-text">内存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘-1"><span class="nav-number">5.5.1.</span> <span class="nav-text">磁盘</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核以及发行版信息"><span class="nav-number">5.6.</span> <span class="nav-text">内核以及发行版信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎-1"><span class="nav-number">5.7.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载-1"><span class="nav-number">5.8.</span> <span class="nav-text">负载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和服务-1"><span class="nav-number">5.9.</span> <span class="nav-text">进程和服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理工具-1"><span class="nav-number">5.10.</span> <span class="nav-text">包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验-1"><span class="nav-number">5.11.</span> <span class="nav-text">使用体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RancherOS-1"><span class="nav-number">6.</span> <span class="nav-text">RancherOS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方文档-2"><span class="nav-number">6.1.</span> <span class="nav-text">官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cloud-云平台"><span class="nav-number">6.1.1.</span> <span class="nav-text">Cloud 云平台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bare-Metal-amp-Virtual-Servers-裸金属"><span class="nav-number">6.1.2.</span> <span class="nav-text">Bare Metal &amp; Virtual Servers 裸金属</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装镜像-1"><span class="nav-number">6.2.</span> <span class="nav-text">安装镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-2"><span class="nav-number">6.3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核以及发行版信息-1"><span class="nav-number">6.4.</span> <span class="nav-text">内核以及发行版信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-容器引擎-2"><span class="nav-number">6.5.</span> <span class="nav-text">docker 容器引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rancher-引擎"><span class="nav-number">6.6.</span> <span class="nav-text">rancher 引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用"><span class="nav-number">6.7.</span> <span class="nav-text">资源占用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负载-2"><span class="nav-number">6.7.1.</span> <span class="nav-text">负载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存-2"><span class="nav-number">6.7.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘-2"><span class="nav-number">6.7.3.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统"><span class="nav-number">6.7.4.</span> <span class="nav-text">文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统服务容器化"><span class="nav-number">6.8.</span> <span class="nav-text">系统服务容器化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#top"><span class="nav-number">6.8.1.</span> <span class="nav-text">top</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ros"><span class="nav-number">6.9.</span> <span class="nav-text">ros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统进程"><span class="nav-number">6.10.</span> <span class="nav-text">系统进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理器"><span class="nav-number">6.11.</span> <span class="nav-text">包管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用体验-2"><span class="nav-number">6.12.</span> <span class="nav-text">使用体验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">7.</span> <span class="nav-text">结束</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-        <div class="back-to-top">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+          <span>0%</span>
         </div>
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
       </div>
     </main>
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">木子</span>
@@ -577,380 +606,59 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">751k</span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:38</span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
       </div>
     </footer>
   </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  <script src="/js/utils.js?v=7.1.0"></script>
-  <script src="/js/motion.js?v=7.1.0"></script>
-  <script src="/js/affix.js?v=7.1.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.502.li/archives/container-linux-os.html";
-    this.page.identifier = "archives/container-linux-os.html";
-    this.page.title = 'Container Linux OS 从入坑到爬出来😂';
-    };
-  function loadComments() {
+  function loadCount() {
     var d = document, s = d.createElement('script');
-    s.src = 'https://muzi.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
     (d.head || d.body).appendChild(s);
   }
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        loadComments();
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-                // show search results
-                if (isMatch) {
-                  // sort index by position of keyword
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-                  // merge hits into slices
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-                      // move to next position of hit
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-                  // sort slices in content by search text's count and hits' count
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-                  // select top N slices in content
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-                  // highlight title and content
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-                  var resultItem = '';
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/archives/container-linux-os.html",
+            identifier: "archives/container-linux-os.html",
+            title: "Container Linux OS 从入坑到爬出来😂"
           }
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-          proceedsearch();
         }
       });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
     }
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-<script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
+  });
 </script>
 </body>
 </html>

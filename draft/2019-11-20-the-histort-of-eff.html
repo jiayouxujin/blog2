@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+  <meta name="description" content="为什么要写？电子前哨基金会Electronic Frontier Foundation 简称 EFF ，中文译名电子前哨基金会、电子前线基金会。该基金会成立于 1990 年 7 月，皆在捍卫受威胁的言论。并且 EFF 在成立的当天就宣布对美国特勤局提起诉讼，打起”革命“第一枪😂。 时间轴1990 年 3 月 1 日美国特勤局突袭史蒂夫·杰克逊游戏公司 1990 年 4 月巴洛受到美国联邦调查局有">
+<meta property="og:type" content="website">
+<meta property="og:title" content="美国人民如何捍卫互联网自由">
+<meta property="og:url" content="https://blog.502.li/draft/2019-11-20-the-histort-of-eff.html">
+<meta property="og:site_name" content="木子">
+<meta property="og:description" content="为什么要写？电子前哨基金会Electronic Frontier Foundation 简称 EFF ，中文译名电子前哨基金会、电子前线基金会。该基金会成立于 1990 年 7 月，皆在捍卫受威胁的言论。并且 EFF 在成立的当天就宣布对美国特勤局提起诉讼，打起”革命“第一枪😂。 时间轴1990 年 3 月 1 日美国特勤局突袭史蒂夫·杰克逊游戏公司 1990 年 4 月巴洛受到美国联邦调查局有">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.045Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://blog.502.li/draft/2019-11-20-the-histort-of-eff.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false
+  };
+</script>
+  <title>美国人民如何捍卫互联网自由 | 木子
+  </title>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">时光痕迹</p>
+  </div>
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+  </li>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+  </li>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+  </li>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+  </li>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+  </li>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
+</nav>
+</div>
+    </header>
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div class="content">
+  <div class="posts-expand">
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+<h1 class="post-title" itemprop="name headline">美国人民如何捍卫互联网自由
+</h1>
+<div class="post-meta">
+</div>
+</header>
+      <div class="post-body">
+          <h2 id="为什么要写？"><a href="#为什么要写？" class="headerlink" title="为什么要写？"></a>为什么要写？</h2><h2 id="电子前哨基金会"><a href="#电子前哨基金会" class="headerlink" title="电子前哨基金会"></a>电子前哨基金会</h2><p>Electronic Frontier Foundation 简称 EFF ，中文译名电子前哨基金会、电子前线基金会。该基金会成立于 1990 年 7 月，皆在捍卫受威胁的言论。并且 EFF 在成立的当天就宣布对美国特勤局提起诉讼，打起”革命“第一枪😂。</p>
+<h2 id="时间轴"><a href="#时间轴" class="headerlink" title="时间轴"></a>时间轴</h2><h3 id="1990-年-3-月-1-日"><a href="#1990-年-3-月-1-日" class="headerlink" title="1990 年 3 月 1 日"></a>1990 年 3 月 1 日</h3><p>美国特勤局突袭史蒂夫·杰克逊游戏公司</p>
+<h3 id="1990-年-4-月"><a href="#1990-年-4-月" class="headerlink" title="1990 年 4 月"></a>1990 年 4 月</h3><p>巴洛受到美国<a href="https://zh.wikipedia.org/wiki/联邦调查局" target="_blank" rel="noopener">联邦调查局</a>有关 Macintosh 系列 ROM 源代码盗窃和分发的调查</p>
+<h3 id="1990-年-6-月"><a href="#1990-年-6-月" class="headerlink" title="1990 年 6 月"></a>1990 年 6 月</h3><p>巴洛公布了“罪与罚”一文 并宣布他和卡普尔计划建立一个组织 ， 来“为教育、游说和诉讼与网上言论相关的领域以及关于宪法进入网络空间的扩充筹集和支付经费。”初始资金由卡普尔，<a href="https://zh.wikipedia.org/wiki/斯蒂夫·沃兹尼亚克" target="_blank" rel="noopener">斯蒂夫·沃兹尼亚克</a>和一个匿名人士提供。 </p>
+<h3 id="1990-年-7-月-6-日"><a href="#1990-年-7-月-6-日" class="headerlink" title="1990 年 7 月 6 日"></a>1990 年 7 月 6 日</h3><p>EFF 电子前哨基金会成立并宣布帮助史蒂夫·杰克起诉美国特勤局</p>
+<h3 id="1990年7月10日"><a href="#1990年7月10日" class="headerlink" title="1990年7月10日"></a>1990年7月10日</h3><p>电子前线基金会，由卡普尔、<a href="https://zh.wikipedia.org/w/index.php?title=约翰·吉尔摩&action=edit&redlink=1" target="_blank" rel="noopener">约翰·吉尔摩</a>和巴洛，正式成立于。初始资金由卡普尔，<a href="https://zh.wikipedia.org/wiki/斯蒂夫·沃兹尼亚克" target="_blank" rel="noopener">斯蒂夫·沃兹尼亚克</a>和一个匿名人士提供。 </p>
+<h3 id="2002-年"><a href="#2002-年" class="headerlink" title="2002 年"></a>2002 年</h3><p>为域名系统的开放，透明治理而斗争。</p>
+<h3 id="2004年"><a href="#2004年" class="headerlink" title="2004年"></a>2004年</h3><blockquote>
+<p> 2004年，美国海军研究实验室陷入财政紧缺的状态，它砍掉了对于Tor的资金支持，并将之开源。一个名叫电子前哨基金会（EFF）的知名自由主义网络组织——他们致力于保护受到政府权力迫害的美国公民，提供辩护、声援、监督等多种资助行为——接管了Tor的后续研发和支持，直到今年7月，电子前哨基金会还在网站上推广Tor，列出的理由包括：美国国家安全局（NSA）无法绕过Tor的匿名机制；Tor在开源之后经历过多次挑战，但从未被发现存在后门；Tor的易用性很高，使用者不需要过高的计算机技术……</p>
+<p>此处引用 <a href="http://lanxi.blog.techweb.com.cn/archives/category/未分类/page/21" target="_blank" rel="noopener">http://lanxi.blog.techweb.com.cn/archives/category/%E6%9C%AA%E5%88%86%E7%B1%BB/page/21</a></p>
+</blockquote>
+<h2 id="创立之初"><a href="#创立之初" class="headerlink" title="创立之初"></a>创立之初</h2><h3 id="史蒂夫•杰克逊游戏案"><a href="#史蒂夫•杰克逊游戏案" class="headerlink" title="史蒂夫•杰克逊游戏案"></a>史蒂夫•杰克逊游戏案</h3><ul>
+<li><a href="https://en.wikipedia.org/wiki/Steve_Jackson_Games,_Inc._v._United_States_Secret_Service" target="_blank" rel="noopener">Wikipedia–teve Jackson Games, Inc. v. United States Secret Service</a></li>
+<li><a href=""></a></li>
+</ul>
+<h3 id="伯恩斯坦诉美国政府案"><a href="#伯恩斯坦诉美国政府案" class="headerlink" title="伯恩斯坦诉美国政府案"></a>伯恩斯坦诉美国政府案</h3><h2 id="参与的立法斗争"><a href="#参与的立法斗争" class="headerlink" title="参与的立法斗争"></a>参与的立法斗争</h2><h3 id="DOPA"><a href="#DOPA" class="headerlink" title="DOPA"></a>DOPA</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li>英文：Deleting Online Predators Act of 2006</li>
+<li>中文：删除在线侵犯者法案</li>
+<li><a href="https://www.govtrack.us/congress/bills/110/hr1120/text" target="_blank" rel="noopener">法案详情</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Deleting_Online_Predators_Act_of_2006" target="_blank" rel="noopener">维基百科</a></li>
+</ul>
+<h4 id="各界反应"><a href="#各界反应" class="headerlink" title="各界反应"></a>各界反应</h4><ul>
+<li>电子前哨基金会反应</li>
+</ul>
+<p>The Electronic Frontier Foundation is leading a grass-roots efforts to block passage of the <a href="http://education.zdnet.com/index.php?p=439" target="_blank" rel="noopener">Deleting Online Predators Act</a>. Passed by the House earlier this year, the bill is up for Senate action now that Congress has returned for a final session before the elections.</p>
+<blockquote>
+<p>  The proposal would force any school or library that receives government funding to block access to any web site that “allows users to create web pages or profiles that provide information about themselves and are available to other users, and offers a mechanism for communication with other users, such as a forum, chat room, eMail, or instant messenger.”</p>
+</blockquote>
+<p>EFF is offering an <a href="http://action.eff.org/site/Advocacy?id=253" target="_blank" rel="noopener">online form for citizens to write</a> senators about their objections.</p>
+<blockquote>
+<p>  Cutting off social networking’s legitimate uses is bad enough, but DOPA would also give the FCC wide latitude to define the block-list. It potentially covers IM, blogs, wikis, discussion forums, and other sites far beyond MySpace. Despite its limited exceptions, DOPA will restrict children’s and adults’ online research, distance learning, and use of community forums, among other activities.</p>
+<p>  Two Congressionally commissioned studies say education, not blocking access, is the most effective way to keep kids safe online. What’s more, several new surveys indicate that education is already working: online sexual solicitation rates are reportedly dropping (or were overestimated to begin with), while kids typically ignore solicitations or block the offending user. By hampering educators’ abilities to teach such basic Internet safety skills, DOPA may put children more at risk.</p>
+<p>  此处引用自 <a href="https://www.zdnet.com/article/call-to-fight-dopa-in-senate/" target="_blank" rel="noopener">Call to fight DOPA in Senate</a></p>
+</blockquote>
+<h3 id="PCNAA"><a href="#PCNAA" class="headerlink" title="PCNAA"></a>PCNAA</h3><h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li>英文 Protecting Cyberspace as a National Asset Act </li>
+<li>中文 将网络空间作为国家财产保护法</li>
+<li>[维基百科](Protecting Cyberspace as a National Asset Act)</li>
+<li><a href="https://www.govtrack.us/congress/bills/111/hr5548/text" target="_blank" rel="noopener">法案详情</a></li>
+</ul>
+<h4 id="各界反应-1"><a href="#各界反应-1" class="headerlink" title="各界反应"></a>各界反应</h4><ul>
+<li><p>电子前哨基金会反击</p>
+<blockquote>
+<p>   That definition did not satisfy the ACLU, the American Library Association, the Electronic Frontier Foundation, and many other organizations, who drafted an <a href="http://www.cdt.org/files/pdfs/20100624_joint_cybersec_letter.pdf" target="_blank" rel="noopener">open letter</a> (PDF) to the bill’s sponsors. The letter’s authors proposed modifications to the bill which would include more free speech and information privacy safeguards for the users of critical infrastructure networks. </p>
+<p>  此处引用<a href="http://btlj.org/2011/03/internet-kill-switch-legislation-can-obama-turn-off-the-internet/" target="_blank" rel="noopener">Internet “Kill Switch” Legislation: Can Obama Turn Off the Internet?</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="COICA"><a href="#COICA" class="headerlink" title="COICA"></a>COICA</h3><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li>Combating Online Infringement and Counterfeits Act </li>
+<li>打击在线侵权和假冒法案</li>
+<li><a href="https://www.govtrack.us/congress/bills/111/s3804/text" target="_blank" rel="noopener">法案详情</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Combating_Online_Infringement_and_Counterfeits_Act" target="_blank" rel="noopener">维基百科</a></li>
+</ul>
+<h4 id="各界反应-2"><a href="#各界反应-2" class="headerlink" title="各界反应"></a>各界反应</h4><ul>
+<li>电子前哨基金会反击</li>
+</ul>
+<h3 id="SOPA"><a href="#SOPA" class="headerlink" title="SOPA"></a><strong>SOPA</strong></h3><p>臭名昭著的 SOPA 法案和 PIPA 法案，当时反对的人极多。在这些反对的声音中，最具影响力代表人物的当属于互联网之子 Aaron Swartz ，亚伦·斯沃茨通过他的求进会网聚众反对SOPA法案（Stop Online Piracy Act，网络审查制度）和政府做斗争，最终导致了整个社会都在反对SOPA，也导致了那些议员纷纷改变自己的想法，并导致了白宫最终放弃了这个法案。 </p>
+<h4 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li>Stop Online Piracy Act </li>
+<li>禁止网络盗版法案</li>
+<li><a href="https://www.congress.gov/bill/112th-congress/house-bill/3261" target="_blank" rel="noopener">法案详情</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Stop_Online_Piracy_Act" target="_blank" rel="noopener">维基百科</a></li>
+</ul>
+<h4 id="各界反应-3"><a href="#各界反应-3" class="headerlink" title="各界反应"></a>各界反应</h4><ul>
+<li><p>Goday 支持该法案</p>
+<p>你没看错，当时 Goday 明确地支持 SOPA ，不够后来又改口并道歉说不再支持 SOPA。</p>
+</li>
+<li><p>电子前哨基金会反击</p>
+</li>
+<li><p>互联网之子 Aaron Swartz 亚伦·斯沃茨</p>
+<blockquote>
+<p>他在自杀前曾经领导过一场漂亮的胜利，那就是反对 <a href="https://link.zhihu.com/?target=http%3A//en.wikipedia.org/wiki/Stop_Online_Piracy_Act">SOPA （禁止网络盗版法案）</a>的运动。这是亚伦短暂一生中的高光时刻，也是互联网力量在推动社会革新上的一次闪耀。SOPA 的初衷是保护版权，但实际的处理方式严重动摇了互联网信息开放的根基，并要求互联网平台进行自我审查，这是绝大部分互联网公司所不能容忍的。而支持 SOPA 的则是传统的版权方，包括出版公司，唱片公司，电影公司等，这背后蕴藏着巨大的利益。SOPA 提出时得到了很多国会议员的支持，信奉信息自由的亚伦自然不希望这个法案通过，为此他创办了「求进会」（Demand Progress），通过组织群众游说号召普通民众一起给国会请愿反对 SOPA。</p>
+</blockquote>
+<blockquote>
+<p>在 SOPA 上，国会议员们显然低估了网民的力量。从全球著名域名商 GoDaddy 的倒戈便能看出来：GoDaddy 最初支持 SOPA，而这一举动引起了众多站长的抗议，包括维基百科在内的许多网站在两天之内迅速从 GoDaddy 撤出了37000多个域名，GoDaddy 于是迅速表示转投反对阵营。2012年1月18日，维基百科，Reddit，Craigslist， Mozilla 等网站决定关站24小时以表示抗议，这一天国会的电话被打爆，形势迅速发生逆转，第二天许多原来支持 SOPA 的议员被撼动，站到了反对的一边，最终 SOPA 没有被国会通过。亚伦非常高兴，这是他一生当中为数不多的胜利时刻，这一刻让他觉得自己的理念在现实世界中是行得通的。</p>
+</blockquote>
+<blockquote>
+<p>毫无疑问，互联网已经渗入到我们生活的方方面面。即便是 SOPA 这样有巨大利益集团和政治力量所推进的法案也敌不过千千万万使用互联网的普通民众。如果一个网络公司支持 SOPA，用户可以用脚投票让它无法存活；如果有人动摇互联网的根基，各大互联网公司会毫不犹豫地进行联合抗议，它们造成的放大效应比街头抗议强上数百倍。SOPA 的推行者们没有意识到这样一个逆流而动的法案所面对的阻力是如此之大，而亚伦也没有意识到互联网的力量在政治上已经相当成熟，他刚开始并没有抱太大希望。无论如何，这是美国政治史上的大事件，亚伦也成为了这个大事件中的大人物。</p>
+<p>此处引用自 <a href="https://www.zhihu.com/question/24928691" target="_blank" rel="noopener">支乎</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="PIPA"><a href="#PIPA" class="headerlink" title="PIPA"></a>PIPA</h3><h4 id="介绍-4"><a href="#介绍-4" class="headerlink" title="介绍"></a>介绍</h4><ul>
+<li>Preventing Real Online Threats to Economic Creativity and Theft of Intellectual Property Act </li>
+<li>保护知识产权法案</li>
+<li><a href="https://en.wikipedia.org/wiki/PROTECT_IP_Act" target="_blank" rel="noopener">维基百科</a></li>
+<li><a href="https://www.govtrack.us/congress/bills/112/s968/text" target="_blank" rel="noopener">法案详情</a></li>
+</ul>
+<h4 id="各界反应-4"><a href="#各界反应-4" class="headerlink" title="各界反应"></a>各界反应</h4><ul>
+<li></li>
+</ul>
+<h4 id="相关报道"><a href="#相关报道" class="headerlink" title="相关报道"></a>相关报道</h4><blockquote>
+<p>新浪科技訊 香港時間1月19日消息，美國各大互聯網公司週三紛紛以黑屏及聲明等多種形式抗議美國國會兩項限制網絡內容的法案。Facebook創始人兼CEO馬克‧扎克伯格(Mark Zuckerberg)更是在自己主頁旗幟鮮明地反對這兩項法案，並要求網民向自己的議員施壓。他的聲明已得到近28萬用戶支援(Like)。</p>
+<p>　　這兩項法案分別是阻止網絡盜版法案(Stop Online Piracy Act, 簡稱SOPA)以及保護支援產權法案(Protect Intellectual Property Act,簡稱PIPA)。</p>
+<p>　　 Google (微博)換上了黑色塗鴉(Doodle)，表示“告訴國會不要審查網絡”(Tell Congress: Please Don’t Censor The Web!)。在其他網站中，連線網站Wired也將黑屏首頁，只在要聞位置留出“今日為何審查連線雜誌”的文章； 維基百科英文站宣佈暫時關閉，火狐主頁挂出抗議聲明，圖片分享網站Flickr則允許用戶“黑掉”10張照片以示抗議。</p>
+<p>　　扎克伯格在自己的Facebook主頁上寫到：“互聯網是我們創造一個更加開放、更加互聯的世界所最強大的工具。我們不能讓構思蒼白的法案阻礙互聯網的發展。Facebook反對SOPA和PIPA法案，並將繼續反對任何挫傷互聯網的法案。”</p>
+<p>　　他表示：“今日世界需要倡導互聯網發展的領袖，過去數月我們一直在與許多睿智領袖協作，就(打擊盜版和保護知識產權事宜)提出更好的替代方案。我希望大家更多瞭解此類事宜，並告訴各位的議員你們希望他們推動互聯網的發展。”</p>
+<p>　　SOPA法案是由德克薩斯州聯邦眾議員、共和黨人拉馬爾‧史密斯(Lamar Smith)起草的，他也是美國眾議院司法委員會主席；PIPA法案則是由福蒙特州聯邦參議員、民主黨人帕特里克‧李希(Patrick Leahy)起草，他擔任參議員司法委員會主席。</p>
+<p>　　按照這兩項法案，美國網絡服務提供商必須屏蔽帶有盜版內容網站的域名，阻止網民訪問含有盜版內容的外國網站，違反者將面臨懲罰。這兩項法案的背後則是媒體集團和網絡公司兩大陣營的利益爭奪。</p>
+<p>　　電影公司、傳媒集團等內容提供商是這兩項法案的主要支援者，他們認為斥自己巨資生產的內容卻在網絡被濫用，給版權所有者帶來了巨大損失。美國電影協會(MPAA)、美國全國商會、新聞集團一直在遊說國會，要求通過法案保護他們的版權。</p>
+<p>　　新聞集團CEO魯伯特‧默多克(Rubert Murdoch)更是在自己的Twitter賬戶上抨擊 Google 是盜版的領導者，批評奧巴馬政府漠視盜版問題，和盜版者屬於一個陣營。</p>
+<p>　　而 Google 、Facebook、微軟(微博)、Twitter等網絡公司則立場鮮明地表示反對，他們擔心法案會導致網絡內容審查，阻礙互聯網的創新。</p>
+<p>　　在互聯網公司和網民的抗議壓力下，一些議員也放棄了原先支援這兩項法案的立場。佛羅里達聯邦參議員、共和黨人馬克‧盧比奧(Mark Rubio)週三宣佈放棄此前支援法案，而此前大力倡導這一法案的德克薩斯州參議員、共和黨人約翰‧康恩(John Cornyn)隨後也發表聲明，督促國會更為慎重研究這一法案。</p>
+<p>引用自新浪新闻</p>
+</blockquote>
+<h3 id="CISPA"><a href="#CISPA" class="headerlink" title="CISPA"></a>CISPA</h3><ul>
+<li>网络情报共享与保护法案</li>
+<li>Cyber Intelligence Sharing and Protection Act</li>
+</ul>
+<h2 id="参与的案件"><a href="#参与的案件" class="headerlink" title="参与的案件"></a>参与的案件</h2><h3 id="维基解密"><a href="#维基解密" class="headerlink" title="维基解密"></a>维基解密</h3><blockquote>
+<p> 2008年2月，在<a href="https://zh.wikipedia.org/w/index.php?title=瑞士宝盛银行诉维基解密案&action=edit&redlink=1" target="_blank" rel="noopener">瑞士宝盛银行诉维基解密案</a>中，美国加利福尼亚北区联邦地区法院对维基解密的<a href="https://zh.wikipedia.org/wiki/域名注册商" target="_blank" rel="noopener">域名注册商</a>发布了永久禁止令，此命令将维基解密不能通过<a href="https://zh.wikipedia.org/wiki/域名" target="_blank" rel="noopener">域名</a>访问，导致其现有网址失效，引起了一些认为这是言论审查行为的谴责。这导致<a href="https://zh.wikipedia.org/wiki/电子前哨基金会" target="_blank" rel="noopener">电子前哨基金会</a>前来为维基解密辩护。在之后的审判中，禁止令被撤销了。<a href="https://zh.wikipedia.org/wiki/美国网络审查#cite_note-67" target="_blank" rel="noopener">[67]</a> </p>
+<p>此处引用维基百科<a href=""></a></p>
+</blockquote>
+<h3 id="商业机密和版权"><a href="#商业机密和版权" class="headerlink" title="商业机密和版权"></a>商业机密和版权</h3><blockquote>
+<p>2007年1月4日，美国地区法院法官<a href="https://zh.wikipedia.org/w/index.php?title=杰克·韦恩斯坦&action=edit&redlink=1" target="_blank" rel="noopener">杰克·韦恩斯坦</a>（Jack B. Weinstein）发出了一则<a href="https://zh.wikipedia.org/wiki/禁制令" target="_blank" rel="noopener">禁制令</a>，禁止<a href="https://zh.wikipedia.org/w/index.php?title=精神医疗幸存者运动&action=edit&redlink=1" target="_blank" rel="noopener">精神医疗幸存者运动</a>的大量社会活动家在网站上发布<a href="https://zh.wikipedia.org/wiki/礼来公司" target="_blank" rel="noopener">礼来公司</a>刻意隐瞒<a href="https://zh.wikipedia.org/wiki/奥氮平" target="_blank" rel="noopener">奥氮平</a>致命<a href="https://zh.wikipedia.org/wiki/副作用" target="_blank" rel="noopener">副作用</a>的泄密文件。<a href="https://zh.wikipedia.org/wiki/电子前哨基金会" target="_blank" rel="noopener">电子前哨基金会</a>对此提起<a href="https://zh.wikipedia.org/wiki/上訴" target="_blank" rel="noopener">上诉</a>，认为法院的行为属于<a href="https://zh.wikipedia.org/wiki/預先審查" target="_blank" rel="noopener">预先审查</a>（prior restraint），侵犯了公民发布链接和文档的权利。基金会认为，公民记者应该享有和主流媒体一样的《第一修正案》权利保障。<a href="https://zh.wikipedia.org/wiki/美国网络审查#cite_note-86" target="_blank" rel="noopener">[86]</a>随后的法庭审理中，虽然对《第一修正案》权利的主张被驳回了，但法院认为之前禁令是不可行的。<a href="https://zh.wikipedia.org/wiki/美国网络审查#cite_note-87" target="_blank" rel="noopener">[87]</a> </p>
+<p>此处引用维基百科<a href=""></a></p>
+</blockquote>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zh.wikipedia.org/wiki/美国网络审查" target="_blank" rel="noopener">美国网络审查</a></p>
+<p><a href="https://www.govtrack.us/" target="_blank" rel="noopener">https://www.govtrack.us</a> </p>
+<p><a href="http://btlj.org/2011/03/internet-kill-switch-legislation-can-obama-turn-off-the-internet/" target="_blank" rel="noopener">Internet “Kill Switch” Legislation: Can Obama Turn Off the Internet?</a></p>
+<p><a href="https://www.eff.org/zh-hans/cases/steve-jackson-games-v-secret-service-case-archive" target="_blank" rel="noopener">steve-jackson-games-v-secret-service-case-archive</a> </p>
+<p><a href="https://www.eff.org/zh-hans/cases" target="_blank" rel="noopener">EFF 受理案件列表</a></p>
+      </div>
+    </div>
+  </div>
+          </div>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要写？"><span class="nav-number">1.</span> <span class="nav-text">为什么要写？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电子前哨基金会"><span class="nav-number">2.</span> <span class="nav-text">电子前哨基金会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间轴"><span class="nav-number">3.</span> <span class="nav-text">时间轴</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1990-年-3-月-1-日"><span class="nav-number">3.1.</span> <span class="nav-text">1990 年 3 月 1 日</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1990-年-4-月"><span class="nav-number">3.2.</span> <span class="nav-text">1990 年 4 月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1990-年-6-月"><span class="nav-number">3.3.</span> <span class="nav-text">1990 年 6 月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1990-年-7-月-6-日"><span class="nav-number">3.4.</span> <span class="nav-text">1990 年 7 月 6 日</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1990年7月10日"><span class="nav-number">3.5.</span> <span class="nav-text">1990年7月10日</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2002-年"><span class="nav-number">3.6.</span> <span class="nav-text">2002 年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2004年"><span class="nav-number">3.7.</span> <span class="nav-text">2004年</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创立之初"><span class="nav-number">4.</span> <span class="nav-text">创立之初</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#史蒂夫•杰克逊游戏案"><span class="nav-number">4.1.</span> <span class="nav-text">史蒂夫•杰克逊游戏案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伯恩斯坦诉美国政府案"><span class="nav-number">4.2.</span> <span class="nav-text">伯恩斯坦诉美国政府案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参与的立法斗争"><span class="nav-number">5.</span> <span class="nav-text">参与的立法斗争</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOPA"><span class="nav-number">5.1.</span> <span class="nav-text">DOPA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">5.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各界反应"><span class="nav-number">5.1.2.</span> <span class="nav-text">各界反应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PCNAA"><span class="nav-number">5.2.</span> <span class="nav-text">PCNAA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各界反应-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">各界反应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#COICA"><span class="nav-number">5.3.</span> <span class="nav-text">COICA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍-2"><span class="nav-number">5.3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各界反应-2"><span class="nav-number">5.3.2.</span> <span class="nav-text">各界反应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOPA"><span class="nav-number">5.4.</span> <span class="nav-text">SOPA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍-3"><span class="nav-number">5.4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各界反应-3"><span class="nav-number">5.4.2.</span> <span class="nav-text">各界反应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PIPA"><span class="nav-number">5.5.</span> <span class="nav-text">PIPA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍-4"><span class="nav-number">5.5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各界反应-4"><span class="nav-number">5.5.2.</span> <span class="nav-text">各界反应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关报道"><span class="nav-number">5.5.3.</span> <span class="nav-text">相关报道</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CISPA"><span class="nav-number">5.6.</span> <span class="nav-text">CISPA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参与的案件"><span class="nav-number">6.</span> <span class="nav-text">参与的案件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#维基解密"><span class="nav-number">6.1.</span> <span class="nav-text">维基解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#商业机密和版权"><span class="nav-number">6.2.</span> <span class="nav-text">商业机密和版权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.3.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木子</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/draft/2019-11-20-the-histort-of-eff.html",
+            identifier: "draft/2019-11-20-the-histort-of-eff.html",
+            title: "美国人民如何捍卫互联网自由"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+</body>
+</html>

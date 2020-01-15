@@ -1,67 +1,74 @@
 <!DOCTYPE html>
-<html class="theme-next gemini" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" , user-scalable="no/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=7.1.0">
-  <link rel="mask-icon" href="/favicon.ico?v=7.1.0" color="#222">
-<script id="hexo.configurations">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/favicon.ico" color="#222">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://blog.502.li').hostname,
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: true,
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
-    lazyload: true,
-    tabs: true,
-    motion: "",
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"buttons","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
-      hits: "",
-      labels: ""
-    }
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="README内容主要来自在社群里dockone有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于提问链接在石墨文档上协作编辑，而石墨文档里的内容是无法被搜索引擎检索到的。这些问题不整理起来就永远地躺尸在石墨文档了，所以就把这些提问的问题汇总到一起，方便大家自查。 2020-01-07：电视云服务的容器化实践提问链接  Q1：微服务代理，能详细说说嘛？  A">
-<meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(2000个) kubernetes 社群分享 QA 汇总">
 <meta property="og:url" content="https://blog.502.li/archives/kubernetes-QA.html">
 <meta property="og:site_name" content="木子">
 <meta property="og:description" content="README内容主要来自在社群里dockone有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于提问链接在石墨文档上协作编辑，而石墨文档里的内容是无法被搜索引擎检索到的。这些问题不整理起来就永远地躺尸在石墨文档了，所以就把这些提问的问题汇总到一起，方便大家自查。 2020-01-07：电视云服务的容器化实践提问链接  Q1：微服务代理，能详细说说嘛？  A">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="../img/1575857978783.png">
 <meta property="og:image" content="../img/1575857922468.png">
 <meta property="og:image" content="../img/1575858093193.png">
-<meta property="og:updated_time" content="2020-01-14T12:26:46.866Z">
+<meta property="article:published_time" content="2019-12-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-14T14:23:37.033Z">
+<meta property="article:author" content="木子">
+<meta property="article:tag" content="kubernetes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(2000个) kubernetes 社群分享 QA 汇总">
-<meta name="twitter:description" content="README内容主要来自在社群里dockone有关企业 Kubernetes 实践过程的直播分享，下面截取聊天记录的自 QA 部分 。由于提问链接在石墨文档上协作编辑，而石墨文档里的内容是无法被搜索引擎检索到的。这些问题不整理起来就永远地躺尸在石墨文档了，所以就把这些提问的问题汇总到一起，方便大家自查。 2020-01-07：电视云服务的容器化实践提问链接  Q1：微服务代理，能详细说说嘛？  A">
 <meta name="twitter:image" content="../img/1575857978783.png">
-  <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
-  <link rel="canonical" href="https://blog.502.li/archives/kubernetes-QA">
-<script id="page.configurations">
+<link rel="canonical" href="https://blog.502.li/archives/kubernetes-QA.html">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true
   };
 </script>
   <title>(2000个) kubernetes 社群分享 QA 汇总 | 木子</title>
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -70,8 +77,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-  .use-motion .logo,
+  .use-motion .collection-header { opacity: initial; }
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -81,127 +87,115 @@
   .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
+<link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">木子</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <h1 class="site-subtitle" itemprop="description">时光痕迹</h1>
+        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-desktop"></i> <br>首页</a>
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
   </li>
-          <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+        <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
   </li>
-          <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书单</a>
+        <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
   </li>
-          <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+        <li class="menu-item menu-item-书单">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
   </li>
-          <li class="menu-item menu-item-about">
-    <a href="/about.html" rel="section"><i class="menu-item-icon fa fa-fw fa-user-circle-o"></i> <br>关于</a>
+        <li class="menu-item menu-item-友链">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
   </li>
-        <li class="menu-item menu-item-search">
-            <a href="javascript:;" class="popup-trigger">
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-    </ul>
-    <div class="site-search">
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-    </div>
+        <li class="menu-item menu-item-关于">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+  </li>
+  </ul>
 </nav>
 </div>
     </header>
-    <main id="main" class="main">
+  <div class="reading-progress-bar"></div>
+  <a href="https://github.com/muzi502" class="github-corner" title="GitHub" aria-label="GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
-  <div id="posts" class="posts-expand">
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  <div class="post-block">
+          <div class="content">
+  <div class="posts-expand">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.502.li/archives/kubernetes-QA.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://blog.502.li/favicon.ico">
       <meta itemprop="name" content="木子">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/avatar.png">
+      <meta itemprop="description" content="">
     </span>
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="木子">
     </span>
       <header class="post-header">
-          <h2 class="post-title" itemprop="name headline">(2000个) kubernetes 社群分享 QA 汇总
-          </h2>
+        <h1 class="post-title" itemprop="name headline">
+          (2000个) kubernetes 社群分享 QA 汇总
+        </h1>
         <div class="post-meta">
-          <span class="post-time">
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-                <span class="post-meta-item-text">发表于</span>
-              <time title="创建时间：2019-12-04 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-04T00:00:00-05:00">2019-12-04</time>
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="创建时间：2019-12-04 2019-12-04T00:00:00+08:00" itemprop="dateCreated datePublished" datetime="2019-12-04T00:00:00+08:00">2019-12-04</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                  <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-14 07:26:46" itemprop="dateModified" datetime="2020-01-14T07:26:46-05:00">2020-01-14</time>
-          </span>
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/kubernetes-QA.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/kubernetes-QA.html" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-14 2020-01-14T22:23:37+08:00" itemprop="dateModified" datetime="2020-01-14T22:23:37+08:00">2020-01-14</time>
               </span>
-            <div class="post-symbolscount">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                  <span class="post-meta-item-text">本文字数：</span>
-                <span title="本文字数">449k</span>
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                <span title="阅读时长">9:22</span>
-            </div>
+  <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    <a title="disqus" href="/archives/kubernetes-QA.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/kubernetes-QA.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>306k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8:30</span>
+            </span>
         </div>
       </header>
     <div class="post-body" itemprop="articleBody">
@@ -2609,7 +2603,7 @@
 <blockquote>
 <p>Q：JVM如何export，是多container吗，监控数据，搜刮到Prometheus？</p>
 </blockquote>
-<p>A：JVM的用的是Prometheus埋点，Java里面的路径是/actuator/prometheus，在yaml里面定义prometheus.io/path:/actuator/prometheu prometheus.io/port:’8090’ prometheus.io/scrape:\’true\’，再在Prometheus里面进行相应的配置，就可以去搜刮到这些暴露的指标。</p>
+<p>A：JVM的用的是Prometheus埋点，Java里面的路径是/actuator/prometheus，在yaml里面定义prometheus.io/path:/actuator/prometheu prometheus.io/port:’8090’ prometheus.io/scrape:&#39;true&#39;，再在Prometheus里面进行相应的配置，就可以去搜刮到这些暴露的指标。</p>
 <blockquote>
 <p>Q：Kubernetes和OpenShift哪个更适合微服务的使用？</p>
 </blockquote>
@@ -2908,7 +2902,7 @@
 <blockquote>
 <p>Q：image的版本管理怎么做？配置的版本管理怎么做？</p>
 </blockquote>
-<p>A：OpenShift本身会创建一个内部的Registry，S2I会根据Build来更新image，image的版本是通过sha256的值对应Build的版本号（例如：Build版本#24对应registry.intra.XXXXX.com/abc/abc-platform\@sha256:b41c8XXXXX）。</p>
+<p>A：OpenShift本身会创建一个内部的Registry，S2I会根据Build来更新image，image的版本是通过sha256的值对应Build的版本号（例如：Build版本#24对应registry.intra.XXXXX.com/abc/abc-platform@sha256:b41c8XXXXX）。</p>
 <blockquote>
 <p>Q：OpenShift的网络方案性能方面有多少损耗？与Kubernetes的其他网络方案如Calico相比如何？</p>
 </blockquote>
@@ -2989,7 +2983,7 @@
 <blockquote>
 <p>Q：日志收集工具是否用了Fluentd，日志收集到ES里，用Kibana查询有没有遇到过日志乱序的问题？</p>
 </blockquote>
-<p>A：我们使用的是Filebeat，将日志收集到Kafka，再转给Logtash，Logtash处理后才转给ES， Filebeat -> Kafka -> Logstash -&gt; ES -&gt; Kibana，乱序问题我没遇到过，应该可以在Logstash处理的时候确认。</p>
+<p>A：我们使用的是Filebeat，将日志收集到Kafka，再转给Logtash，Logtash处理后才转给ES， Filebeat -&gt; Kafka -&gt; Logstash -&gt; ES -&gt; Kibana，乱序问题我没遇到过，应该可以在Logstash处理的时候确认。</p>
 <blockquote>
 <p>Q：可否实现Kubernetes上容器与主机通讯？</p>
 </blockquote>
@@ -4212,7 +4206,7 @@
 <blockquote>
 <p>Q：能否讲下”Nginx会实时从服务管理中心获取服务对应关系”的原理是什么？</p>
 </blockquote>
-<p>A：我们在OpenResty基础上，通过Lua脚本从\”服务管理中心\”处查询和订阅服务对应关系，实时修改Nginx配置，进行负载均衡、服务发现。</p>
+<p>A：我们在OpenResty基础上，通过Lua脚本从&quot;服务管理中心&quot;处查询和订阅服务对应关系，实时修改Nginx配置，进行负载均衡、服务发现。</p>
 <blockquote>
 <p>Q：请问你们Docker是安装在物理机还是？</p>
 </blockquote>
@@ -4622,7 +4616,7 @@
 <blockquote>
 <p>Q：如果有开发人员需要上去看错误日志，假设这种错误日志是需要调试，不会被收集，是只能通过堡垒机去看吗？容器的日志怎么进行存储，如果挂到宿主机目录那好多容器怎么分文件夹呢？</p>
 </blockquote>
-<p>A：我们方案里fluentd可以收集node上几乎所有的日志，另外关于错误调试日志，如果是应用的，那开发人员按照需求调整输出路径就好了，用ELK采集就好了。如果是系统级别的，运维人员就把它作为一个Linux主机查日志拍错就好了。 另外容器的日志，解释起来有些长，你可以参考我之前的帖子《<a href="https://mp.weixin.qq.com/s?__biz=MzA4MjQ1NTgyOQ==&amp;mid=300723383&amp;idx=1&amp;sn=2c31770da35b429b74ef0264bfb17201&amp;chksm=0b9d70cd3ceaf9db43d7cb943533500a15ebe5463f8f06d3b13075b305c23dadfa725f91e19b&amp;mpshare=1&amp;scene=1&amp;srcid=0725JDmSrXiXVBDLGj4A4yRe#rd" target="_blank" rel="noopener">Docker日志那点事</a>》，容器日志的目录和格式都有写到。</p>
+<p>A：我们方案里fluentd可以收集node上几乎所有的日志，另外关于错误调试日志，如果是应用的，那开发人员按照需求调整输出路径就好了，用ELK采集就好了。如果是系统级别的，运维人员就把它作为一个Linux主机查日志拍错就好了。 另外容器的日志，解释起来有些长，你可以参考我之前的帖子《<a href="https://mp.weixin.qq.com/s?__biz=MzA4MjQ1NTgyOQ==&mid=300723383&idx=1&sn=2c31770da35b429b74ef0264bfb17201&chksm=0b9d70cd3ceaf9db43d7cb943533500a15ebe5463f8f06d3b13075b305c23dadfa725f91e19b&mpshare=1&scene=1&srcid=0725JDmSrXiXVBDLGj4A4yRe#rd" target="_blank" rel="noopener">Docker日志那点事</a>》，容器日志的目录和格式都有写到。</p>
 <blockquote>
 <p>Q：用的Overlay网络，那你们用的NodePort暴露的服务，然后外部LB访问NodePort？那你们现在容器一个集群内有多少容器？kube-proxy的性能有做过压力测试吗？</p>
 </blockquote>
@@ -4681,7 +4675,7 @@
 <blockquote>
 <p>Q：能详细介绍下任务资源分配这一块的算法吗？</p>
 </blockquote>
-<p>A：之前已经简单介绍过了，通过接收\’OFFERS\’事件触发相关任务－资源分配的代码块。 由于得到的Offer对象实际为一个列表，处理逻辑会循环为每一个Offer分配具体的任务，而每个Offer的任务列表总资源（CPU、Memory等）必需小于Offer resources * RESOURCES_USE_THRESHOLD（资源使用阀值，可通过配置文件resources.use.threshold设置，默认0.8），每分配完一个Offer的task_infos后，便生成Accept Call由发送线程池进行发送处理，整个过程都是异步非阻塞的。</p>
+<p>A：之前已经简单介绍过了，通过接收&#39;OFFERS&#39;事件触发相关任务－资源分配的代码块。 由于得到的Offer对象实际为一个列表，处理逻辑会循环为每一个Offer分配具体的任务，而每个Offer的任务列表总资源（CPU、Memory等）必需小于Offer resources * RESOURCES_USE_THRESHOLD（资源使用阀值，可通过配置文件resources.use.threshold设置，默认0.8），每分配完一个Offer的task_infos后，便生成Accept Call由发送线程池进行发送处理，整个过程都是异步非阻塞的。</p>
 <blockquote>
 <p>Q：所有的任务都存档在Docker里面对于一些临时的任务如何处理?</p>
 </blockquote>
@@ -5682,7 +5676,7 @@
 <p>Q：你好请教一下，当微服务之间的依赖关系比较多，且层次比较深时，服务的启动，停止，以及升级之间的关系如何处理？</p>
 </blockquote>
 <p>A：目前还几乎没出现过需要彻底冷启动的情况。而且启动服务时并不需要依赖服务也启动，只需要发生业务时，依赖服务启动即可。</p>
-<p>以上内容根据2016年11月15日晚微信群分享内容整理。分享人<strong>刘思贤（微博<a href="http://weibo.com/starlight36" target="_blank" rel="noopener">\@starlight36</a>），爱油科技架构师、PMP。主要负责业务平台架构设计，DevOps实施和研发过程持续改进等，关注领域驱动设计与微服务、建设高效团队和工程师文化培养</strong>。</p>
+<p>以上内容根据2016年11月15日晚微信群分享内容整理。分享人<strong>刘思贤（微博<a href="http://weibo.com/starlight36" target="_blank" rel="noopener">@starlight36</a>），爱油科技架构师、PMP。主要负责业务平台架构设计，DevOps实施和研发过程持续改进等，关注领域驱动设计与微服务、建设高效团队和工程师文化培养</strong>。</p>
 <hr>
 <h3 id="2016-11-16：树莓派上的Docker集群管理"><a href="#2016-11-16：树莓派上的Docker集群管理" class="headerlink" title="2016-11-16：树莓派上的Docker集群管理"></a>2016-11-16：树莓派上的Docker集群管理</h3><blockquote>
 <p>Q：先问一个问题，您家里的树莓集群用来做什么？有哪些场景会用到树莓Docker？</p>
@@ -5810,7 +5804,7 @@
 <blockquote>
 <p>Q：你们的Ansible host文件是动态生成的嘛？代码推送也是通过Ansible嘛？新增删除节点，以及回滚等操作是如何实现的？</p>
 </blockquote>
-<p>A：最开始实践的时候不是动态生成的，其实我们是可以从Consul中获取到当前集群里面的节点和节点的一些简单的配置信息，后面有考虑从Consul里面拿节点信息，动态生成用于Ansible灰度的host文件。代码推送也是使用的Ansible，如果能和外网连接的机器，也可以使用GitHub。因为我们的Playbook的角色是通过组件区分的，新增删除节点只需要修改Host文件，把相应的节点加入安装或删除相应的组件。如回滚操作： <code>`</code> {.prettyprint} $ ansible-playbook rollback.yml -i hosts -e “hosts_env=XXX app_env=XXX version_env=XXX”   hosts_env：表示要回滚的主机组，如Masterapp_env：表示要回滚的组件，如ZooKeeperxxx_version：表示要回滚组件的版本号，如v1.0.1.20160918</p>
+<p>A：最开始实践的时候不是动态生成的，其实我们是可以从Consul中获取到当前集群里面的节点和节点的一些简单的配置信息，后面有考虑从Consul里面拿节点信息，动态生成用于Ansible灰度的host文件。代码推送也是使用的Ansible，如果能和外网连接的机器，也可以使用GitHub。因为我们的Playbook的角色是通过组件区分的，新增删除节点只需要修改Host文件，把相应的节点加入安装或删除相应的组件。如回滚操作： ``` {.prettyprint} $ ansible-playbook rollback.yml -i hosts -e “hosts_env=XXX app_env=XXX version_env=XXX”   hosts_env：表示要回滚的主机组，如Masterapp_env：表示要回滚的组件，如ZooKeeperxxx_version：表示要回滚组件的版本号，如v1.0.1.20160918</p>
 <blockquote>
 <p>Q：Dora的调度策略是怎么样的？可否简单介绍一下。</p>
 </blockquote>
@@ -6344,7 +6338,7 @@
 <blockquote>
 <p>Q：请问Kubernetes使用health check http请求的时候有没有遇到容器可能本身需要好久才能启动完毕那么这个人机制就会一直死循环…请问这个有没有好的方式解决？</p>
 </blockquote>
-<p>A：Kubernetes health check分成readinessProbe和livenessProbe。前者决定容器是否ready，后者当检查失败后直接暴力杀死容器。某些容器启动较慢，所以需要设定一个等待时间。我们的容器等待时间是readiness->15s, liveness->2min。</p>
+<p>A：Kubernetes health check分成readinessProbe和livenessProbe。前者决定容器是否ready，后者当检查失败后直接暴力杀死容器。某些容器启动较慢，所以需要设定一个等待时间。我们的容器等待时间是readiness-&gt;15s, liveness-&gt;2min。</p>
 <blockquote>
 <p>Q：后来，我们按功能把原先的一个集群拆分成了多个，分别运维，如此一来，稳定性大为提升，这个怎么拆的呢？</p>
 </blockquote>
@@ -6502,13 +6496,13 @@
 <p>以上内容根据2016年7月14日晚微信群分享内容整理。分享人<strong>方志浩，92年的程序猿，毕业之后一直在数人云，对Docker 和 Mesos有深入研究，目前做数人云平台打包部署以及部分客户项目实施工作，喜欢在实践中尝试新事物并总结</strong>。</p>
 <hr>
 <h3 id="2016-06-30：-Docker网络方案初探"><a href="#2016-06-30：-Docker网络方案初探" class="headerlink" title="2016-06-30： Docker网络方案初探"></a>2016-06-30： Docker网络方案初探</h3><blockquote>
-<p>Q：从你发的Marathon json文件来看，你们是对Mesos底层的网络做了扩展吗？容器网络通过\”parameters\”传递下去的吗？</p>
+<p>Q：从你发的Marathon json文件来看，你们是对Mesos底层的网络做了扩展吗？容器网络通过&quot;parameters&quot;传递下去的吗？</p>
 </blockquote>
 <p>A：就是利用Marathon支持的Docker parameters下发，等同于 <code>docker run ---net dataman xxx</code>。</p>
 <blockquote>
 <p>Q：Felix根据配置的pool地址段配置路由，BGP Client通告路由？请问bgp的邻居关系是怎么建立的？是依靠etcd里的信息？</p>
 </blockquote>
-<p>A：是的，Felix配置本地Kernel路由，BGP Client负责分发路由信息；BGP小规模部署采取mesh方式建立，所有节点互联n\^2的联系，大规模部署推荐 部署一个或多个BGP route reflector，专门负责路由信息分发。</p>
+<p>A：是的，Felix配置本地Kernel路由，BGP Client负责分发路由信息；BGP小规模部署采取mesh方式建立，所有节点互联n^2的联系，大规模部署推荐 部署一个或多个BGP route reflector，专门负责路由信息分发。</p>
 <blockquote>
 <p>Q：请问在DataMan这个网络中路由信息是如何更新的？我们知道BGP是可以自己发现收敛网络的，那么在网络控制层面是如何设计的？</p>
 </blockquote>
@@ -6730,7 +6724,7 @@
 </blockquote>
 <p>A：Docker 1.9为了支持所谓的”完全客户端镜像构建”能力，为docker cp命令添加了向容器传文件的API。我们通过这种机制把配置文件”装”到容器里</p>
 <blockquote>
-<p>Q：Create -> 下发配置 Start这样确保容器启动之前已经加载了正确的配置文件。这一步的下发配置是怎么做的，因为那个时候容器还没启动？</p>
+<p>Q：Create -&gt; 下发配置 Start这样确保容器启动之前已经加载了正确的配置文件。这一步的下发配置是怎么做的，因为那个时候容器还没启动？</p>
 </blockquote>
 <p>A：向容器里copy文件并不需要容器处于运行状态，只要容器存在就能copy。</p>
 <blockquote>
@@ -7204,7 +7198,7 @@
 <h3 id="2016-01-30：IT基础架构的自动化编排"><a href="#2016-01-30：IT基础架构的自动化编排" class="headerlink" title="2016-01-30：IT基础架构的自动化编排"></a>2016-01-30：IT基础架构的自动化编排</h3><blockquote>
 <p>Q：Terraform 建立EC2时怎么用之前构建好的镜像？</p>
 </blockquote>
-<p>A：例子中， \”source_ami\”: \”ami-de0d9eb7\” 就是引入源镜像。</p>
+<p>A：例子中， &quot;source_ami&quot;: &quot;ami-de0d9eb7&quot; 就是引入源镜像。</p>
 <blockquote>
 <p>Q：packers感觉就是镜像的封装，不知道描述是否贴切，它与kickstart有什么不同？</p>
 </blockquote>
@@ -9017,7 +9011,7 @@
 <blockquote>
 <p>Q：在magnum的网络解决上libnetwork和Neutron区别在什么地方，各自的优势是什么，现在有哪些难点需要解决？</p>
 </blockquote>
-<p>A：这个我还在调查 现在还没有一些结论 具体的可以关注这个<a href="https://blueprints.launchpad.net/magnum" target="_blank" rel="noopener">bp</a> spec/native-docker-network,我会定期的去append一些调查结果.希望对网络感兴趣的人参与到<a href="https://blueprints.launchpad.net/magnum/&gt;spec/native-docker-network" target="_blank" rel="noopener">native-docker-network</a> 这个bp的讨论中来。</p>
+<p>A：这个我还在调查 现在还没有一些结论 具体的可以关注这个<a href="https://blueprints.launchpad.net/magnum" target="_blank" rel="noopener">bp</a> spec/native-docker-network,我会定期的去append一些调查结果.希望对网络感兴趣的人参与到<a href="https://blueprints.launchpad.net/magnum/>spec/native-docker-network" target="_blank" rel="noopener">native-docker-network</a> 这个bp的讨论中来。</p>
 <blockquote>
 <p>Q：Magnum的Blueprint写着”Add support for mesos bay type”，bay type支持mesos, k8s,swarm，这个以后真的能做到统一抽象吗？这三者之间差异化还不小。Magnum社区是怎么考虑的？</p>
 </blockquote>
@@ -9139,103 +9133,132 @@
 </blockquote>
 <p>A：先这么用呗，我觉得Docker的优势就是底层平台无关，今后换了底层迁移也没有那么困难。</p>
     </div>
-      <div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>木子</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://blog.502.li/archives/kubernetes-QA.html" title="(2000个) kubernetes 社群分享 QA 汇总">https://blog.502.li/archives/kubernetes-QA.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。</li>
-</ul>
-      </div>
-    <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/kubernetes/" rel="tag"><i class="fa fa-tag"></i> kubernetes</a>
-        </div>
-    </footer>
-  </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kubernetes/" rel="tag"><i class="fa fa-tag"></i> kubernetes</a>
+          </div>
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/Kindle-Oasis2-vs-Paperwhite3.html" rel="prev" title="Kindle Oasis 和 Kindle Paperwhite3 使用体验">
+      <i class="fa fa-chevron-left"></i> Kindle Oasis 和 Kindle Paperwhite3 使用体验
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/Kubernetes-Introduction-for-VMware-Users-zh.html" rel="next" title="给 VMware vSphere 用户的 Kubernetes 简介">
+      给 VMware vSphere 用户的 Kubernetes 简介 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
   </article>
   </div>
           </div>
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-        </div>
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
-  <aside id="sidebar" class="sidebar">
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+        </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a href="/">
-              <img class="site-author-image" itemprop="image" src="/avatar.png" alt="木子">
-             </a>   
-              <p class="site-author-name" itemprop="name">木子</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-            <div class="links-of-author motion-element">
-                <span class="links-of-author-item">
-                  <a href="https://github.com/muzi502" title="GitHub &rarr; https://github.com/muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="mailto:blog@502.li" title="E-Mail &rarr; mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://twitter.com/muzi_ii" title="Twitter &rarr; https://twitter.com/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
-                </span>
-                <span class="links-of-author-item">
-                  <a href="https://t.me/muzi_ii" title="Telegram &rarr; https://t.me/muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i></a>
-                </span>
-            </div>
-             <div class="cc-license motion-element" itemprop="license">
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-             </div>
-        </div>
-      </div>
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
       <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#README"><span class="nav-number">1.</span> <span class="nav-text">README</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-01-07：电视云服务的容器化实践"><span class="nav-number">2.</span> <span class="nav-text">2020-01-07：电视云服务的容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-01-02-：为你写诗：3-步搭建-Serverless-AI-应用"><span class="nav-number">3.</span> <span class="nav-text">2020-01-02 ：为你写诗：3 步搭建 Serverless AI 应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-26：如何在Kubernetes中编写自定义控制器"><span class="nav-number">4.</span> <span class="nav-text">2019-12-26：如何在Kubernetes中编写自定义控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-19：阿里云如何基于标准-K8s-打造边缘计算云原生基础设施"><span class="nav-number">5.</span> <span class="nav-text">2019-12-19：阿里云如何基于标准 K8s 打造边缘计算云原生基础设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-18-：Open-Policy-Agent在Kubernetes中的应用"><span class="nav-number">6.</span> <span class="nav-text">2019-12-18:：Open Policy Agent在Kubernetes中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-10：Volcano介绍及其在深度学习场景下的应用"><span class="nav-number">7.</span> <span class="nav-text">2019-12-10：Volcano介绍及其在深度学习场景下的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-05：Knative-Serverless-之道-如何-0-运维、低成本实现应用托管？"><span class="nav-number">8.</span> <span class="nav-text">2019-12-05：Knative Serverless 之道 - 如何 0 运维、低成本实现应用托管？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-03：Kubernetes-在信也科技的落地实战"><span class="nav-number">9.</span> <span class="nav-text">2019-12-03：Kubernetes 在信也科技的落地实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-26：基于CDN的边缘计算平台设计和思考"><span class="nav-number">10.</span> <span class="nav-text">2019-11-26：基于CDN的边缘计算平台设计和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-21：给-K8s-API-“做减法”：阿里云原生应用管理的挑战和实践"><span class="nav-number">11.</span> <span class="nav-text">2019-11-21：给 K8s API “做减法”：阿里云原生应用管理的挑战和实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-19：基于云原生日志分类处理方案与落地实践"><span class="nav-number">12.</span> <span class="nav-text">2019-11-19：基于云原生日志分类处理方案与落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-12：扇贝-Service-Mesh-发展历程"><span class="nav-number">13.</span> <span class="nav-text">2019-11-12：扇贝 Service Mesh 发展历程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-10：蔚来汽车的Kubernetes实践"><span class="nav-number">14.</span> <span class="nav-text">2019-11-10：蔚来汽车的Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-10：超大规模商用-K8s-场景下，阿里巴巴如何动态解决容器资源的按需分配问题？"><span class="nav-number">15.</span> <span class="nav-text">2019-10-10：超大规模商用 K8s 场景下，阿里巴巴如何动态解决容器资源的按需分配问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-07：如何实现-K8s-一键部署？开发部署提速-8-倍？带你上手一款下载超-10-万次的-IDEA-插件"><span class="nav-number">16.</span> <span class="nav-text">2019-11-07：如何实现 K8s 一键部署？开发部署提速 8 倍？带你上手一款下载超 10 万次的 IDEA 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-07：k3s在边缘计算中的应用实践"><span class="nav-number">17.</span> <span class="nav-text">2019-11-07：k3s在边缘计算中的应用实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-31：Jenkins-X：基于-Kubernetes-的-Serverless-Jenkins"><span class="nav-number">18.</span> <span class="nav-text">2019-10-31：Jenkins X：基于 Kubernetes 的 Serverless Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-29：基于-Ceph-的-Kubernetes-数据持久化"><span class="nav-number">19.</span> <span class="nav-text">2019-10-29：基于 Ceph 的 Kubernetes 数据持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-15：Kubernetes在SHAREit的落地实战"><span class="nav-number">20.</span> <span class="nav-text">2019-10-15：Kubernetes在SHAREit的落地实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-17：Prometheus架构与实践分享"><span class="nav-number">21.</span> <span class="nav-text">2019-09-17：Prometheus架构与实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-19：云原生可观察性之日志管理"><span class="nav-number">22.</span> <span class="nav-text">2019-09-19：云原生可观察性之日志管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-19：当-K8s-集群达到万级规模，阿里巴巴如何解决系统各组件性能问题？"><span class="nav-number">23.</span> <span class="nav-text">2019-09-19：当 K8s 集群达到万级规模，阿里巴巴如何解决系统各组件性能问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-03：基于Kubernetes的DevOps平台实战"><span class="nav-number">24.</span> <span class="nav-text">2019-09-03：基于Kubernetes的DevOps平台实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-29：Porter：面向裸金属环境的-Kubernetes-的开源负载均衡器"><span class="nav-number">25.</span> <span class="nav-text">2019-08-29：Porter：面向裸金属环境的 Kubernetes 的开源负载均衡器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-27：eBay-Kubernetes集群的存储实践"><span class="nav-number">26.</span> <span class="nav-text">2019-08-27：eBay Kubernetes集群的存储实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-20：小公司如何优雅地推进应用上Kubernetes容器云"><span class="nav-number">27.</span> <span class="nav-text">2019-08-20：小公司如何优雅地推进应用上Kubernetes容器云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-24：玩转Kubernetes开发测试环境"><span class="nav-number">28.</span> <span class="nav-text">2019-10-24：玩转Kubernetes开发测试环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-25：HC-Bridge容器网络模式分享"><span class="nav-number">29.</span> <span class="nav-text">2019-09-25：HC Bridge容器网络模式分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-16：初探云原生应用管理之：聊聊-Tekton-项目"><span class="nav-number">30.</span> <span class="nav-text">2019-08-16：初探云原生应用管理之：聊聊 Tekton 项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-14：PPmoney基于Kubernetes的DevOps实践"><span class="nav-number">31.</span> <span class="nav-text">2019-08-14：PPmoney基于Kubernetes的DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践"><span class="nav-number">32.</span> <span class="nav-text">2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-24：TiDB-Operator-的设计与实现"><span class="nav-number">33.</span> <span class="nav-text">2019-07-24：TiDB Operator 的设计与实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-17：基于Istio的灰度平台实践"><span class="nav-number">34.</span> <span class="nav-text">2019-07-17：基于Istio的灰度平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-10：Kube-OVN-的设计思路和实现原理"><span class="nav-number">35.</span> <span class="nav-text">2019-07-10：Kube-OVN 的设计思路和实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-03：震坤行的容器云实践"><span class="nav-number">36.</span> <span class="nav-text">2019-07-03：震坤行的容器云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-06-26：智能工厂的容器云实践"><span class="nav-number">37.</span> <span class="nav-text">2019-06-26：智能工厂的容器云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-06-05：基于Actor模型的CQRS-ES解决方案分享"><span class="nav-number">38.</span> <span class="nav-text">2019-06-05：基于Actor模型的CQRS/ES解决方案分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-05-29：平安证券Kubernetes容器集群的DevOps实践"><span class="nav-number">39.</span> <span class="nav-text">2019-05-29：平安证券Kubernetes容器集群的DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-30：荔枝运维平台容器化实践"><span class="nav-number">40.</span> <span class="nav-text">2019-04-30：荔枝运维平台容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-24：华尔街见闻Istio生产实践"><span class="nav-number">41.</span> <span class="nav-text">2019-04-24：华尔街见闻Istio生产实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-17：瓜子云平台的实践经验"><span class="nav-number">42.</span> <span class="nav-text">2019-04-17：瓜子云平台的实践经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-03：容器环境下的持续集成最佳实践"><span class="nav-number">43.</span> <span class="nav-text">2019-04-03：容器环境下的持续集成最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-03-28：基于OVN的Kubernetes网络架构解析"><span class="nav-number">44.</span> <span class="nav-text">2019-03-28：基于OVN的Kubernetes网络架构解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-03-21：小团队微服务落地实践"><span class="nav-number">45.</span> <span class="nav-text">2019-03-21：小团队微服务落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-02-28：骞云科技DevOps实践"><span class="nav-number">46.</span> <span class="nav-text">2019-02-28：骞云科技DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-02-22：房多多Service-Mesh实践"><span class="nav-number">47.</span> <span class="nav-text">2019-02-22：房多多Service Mesh实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-25：得到App的容器及Kubernetes实践"><span class="nav-number">48.</span> <span class="nav-text">2019-01-25：得到App的容器及Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战"><span class="nav-number">49.</span> <span class="nav-text">2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-11：如何评估Kubernetes持久化存储方案"><span class="nav-number">50.</span> <span class="nav-text">2019-01-11：如何评估Kubernetes持久化存储方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-04：etcd-集群运维实践"><span class="nav-number">51.</span> <span class="nav-text">2019-01-04：etcd 集群运维实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-12-21：聚美优品云平台实践"><span class="nav-number">52.</span> <span class="nav-text">2018-12-21：聚美优品云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践"><span class="nav-number">53.</span> <span class="nav-text">2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-29：猪八戒网DevOps容器云与流水线"><span class="nav-number">54.</span> <span class="nav-text">2018-11-29：猪八戒网DevOps容器云与流水线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-22：容器化落地实践的一个案例"><span class="nav-number">55.</span> <span class="nav-text">2018-11-22：容器化落地实践的一个案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-03：Spring-Cloud-Kubernetes容器化实践"><span class="nav-number">56.</span> <span class="nav-text">2018-11-03：Spring Cloud Kubernetes容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-29：有赞容器化实践"><span class="nav-number">57.</span> <span class="nav-text">2018-09-29：有赞容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-20：唯品会Noah云平台实现内幕披露"><span class="nav-number">58.</span> <span class="nav-text">2018-09-20：唯品会Noah云平台实现内幕披露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-09：gVisor是什么？可以解决什么问题？"><span class="nav-number">59.</span> <span class="nav-text">2018-09-09：gVisor是什么？可以解决什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-25：有货基于Kubernetes容器环境的持续交付实践"><span class="nav-number">60.</span> <span class="nav-text">2018-08-25：有货基于Kubernetes容器环境的持续交付实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-13：基于Spring-Cloud的微服务容器化实践"><span class="nav-number">61.</span> <span class="nav-text">2018-08-13：基于Spring Cloud的微服务容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-11：滴滴弹性云Kubernetes实践"><span class="nav-number">62.</span> <span class="nav-text">2018-08-11：滴滴弹性云Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-29：基于-GitLab-的-CI-实践"><span class="nav-number">63.</span> <span class="nav-text">2018-07-29：基于 GitLab 的 CI 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-20：小米弹性调度平台Ocean"><span class="nav-number">64.</span> <span class="nav-text">2018-07-20：小米弹性调度平台Ocean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-13：Hulu大规模容器调度系统Capos"><span class="nav-number">65.</span> <span class="nav-text">2018-07-13：Hulu大规模容器调度系统Capos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-28：基于Pipeline的CI-CD在趣头条的应用实践"><span class="nav-number">66.</span> <span class="nav-text">2018-06-28：基于Pipeline的CI/CD在趣头条的应用实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"><span class="nav-number">67.</span> <span class="nav-text">2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-14：盘点Kubernetes网络问题的4种解决方案"><span class="nav-number">68.</span> <span class="nav-text">2018-06-14：盘点Kubernetes网络问题的4种解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践"><span class="nav-number">69.</span> <span class="nav-text">2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-23：全面学习Prometheus"><span class="nav-number">70.</span> <span class="nav-text">2018-05-23：全面学习Prometheus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-13：Kubernetes网络安全之访问控制技术实践"><span class="nav-number">71.</span> <span class="nav-text">2018-05-13：Kubernetes网络安全之访问控制技术实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-09：TalkingData的Spark-On-Kubernetes实践"><span class="nav-number">72.</span> <span class="nav-text">2018-05-09：TalkingData的Spark On Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-24：Helm：强大的Kubernetes包管理工具"><span class="nav-number">73.</span> <span class="nav-text">2018-04-24：Helm：强大的Kubernetes包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-17：DBaaS在金融生产环境的落地实践"><span class="nav-number">74.</span> <span class="nav-text">2018-04-17：DBaaS在金融生产环境的落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-16：Kubernetes-on-DC-OS最佳实践"><span class="nav-number">75.</span> <span class="nav-text">2018-04-16：Kubernetes on DC/OS最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-10：扇贝网微服务编排和治理实践"><span class="nav-number">76.</span> <span class="nav-text">2018-04-10：扇贝网微服务编排和治理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-27：Kubernetes官方集群部署工具kubeadm原理解析"><span class="nav-number">77.</span> <span class="nav-text">2018-03-27：Kubernetes官方集群部署工具kubeadm原理解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-24：新东方利用容器技术在用户自服务方面的探索"><span class="nav-number">78.</span> <span class="nav-text">2018-03-24：新东方利用容器技术在用户自服务方面的探索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-11：聊聊Docker监控那点事儿"><span class="nav-number">79.</span> <span class="nav-text">2018-03-11：聊聊Docker监控那点事儿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-02-03：基于Kubernetes的DevOps实践之路"><span class="nav-number">80.</span> <span class="nav-text">2018-02-03：基于Kubernetes的DevOps实践之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-26：TensorFlow-on-Kubernetes的架构与实践"><span class="nav-number">81.</span> <span class="nav-text">2018-01-26：TensorFlow on Kubernetes的架构与实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-17：Kubernetes存储系统介绍及机制实现"><span class="nav-number">82.</span> <span class="nav-text">2018-01-17：Kubernetes存储系统介绍及机制实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-10：一个可供参考的企业应用容器化实践案例"><span class="nav-number">83.</span> <span class="nav-text">2018-01-10：一个可供参考的企业应用容器化实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-26：分布式配置中心架构与实战"><span class="nav-number">84.</span> <span class="nav-text">2017-12-26：分布式配置中心架构与实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-25：在项目实践中，如何进行容器化改造和DevOps建设？"><span class="nav-number">85.</span> <span class="nav-text">2017-12-25：在项目实践中，如何进行容器化改造和DevOps建设？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-22：JDOS-2-0：Kubernetes的工业级实践"><span class="nav-number">86.</span> <span class="nav-text">2017-12-22：JDOS 2.0：Kubernetes的工业级实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-16：东方国信基于Kubernetes构建容器云平台的实践和思考"><span class="nav-number">87.</span> <span class="nav-text">2017-12-16：东方国信基于Kubernetes构建容器云平台的实践和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-13：Docker在测试中的应用"><span class="nav-number">88.</span> <span class="nav-text">2017-12-13：Docker在测试中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-06：小型公司DevOps落地实践案例"><span class="nav-number">89.</span> <span class="nav-text">2017-12-06：小型公司DevOps落地实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-15：Kubernetes调度详解"><span class="nav-number">90.</span> <span class="nav-text">2017-11-15：Kubernetes调度详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-08：Kubernetes的多集群管理实践"><span class="nav-number">91.</span> <span class="nav-text">2017-11-08：Kubernetes的多集群管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-31：瓜子云的任务调度系统"><span class="nav-number">92.</span> <span class="nav-text">2017-10-31：瓜子云的任务调度系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-10：乐高式微服务化改造"><span class="nav-number">93.</span> <span class="nav-text">2017-10-10：乐高式微服务化改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-26：BizCloud：基于Kubernetes的私有云实践"><span class="nav-number">94.</span> <span class="nav-text">2017-09-26：BizCloud：基于Kubernetes的私有云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-23：FreeWheel基于Kubernetes容器云构建与实践：应用编排与服务质量保证"><span class="nav-number">95.</span> <span class="nav-text">2017-09-23：FreeWheel基于Kubernetes容器云构建与实践：应用编排与服务质量保证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-21：容器云在万达的落地经验"><span class="nav-number">96.</span> <span class="nav-text">2017-09-21：容器云在万达的落地经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-16：Serverless云函数架构精解"><span class="nav-number">97.</span> <span class="nav-text">2017-09-16：Serverless云函数架构精解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-25：基于Kubernetes的应用编排实践"><span class="nav-number">98.</span> <span class="nav-text">2017-08-25：基于Kubernetes的应用编排实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-22：白话Kubernetes网络"><span class="nav-number">99.</span> <span class="nav-text">2017-08-22：白话Kubernetes网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-17：Kubernetes主机和容器的监控方案"><span class="nav-number">100.</span> <span class="nav-text">2017-08-17：Kubernetes主机和容器的监控方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-09：Kubernetes健康检查策略"><span class="nav-number">101.</span> <span class="nav-text">2017-08-09：Kubernetes健康检查策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-06：求取一份极致的简单：海量应用容器化改造之路"><span class="nav-number">102.</span> <span class="nav-text">2017-08-06：求取一份极致的简单：海量应用容器化改造之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-02：国内某大型酒店管理集团基于Kubernetes的实践"><span class="nav-number">103.</span> <span class="nav-text">2017-08-02：国内某大型酒店管理集团基于Kubernetes的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-21：深入理解Kubernetes网络策略"><span class="nav-number">104.</span> <span class="nav-text">2017-07-21：深入理解Kubernetes网络策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-19：58-赶集基于-Docker-的自动化部署实践"><span class="nav-number">105.</span> <span class="nav-text">2017-07-19：58 赶集基于 Docker 的自动化部署实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-13：Juice—一种基于MesosFramework的任务云框架"><span class="nav-number">106.</span> <span class="nav-text">2017-07-13：Juice—一种基于MesosFramework的任务云框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-12：探究PaaS网络模型设计"><span class="nav-number">107.</span> <span class="nav-text">2017-07-12：探究PaaS网络模型设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-14：聊聊Service-Mesh：linkerd"><span class="nav-number">108.</span> <span class="nav-text">2017-07-14：聊聊Service Mesh：linkerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-04：容器化部署OpenStack的正确姿势"><span class="nav-number">109.</span> <span class="nav-text">2017-07-04：容器化部署OpenStack的正确姿势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-30：容器如何监控？"><span class="nav-number">110.</span> <span class="nav-text">2017-06-30：容器如何监控？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-22：Docker的另类用法，就是这么简单粗暴"><span class="nav-number">111.</span> <span class="nav-text">2017-06-22：Docker的另类用法，就是这么简单粗暴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-11：深信服容器云的负载均衡实现"><span class="nav-number">112.</span> <span class="nav-text">2017-06-11：深信服容器云的负载均衡实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-10：轻松筹监控系统实现方案"><span class="nav-number">113.</span> <span class="nav-text">2017-06-10：轻松筹监控系统实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-04：如何扩展Kubernetes管理的资源对象"><span class="nav-number">114.</span> <span class="nav-text">2017-06-04：如何扩展Kubernetes管理的资源对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-02：探索Kubernetes的网络原理及方案"><span class="nav-number">115.</span> <span class="nav-text">2017-06-02：探索Kubernetes的网络原理及方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-24：喜马拉雅FM测试环境的Docker化实践案例"><span class="nav-number">116.</span> <span class="nav-text">2017-05-24：喜马拉雅FM测试环境的Docker化实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-19：基于Kubernetes的私有容器云建设实践"><span class="nav-number">117.</span> <span class="nav-text">2017-05-19：基于Kubernetes的私有容器云建设实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-14：容器技术在企业级服务里的实践"><span class="nav-number">118.</span> <span class="nav-text">2017-05-14：容器技术在企业级服务里的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-09：沪江容器化运维实践"><span class="nav-number">119.</span> <span class="nav-text">2017-05-09：沪江容器化运维实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-04：某股份制商业银行定制化PaaS介绍"><span class="nav-number">120.</span> <span class="nav-text">2017-05-04：某股份制商业银行定制化PaaS介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-20：基于Neutron的Kubernetes-SDN实践经验之谈"><span class="nav-number">121.</span> <span class="nav-text">2017-04-20：基于Neutron的Kubernetes SDN实践经验之谈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-06：从一个实际案例来谈容器落地的问题"><span class="nav-number">122.</span> <span class="nav-text">2017-04-06：从一个实际案例来谈容器落地的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-02：Flannel中vxlan-backend的原理和实现"><span class="nav-number">123.</span> <span class="nav-text">2017-04-02：Flannel中vxlan backend的原理和实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-19：Docker在沪江落地的实践"><span class="nav-number">124.</span> <span class="nav-text">2017-03-19：Docker在沪江落地的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-09：中小型团队的容器化之路"><span class="nav-number">125.</span> <span class="nav-text">2017-03-09：中小型团队的容器化之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-01：基于Jenkins和Kubernetes的CI工作流"><span class="nav-number">126.</span> <span class="nav-text">2017-03-01：基于Jenkins和Kubernetes的CI工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-02-22：SRE工程实践——基于时间序列存储数据的报警"><span class="nav-number">127.</span> <span class="nav-text">2017-02-22：SRE工程实践——基于时间序列存储数据的报警</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-02-15：乐视云基于Kubernetes的PaaS平台建设"><span class="nav-number">128.</span> <span class="nav-text">2017-02-15：乐视云基于Kubernetes的PaaS平台建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-18：度量驱动的DevOps转型"><span class="nav-number">129.</span> <span class="nav-text">2017-01-18：度量驱动的DevOps转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-17：艺龙部署体系的演进"><span class="nav-number">130.</span> <span class="nav-text">2017-01-17：艺龙部署体系的演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-15：Kubernetes-有状态集群服务部署与管理"><span class="nav-number">131.</span> <span class="nav-text">2017-01-15：Kubernetes 有状态集群服务部署与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-06：基于容器的日志管理实践"><span class="nav-number">132.</span> <span class="nav-text">2017-01-06：基于容器的日志管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-03：构建容器服务平台（CaaS）"><span class="nav-number">133.</span> <span class="nav-text">2017-01-03：构建容器服务平台（CaaS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-12-18：海航生态科技舆情大数据平台容器化改造"><span class="nav-number">134.</span> <span class="nav-text">2016-12-18：海航生态科技舆情大数据平台容器化改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-23：爱油科技基于SpringCloud的微服务实践"><span class="nav-number">135.</span> <span class="nav-text">2016-11-23：爱油科技基于SpringCloud的微服务实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-16：树莓派上的Docker集群管理"><span class="nav-number">136.</span> <span class="nav-text">2016-11-16：树莓派上的Docker集群管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-09：唯品会基于Kubernetes的网络方案演进"><span class="nav-number">137.</span> <span class="nav-text">2016-11-09：唯品会基于Kubernetes的网络方案演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-05：魅族云Docker实践"><span class="nav-number">138.</span> <span class="nav-text">2016-11-05：魅族云Docker实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-04：如何使用-Node-js-和-Docker-构建高质量的微服务"><span class="nav-number">139.</span> <span class="nav-text">2016-11-04：如何使用 Node.js 和 Docker 构建高质量的微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-01：打造百亿级数据处理量的弹性调度容器平台"><span class="nav-number">140.</span> <span class="nav-text">2016-11-01：打造百亿级数据处理量的弹性调度容器平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-25：猎豹移动基于CoreOS在AWS上的项目实践"><span class="nav-number">141.</span> <span class="nav-text">2016-10-25：猎豹移动基于CoreOS在AWS上的项目实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-25：恒生金融交易系统的Docker化实践"><span class="nav-number">142.</span> <span class="nav-text">2016-10-25：恒生金融交易系统的Docker化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-24：PPTV聚力传媒的Docker与DevOps"><span class="nav-number">143.</span> <span class="nav-text">2016-10-24：PPTV聚力传媒的Docker与DevOps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-20：基于Docker的开发云提高资源利用率的实践"><span class="nav-number">144.</span> <span class="nav-text">2016-10-20：基于Docker的开发云提高资源利用率的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-04：深入解析DC-OS"><span class="nav-number">145.</span> <span class="nav-text">2016-10-04：深入解析DC/OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-27：Docker在B站的实施之路"><span class="nav-number">146.</span> <span class="nav-text">2016-09-27：Docker在B站的实施之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-20：-Acttao-开发、运维容器化实践"><span class="nav-number">147.</span> <span class="nav-text">2016-09-20： Acttao 开发、运维容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-06：唯品会数据库备份恢复容器化项目实践经验总结"><span class="nav-number">148.</span> <span class="nav-text">2016-09-06：唯品会数据库备份恢复容器化项目实践经验总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-08：云计算应用技术发展与企业异构资源池统一管理案例分析"><span class="nav-number">149.</span> <span class="nav-text">2016-09-08：云计算应用技术发展与企业异构资源池统一管理案例分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-28：基于容器技术构建企业级PaaS云平台实践"><span class="nav-number">150.</span> <span class="nav-text">2016-08-28：基于容器技术构建企业级PaaS云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-25：中英人寿保险有限公司基于容器技术的实践分享"><span class="nav-number">151.</span> <span class="nav-text">2016-08-25：中英人寿保险有限公司基于容器技术的实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-18：用Harbor实现容器镜像仓库的管理和运维"><span class="nav-number">152.</span> <span class="nav-text">2016-08-18：用Harbor实现容器镜像仓库的管理和运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-16：容器化ICT融合初体验"><span class="nav-number">153.</span> <span class="nav-text">2016-08-16：容器化ICT融合初体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-11：应用容器化之Kubernetes实践"><span class="nav-number">154.</span> <span class="nav-text">2016-08-11：应用容器化之Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-04：传统金融-IT-对混合云管理的一些思考"><span class="nav-number">155.</span> <span class="nav-text">2016-08-04：传统金融 IT 对混合云管理的一些思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-28：SAP-Anywhere产品背后CD的实现"><span class="nav-number">156.</span> <span class="nav-text">2016-07-28：SAP Anywhere产品背后CD的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-26：基于Docker的负载均衡和服务发现"><span class="nav-number">157.</span> <span class="nav-text">2016-07-26：基于Docker的负载均衡和服务发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-19：浅谈Docker安全合规建设"><span class="nav-number">158.</span> <span class="nav-text">2016-07-19：浅谈Docker安全合规建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-14：应用容器env化实战"><span class="nav-number">159.</span> <span class="nav-text">2016-07-14：应用容器env化实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-30：-Docker网络方案初探"><span class="nav-number">160.</span> <span class="nav-text">2016-06-30： Docker网络方案初探</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-28：公有云上的容器实践分享"><span class="nav-number">161.</span> <span class="nav-text">2016-06-28：公有云上的容器实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-21：基于Docker实现DevOps的一些探索"><span class="nav-number">162.</span> <span class="nav-text">2016-06-21：基于Docker实现DevOps的一些探索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-14：传统企业PaaS平台功能设计与业务上云思考"><span class="nav-number">163.</span> <span class="nav-text">2016-06-14：传统企业PaaS平台功能设计与业务上云思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-31：站在运维的角度讲如何打造一个Docker-Mesos平台"><span class="nav-number">164.</span> <span class="nav-text">2016-05-31：站在运维的角度讲如何打造一个Docker-Mesos平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-30：虚拟化老兵介绍虚拟化技术"><span class="nav-number">165.</span> <span class="nav-text">2016-05-30：虚拟化老兵介绍虚拟化技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-19：容器的配置管理"><span class="nav-number">166.</span> <span class="nav-text">2016-05-19：容器的配置管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-10：基于Docker的分布式服务研发实践"><span class="nav-number">167.</span> <span class="nav-text">2016-05-10：基于Docker的分布式服务研发实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-03：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系之大二层网络"><span class="nav-number">168.</span> <span class="nav-text">2016-05-03：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系之大二层网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-28：Docker容器对存储的定义（Volume-与-Volume-Plugin）"><span class="nav-number">169.</span> <span class="nav-text">2016-04-28：Docker容器对存储的定义（Volume 与 Volume Plugin）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-26：Kubernetes代码贡献者谈Kubernetes的发展动态"><span class="nav-number">170.</span> <span class="nav-text">2016-04-26：Kubernetes代码贡献者谈Kubernetes的发展动态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-19：阿里云容器服务设计实践"><span class="nav-number">171.</span> <span class="nav-text">2016-04-19：阿里云容器服务设计实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-12：双模IT给你的企业装上双引擎"><span class="nav-number">172.</span> <span class="nav-text">2016-04-12：双模IT给你的企业装上双引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-05：搜狐基于Docker-Kubernetes的一站式运维管理实践"><span class="nav-number">173.</span> <span class="nav-text">2016-04-05：搜狐基于Docker+Kubernetes的一站式运维管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-31：DCOS中监控和弹性伸缩方案经验分享"><span class="nav-number">174.</span> <span class="nav-text">2016-03-31：DCOS中监控和弹性伸缩方案经验分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-29：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系"><span class="nav-number">175.</span> <span class="nav-text">2016-03-29：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-22：太保DCOS平台——微信项目实践"><span class="nav-number">176.</span> <span class="nav-text">2016-03-22：太保DCOS平台——微信项目实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-15：Kubernetes集成外部服务实践"><span class="nav-number">177.</span> <span class="nav-text">2016-03-15：Kubernetes集成外部服务实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-04：Docker在乐视的实践之路"><span class="nav-number">178.</span> <span class="nav-text">2016-03-04：Docker在乐视的实践之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-02-23：一个关于不可变基础设施的实践案例"><span class="nav-number">179.</span> <span class="nav-text">2016-02-23：一个关于不可变基础设施的实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-02-14：基于Docker搭建轻量的私有构建环境"><span class="nav-number">180.</span> <span class="nav-text">2016-02-14：基于Docker搭建轻量的私有构建环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-30：IT基础架构的自动化编排"><span class="nav-number">181.</span> <span class="nav-text">2016-01-30：IT基础架构的自动化编排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-23：基于OVS的Docker多主机互联设计和实践"><span class="nav-number">182.</span> <span class="nav-text">2016-01-23：基于OVS的Docker多主机互联设计和实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-15：关于混合云的一点思考"><span class="nav-number">183.</span> <span class="nav-text">2016-01-15：关于混合云的一点思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-06：思源基于Docker和OpenStack的私有云平台实践"><span class="nav-number">184.</span> <span class="nav-text">2016-01-06：思源基于Docker和OpenStack的私有云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-29：用Docker和Git搭建在线开发环境"><span class="nav-number">185.</span> <span class="nav-text">2015-12-29：用Docker和Git搭建在线开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-22：基于Docker和Git的持续集成工作流"><span class="nav-number">186.</span> <span class="nav-text">2015-12-22：基于Docker和Git的持续集成工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-15：容器服务如何在企业客户落地？Rancher解决之道分享。"><span class="nav-number">187.</span> <span class="nav-text">2015-12-15：容器服务如何在企业客户落地？Rancher解决之道分享。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-09：玩转Docker镜像和镜像构建"><span class="nav-number">188.</span> <span class="nav-text">2015-12-09：玩转Docker镜像和镜像构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-29：微服务架构云端应用"><span class="nav-number">189.</span> <span class="nav-text">2015-11-29：微服务架构云端应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-25：搭建企业私有Docker-Registry实战分享"><span class="nav-number">190.</span> <span class="nav-text">2015-11-25：搭建企业私有Docker Registry实战分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-17：-接触AWS近5年，谈谈我的运维经验"><span class="nav-number">191.</span> <span class="nav-text">2015-11-17： 接触AWS近5年，谈谈我的运维经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-11：-一篇文章带你了解Cloud-Native"><span class="nav-number">192.</span> <span class="nav-text">2015-11-11： 一篇文章带你了解Cloud Native</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-08：细节-｜谈谈CoreOS的etcd"><span class="nav-number">193.</span> <span class="nav-text">2015-11-08：细节 ｜谈谈CoreOS的etcd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-06：Docker-1-9新特性解读"><span class="nav-number">194.</span> <span class="nav-text">2015-11-06：Docker 1.9新特性解读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-04：-蘑菇街基于Docker的私有云实践"><span class="nav-number">195.</span> <span class="nav-text">2015-11-04： 蘑菇街基于Docker的私有云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-28：-OCI标准和runC原理解读"><span class="nav-number">196.</span> <span class="nav-text">2015-10-28： OCI标准和runC原理解读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-20：中兴软创（ZTEsoft）基于Jenkins和Docker的CI实践"><span class="nav-number">197.</span> <span class="nav-text">2015-10-20：中兴软创（ZTEsoft）基于Jenkins和Docker的CI实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-17：Docker-Registry-V1-to-V2"><span class="nav-number">198.</span> <span class="nav-text">2015-10-17：Docker Registry V1 to V2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-14：企业级云平台的实践和思考"><span class="nav-number">199.</span> <span class="nav-text">2015-10-14：企业级云平台的实践和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-08：容器和IaaS：谁动了谁的奶酪"><span class="nav-number">200.</span> <span class="nav-text">2015-10-08：容器和IaaS：谁动了谁的奶酪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-02：暴走漫画的Docker实践"><span class="nav-number">201.</span> <span class="nav-text">2015-10-02：暴走漫画的Docker实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-23：基于Docker和Java的持续集成实践"><span class="nav-number">202.</span> <span class="nav-text">2015-09-23：基于Docker和Java的持续集成实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-15：Mesos在去哪儿网的应用"><span class="nav-number">203.</span> <span class="nav-text">2015-09-15：Mesos在去哪儿网的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-08：Docker三剑客之Swarm介绍"><span class="nav-number">204.</span> <span class="nav-text">2015-09-08：Docker三剑客之Swarm介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-02：畅谈PaaS"><span class="nav-number">205.</span> <span class="nav-text">2015-09-02：畅谈PaaS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-26：一篇文章带你了解Flannel"><span class="nav-number">206.</span> <span class="nav-text">2015-08-26：一篇文章带你了解Flannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-19：360的容器化之路"><span class="nav-number">207.</span> <span class="nav-text">2015-08-19：360的容器化之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-12：闲谈Kubernetes-的主要特性和经验分享"><span class="nav-number">208.</span> <span class="nav-text">2015-08-12：闲谈Kubernetes 的主要特性和经验分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-06-17：OpenStack-Magnum社区及项目介绍"><span class="nav-number">209.</span> <span class="nav-text">2015-06-17：OpenStack Magnum社区及项目介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-06-03：新浪SCE-Docker最佳实践"><span class="nav-number">210.</span> <span class="nav-text">2015-06-03：新浪SCE Docker最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-05-20：AppC和Docker的对比"><span class="nav-number">211.</span> <span class="nav-text">2015-05-20：AppC和Docker的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-05-12：Docker-Registry的定制和性能分析"><span class="nav-number">212.</span> <span class="nav-text">2015-05-12：Docker Registry的定制和性能分析</span></a></li></ol></div>
-          </div>
-        </div>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#README"><span class="nav-number">1.</span> <span class="nav-text">README</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-01-07：电视云服务的容器化实践"><span class="nav-number">2.</span> <span class="nav-text">2020-01-07：电视云服务的容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020-01-02-：为你写诗：3-步搭建-Serverless-AI-应用"><span class="nav-number">3.</span> <span class="nav-text">2020-01-02 ：为你写诗：3 步搭建 Serverless AI 应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-26：如何在Kubernetes中编写自定义控制器"><span class="nav-number">4.</span> <span class="nav-text">2019-12-26：如何在Kubernetes中编写自定义控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-19：阿里云如何基于标准-K8s-打造边缘计算云原生基础设施"><span class="nav-number">5.</span> <span class="nav-text">2019-12-19：阿里云如何基于标准 K8s 打造边缘计算云原生基础设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-18-：Open-Policy-Agent在Kubernetes中的应用"><span class="nav-number">6.</span> <span class="nav-text">2019-12-18:：Open Policy Agent在Kubernetes中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-10：Volcano介绍及其在深度学习场景下的应用"><span class="nav-number">7.</span> <span class="nav-text">2019-12-10：Volcano介绍及其在深度学习场景下的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-05：Knative-Serverless-之道-如何-0-运维、低成本实现应用托管？"><span class="nav-number">8.</span> <span class="nav-text">2019-12-05：Knative Serverless 之道 - 如何 0 运维、低成本实现应用托管？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-12-03：Kubernetes-在信也科技的落地实战"><span class="nav-number">9.</span> <span class="nav-text">2019-12-03：Kubernetes 在信也科技的落地实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-26：基于CDN的边缘计算平台设计和思考"><span class="nav-number">10.</span> <span class="nav-text">2019-11-26：基于CDN的边缘计算平台设计和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-21：给-K8s-API-“做减法”：阿里云原生应用管理的挑战和实践"><span class="nav-number">11.</span> <span class="nav-text">2019-11-21：给 K8s API “做减法”：阿里云原生应用管理的挑战和实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-19：基于云原生日志分类处理方案与落地实践"><span class="nav-number">12.</span> <span class="nav-text">2019-11-19：基于云原生日志分类处理方案与落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-12：扇贝-Service-Mesh-发展历程"><span class="nav-number">13.</span> <span class="nav-text">2019-11-12：扇贝 Service Mesh 发展历程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-10：蔚来汽车的Kubernetes实践"><span class="nav-number">14.</span> <span class="nav-text">2019-11-10：蔚来汽车的Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-10：超大规模商用-K8s-场景下，阿里巴巴如何动态解决容器资源的按需分配问题？"><span class="nav-number">15.</span> <span class="nav-text">2019-10-10：超大规模商用 K8s 场景下，阿里巴巴如何动态解决容器资源的按需分配问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-07：如何实现-K8s-一键部署？开发部署提速-8-倍？带你上手一款下载超-10-万次的-IDEA-插件"><span class="nav-number">16.</span> <span class="nav-text">2019-11-07：如何实现 K8s 一键部署？开发部署提速 8 倍？带你上手一款下载超 10 万次的 IDEA 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-11-07：k3s在边缘计算中的应用实践"><span class="nav-number">17.</span> <span class="nav-text">2019-11-07：k3s在边缘计算中的应用实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-31：Jenkins-X：基于-Kubernetes-的-Serverless-Jenkins"><span class="nav-number">18.</span> <span class="nav-text">2019-10-31：Jenkins X：基于 Kubernetes 的 Serverless Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-29：基于-Ceph-的-Kubernetes-数据持久化"><span class="nav-number">19.</span> <span class="nav-text">2019-10-29：基于 Ceph 的 Kubernetes 数据持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-15：Kubernetes在SHAREit的落地实战"><span class="nav-number">20.</span> <span class="nav-text">2019-10-15：Kubernetes在SHAREit的落地实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-17：Prometheus架构与实践分享"><span class="nav-number">21.</span> <span class="nav-text">2019-09-17：Prometheus架构与实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-19：云原生可观察性之日志管理"><span class="nav-number">22.</span> <span class="nav-text">2019-09-19：云原生可观察性之日志管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-19：当-K8s-集群达到万级规模，阿里巴巴如何解决系统各组件性能问题？"><span class="nav-number">23.</span> <span class="nav-text">2019-09-19：当 K8s 集群达到万级规模，阿里巴巴如何解决系统各组件性能问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-03：基于Kubernetes的DevOps平台实战"><span class="nav-number">24.</span> <span class="nav-text">2019-09-03：基于Kubernetes的DevOps平台实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-29：Porter：面向裸金属环境的-Kubernetes-的开源负载均衡器"><span class="nav-number">25.</span> <span class="nav-text">2019-08-29：Porter：面向裸金属环境的 Kubernetes 的开源负载均衡器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-27：eBay-Kubernetes集群的存储实践"><span class="nav-number">26.</span> <span class="nav-text">2019-08-27：eBay Kubernetes集群的存储实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-20：小公司如何优雅地推进应用上Kubernetes容器云"><span class="nav-number">27.</span> <span class="nav-text">2019-08-20：小公司如何优雅地推进应用上Kubernetes容器云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-10-24：玩转Kubernetes开发测试环境"><span class="nav-number">28.</span> <span class="nav-text">2019-10-24：玩转Kubernetes开发测试环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-09-25：HC-Bridge容器网络模式分享"><span class="nav-number">29.</span> <span class="nav-text">2019-09-25：HC Bridge容器网络模式分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-16：初探云原生应用管理之：聊聊-Tekton-项目"><span class="nav-number">30.</span> <span class="nav-text">2019-08-16：初探云原生应用管理之：聊聊 Tekton 项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-14：PPmoney基于Kubernetes的DevOps实践"><span class="nav-number">31.</span> <span class="nav-text">2019-08-14：PPmoney基于Kubernetes的DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践"><span class="nav-number">32.</span> <span class="nav-text">2019-08-05：基于OVS自研容器网络插件在金融类企业的落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-24：TiDB-Operator-的设计与实现"><span class="nav-number">33.</span> <span class="nav-text">2019-07-24：TiDB Operator 的设计与实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-17：基于Istio的灰度平台实践"><span class="nav-number">34.</span> <span class="nav-text">2019-07-17：基于Istio的灰度平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-10：Kube-OVN-的设计思路和实现原理"><span class="nav-number">35.</span> <span class="nav-text">2019-07-10：Kube-OVN 的设计思路和实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-07-03：震坤行的容器云实践"><span class="nav-number">36.</span> <span class="nav-text">2019-07-03：震坤行的容器云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-06-26：智能工厂的容器云实践"><span class="nav-number">37.</span> <span class="nav-text">2019-06-26：智能工厂的容器云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-06-05：基于Actor模型的CQRS-ES解决方案分享"><span class="nav-number">38.</span> <span class="nav-text">2019-06-05：基于Actor模型的CQRS&#x2F;ES解决方案分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-05-29：平安证券Kubernetes容器集群的DevOps实践"><span class="nav-number">39.</span> <span class="nav-text">2019-05-29：平安证券Kubernetes容器集群的DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-30：荔枝运维平台容器化实践"><span class="nav-number">40.</span> <span class="nav-text">2019-04-30：荔枝运维平台容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-24：华尔街见闻Istio生产实践"><span class="nav-number">41.</span> <span class="nav-text">2019-04-24：华尔街见闻Istio生产实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-17：瓜子云平台的实践经验"><span class="nav-number">42.</span> <span class="nav-text">2019-04-17：瓜子云平台的实践经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-04-03：容器环境下的持续集成最佳实践"><span class="nav-number">43.</span> <span class="nav-text">2019-04-03：容器环境下的持续集成最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-03-28：基于OVN的Kubernetes网络架构解析"><span class="nav-number">44.</span> <span class="nav-text">2019-03-28：基于OVN的Kubernetes网络架构解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-03-21：小团队微服务落地实践"><span class="nav-number">45.</span> <span class="nav-text">2019-03-21：小团队微服务落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-02-28：骞云科技DevOps实践"><span class="nav-number">46.</span> <span class="nav-text">2019-02-28：骞云科技DevOps实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-02-22：房多多Service-Mesh实践"><span class="nav-number">47.</span> <span class="nav-text">2019-02-22：房多多Service Mesh实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-25：得到App的容器及Kubernetes实践"><span class="nav-number">48.</span> <span class="nav-text">2019-01-25：得到App的容器及Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战"><span class="nav-number">49.</span> <span class="nav-text">2019-01-16：龙腾出行基于Kubernetes的DevOps流水线实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-11：如何评估Kubernetes持久化存储方案"><span class="nav-number">50.</span> <span class="nav-text">2019-01-11：如何评估Kubernetes持久化存储方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2019-01-04：etcd-集群运维实践"><span class="nav-number">51.</span> <span class="nav-text">2019-01-04：etcd 集群运维实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-12-21：聚美优品云平台实践"><span class="nav-number">52.</span> <span class="nav-text">2018-12-21：聚美优品云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践"><span class="nav-number">53.</span> <span class="nav-text">2018-12-07：智融集团基于OpenShift的容器化PaaS平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-29：猪八戒网DevOps容器云与流水线"><span class="nav-number">54.</span> <span class="nav-text">2018-11-29：猪八戒网DevOps容器云与流水线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-22：容器化落地实践的一个案例"><span class="nav-number">55.</span> <span class="nav-text">2018-11-22：容器化落地实践的一个案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-11-03：Spring-Cloud-Kubernetes容器化实践"><span class="nav-number">56.</span> <span class="nav-text">2018-11-03：Spring Cloud Kubernetes容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-29：有赞容器化实践"><span class="nav-number">57.</span> <span class="nav-text">2018-09-29：有赞容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-20：唯品会Noah云平台实现内幕披露"><span class="nav-number">58.</span> <span class="nav-text">2018-09-20：唯品会Noah云平台实现内幕披露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-09-09：gVisor是什么？可以解决什么问题？"><span class="nav-number">59.</span> <span class="nav-text">2018-09-09：gVisor是什么？可以解决什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-25：有货基于Kubernetes容器环境的持续交付实践"><span class="nav-number">60.</span> <span class="nav-text">2018-08-25：有货基于Kubernetes容器环境的持续交付实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-13：基于Spring-Cloud的微服务容器化实践"><span class="nav-number">61.</span> <span class="nav-text">2018-08-13：基于Spring Cloud的微服务容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-08-11：滴滴弹性云Kubernetes实践"><span class="nav-number">62.</span> <span class="nav-text">2018-08-11：滴滴弹性云Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-29：基于-GitLab-的-CI-实践"><span class="nav-number">63.</span> <span class="nav-text">2018-07-29：基于 GitLab 的 CI 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-20：小米弹性调度平台Ocean"><span class="nav-number">64.</span> <span class="nav-text">2018-07-20：小米弹性调度平台Ocean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-07-13：Hulu大规模容器调度系统Capos"><span class="nav-number">65.</span> <span class="nav-text">2018-07-13：Hulu大规模容器调度系统Capos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-28：基于Pipeline的CI-CD在趣头条的应用实践"><span class="nav-number">66.</span> <span class="nav-text">2018-06-28：基于Pipeline的CI&#x2F;CD在趣头条的应用实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现"><span class="nav-number">67.</span> <span class="nav-text">2018-06-24：苏宁容器云基于Kubernetes和Contiv的网络架构技术实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-06-14：盘点Kubernetes网络问题的4种解决方案"><span class="nav-number">68.</span> <span class="nav-text">2018-06-14：盘点Kubernetes网络问题的4种解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践"><span class="nav-number">69.</span> <span class="nav-text">2018-05-27：腾讯云TSF微服务平台及ServiceMesh技术实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-23：全面学习Prometheus"><span class="nav-number">70.</span> <span class="nav-text">2018-05-23：全面学习Prometheus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-13：Kubernetes网络安全之访问控制技术实践"><span class="nav-number">71.</span> <span class="nav-text">2018-05-13：Kubernetes网络安全之访问控制技术实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-05-09：TalkingData的Spark-On-Kubernetes实践"><span class="nav-number">72.</span> <span class="nav-text">2018-05-09：TalkingData的Spark On Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-24：Helm：强大的Kubernetes包管理工具"><span class="nav-number">73.</span> <span class="nav-text">2018-04-24：Helm：强大的Kubernetes包管理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-17：DBaaS在金融生产环境的落地实践"><span class="nav-number">74.</span> <span class="nav-text">2018-04-17：DBaaS在金融生产环境的落地实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-16：Kubernetes-on-DC-OS最佳实践"><span class="nav-number">75.</span> <span class="nav-text">2018-04-16：Kubernetes on DC&#x2F;OS最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-04-10：扇贝网微服务编排和治理实践"><span class="nav-number">76.</span> <span class="nav-text">2018-04-10：扇贝网微服务编排和治理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-27：Kubernetes官方集群部署工具kubeadm原理解析"><span class="nav-number">77.</span> <span class="nav-text">2018-03-27：Kubernetes官方集群部署工具kubeadm原理解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-24：新东方利用容器技术在用户自服务方面的探索"><span class="nav-number">78.</span> <span class="nav-text">2018-03-24：新东方利用容器技术在用户自服务方面的探索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-03-11：聊聊Docker监控那点事儿"><span class="nav-number">79.</span> <span class="nav-text">2018-03-11：聊聊Docker监控那点事儿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-02-03：基于Kubernetes的DevOps实践之路"><span class="nav-number">80.</span> <span class="nav-text">2018-02-03：基于Kubernetes的DevOps实践之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-26：TensorFlow-on-Kubernetes的架构与实践"><span class="nav-number">81.</span> <span class="nav-text">2018-01-26：TensorFlow on Kubernetes的架构与实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-17：Kubernetes存储系统介绍及机制实现"><span class="nav-number">82.</span> <span class="nav-text">2018-01-17：Kubernetes存储系统介绍及机制实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-01-10：一个可供参考的企业应用容器化实践案例"><span class="nav-number">83.</span> <span class="nav-text">2018-01-10：一个可供参考的企业应用容器化实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-26：分布式配置中心架构与实战"><span class="nav-number">84.</span> <span class="nav-text">2017-12-26：分布式配置中心架构与实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-25：在项目实践中，如何进行容器化改造和DevOps建设？"><span class="nav-number">85.</span> <span class="nav-text">2017-12-25：在项目实践中，如何进行容器化改造和DevOps建设？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-22：JDOS-2-0：Kubernetes的工业级实践"><span class="nav-number">86.</span> <span class="nav-text">2017-12-22：JDOS 2.0：Kubernetes的工业级实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-16：东方国信基于Kubernetes构建容器云平台的实践和思考"><span class="nav-number">87.</span> <span class="nav-text">2017-12-16：东方国信基于Kubernetes构建容器云平台的实践和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-13：Docker在测试中的应用"><span class="nav-number">88.</span> <span class="nav-text">2017-12-13：Docker在测试中的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-12-06：小型公司DevOps落地实践案例"><span class="nav-number">89.</span> <span class="nav-text">2017-12-06：小型公司DevOps落地实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-15：Kubernetes调度详解"><span class="nav-number">90.</span> <span class="nav-text">2017-11-15：Kubernetes调度详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-08：Kubernetes的多集群管理实践"><span class="nav-number">91.</span> <span class="nav-text">2017-11-08：Kubernetes的多集群管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-31：瓜子云的任务调度系统"><span class="nav-number">92.</span> <span class="nav-text">2017-10-31：瓜子云的任务调度系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-10：乐高式微服务化改造"><span class="nav-number">93.</span> <span class="nav-text">2017-10-10：乐高式微服务化改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-26：BizCloud：基于Kubernetes的私有云实践"><span class="nav-number">94.</span> <span class="nav-text">2017-09-26：BizCloud：基于Kubernetes的私有云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-23：FreeWheel基于Kubernetes容器云构建与实践：应用编排与服务质量保证"><span class="nav-number">95.</span> <span class="nav-text">2017-09-23：FreeWheel基于Kubernetes容器云构建与实践：应用编排与服务质量保证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-21：容器云在万达的落地经验"><span class="nav-number">96.</span> <span class="nav-text">2017-09-21：容器云在万达的落地经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-09-16：Serverless云函数架构精解"><span class="nav-number">97.</span> <span class="nav-text">2017-09-16：Serverless云函数架构精解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-25：基于Kubernetes的应用编排实践"><span class="nav-number">98.</span> <span class="nav-text">2017-08-25：基于Kubernetes的应用编排实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-22：白话Kubernetes网络"><span class="nav-number">99.</span> <span class="nav-text">2017-08-22：白话Kubernetes网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-17：Kubernetes主机和容器的监控方案"><span class="nav-number">100.</span> <span class="nav-text">2017-08-17：Kubernetes主机和容器的监控方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-09：Kubernetes健康检查策略"><span class="nav-number">101.</span> <span class="nav-text">2017-08-09：Kubernetes健康检查策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-06：求取一份极致的简单：海量应用容器化改造之路"><span class="nav-number">102.</span> <span class="nav-text">2017-08-06：求取一份极致的简单：海量应用容器化改造之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-08-02：国内某大型酒店管理集团基于Kubernetes的实践"><span class="nav-number">103.</span> <span class="nav-text">2017-08-02：国内某大型酒店管理集团基于Kubernetes的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-21：深入理解Kubernetes网络策略"><span class="nav-number">104.</span> <span class="nav-text">2017-07-21：深入理解Kubernetes网络策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-19：58-赶集基于-Docker-的自动化部署实践"><span class="nav-number">105.</span> <span class="nav-text">2017-07-19：58 赶集基于 Docker 的自动化部署实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-13：Juice—一种基于MesosFramework的任务云框架"><span class="nav-number">106.</span> <span class="nav-text">2017-07-13：Juice—一种基于MesosFramework的任务云框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-12：探究PaaS网络模型设计"><span class="nav-number">107.</span> <span class="nav-text">2017-07-12：探究PaaS网络模型设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-14：聊聊Service-Mesh：linkerd"><span class="nav-number">108.</span> <span class="nav-text">2017-07-14：聊聊Service Mesh：linkerd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-07-04：容器化部署OpenStack的正确姿势"><span class="nav-number">109.</span> <span class="nav-text">2017-07-04：容器化部署OpenStack的正确姿势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-30：容器如何监控？"><span class="nav-number">110.</span> <span class="nav-text">2017-06-30：容器如何监控？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-22：Docker的另类用法，就是这么简单粗暴"><span class="nav-number">111.</span> <span class="nav-text">2017-06-22：Docker的另类用法，就是这么简单粗暴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-11：深信服容器云的负载均衡实现"><span class="nav-number">112.</span> <span class="nav-text">2017-06-11：深信服容器云的负载均衡实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-10：轻松筹监控系统实现方案"><span class="nav-number">113.</span> <span class="nav-text">2017-06-10：轻松筹监控系统实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-04：如何扩展Kubernetes管理的资源对象"><span class="nav-number">114.</span> <span class="nav-text">2017-06-04：如何扩展Kubernetes管理的资源对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-06-02：探索Kubernetes的网络原理及方案"><span class="nav-number">115.</span> <span class="nav-text">2017-06-02：探索Kubernetes的网络原理及方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-24：喜马拉雅FM测试环境的Docker化实践案例"><span class="nav-number">116.</span> <span class="nav-text">2017-05-24：喜马拉雅FM测试环境的Docker化实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-19：基于Kubernetes的私有容器云建设实践"><span class="nav-number">117.</span> <span class="nav-text">2017-05-19：基于Kubernetes的私有容器云建设实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-14：容器技术在企业级服务里的实践"><span class="nav-number">118.</span> <span class="nav-text">2017-05-14：容器技术在企业级服务里的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-09：沪江容器化运维实践"><span class="nav-number">119.</span> <span class="nav-text">2017-05-09：沪江容器化运维实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-05-04：某股份制商业银行定制化PaaS介绍"><span class="nav-number">120.</span> <span class="nav-text">2017-05-04：某股份制商业银行定制化PaaS介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-20：基于Neutron的Kubernetes-SDN实践经验之谈"><span class="nav-number">121.</span> <span class="nav-text">2017-04-20：基于Neutron的Kubernetes SDN实践经验之谈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-06：从一个实际案例来谈容器落地的问题"><span class="nav-number">122.</span> <span class="nav-text">2017-04-06：从一个实际案例来谈容器落地的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-04-02：Flannel中vxlan-backend的原理和实现"><span class="nav-number">123.</span> <span class="nav-text">2017-04-02：Flannel中vxlan backend的原理和实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-19：Docker在沪江落地的实践"><span class="nav-number">124.</span> <span class="nav-text">2017-03-19：Docker在沪江落地的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-09：中小型团队的容器化之路"><span class="nav-number">125.</span> <span class="nav-text">2017-03-09：中小型团队的容器化之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-03-01：基于Jenkins和Kubernetes的CI工作流"><span class="nav-number">126.</span> <span class="nav-text">2017-03-01：基于Jenkins和Kubernetes的CI工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-02-22：SRE工程实践——基于时间序列存储数据的报警"><span class="nav-number">127.</span> <span class="nav-text">2017-02-22：SRE工程实践——基于时间序列存储数据的报警</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-02-15：乐视云基于Kubernetes的PaaS平台建设"><span class="nav-number">128.</span> <span class="nav-text">2017-02-15：乐视云基于Kubernetes的PaaS平台建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-18：度量驱动的DevOps转型"><span class="nav-number">129.</span> <span class="nav-text">2017-01-18：度量驱动的DevOps转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-17：艺龙部署体系的演进"><span class="nav-number">130.</span> <span class="nav-text">2017-01-17：艺龙部署体系的演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-15：Kubernetes-有状态集群服务部署与管理"><span class="nav-number">131.</span> <span class="nav-text">2017-01-15：Kubernetes 有状态集群服务部署与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-06：基于容器的日志管理实践"><span class="nav-number">132.</span> <span class="nav-text">2017-01-06：基于容器的日志管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-01-03：构建容器服务平台（CaaS）"><span class="nav-number">133.</span> <span class="nav-text">2017-01-03：构建容器服务平台（CaaS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-12-18：海航生态科技舆情大数据平台容器化改造"><span class="nav-number">134.</span> <span class="nav-text">2016-12-18：海航生态科技舆情大数据平台容器化改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-23：爱油科技基于SpringCloud的微服务实践"><span class="nav-number">135.</span> <span class="nav-text">2016-11-23：爱油科技基于SpringCloud的微服务实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-16：树莓派上的Docker集群管理"><span class="nav-number">136.</span> <span class="nav-text">2016-11-16：树莓派上的Docker集群管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-09：唯品会基于Kubernetes的网络方案演进"><span class="nav-number">137.</span> <span class="nav-text">2016-11-09：唯品会基于Kubernetes的网络方案演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-05：魅族云Docker实践"><span class="nav-number">138.</span> <span class="nav-text">2016-11-05：魅族云Docker实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-04：如何使用-Node-js-和-Docker-构建高质量的微服务"><span class="nav-number">139.</span> <span class="nav-text">2016-11-04：如何使用 Node.js 和 Docker 构建高质量的微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-11-01：打造百亿级数据处理量的弹性调度容器平台"><span class="nav-number">140.</span> <span class="nav-text">2016-11-01：打造百亿级数据处理量的弹性调度容器平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-25：猎豹移动基于CoreOS在AWS上的项目实践"><span class="nav-number">141.</span> <span class="nav-text">2016-10-25：猎豹移动基于CoreOS在AWS上的项目实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-25：恒生金融交易系统的Docker化实践"><span class="nav-number">142.</span> <span class="nav-text">2016-10-25：恒生金融交易系统的Docker化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-24：PPTV聚力传媒的Docker与DevOps"><span class="nav-number">143.</span> <span class="nav-text">2016-10-24：PPTV聚力传媒的Docker与DevOps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-20：基于Docker的开发云提高资源利用率的实践"><span class="nav-number">144.</span> <span class="nav-text">2016-10-20：基于Docker的开发云提高资源利用率的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-10-04：深入解析DC-OS"><span class="nav-number">145.</span> <span class="nav-text">2016-10-04：深入解析DC&#x2F;OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-27：Docker在B站的实施之路"><span class="nav-number">146.</span> <span class="nav-text">2016-09-27：Docker在B站的实施之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-20：-Acttao-开发、运维容器化实践"><span class="nav-number">147.</span> <span class="nav-text">2016-09-20： Acttao 开发、运维容器化实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-06：唯品会数据库备份恢复容器化项目实践经验总结"><span class="nav-number">148.</span> <span class="nav-text">2016-09-06：唯品会数据库备份恢复容器化项目实践经验总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-09-08：云计算应用技术发展与企业异构资源池统一管理案例分析"><span class="nav-number">149.</span> <span class="nav-text">2016-09-08：云计算应用技术发展与企业异构资源池统一管理案例分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-28：基于容器技术构建企业级PaaS云平台实践"><span class="nav-number">150.</span> <span class="nav-text">2016-08-28：基于容器技术构建企业级PaaS云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-25：中英人寿保险有限公司基于容器技术的实践分享"><span class="nav-number">151.</span> <span class="nav-text">2016-08-25：中英人寿保险有限公司基于容器技术的实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-18：用Harbor实现容器镜像仓库的管理和运维"><span class="nav-number">152.</span> <span class="nav-text">2016-08-18：用Harbor实现容器镜像仓库的管理和运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-16：容器化ICT融合初体验"><span class="nav-number">153.</span> <span class="nav-text">2016-08-16：容器化ICT融合初体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-11：应用容器化之Kubernetes实践"><span class="nav-number">154.</span> <span class="nav-text">2016-08-11：应用容器化之Kubernetes实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-08-04：传统金融-IT-对混合云管理的一些思考"><span class="nav-number">155.</span> <span class="nav-text">2016-08-04：传统金融 IT 对混合云管理的一些思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-28：SAP-Anywhere产品背后CD的实现"><span class="nav-number">156.</span> <span class="nav-text">2016-07-28：SAP Anywhere产品背后CD的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-26：基于Docker的负载均衡和服务发现"><span class="nav-number">157.</span> <span class="nav-text">2016-07-26：基于Docker的负载均衡和服务发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-19：浅谈Docker安全合规建设"><span class="nav-number">158.</span> <span class="nav-text">2016-07-19：浅谈Docker安全合规建设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-07-14：应用容器env化实战"><span class="nav-number">159.</span> <span class="nav-text">2016-07-14：应用容器env化实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-30：-Docker网络方案初探"><span class="nav-number">160.</span> <span class="nav-text">2016-06-30： Docker网络方案初探</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-28：公有云上的容器实践分享"><span class="nav-number">161.</span> <span class="nav-text">2016-06-28：公有云上的容器实践分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-21：基于Docker实现DevOps的一些探索"><span class="nav-number">162.</span> <span class="nav-text">2016-06-21：基于Docker实现DevOps的一些探索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-06-14：传统企业PaaS平台功能设计与业务上云思考"><span class="nav-number">163.</span> <span class="nav-text">2016-06-14：传统企业PaaS平台功能设计与业务上云思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-31：站在运维的角度讲如何打造一个Docker-Mesos平台"><span class="nav-number">164.</span> <span class="nav-text">2016-05-31：站在运维的角度讲如何打造一个Docker-Mesos平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-30：虚拟化老兵介绍虚拟化技术"><span class="nav-number">165.</span> <span class="nav-text">2016-05-30：虚拟化老兵介绍虚拟化技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-19：容器的配置管理"><span class="nav-number">166.</span> <span class="nav-text">2016-05-19：容器的配置管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-10：基于Docker的分布式服务研发实践"><span class="nav-number">167.</span> <span class="nav-text">2016-05-10：基于Docker的分布式服务研发实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-05-03：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系之大二层网络"><span class="nav-number">168.</span> <span class="nav-text">2016-05-03：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系之大二层网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-28：Docker容器对存储的定义（Volume-与-Volume-Plugin）"><span class="nav-number">169.</span> <span class="nav-text">2016-04-28：Docker容器对存储的定义（Volume 与 Volume Plugin）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-26：Kubernetes代码贡献者谈Kubernetes的发展动态"><span class="nav-number">170.</span> <span class="nav-text">2016-04-26：Kubernetes代码贡献者谈Kubernetes的发展动态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-19：阿里云容器服务设计实践"><span class="nav-number">171.</span> <span class="nav-text">2016-04-19：阿里云容器服务设计实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-12：双模IT给你的企业装上双引擎"><span class="nav-number">172.</span> <span class="nav-text">2016-04-12：双模IT给你的企业装上双引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-04-05：搜狐基于Docker-Kubernetes的一站式运维管理实践"><span class="nav-number">173.</span> <span class="nav-text">2016-04-05：搜狐基于Docker+Kubernetes的一站式运维管理实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-31：DCOS中监控和弹性伸缩方案经验分享"><span class="nav-number">174.</span> <span class="nav-text">2016-03-31：DCOS中监控和弹性伸缩方案经验分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-29：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系"><span class="nav-number">175.</span> <span class="nav-text">2016-03-29：基于Docker、Mesos、Ceph全新技术栈的三地三中心容灾体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-22：太保DCOS平台——微信项目实践"><span class="nav-number">176.</span> <span class="nav-text">2016-03-22：太保DCOS平台——微信项目实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-15：Kubernetes集成外部服务实践"><span class="nav-number">177.</span> <span class="nav-text">2016-03-15：Kubernetes集成外部服务实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-03-04：Docker在乐视的实践之路"><span class="nav-number">178.</span> <span class="nav-text">2016-03-04：Docker在乐视的实践之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-02-23：一个关于不可变基础设施的实践案例"><span class="nav-number">179.</span> <span class="nav-text">2016-02-23：一个关于不可变基础设施的实践案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-02-14：基于Docker搭建轻量的私有构建环境"><span class="nav-number">180.</span> <span class="nav-text">2016-02-14：基于Docker搭建轻量的私有构建环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-30：IT基础架构的自动化编排"><span class="nav-number">181.</span> <span class="nav-text">2016-01-30：IT基础架构的自动化编排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-23：基于OVS的Docker多主机互联设计和实践"><span class="nav-number">182.</span> <span class="nav-text">2016-01-23：基于OVS的Docker多主机互联设计和实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-15：关于混合云的一点思考"><span class="nav-number">183.</span> <span class="nav-text">2016-01-15：关于混合云的一点思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2016-01-06：思源基于Docker和OpenStack的私有云平台实践"><span class="nav-number">184.</span> <span class="nav-text">2016-01-06：思源基于Docker和OpenStack的私有云平台实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-29：用Docker和Git搭建在线开发环境"><span class="nav-number">185.</span> <span class="nav-text">2015-12-29：用Docker和Git搭建在线开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-22：基于Docker和Git的持续集成工作流"><span class="nav-number">186.</span> <span class="nav-text">2015-12-22：基于Docker和Git的持续集成工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-15：容器服务如何在企业客户落地？Rancher解决之道分享。"><span class="nav-number">187.</span> <span class="nav-text">2015-12-15：容器服务如何在企业客户落地？Rancher解决之道分享。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-12-09：玩转Docker镜像和镜像构建"><span class="nav-number">188.</span> <span class="nav-text">2015-12-09：玩转Docker镜像和镜像构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-29：微服务架构云端应用"><span class="nav-number">189.</span> <span class="nav-text">2015-11-29：微服务架构云端应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-25：搭建企业私有Docker-Registry实战分享"><span class="nav-number">190.</span> <span class="nav-text">2015-11-25：搭建企业私有Docker Registry实战分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-17：-接触AWS近5年，谈谈我的运维经验"><span class="nav-number">191.</span> <span class="nav-text">2015-11-17： 接触AWS近5年，谈谈我的运维经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-11：-一篇文章带你了解Cloud-Native"><span class="nav-number">192.</span> <span class="nav-text">2015-11-11： 一篇文章带你了解Cloud Native</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-08：细节-｜谈谈CoreOS的etcd"><span class="nav-number">193.</span> <span class="nav-text">2015-11-08：细节 ｜谈谈CoreOS的etcd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-06：Docker-1-9新特性解读"><span class="nav-number">194.</span> <span class="nav-text">2015-11-06：Docker 1.9新特性解读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-11-04：-蘑菇街基于Docker的私有云实践"><span class="nav-number">195.</span> <span class="nav-text">2015-11-04： 蘑菇街基于Docker的私有云实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-28：-OCI标准和runC原理解读"><span class="nav-number">196.</span> <span class="nav-text">2015-10-28： OCI标准和runC原理解读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-20：中兴软创（ZTEsoft）基于Jenkins和Docker的CI实践"><span class="nav-number">197.</span> <span class="nav-text">2015-10-20：中兴软创（ZTEsoft）基于Jenkins和Docker的CI实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-17：Docker-Registry-V1-to-V2"><span class="nav-number">198.</span> <span class="nav-text">2015-10-17：Docker Registry V1 to V2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-14：企业级云平台的实践和思考"><span class="nav-number">199.</span> <span class="nav-text">2015-10-14：企业级云平台的实践和思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-08：容器和IaaS：谁动了谁的奶酪"><span class="nav-number">200.</span> <span class="nav-text">2015-10-08：容器和IaaS：谁动了谁的奶酪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-10-02：暴走漫画的Docker实践"><span class="nav-number">201.</span> <span class="nav-text">2015-10-02：暴走漫画的Docker实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-23：基于Docker和Java的持续集成实践"><span class="nav-number">202.</span> <span class="nav-text">2015-09-23：基于Docker和Java的持续集成实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-15：Mesos在去哪儿网的应用"><span class="nav-number">203.</span> <span class="nav-text">2015-09-15：Mesos在去哪儿网的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-08：Docker三剑客之Swarm介绍"><span class="nav-number">204.</span> <span class="nav-text">2015-09-08：Docker三剑客之Swarm介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-09-02：畅谈PaaS"><span class="nav-number">205.</span> <span class="nav-text">2015-09-02：畅谈PaaS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-26：一篇文章带你了解Flannel"><span class="nav-number">206.</span> <span class="nav-text">2015-08-26：一篇文章带你了解Flannel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-19：360的容器化之路"><span class="nav-number">207.</span> <span class="nav-text">2015-08-19：360的容器化之路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-08-12：闲谈Kubernetes-的主要特性和经验分享"><span class="nav-number">208.</span> <span class="nav-text">2015-08-12：闲谈Kubernetes 的主要特性和经验分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-06-17：OpenStack-Magnum社区及项目介绍"><span class="nav-number">209.</span> <span class="nav-text">2015-06-17：OpenStack Magnum社区及项目介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-06-03：新浪SCE-Docker最佳实践"><span class="nav-number">210.</span> <span class="nav-text">2015-06-03：新浪SCE Docker最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-05-20：AppC和Docker的对比"><span class="nav-number">211.</span> <span class="nav-text">2015-05-20：AppC和Docker的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-05-12：Docker-Registry的定制和性能分析"><span class="nav-number">212.</span> <span class="nav-text">2015-05-12：Docker Registry的定制和性能分析</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-        <div class="back-to-top">
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木子"
+      src="https://blog.502.li/favicon.ico">
+  <p class="site-author-name" itemprop="name">木子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/muzi502" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;muzi502" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:blog@502.li" title="E-Mail → mailto:blog@502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/muzi_ii" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://t.me/muzi_ii" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;muzi_ii" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://kindle.502.li/" title="Kindle → https:&#x2F;&#x2F;kindle.502.li" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://https//t.me/rss_kubernetes" title="Channel → https:&#x2F;&#x2F;https:&#x2F;&#x2F;t.me&#x2F;rss_kubernetes" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Channel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+      </div>
+        <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
-            <span id="scrollpercent"><span>0</span>%</span>
+          <span>0%</span>
         </div>
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
       </div>
     </main>
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">木子</span>
@@ -9243,380 +9266,59 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">751k</span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">752k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:38</span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
       </div>
     </footer>
   </div>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  <script src="/js/utils.js?v=7.1.0"></script>
-  <script src="/js/motion.js?v=7.1.0"></script>
-  <script src="/js/affix.js?v=7.1.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-  <script id="dsq-count-scr" src="https://muzi.disqus.com/count.js" async></script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.502.li/archives/kubernetes-QA.html";
-    this.page.identifier = "archives/kubernetes-QA.html";
-    this.page.title = '(2000个) kubernetes 社群分享 QA 汇总';
-    };
-  function loadComments() {
+  function loadCount() {
     var d = document, s = d.createElement('script');
-    s.src = 'https://muzi.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
+    s.src = 'https://muzi.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
     (d.head || d.body).appendChild(s);
   }
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        loadComments();
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-                // show search results
-                if (isMatch) {
-                  // sort index by position of keyword
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-                  // merge hits into slices
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-                      // move to next position of hit
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-                  // sort slices in content by search text's count and hits' count
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-                  // select top N slices in content
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-                  // highlight title and content
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-                  var resultItem = '';
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
+<script>
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.502.li/archives/kubernetes-QA.html",
+            identifier: "archives/kubernetes-QA.html",
+            title: "(2000个) kubernetes 社群分享 QA 汇总"
           }
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-          proceedsearch();
         }
       });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://muzi.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
     }
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-<script>
-  $('.highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
+  });
 </script>
 </body>
 </html>
