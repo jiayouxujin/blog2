@@ -478,8 +478,8 @@
         </time>
       </div>
       <h2 class="post-title">
-          <a class="post-title-link" href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" itemprop="url">
-            <span itemprop="name">一段在法律与技术冲突的地方捍卫自由的历史</span>
+          <a class="post-title-link" href="/archives/life-sciences.html" itemprop="url">
+            <span itemprop="name">六年前思考的一些东西</span>
           </a>
       </h2>
     </header>
@@ -494,8 +494,8 @@
         </time>
       </div>
       <h2 class="post-title">
-          <a class="post-title-link" href="/archives/life-sciences.html" itemprop="url">
-            <span itemprop="name">六年前思考的一些东西</span>
+          <a class="post-title-link" href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" itemprop="url">
+            <span itemprop="name">一段在法律与技术冲突的地方捍卫自由的历史</span>
           </a>
       </h2>
     </header>
@@ -1137,8 +1137,8 @@
         </time>
       </div>
       <h2 class="post-title">
-          <a class="post-title-link" href="/archives/domain-email.html" itemprop="url">
-            <span itemprop="name">使用 namecheap 域名邮箱转发功能拥有无限个邮箱</span>
+          <a class="post-title-link" href="/archives/buffon.html" itemprop="url">
+            <span itemprop="name">布封 自然史</span>
           </a>
       </h2>
     </header>
@@ -1169,8 +1169,8 @@
         </time>
       </div>
       <h2 class="post-title">
-          <a class="post-title-link" href="/archives/buffon.html" itemprop="url">
-            <span itemprop="name">布封 自然史</span>
+          <a class="post-title-link" href="/archives/domain-email.html" itemprop="url">
+            <span itemprop="name">使用 namecheap 域名邮箱转发功能拥有无限个邮箱</span>
           </a>
       </h2>
     </header>
@@ -1327,6 +1327,16 @@
 <script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://blog.502.li/archives/',]
+      });
+      });
+  </script>
 <script>
   function loadCount() {
     var d = document, s = d.createElement('script');

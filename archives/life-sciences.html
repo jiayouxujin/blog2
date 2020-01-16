@@ -49,7 +49,7 @@
 <meta property="og:description" content="偶然间翻到了 OneDrive 里六年前写下的疑问，大概是我高三的时候思考的生物学问题。当时梦想着大学的时候能去研究生命科学、去研究生命如何进化来的、去研究地球是如何孕育出生命、又是经历了几十亿年的进化之旅，生命的奇迹降临在我身上。一个鲜活的生命由此诞生。那时的我对高中生物学的知识早已学的滚瓜烂熟，甚至但是还拿来大学教材《普通生物学》、《细胞生物学》、《植物学》来自学😂。我只是想迫切地知道大学里">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-16T08:01:41.618Z">
+<meta property="article:modified_time" content="2020-01-16T08:16:13.615Z">
 <meta property="article:author" content="木子">
 <meta property="article:tag" content="思考">
 <meta name="twitter:card" content="summary">
@@ -166,7 +166,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 2020-01-16T16:01:41+08:00" itemprop="dateModified" datetime="2020-01-16T16:01:41+08:00">2020-01-16</time>
+                <time title="修改时间：2020-01-16 2020-01-16T16:16:13+08:00" itemprop="dateModified" datetime="2020-01-16T16:16:13+08:00">2020-01-16</time>
               </span>
   <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1297,12 +1297,12 @@
           </div>
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/wndr3700v4-openwrt.html" rel="prev" title="wndr3700v4  刷 openwrt 一些小优化">
-      <i class="fa fa-chevron-left"></i> wndr3700v4  刷 openwrt 一些小优化
+    <a href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" rel="prev" title="一段在法律与技术冲突的地方捍卫自由的历史">
+      <i class="fa fa-chevron-left"></i> 一段在法律与技术冲突的地方捍卫自由的历史
     </a></div>
       <div class="post-nav-item">
-    <a href="/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html" rel="next" title="一段在法律与技术冲突的地方捍卫自由的历史">
-      一段在法律与技术冲突的地方捍卫自由的历史 <i class="fa fa-chevron-right"></i>
+    <a href="/archives/kernel-note-book.html" rel="next" title="深入理解 Linux 内核读书笔记">
+      深入理解 Linux 内核读书笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -1447,6 +1447,16 @@
 <script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://blog.502.li/archives/life-sciences.html',]
+      });
+      });
+  </script>
 <script>
   function loadCount() {
     var d = document, s = d.createElement('script');

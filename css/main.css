@@ -1283,7 +1283,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6be947;
+  background: #16468a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2745,38 +2745,27 @@ h5,
 h6 {
   color: #2e405b;
 }
-html {
-  background: #fff;
-}
-.foreground {
-  background: #2e405b;
-}
-.background {
-  background: #fff;
-}
-.foreground-text * {
-  color: #2e405b;
-}
-.background-text * {
-  color: #fff;
-}
 body {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACFJREFUeNpiZGBg4GegAsBlCD8TqSYNQg2Mo6FEBAAIMACdPABtrSW/IQAAAABJRU5ErkJggg==");
   background-repeat: repeat;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.04);
   min-height: 100vh;
   margin: 0;
+}
+.container {
+  background-color: transparent;
+  padding: 0;
+  position: relative;
 }
 .headband {
   height: 3px;
   background: #49b1f5;
 }
-/*.site-meta {
-    background-image: linear-gradient(90deg, #F79533 0%, #F37055 15%, #EF4E7B 30%, #A166AB 44%, #5073B8 58%, #1098AD 72%, #07B39B 86%, #6DBA82 100%);
-}*/
+.site-meta {
+  background-image: linear-gradient(90deg, #f79533 0%, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);
+}
 .site-meta {
   padding: 20px 0;
   color: #fff;
@@ -2870,11 +2859,9 @@ del {
 .header {
   line-height: 1.5;
 }
-/*
 .container {
-    background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0,0,0,0);
 }
-*/
 /*
 页面留白更改
 .header-inner {
@@ -2987,30 +2974,27 @@ blockquote {
 .post-block {
   border-radius: 10px !important;
 }
-/* .posts-expand .post-title-link::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #49b1f5;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    -moz-transform: scaleX(0);
-    -ms-transform: scaleX(0);
-    -o-transform: scaleX(0);
-    transform: scaleX(0);
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-} */
-/*/
-文章标题动态效果,
+.posts-expand .post-title-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #49b1f5;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
 .posts-expand .post-title-link::before {
   background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
 }
-*
 .posts-expand .post-title {
   font-size: 26px;
   font-weight: 700;
