@@ -1215,7 +1215,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f7ffac;
+  background: #2aff13;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3066,7 +3066,7 @@ blockquote {
 }
 /* 标题 */
 .posts-expand article:only-of-type h1 {
-  font-size: 37px;
+  font-size: 26px;
 }
 .post-body h2 {
   padding-left: 1.7%;
