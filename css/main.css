@@ -1215,7 +1215,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #a7ff7d;
+  background: #265d32;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3076,12 +3076,10 @@ blockquote {
 .post-body h3 {
   border-bottom: 1px solid #cfd8dc;
   padding-bottom: 0.3em;
-  padding-left: 1.7%;
   color: #49b1f5;
   position: relative;
 }
 .post-body h4 {
-  padding-left: 1.7%;
   color: #555;
   position: relative;
 }
