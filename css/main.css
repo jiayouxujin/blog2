@@ -1050,14 +1050,12 @@ pre .javascript .function {
   }
 }
 .site-nav-toggle .toggle {
-  background: #2e405b;
   border: 0;
   margin-top: 2px;
   padding: 8px;
   width: 12px;
 }
 .site-nav-toggle .toggle .toggle-line {
-  background: $ #2e405b;
   border-radius: 1px;
 }
 .site-nav {
@@ -1215,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffdefb;
+  background: #3eb8ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2340,7 +2338,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .site-nav-toggle .toggle .toggle-line {
-  background: #fff;
+  background: #2e405b;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-nav {
