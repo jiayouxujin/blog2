@@ -38,7 +38,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="注意: 这个部署在了digital ocean的VPS上，国内的机器需要代理。 1.主机要求0.硬件要求2CPU 2GB RAM 1.临时关闭swap -a&#96;&#96;&#96;123456789102.打开bridge-nf-call-iptables&#96;&#96;&#96;bashcat &gt; &#x2F;etc&#x2F;sysctl.d&#x2F;99-kubernetes-cri.conf &amp;">
@@ -49,7 +49,7 @@
 <meta property="og:description" content="注意: 这个部署在了digital ocean的VPS上，国内的机器需要代理。 1.主机要求0.硬件要求2CPU 2GB RAM 1.临时关闭swap -a&#96;&#96;&#96;123456789102.打开bridge-nf-call-iptables&#96;&#96;&#96;bashcat &gt; &#x2F;etc&#x2F;sysctl.d&#x2F;99-kubernetes-cri.conf &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-18T05:01:21.238Z">
+<meta property="article:modified_time" content="2020-01-19T12:13:21.027Z">
 <meta property="article:author" content="木子">
 <meta property="article:tag" content="kubernetes">
 <meta property="article:tag" content="k8s">
@@ -88,7 +88,7 @@
 <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
@@ -100,7 +100,6 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -113,22 +112,19 @@
 <nav class="site-nav">
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
   </li>
-        <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+        <li class="menu-item menu-item-books">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>Books</a>
   </li>
-        <li class="menu-item menu-item-分类">
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+        <li class="menu-item menu-item-kindle">
+    <a href="https://kindle.502.li/" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
   </li>
-        <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+        <li class="menu-item menu-item-friend">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>Friend</a>
   </li>
-        <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
-  </li>
-        <li class="menu-item menu-item-关于">
-    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+        <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
   </li>
   </ul>
 </nav>
@@ -167,8 +163,19 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-18 2020-01-18T13:01:21+08:00" itemprop="dateModified" datetime="2020-01-18T13:01:21+08:00">2020-01-18</time>
+                <time title="修改时间：2020-01-19 2020-01-19T20:13:21+08:00" itemprop="dateModified" datetime="2020-01-19T20:13:21+08:00">2020-01-19</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+            </span>
   <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="fa fa-comment-o"></i>
@@ -233,7 +240,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[kubelet-check] Initial timeout of 40s passed.</span><br><span class="line">error execution phase upload-config/kubelet: Error writing Crisocket information <span class="keyword">for</span> the control-plane node: timed out waiting <span class="keyword">for</span> the condition</span><br></pre></td></tr></table></figure>
 <p>第二次初始化还是失败😭</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">╭─root@k8s-master ~</span><br><span class="line">╰─<span class="comment"># kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=</span></span><br><span class="line">[init] Using Kubernetes version: v1.14.1</span><br><span class="line">[preflight] Running pre-flight checks</span><br><span class="line">[preflight] Pulling images required <span class="keyword">for</span> setting up a Kubernetes cluster</span><br><span class="line">[preflight] This might take a minute or two, depending on the speed of your internet connection</span><br><span class="line">[preflight] You can also perform this action <span class="keyword">in</span> beforehand using <span class="string">'kubeadm config images pull'</span></span><br><span class="line">[kubelet-start] Writing kubelet environment file with flags to file <span class="string">"/var/lib/kubelet/kubeadm-flags.env"</span></span><br><span class="line">[kubelet-start] Writing kubelet configuration to file <span class="string">"/var/lib/kubelet/config.yaml"</span></span><br><span class="line">[kubelet-start] Activating the kubelet service</span><br><span class="line">[certs] Using certificateDir folder <span class="string">"/etc/kubernetes/pki"</span></span><br><span class="line">[certs] Generating <span class="string">"etcd/ca"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"etcd/server"</span> certificate and key</span><br><span class="line">[certs] etcd/server serving cert is signed <span class="keyword">for</span> DNS names [k8s-master localhost] and IPs [IP 127.0.0.1 ::1]</span><br><span class="line">[certs] Generating <span class="string">"etcd/peer"</span> certificate and key</span><br><span class="line">[certs] etcd/peer serving cert is signed <span class="keyword">for</span> DNS names [k8s-master localhost] and IPs [IP 127.0.0.1 ::1]</span><br><span class="line">[certs] Generating <span class="string">"etcd/healthcheck-client"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"apiserver-etcd-client"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"ca"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"apiserver-kubelet-client"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"apiserver"</span> certificate and key</span><br><span class="line">[certs] apiserver serving cert is signed <span class="keyword">for</span> DNS names [k8s-master kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 IP]</span><br><span class="line">[certs] Generating <span class="string">"front-proxy-ca"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"front-proxy-client"</span> certificate and key</span><br><span class="line">[certs] Generating <span class="string">"sa"</span> key and public key</span><br><span class="line">[kubeconfig] Using kubeconfig folder <span class="string">"/etc/kubernetes"</span></span><br><span class="line">[kubeconfig] Writing <span class="string">"admin.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"kubelet.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"controller-manager.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"scheduler.conf"</span> kubeconfig file</span><br><span class="line">[control-plane] Using manifest folder <span class="string">"/etc/kubernetes/manifests"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-apiserver"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-controller-manager"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-scheduler"</span></span><br><span class="line">[etcd] Creating static Pod manifest <span class="keyword">for</span> <span class="built_in">local</span> etcd <span class="keyword">in</span> <span class="string">"/etc/kubernetes/manifests"</span></span><br><span class="line">[<span class="built_in">wait</span>-control-plane] Waiting <span class="keyword">for</span> the kubelet to boot up the control plane as static Pods from directory <span class="string">"/etc/kubernetes/manifests"</span>. This can take up to 4m0s</span><br><span class="line">[kubelet-check] Initial timeout of 40s passed.</span><br><span class="line">[kubelet-check] It seems like the kubelet isn<span class="string">'t running or healthy.</span></span><br><span class="line"><span class="string">[kubelet-check] The HTTP call equal to '</span>curl -sSL http://localhost:10248/healthz<span class="string">' failed with error: Get http://localhost:10248/healthz: dial tcp 127.0.0.1:10248: connect: connection refused.</span></span><br><span class="line"><span class="string">[kubelet-check] It seems like the kubelet isn'</span>t running or healthy.</span><br><span class="line">[kubelet-check] The HTTP call equal to <span class="string">'curl -sSL http://localhost:10248/healthz'</span> failed with error: Get http://localhost:10248/healthz: dial tcp 127.0.0.1:10248: connect: connection refused.</span><br><span class="line">[kubelet-check] It seems like the kubelet isn<span class="string">'t running or healthy.</span></span><br><span class="line"><span class="string">[kubelet-check] The HTTP call equal to '</span>curl -sSL http://localhost:10248/healthz<span class="string">' failed with error: Get http://localhost:10248/healthz: dial tcp 127.0.0.1:10248: connect: connection refused.</span></span><br><span class="line"><span class="string">[kubelet-check] It seems like the kubelet isn'</span>t running or healthy.</span><br><span class="line">[kubelet-check] The HTTP call equal to <span class="string">'curl -sSL http://localhost:10248/healthz'</span> failed with error: Get http://localhost:10248/healthz: dial tcp 127.0.0.1:10248: connect: connection refused.</span><br><span class="line">[kubelet-check] It seems like the kubelet isn<span class="string">'t running or healthy.</span></span><br><span class="line"><span class="string">[kubelet-check] The HTTP call equal to '</span>curl -sSL http://localhost:10248/healthz<span class="string">' failed with error: Get http://localhost:10248/healthz: dial tcp 127.0.0.1:10248: connect: connection refused.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Unfortunately, an error has occurred:</span></span><br><span class="line"><span class="string">        timed out waiting for the condition</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This error is likely caused by:</span></span><br><span class="line"><span class="string">        - The kubelet is not running</span></span><br><span class="line"><span class="string">        - The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:</span></span><br><span class="line"><span class="string">        - '</span>systemctl status kubelet<span class="string">'</span></span><br><span class="line"><span class="string">        - '</span>journalctl -xeu kubelet<span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Additionally, a control plane component may have crashed or exited when started by the container runtime.</span></span><br><span class="line"><span class="string">To troubleshoot, list all containers using your preferred container runtimes CLI, e.g. docker.</span></span><br><span class="line"><span class="string">Here is one example how you may list all Kubernetes containers running in docker:</span></span><br><span class="line"><span class="string">        - '</span>docker ps -a | grep kube | grep -v pause<span class="string">'</span></span><br><span class="line"><span class="string">        Once you have found the failing container, you can inspect its logs with:</span></span><br><span class="line"><span class="string">        - '</span>docker logs CONTAINERID<span class="string">'</span></span><br><span class="line"><span class="string">error execution phase wait-control-plane: couldn'</span>t initialize a Kubernetes cluster</span><br></pre></td></tr></table></figure>
-<p><del>如果你初始化失败的话，那就删除所有的容器，删除/etc/kubernetes/* 删除 /var/lib/etcd/*</del><br>其实进行kubeadm reset重置再执行kubeadm init也行，这样更方便些😂<br>然后再重新初始化</p>
+<p><del>如果你初始化失败的话，那就删除所有的容器，删除/etc/kubernetes/* 删除 /var/lib/etcd/*</del></p>
+<p>其实进行kubeadm reset重置再执行kubeadm init也行，这样更方便些😂<br>然后再重新初始化</p>
 <figure class="highlight plain"><figcaption><span>init --pod-network-cidr</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">加个参数&#96;&#96;&#96;--ignore-preflight-errors&#x3D;all&#96;&#96;&#96;重新初始化</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line"></span><br><span class="line">## 5.将k8s-node节点加入到k8s-master</span><br><span class="line"></span><br><span class="line">node节点也是和master节点一样，安装docker，kubelet kubeadm kubectl。不过最后不需要初始化集群，不用kubeadm init，而是直接加入到master当中来。如果master初始化后找不到kubeadm join所需要的token，可以使用以下命令重新生成一个token,注意 tty参数为0则这个token永久不会失效。可以自定义失效期限。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">kubeadm token generate</span><br><span class="line">kubeadm token create ljfmu1.5kek1jy2xdb8sopv  --print-join-command --ttl&#x3D;0</span><br><span class="line">kubeadm token create $(kubeadm token generate)  --print-join-command --ttl&#x3D;0</span><br></pre></td></tr></table></figure>
 <p>只需要一个命令就可以将k8s-node节点加入到master的管理之下</p>
 <figure class="highlight plain"><figcaption><span>join IP:6443 --token ljfmu1.5kek1jy2xdb8sopv --discovery-token-ca-cert-hash sha256:3b18b4cc1debc63d57e03da52424a3b3bacf03cc290b94cbe5b6aaf9c152f0cf```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">加入成功后会提示以下内容😘</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">[preflight] Running pre-flight checks</span><br><span class="line">[preflight] Reading configuration from the cluster...</span><br><span class="line">[preflight] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;</span><br><span class="line">[kubelet-start] Downloading configuration for the kubelet from the &quot;kubelet-config-1.14&quot; ConfigMap in the kube-system namespace</span><br><span class="line">[kubelet-start] Writing kubelet configuration to file &quot;&#x2F;var&#x2F;lib&#x2F;kubelet&#x2F;config.yaml&quot;</span><br><span class="line">[kubelet-start] Writing kubelet environment file with flags to file &quot;&#x2F;var&#x2F;lib&#x2F;kubelet&#x2F;kubeadm-flags.env&quot;</span><br><span class="line">[kubelet-start] Activating the kubelet service</span><br><span class="line">[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...</span><br><span class="line"></span><br><span class="line">This node has joined the cluster:</span><br><span class="line">* Certificate signing request was sent to apiserver and a response was received.</span><br><span class="line">* The Kubelet was informed of the new secure connection details.</span><br><span class="line"></span><br><span class="line">Run &#39;kubectl get nodes&#39; on the control-plane to see this node join the cluster.</span><br></pre></td></tr></table></figure>
@@ -253,8 +261,8 @@
       <i class="fa fa-chevron-left"></i> CentOS7 使用 kubeadm 部署 kubernetes
     </a></div>
       <div class="post-nav-item">
-    <a href="/archives/fuch-rush-app-dir.html" rel="next" title="清理毒瘤app在sdcard目录下拉屎产生的文件夹">
-      清理毒瘤app在sdcard目录下拉屎产生的文件夹 <i class="fa fa-chevron-right"></i>
+    <a href="/archives/gitlab-install.html" rel="next" title="CentOS7 install gitlab">
+      CentOS7 install gitlab <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -319,17 +327,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-        <span class="site-state-item-count">73</span>
+            <a href="/tags/">
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -381,13 +390,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">742k</span>
+    <span title="站点总字数">740k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">20:37</span>
+    <span title="站点阅读时长">20:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
   </div>
@@ -398,10 +407,7 @@
     </footer>
   </div>
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script>
-<script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 <script>

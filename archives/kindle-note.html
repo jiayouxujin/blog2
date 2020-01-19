@@ -38,7 +38,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="今儿水一篇博客😋，另外分享一下自己的 kindle 标注 kindle.502.li muzi’s kindle note最近决定把 kindle 上的标注捣鼓出来分享在博客上，整理了一下折腾的过程。笔记放在了 GitHub page 上并添加了自己的二级域名 kindle.502.li ，一般来讲每天都会更新，因为每天晚上都会捧着 kindle 看书😂，kindle 已经陪着我度过了无数个不">
@@ -55,12 +55,9 @@
 <meta property="og:image" content="../img/image-20200109200236874.png">
 <meta property="og:image" content="../img/image-20200109200537555.png">
 <meta property="article:published_time" content="2020-01-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-18T05:01:21.250Z">
+<meta property="article:modified_time" content="2020-01-19T12:13:21.031Z">
 <meta property="article:author" content="木子">
-<meta property="article:tag" content="运维">
-<meta property="article:tag" content="kubernetes">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="kindle">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="../img/image-20200109191811489.png">
 <link rel="canonical" href="https://blog.502.li/archives/kindle-note.html">
@@ -96,7 +93,7 @@
 <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
@@ -108,7 +105,6 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -121,22 +117,19 @@
 <nav class="site-nav">
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
   </li>
-        <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+        <li class="menu-item menu-item-books">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>Books</a>
   </li>
-        <li class="menu-item menu-item-分类">
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+        <li class="menu-item menu-item-kindle">
+    <a href="https://kindle.502.li/" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
   </li>
-        <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+        <li class="menu-item menu-item-friend">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>Friend</a>
   </li>
-        <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
-  </li>
-        <li class="menu-item menu-item-关于">
-    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+        <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
   </li>
   </ul>
 </nav>
@@ -175,8 +168,19 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-18 2020-01-18T13:01:21+08:00" itemprop="dateModified" datetime="2020-01-18T13:01:21+08:00">2020-01-18</time>
+                <time title="修改时间：2020-01-19 2020-01-19T20:13:21+08:00" itemprop="dateModified" datetime="2020-01-19T20:13:21+08:00">2020-01-19</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+            </span>
   <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="fa fa-comment-o"></i>
@@ -219,12 +223,12 @@
 <li>然后邮箱里会收到以下内容的邮件</li>
 </ul>
 <blockquote>
-<p>  ✉️ muzi502 <a href="mailto:&#110;&#x6f;&#45;&#x72;&#x65;&#x70;&#108;&#x79;&#64;&#x61;&#x6d;&#97;&#x7a;&#111;&#x6e;&#46;&#x63;&#x6f;&#109;">&#110;&#x6f;&#45;&#x72;&#x65;&#x70;&#108;&#x79;&#64;&#x61;&#x6d;&#97;&#x7a;&#111;&#x6e;&#46;&#x63;&#x6f;&#109;</a></p>
-<p>  To: <a href="mailto:&#107;&#105;&#x6e;&#100;&#108;&#x65;&#x40;&#x35;&#48;&#x32;&#46;&#x6c;&#105;">&#107;&#105;&#x6e;&#100;&#108;&#x65;&#x40;&#x35;&#48;&#x32;&#46;&#x6c;&#105;</a></p>
-<p>  查看名言</p>
-<p>  嗨，我正在读这本书，想跟您分享一句名言。<br>  《奴役关系是通过人与人之间的相互依赖，以及将他们结合在一起的相互需要形成的。如果不先使得一个人陷入不能失去另一个人的境地，那就不可能奴役他。这种情况在自然状态中并不存在，在自然状态中，人人无拘无束，最强者的法则无用武之地。》(摘自由 让-雅克·卢梭 (Jean-Jacques Rousseau), 黄小彦 撰写的《论人类不平等的起源和基础 (译林人文精选)》)</p>
-<p>  开始免费阅读: <a href="http://z.cn/hzAc7xd" target="_blank" rel="noopener">http://z.cn/hzAc7xd</a></p>
-<p>  出行时免费阅读 - 下载适用于 Android、iOS、PC 和 Mac 等的 Kindle</p>
+<p>✉️ muzi502 <a href="mailto:&#110;&#111;&#45;&#114;&#101;&#112;&#x6c;&#121;&#x40;&#97;&#x6d;&#97;&#122;&#x6f;&#x6e;&#46;&#x63;&#x6f;&#109;">&#110;&#111;&#45;&#114;&#101;&#112;&#x6c;&#121;&#x40;&#97;&#x6d;&#97;&#122;&#x6f;&#x6e;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>To: <a href="mailto:&#x6b;&#x69;&#110;&#x64;&#x6c;&#101;&#x40;&#x35;&#48;&#x32;&#46;&#x6c;&#105;">&#x6b;&#x69;&#110;&#x64;&#x6c;&#101;&#x40;&#x35;&#48;&#x32;&#46;&#x6c;&#105;</a></p>
+<p>查看名言</p>
+<p>嗨，我正在读这本书，想跟您分享一句名言。<br>《奴役关系是通过人与人之间的相互依赖，以及将他们结合在一起的相互需要形成的。如果不先使得一个人陷入不能失去另一个人的境地，那就不可能奴役他。这种情况在自然状态中并不存在，在自然状态中，人人无拘无束，最强者的法则无用武之地。》(摘自由 让-雅克·卢梭 (Jean-Jacques Rousseau), 黄小彦 撰写的《论人类不平等的起源和基础 (译林人文精选)》)</p>
+<p>开始免费阅读: <a href="http://z.cn/hzAc7xd" target="_blank" rel="noopener">http://z.cn/hzAc7xd</a></p>
+<p>出行时免费阅读 - 下载适用于 Android、iOS、PC 和 Mac 等的 Kindle</p>
 </blockquote>
 <ul>
 <li>打开短链接</li>
@@ -234,7 +238,7 @@
 <h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2><p>kindle 上所有的标注文件都保存在 kindle 内部存储 <code>documents/My Clippings.txt</code> 文件内，所以还是借助其他工具来管理这些标注最为直接，可玩性也高。</p>
 <h3 id="Knotes"><a href="#Knotes" class="headerlink" title="Knotes"></a>Knotes</h3><p><a href="https://www.ifanr.com/app/795954" target="_blank" rel="noopener">独家首发：每个用 Kindle 的人，都不能错过它</a></p>
 <blockquote>
-<p>  大家好，我是Knotes作者贺乙钊。非常感谢ifanr的独家首发报道！🙏 Knotes 1.1.0版本主打印象笔记🐘同步和微信分享功能。在后续的开发中，我会进一步优化分享和写作体验✏️，包括支持更多的分享方式，支持导出Markdown格式等等，也会增加回顾模式📖，按导入时间来回顾笔记，同时也会增加主题、定制等，让Knotes变得更加个性化。 欢迎大家提意见和建议，我会专注Knotes的开发，争取做到完美😊。</p>
+<p>大家好，我是Knotes作者贺乙钊。非常感谢ifanr的独家首发报道！🙏 Knotes 1.1.0版本主打印象笔记🐘同步和微信分享功能。在后续的开发中，我会进一步优化分享和写作体验✏️，包括支持更多的分享方式，支持导出Markdown格式等等，也会增加回顾模式📖，按导入时间来回顾笔记，同时也会增加主题、定制等，让Knotes变得更加个性化。 欢迎大家提意见和建议，我会专注Knotes的开发，争取做到完美😊。</p>
 </blockquote>
 <p>做的很好，不过我仅仅需要把标注转换成 html 即可，遂放弃。</p>
 <h3 id="Clippings-Fere"><a href="#Clippings-Fere" class="headerlink" title="Clippings Fere"></a>Clippings Fere</h3><p><a href="https://bookfere.com/post/110.html" target="_blank" rel="noopener">Clippings Fere：让“我的剪贴”变得更易读</a></p>
@@ -250,6 +254,9 @@
 <h2 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h2><p>之前使用 kindle 遇到一些精彩的内容想拍照保存下来，直到有一天推友告诉我可以使用 kindle 自带的截屏功能。操作方法就是，<strong>同时按住屏幕对角线位置即可</strong>，而截屏的图片保存在了 kindle 内部存储的根目录下。需要手动拷贝出来，无法通过 kindle 分享出来，只能通过 USB 连接拷贝出来。</p>
     </div>
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kindle/" rel="tag"><i class="fa fa-tag"></i> kindle</a>
+          </div>
     <div class="post-nav">
       <div class="post-nav-item">
     <a href="/archives/PSYCHO-PASS-booklist.html" rel="prev" title="PSYCHO-PASS 心理测量者小说读后感">
@@ -322,17 +329,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-        <span class="site-state-item-count">73</span>
+            <a href="/tags/">
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -384,13 +392,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">742k</span>
+    <span title="站点总字数">740k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">20:37</span>
+    <span title="站点阅读时长">20:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
   </div>
@@ -401,10 +409,7 @@
     </footer>
   </div>
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script>
-<script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 <script>

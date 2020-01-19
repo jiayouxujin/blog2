@@ -38,7 +38,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+    motion: {"enable":false,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
   <meta name="description" content="更新日志 2019-09-30 初稿 2019-10-06 release 2019-11-10 补充 2019-11-17 博客迁移，原链接失效 2019-11-17 内容太杂，想重写，于是迁移到草稿文件夹 2020-01-11 整理删除多余内容后再次发表  致读者 本文只是我的一些杂想，没有系统性地构思文章脉络，所以都是想到什么就写什么，平时思考什么就写什么，但我确定这些问题都是事实，都与我们">
@@ -90,7 +90,7 @@
 <link rel="alternate" href="/atom.xml" title="木子" type="application/atom+xml">
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
@@ -102,7 +102,6 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">时光痕迹</p>
   </div>
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -115,22 +114,19 @@
 <nav class="site-nav">
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-desktop"></i>Home</a>
   </li>
-        <li class="menu-item menu-item-tags">
-    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+        <li class="menu-item menu-item-books">
+    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>Books</a>
   </li>
-        <li class="menu-item menu-item-分类">
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+        <li class="menu-item menu-item-kindle">
+    <a href="https://kindle.502.li/" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>Kindle</a>
   </li>
-        <li class="menu-item menu-item-书单">
-    <a href="/booklist.html" rel="section"><i class="fa fa-fw fa-book"></i>书单</a>
+        <li class="menu-item menu-item-friend">
+    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>Friend</a>
   </li>
-        <li class="menu-item menu-item-友链">
-    <a href="/link/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
-  </li>
-        <li class="menu-item menu-item-关于">
-    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>关于</a>
+        <li class="menu-item menu-item-about">
+    <a href="/about.html" rel="section"><i class="fa fa-fw fa-user-circle-o"></i>About</a>
   </li>
   </ul>
 </nav>
@@ -568,17 +564,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-        <span class="site-state-item-count">73</span>
+            <a href="/tags/">
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -630,13 +627,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">742k</span>
+    <span title="站点总字数">740k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">20:37</span>
+    <span title="站点阅读时长">20:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
   </div>
@@ -647,10 +644,7 @@
     </footer>
   </div>
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
 <script src="/js/utils.js"></script>
-<script src="/js/motion.js"></script>
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 <script>
