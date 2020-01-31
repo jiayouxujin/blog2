@@ -2,436 +2,436 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.502.li/draft/2020-02-01-2020-Lunar-New-Year.html</loc>
-    
-    <lastmod>2020-01-30T00:46:45.469Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.502.li/archives/thinking-2019.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.979Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.953Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/kindle-note.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.945Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/merge-bilibili-flv-video.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/make-e-book-from-html.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/linux-login-alarm-telegram.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/telegram-tips.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.945Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/PSYCHO-PASS-booklist.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.975Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.945Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/2019-reading-notes.html</loc>
+    <loc>https://blog.502.li/archives/telegram-tips.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.971Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.945Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/make-e-book-from-html.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/linux-login-alarm-telegram.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.941Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/container-linux-os.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.971Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/2019-review.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.971Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.941Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/dockerfile-tips.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.971Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.941Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/Kubernetes-Introduction-for-VMware-Users-zh.html</loc>
+    <loc>https://blog.502.li/archives/2019-review.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.967Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.941Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/pc-e5v3-e3v3-amd2600.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.967Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/Kubernetes-Introduction-for-VMware-Users-zh.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/2019-reading-notes.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.937Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/kubernetes-QA.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.963Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.951Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/Kindle-Oasis2-vs-Paperwhite3.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.951Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/blog-typecho-to-hexo.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.951Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.933Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/amusing-ourselves-to-death-reading-notes.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.951Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.925Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/Kindle-Oasis2-vs-Paperwhite3.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.925Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/Internet-related-foundations-and-organizations.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.951Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.925Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/ffmepg-rtsp.html</loc>
+    <loc>https://blog.502.li/archives/blog-typecho-to-hexo.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.925Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/frps-prot-monitor.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.921Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/A-History-of-Protecting-Freedom-Where-Law-and-Technology-Collide.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.921Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/life-sciences.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.921Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/ffmepg-rtsp.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.921Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/wndr3700v4-openwrt.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/docker-deploy-fastdfs.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.921Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/fastdfs-lua-redis.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.947Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.917Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/docker-deploy-fastdfs.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.917Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/esxi-openwrt.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.943Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/esp8266-pc-switch.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.943Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/ovf-to-ova.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.943Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/The-Dictator%E2%80%99s-Handbook.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.943Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.913Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/esxi-vmbase.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/The-Dictator%E2%80%99s-Handbook.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/ovf-to-ova.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/esp8266-pc-switch.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.913Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/debian-gateway.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/How-to-choose-the-right-version-of-kubernetes.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.909Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/centos7-offline-install-docker.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/amd-yes.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.909Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/mirrors-test.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.939Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.909Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/How-to-choose-the-right-version-of-kubernetes.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.909Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/amd-yes.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.909Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/dashboard.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.935Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/Asking-the-right-questions.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/fuch-rush-app-dir.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.935Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/get-someone-info.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.935Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/oh-my-pink.html</loc>
+    <loc>https://blog.502.li/archives/fuch-rush-app-dir.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/zabbix-compose.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/CentOS7-install-k8s.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/ops36.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/install-k8s-ubuntu18-04.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/oracle-rips-redhat.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/gitlab-install.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.931Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/android-tools.html</loc>
+    <loc>https://blog.502.li/archives/oh-my-pink.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.927Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.905Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/used-devices.html</loc>
+    <loc>https://blog.502.li/archives/CentOS7-install-k8s.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.927Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.901Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/install-k8s-ubuntu18-04.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.901Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/zabbix-compose.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.897Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/android-tasker.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.927Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.897Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/moto-z-play-AOSIP.html</loc>
+    <loc>https://blog.502.li/archives/ops36.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.927Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/privacy-protections.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.927Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.897Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/play-with-docker.html</loc>
+    <loc>https://blog.502.li/archives/oracle-rips-redhat.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/android-tools.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/used-devices.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.893Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/networktools.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.893Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/archives/buffon.html</loc>
+    <loc>https://blog.502.li/archives/privacy-protections.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/moto-z-play-AOSIP.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/play-with-docker.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.889Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/android-taibackup.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.885Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/RMS.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.885Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/buffon.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.881Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/Code-It-s-Trivial.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.923Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.881Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/justic.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.919Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.877Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/kernel-note-book.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.919Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/archives/python-cnni.html</loc>
-    
-    <lastmod>2020-01-29T10:38:05.919Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.877Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.502.li/archives/domain-email.html</loc>
     
-    <lastmod>2020-01-29T10:38:05.919Z</lastmod>
+    <lastmod>2020-01-30T00:47:22.877Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/archives/python-cnni.html</loc>
+    
+    <lastmod>2020-01-30T00:47:22.873Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.502.li/draft/2020-02-01-2020-Lunar-New-Year.html</loc>
+    
+    <lastmod>2020-01-30T00:46:45.469Z</lastmod>
     
   </url>
   
@@ -457,7 +457,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/eff.org/eff-final-2018.html</loc>
+    <loc>https://blog.502.li/draft/502.li/index.html</loc>
     
     <lastmod>2020-01-20T15:40:42.771Z</lastmod>
     
@@ -478,7 +478,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/502.li/index.html</loc>
+    <loc>https://blog.502.li/draft/eff.org/eff-final-2018.html</loc>
     
     <lastmod>2020-01-20T15:40:42.771Z</lastmod>
     
@@ -499,7 +499,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/eff.org/1-exhibit.a.html</loc>
+    <loc>https://blog.502.li/draft/eff.org/2019-11-13-federal-court-rules-suspicionless-searches-travelers-phones-and-laptops.html</loc>
     
     <lastmod>2020-01-20T15:40:42.771Z</lastmod>
     
@@ -513,7 +513,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/eff.org/2019-11-13-federal-court-rules-suspicionless-searches-travelers-phones-and-laptops.html</loc>
+    <loc>https://blog.502.li/draft/eff.org/1-exhibit.a.html</loc>
     
     <lastmod>2020-01-20T15:40:42.771Z</lastmod>
     
@@ -534,14 +534,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/2019-12-20-happy-with-shell.html</loc>
-    
-    <lastmod>2020-01-20T15:40:42.763Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.502.li/draft/2019-12-30-eff-2019-review.html</loc>
+    <loc>https://blog.502.li/draft/2019-10-50x.html</loc>
     
     <lastmod>2020-01-20T15:40:42.763Z</lastmod>
     
@@ -555,6 +548,13 @@
   </url>
   
   <url>
+    <loc>https://blog.502.li/draft/2019-12-30-eff-2019-review.html</loc>
+    
+    <lastmod>2020-01-20T15:40:42.763Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.502.li/draft/2019-11-15-govc-cli.html</loc>
     
     <lastmod>2020-01-20T15:40:42.763Z</lastmod>
@@ -562,14 +562,14 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/2019-10-50x.html</loc>
+    <loc>https://blog.502.li/draft/2019-12-20-happy-with-shell.html</loc>
     
     <lastmod>2020-01-20T15:40:42.763Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.502.li/categories/index.html</loc>
+    <loc>https://blog.502.li/draft/2019-04-04-frpc-net.html</loc>
     
     <lastmod>2020-01-20T15:40:42.759Z</lastmod>
     
@@ -597,7 +597,7 @@
   </url>
   
   <url>
-    <loc>https://blog.502.li/draft/2019-04-04-frpc-net.html</loc>
+    <loc>https://blog.502.li/categories/index.html</loc>
     
     <lastmod>2020-01-20T15:40:42.759Z</lastmod>
     
